@@ -1,6 +1,97 @@
 <!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>精通自定义 View 之视图动画（二） | King</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">精通自定义 View 之视图动画（二）</h1><a id="logo" href="/.">King</a><p class="description">xianxiaotao</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">精通自定义 View 之视图动画（二）</h1><div class="post-meta">Sep 18, 2019<span> | </span><span class="category"><a href="/categories/ANDROID/">ANDROID</a></span></div><div class="post-content"><p>精通自定义 View 之视图动画（二）</p>
-<h2 id="2-2-视图动画的代码实现"><a href="#2-2-视图动画的代码实现" class="headerlink" title="2.2 视图动画的代码实现"></a>2.2 视图动画的代码实现</h2><h4 id="2-2-1-概述"><a href="#2-2-1-概述" class="headerlink" title="2.2.1 概述"></a>2.2.1 概述</h4><p>使用 XML 来添加动画可以很大限度地提高代码复用性，但有时只需要临时使用一个动画，就没有必要单独写一个XML动画文件了，可以使用代码的方法生成一个动画操作。<br>| 标签 | 类 |<br>| :—–: | :—–: |<br>| scale | ScaleAnimation |<br>| alpha | AlphaAnimation |<br>| rotate | RotateAnimation |<br>| translate | TranslateAnimation |<br>| set | AnimationSet |</p>
-<p>Animation 类中共用的属性方法：<br>| 标签属性 | 方 法 | 说明 |<br>| :—– | :—–: | :—–: |<br>| android:duration | setDuration(long) | 动画的运行时间(以毫秒为单位)；必须设置 |<br>| android:fillAfter | setFillAfter(boolean) | 动画结束时是否保持动画最后的状态；默认为false，优先于fillBefore |<br>| android:fillBefore | setFillBefore(boolean) | 动画结束时是否还原到开始动画前的状态；默认为true |<br>| android:fillEnabled | setFillEnabled(boolean) | 是否应用fillBefore的值，对fillAfter无影响；默认为true |<br>| android:repeatCount | setRepeatCount(int) | 重复次数，取值为整数或 Animation.INFINITE。 |<br>| android:repeatMode | setRepeatMode(int) | 重复类型有两个值，reverse表示倒序回放，restart表示从头播放 |<br>| android:interpolator | setInterpolator(Interpolator) | 设定插值器（指定的动画效果，譬如回弹等） |<br>| android:detachWallpaper | setDetachWallpaper(boolean) |  |<br>| android:startOffset | setStartOffset(long) | 调用start函数之后等待开始运行的时间，单位为毫秒 |<br>| android:zAdjustment | setZAdjustment(int) | 表示被设置动画的内容运行时在Z轴上的位置（top/bottom/normal），默认为normal |</p>
+<h2 id="2-2-视图动画的代码实现"><a href="#2-2-视图动画的代码实现" class="headerlink" title="2.2 视图动画的代码实现"></a>2.2 视图动画的代码实现</h2><h4 id="2-2-1-概述"><a href="#2-2-1-概述" class="headerlink" title="2.2.1 概述"></a>2.2.1 概述</h4><p>使用 XML 来添加动画可以很大限度地提高代码复用性，但有时只需要临时使用一个动画，就没有必要单独写一个XML动画文件了，可以使用代码的方法生成一个动画操作。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标签</th>
+<th style="text-align:center">类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">scale</td>
+<td style="text-align:center">ScaleAnimation</td>
+</tr>
+<tr>
+<td style="text-align:center">alpha</td>
+<td style="text-align:center">AlphaAnimation</td>
+</tr>
+<tr>
+<td style="text-align:center">rotate</td>
+<td style="text-align:center">RotateAnimation</td>
+</tr>
+<tr>
+<td style="text-align:center">translate</td>
+<td style="text-align:center">TranslateAnimation</td>
+</tr>
+<tr>
+<td style="text-align:center">set</td>
+<td style="text-align:center">AnimationSet</td>
+</tr>
+</tbody>
+</table>
+<p>Animation 类中共用的属性方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">标签属性</th>
+<th style="text-align:left">方 法</th>
+<th style="text-align:right">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">android:duration</td>
+<td style="text-align:left">setDuration(long)</td>
+<td style="text-align:right">动画的运行时间(以毫秒为单位)；必须设置</td>
+</tr>
+<tr>
+<td style="text-align:left">android:fillAfter</td>
+<td style="text-align:left">setFillAfter(boolean)</td>
+<td style="text-align:right">动画结束时是否保持动画最后的状态；默认为false，优先于fillBefore</td>
+</tr>
+<tr>
+<td style="text-align:left">android:fillBefore</td>
+<td style="text-align:left">setFillBefore(boolean)</td>
+<td style="text-align:right">动画结束时是否还原到开始动画前的状态；默认为true</td>
+</tr>
+<tr>
+<td style="text-align:left">android:fillEnabled</td>
+<td style="text-align:left">setFillEnabled(boolean)</td>
+<td style="text-align:right">是否应用fillBefore的值，对fillAfter无影响；默认为true</td>
+</tr>
+<tr>
+<td style="text-align:left">android:repeatCount</td>
+<td style="text-align:left">setRepeatCount(int)</td>
+<td style="text-align:right">重复次数，取值为整数或 Animation.INFINITE。</td>
+</tr>
+<tr>
+<td style="text-align:left">android:repeatMode</td>
+<td style="text-align:left">setRepeatMode(int)</td>
+<td style="text-align:right">重复类型有两个值，reverse表示倒序回放，restart表示从头播放</td>
+</tr>
+<tr>
+<td style="text-align:left">android:interpolator</td>
+<td style="text-align:left">setInterpolator(Interpolator)</td>
+<td style="text-align:right">设定插值器（指定的动画效果，譬如回弹等）</td>
+</tr>
+<tr>
+<td style="text-align:left">android:detachWallpaper</td>
+<td style="text-align:left">setDetachWallpaper(boolean)</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td style="text-align:left">android:startOffset</td>
+<td style="text-align:left">setStartOffset(long)</td>
+<td style="text-align:right">调用start函数之后等待开始运行的时间，单位为毫秒</td>
+</tr>
+<tr>
+<td style="text-align:left">android:zAdjustment</td>
+<td style="text-align:left">setZAdjustment(int)</td>
+<td style="text-align:right">表示被设置动画的内容运行时在Z轴上的位置（top/bottom/normal），默认为normal</td>
+</tr>
+</tbody>
+</table>
 <h4 id="2-2-2-ScaleAnimation"><a href="#2-2-2-ScaleAnimation" class="headerlink" title="2.2.2 ScaleAnimation"></a>2.2.2 ScaleAnimation</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ScaleAnimation(float fromX, float toX, float fromY, float toY)</div><div class="line">ScaleAnimation(float fromX, float toX, float fromY, float toY, </div><div class="line">               float pivotX, float pivotY)</div><div class="line">ScaleAnimation(float fromX, float toX, float fromY, float toY,</div><div class="line">               int pivotXType, float pivotXValue, </div><div class="line">               int pivotYType, float pivotYValue)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>pivotXType 取值为：<br>Animation.ABSOLUTE、<br>Animation.RELATIVE_TO_SELF、Animation.RELATIVE_TO_PARENT</p>
@@ -27,4 +118,4 @@
 <p>Animation.AnimationListener：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public static interface AnimationListener &#123;</div><div class="line">    // 动画开始时调用</div><div class="line">    void onAnimationStart(Animation animation);</div><div class="line">    // 动画结束时调用</div><div class="line">    void onAnimationEnd(Animation animation);</div><div class="line">    // 动画重复时调用</div><div class="line">    void onAnimationRepeat(Animation animation);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">final RotateAnimation rotateAnim = new RotateAnimation(0, 720, </div><div class="line">        Animation.RELATIVE_TO_SELF, 0.5f,</div><div class="line">        Animation.RELATIVE_TO_SELF, 0.5f);</div><div class="line">rotateAnim.setDuration(2000);</div><div class="line">rotateAnim.setFillAfter(true);</div><div class="line"></div><div class="line">ScaleAnimation scaleAnim = new ScaleAnimation(0, 1.4f, 0, 1.4f,</div><div class="line">        Animation.RELATIVE_TO_SELF, 0.5f, </div><div class="line">        Animation.RELATIVE_TO_SELF, 0.5f);</div><div class="line">scaleAnim.setDuration(700);</div><div class="line">scaleAnim.setAnimationListener(new Animation.AnimationListener() &#123;</div><div class="line">    @Override</div><div class="line">    public void onAnimationStart(Animation animation) &#123;&#125;</div><div class="line">    @Override</div><div class="line">    public void onAnimationEnd(Animation animation) &#123;</div><div class="line">        view.startAnimation(rotateAnim);</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void onAnimationRepeat(Animation animation) &#123; &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">view.startAnimation(scaleAnim);</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-1f482e16cf4cbca6.gif?imageMogr2/auto-orient/strip" alt=""></p>
-</div><div class="tags"><a href="/tags/ANDROID/">ANDROID</a></div><div class="post-nav"><a class="pre" href="/2019/09/18/ANDROID/自定义控件/23精通自定义 View 之视图动画（三）/">精通自定义 View 之视图动画（三）</a><a class="next" href="/2019/09/18/ANDROID/自定义控件/21精通自定义 View 之视图动画（一）/">精通自定义 View 之视图动画（一）</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ANDROID/">ANDROID</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DESIGN-PATTERN/">DESIGN PATTERN</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">9</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/ANDROID/" style="font-size: 15px;">ANDROID</a> <a href="/tags/util/" style="font-size: 15px;">util</a> <a href="/tags/CUSTOM-VIEW/" style="font-size: 15px;">CUSTOM VIEW</a> <a href="/tags/研发录/" style="font-size: 15px;">研发录</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/DESIGN-PATTERN/" style="font-size: 15px;">DESIGN PATTERN</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/ANDROID/自定义控件/24精通自定义 View 之视图动画（四）/">精通自定义 View 之视图动画（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/ANDROID/自定义控件/23精通自定义 View 之视图动画（三）/">精通自定义 View 之视图动画（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/ANDROID/自定义控件/22精通自定义 View 之视图动画（二）/">精通自定义 View 之视图动画（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/ANDROID/自定义控件/21精通自定义 View 之视图动画（一）/">精通自定义 View 之视图动画（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/16精通自定义 View 之绘图基础（六）/">精通自定义 View 之绘图基础（六）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/15精通自定义 View 之绘图基础（五）/">精通自定义 View 之绘图基础（五）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/14精通自定义 View 之绘图基础（四）/">精通自定义 View 之绘图基础（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/13精通自定义 View 之绘图基础（三）/">精通自定义 View 之绘图基础（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/12精通自定义 View 之绘图基础（二）/">精通自定义 View 之绘图基础（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/11精通自定义 View 之绘图基础（一）/">精通自定义 View 之绘图基础（一）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">King.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div><div class="tags"><a href="/tags/ANDROID/">ANDROID</a></div><div class="post-nav"><a class="pre" href="/2019/09/18/ANDROID/自定义控件/23精通自定义 View 之视图动画（三）/">精通自定义 View 之视图动画（三）</a><a class="next" href="/2019/09/18/ANDROID/自定义控件/21精通自定义 View 之视图动画（一）/">精通自定义 View 之视图动画（一）</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ANDROID/">ANDROID</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DESIGN-PATTERN/">DESIGN PATTERN</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/ANDROID/" style="font-size: 15px;">ANDROID</a> <a href="/tags/util/" style="font-size: 15px;">util</a> <a href="/tags/CUSTOM-VIEW/" style="font-size: 15px;">CUSTOM VIEW</a> <a href="/tags/研发录/" style="font-size: 15px;">研发录</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/DESIGN-PATTERN/" style="font-size: 15px;">DESIGN PATTERN</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/ANDROID/自定义控件/24精通自定义 View 之视图动画（四）/">精通自定义 View 之视图动画（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/ANDROID/自定义控件/23精通自定义 View 之视图动画（三）/">精通自定义 View 之视图动画（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/ANDROID/自定义控件/22精通自定义 View 之视图动画（二）/">精通自定义 View 之视图动画（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/ANDROID/自定义控件/21精通自定义 View 之视图动画（一）/">精通自定义 View 之视图动画（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/16精通自定义 View 之绘图基础（六）/">精通自定义 View 之绘图基础（六）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/15精通自定义 View 之绘图基础（五）/">精通自定义 View 之绘图基础（五）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/14精通自定义 View 之绘图基础（四）/">精通自定义 View 之绘图基础（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/13精通自定义 View 之绘图基础（三）/">精通自定义 View 之绘图基础（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/12精通自定义 View 之绘图基础（二）/">精通自定义 View 之绘图基础（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/ANDROID/自定义控件/11精通自定义 View 之绘图基础（一）/">精通自定义 View 之绘图基础（一）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">King.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
