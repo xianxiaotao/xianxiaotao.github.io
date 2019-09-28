@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>02.3 精通自定义 View 之视图动画（三） | King</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">02.3 精通自定义 View 之视图动画（三）</h1><a id="logo" href="/.">King</a><p class="description">xianxiaotao</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">02.3 精通自定义 View 之视图动画（三）</h1><div class="post-meta">Jul 2, 2019<span> | </span><span class="category"><a href="/categories/Custom-View/">Custom View</a></span></div><div class="post-content"><meta name="referrer" content="no-referrer">
+
+<h2 id="2-3-插值器初探"><a href="#2-3-插值器初探" class="headerlink" title="2.3 插值器初探"></a>2.3 插值器初探</h2><p>有关动画的变化速率的问题是由 Interpolator 类来决定的。Interpolator 叫插值器，也叫加速器，是用来指定动画如何变化的变量。它只是一个接口，通过实现这个接口就可以自定义动画的变化速率。系统提供了如下几个实现了插值器的类：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">nterpolator class</th>
+<th style="text-align:left">Resource ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AccelerateDecelerateInterpolator</td>
+<td style="text-align:left">@android:anim/accelerate_decelerate_interpolator</td>
+</tr>
+<tr>
+<td style="text-align:left">AccelerateInterpolator</td>
+<td style="text-align:left">@android:anim/accelerate_interpolator</td>
+</tr>
+<tr>
+<td style="text-align:left">DecelerateInterpolator</td>
+<td style="text-align:left">@android:anim/decelerate_interpolator</td>
+</tr>
+<tr>
+<td style="text-align:left">LinearInterpolator</td>
+<td style="text-align:left">@android:anim/linear_interpolator</td>
+</tr>
+<tr>
+<td style="text-align:left">BounceInterpolator</td>
+<td style="text-align:left">@android:anim/bounce_interpolator</td>
+</tr>
+<tr>
+<td style="text-align:left">AnticipateInterpolator</td>
+<td style="text-align:left">@android:anim/anticipate_interpolator</td>
+</tr>
+<tr>
+<td style="text-align:left">OvershootInterpolator</td>
+<td style="text-align:left">@android:anim/overshoot_interpolator</td>
+</tr>
+<tr>
+<td style="text-align:left">AnticipateOvershootInterpolator</td>
+<td style="text-align:left">@android:anim/anticipate_overshoot_interpolator</td>
+</tr>
+<tr>
+<td style="text-align:left">CycleInterpolator</td>
+<td style="text-align:left">@android:anim/cycle_interpolator</td>
+</tr>
+</tbody>
+</table>
+<p>关于插值器，有两种使用方法。</p>
+<h6 id="方法一、在-XML-文件中引用插值器"><a href="#方法一、在-XML-文件中引用插值器" class="headerlink" title="方法一、在 XML 文件中引用插值器"></a>方法一、在 XML 文件中引用插值器</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;alpha xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:fromAlpha=&quot;1.0&quot;</div><div class="line">    android:toAlpha=&quot;0.1&quot;</div><div class="line">    android:duration=&quot;3000&quot;</div><div class="line">    android:interpolator=&quot;@android:anim/accelerate_interpolator&quot;/&gt;</div></pre></td></tr></table></figure>
+<h6 id="方法二、通过-setInterpolator-函数设置插值器"><a href="#方法二、通过-setInterpolator-函数设置插值器" class="headerlink" title="方法二、通过 setInterpolator() 函数设置插值器"></a>方法二、通过 setInterpolator() 函数设置插值器</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">AlphaAnimation alphaAnim = new AlphaAnimation(1.0f, 0.1f);</div><div class="line">alphaAnim.setDuration(3000);</div><div class="line">alphaAnim.setInterpolator(new LinearInterpolator());</div></pre></td></tr></table></figure>
+<h4 id="2-3-1-AccelerateDecelerateInterpolator"><a href="#2-3-1-AccelerateDecelerateInterpolator" class="headerlink" title="2.3.1 AccelerateDecelerateInterpolator"></a>2.3.1 AccelerateDecelerateInterpolator</h4><p>加速减速插值器，表示在开始与结束的地方速率改变比较慢，在中间的时候加速。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">TranslateAnimation alphaAnim = new TranslateAnimation(</div><div class="line">        Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_PARENT, 0.5f,</div><div class="line">        Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_PARENT, 0.5f);</div><div class="line">alphaAnim.setDuration(2000);</div><div class="line">alphaAnim.setFillAfter(true);</div><div class="line">alphaAnim.setInterpolator(new AccelerateDecelerateInterpolator());</div><div class="line">view.startAnimation(alphaAnim);</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-1a5e986db80513d8.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<h4 id="2-3-2-AccelerateInterpolator"><a href="#2-3-2-AccelerateInterpolator" class="headerlink" title="2.3.2 AccelerateInterpolator"></a>2.3.2 AccelerateInterpolator</h4><p>加速插值器，表示在动画开始的地方速率比较慢，然后开始加速。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new AccelerateInterpolator());</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-908e70cfe467c264.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<h4 id="2-3-3-DecelerateInterpolator"><a href="#2-3-3-DecelerateInterpolator" class="headerlink" title="2.3.3 DecelerateInterpolator"></a>2.3.3 DecelerateInterpolator</h4><p>减速插值器，表示在动画开始的一瞬间加速到最大值，然后逐渐变慢。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new DecelerateInterpolator());</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-6d0ff5568b75446f.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<h4 id="2-3-4-LinearInterpolator"><a href="#2-3-4-LinearInterpolator" class="headerlink" title="2.3.4 LinearInterpolator"></a>2.3.4 LinearInterpolator</h4><p>线性插值器，也称匀速插值器，显然，它的速率是保持恒定的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new LinearInterpolator());</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-377ec8feea0f4d15.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<h4 id="2-3-5-BounceInterpolator"><a href="#2-3-5-BounceInterpolator" class="headerlink" title="2.3.5 BounceInterpolator"></a>2.3.5 BounceInterpolator</h4><p>弹跳插值器，模拟了控件自由落地后回弹的效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new BounceInterpolator());</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-41e10e83f1b030b5.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<h4 id="2-3-6-AnticipateInterpolator"><a href="#2-3-6-AnticipateInterpolator" class="headerlink" title="2.3.6 AnticipateInterpolator"></a>2.3.6 AnticipateInterpolator</h4><p>初始偏移插值器，表示在动画开始的时候向前偏移一段距离，然后应用动画。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public AnticipateInterpolator()</div><div class="line">public AnticipateInterpolator(float tension)</div></pre></td></tr></table></figure></p>
+<p>参数 float tension 对应的 XML 属性为 android:tension，表示张力值，默认值为 2。值越大，初始的偏移量越大，而且速度越快。0 表示不偏移。</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new AnticipateInterpolator(4));</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-238aad363372258f.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<h4 id="2-3-7-OvershootInterpolator"><a href="#2-3-7-OvershootInterpolator" class="headerlink" title="2.3.7 OvershootInterpolator"></a>2.3.7 OvershootInterpolator</h4><p>结束偏移插值器，表示在动画结束的时候沿动画方向继续运动一段距离后再结束动画。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public OvershootInterpolator()</div><div class="line">public OvershootInterpolator(float tension)</div></pre></td></tr></table></figure></p>
+<p>参数 float tension 对应的 XML 属性为 android:tension，表示张力值，默认值为 2。值越大，结束时的偏移量越大。0 表示不偏移。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new OvershootInterpolator());</div></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-f1c535299a35ee11.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<h4 id="2-3-8-AnticipateOvershootInterpolator"><a href="#2-3-8-AnticipateOvershootInterpolator" class="headerlink" title="2.3.8 AnticipateOvershootInterpolator"></a>2.3.8 AnticipateOvershootInterpolator</h4><p>是 AnticipateInterpolator 和 OvershootInterpolator 的合体，即在动画开始时向前偏移一段距离后，在动画结束的时候沿动画方向继续运动一段距离后再结束动画。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public AnticipateOvershootInterpolator()</div><div class="line">public AnticipateOvershootInterpolator(float tension)</div><div class="line">public AnticipateOvershootInterpolator(float tension, float extraTension)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>参数 float tension 对应的 XML 属性为 android:tension，表示张力值，默认值为 2。值越大，初始和结束的偏移量越大。0 表示不偏移。</li>
+<li>参数 float extraTension 对应的 XML 属性为 android:extraTension，表示额外张力值，默认值为 1.5。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new AnticipateOvershootInterpolator());</div></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-c3efadfe7e3bb00a.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<h4 id="2-3-9-CycleInterpolator"><a href="#2-3-9-CycleInterpolator" class="headerlink" title="2.3.9 CycleInterpolator"></a>2.3.9 CycleInterpolator</h4><p>循环插值器，表示动画循环播放特定的次数，速率沿正弦曲线改变。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">TranslateAnimation alphaAnim = new TranslateAnimation(</div><div class="line">        Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_PARENT, 0.5f,</div><div class="line">        Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_PARENT, 0.5f);</div><div class="line">alphaAnim.setDuration(2000);</div><div class="line">alphaAnim.setFillAfter(true);</div><div class="line">alphaAnim.setInterpolator(new CycleInterpolator());</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-5eb085b89d61c217.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<blockquote>
+<p>虽然设置了 setFillAfter(true)，但对于 CycleInterpolator 而言并没有什么影响，动画结束后，视图还原到初始位置。</p>
+</blockquote>
+</div><div class="tags"><a href="/tags/Custom-View/">Custom View</a></div><div class="post-nav"><a class="pre" href="/2019/07/02/Custom View/02.4 精通自定义 View 之视图动画（四）/">02.4 精通自定义 View 之视图动画（四）</a><a class="next" href="/2019/07/02/Custom View/02.2 精通自定义 View 之视图动画（二）/">02.2 精通自定义 View 之视图动画（二）</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ANDROID/">ANDROID</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Custom-View/">Custom View</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DESIGN-PATTERN/">DESIGN PATTERN</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">King.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
