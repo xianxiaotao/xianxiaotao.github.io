@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -68,11 +75,13 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="我至诚我道" />
 
 
 
 
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
 
 
 
@@ -80,11 +89,11 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="King">
+<meta property="og:title" content="先小涛">
 <meta property="og:url" content="http://yoursite.com/page/6/index.html">
-<meta property="og:site_name" content="King">
+<meta property="og:site_name" content="先小涛">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="King">
+<meta name="twitter:title" content="先小涛">
 
 
 
@@ -92,9 +101,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -120,7 +129,7 @@
 
 
 
-  <title>King</title>
+  <title>先小涛</title>
   
 
 
@@ -142,6 +151,7 @@
   <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
@@ -151,12 +161,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">King</span>
+        <span class="site-title">先小涛</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">xianxiaotao</p>
+        <p class="site-subtitle">我至诚我道</p>
       
   </div>
 
@@ -186,22 +196,22 @@
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
           </a>
         </li>
       
@@ -217,9 +227,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -257,7 +301,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -315,6 +359,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/10/ANDROID/ANDROID Building a Dynamic UI with Fragments/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/04/10/ANDROID/ANDROID Building a Dynamic UI with Fragments/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -341,20 +395,16 @@
       
         
           
-            <h2 id="界面效果"><a href="#界面效果" class="headerlink" title="界面效果"></a>界面效果</h2><p>在手机设备上，由于采用单窗格用户界面，因此可能更适合一次只显示一个片段。 相反，由于平板电脑屏幕尺寸较大，可以为用户显示更多信息，因此最好将片段设计为并排显示。<br><img src="http://ww1.sinaimg.cn/large/adc90466ly1fehnmn669ej20ga06djsm.jpg" alt=""></p>
-<h2 id="布局文件"><a href="#布局文件" class="headerlink" title="布局文件"></a>布局文件</h2><h4 id="小屏布局文件，如手机"><a href="#小屏布局文件，如手机" class="headerlink" title="小屏布局文件，如手机"></a>小屏布局文件，如手机</h4><p>res/layout/news_articles.xml:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;FrameLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    android:id=<span class="string">"@+id/fragment_container"</span></div><div class="line">    android:layout_width=<span class="string">"match_parent"</span></div><div class="line">    android:layout_height=<span class="string">"match_parent"</span> /&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="大屏布局文件，如平板电脑"><a href="#大屏布局文件，如平板电脑" class="headerlink" title="大屏布局文件，如平板电脑"></a>大屏布局文件，如平板电脑</h4><p>res/layout-large/news_articles.xml:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line"></div><div class="line">&lt;LinearLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    android:orientation=<span class="string">"horizontal"</span></div><div class="line">    android:layout_width=<span class="string">"match_parent"</span></div><div class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">    &lt;fragment android:name=<span class="string">"com.king.demo.fragment.HeadlinesFragment"</span></div><div class="line">        android:id=<span class="string">"@+id/headlines_fragment"</span></div><div class="line">        android:layout_weight=<span class="string">"1"</span></div><div class="line">        android:layout_width=<span class="string">"0dp"</span></div><div class="line">        android:layout_height=<span class="string">"match_parent"</span> /&gt;</div><div class="line"></div><div class="line">    &lt;fragment android:name=<span class="string">"com.king.demo.fragment.ArticleFragment"</span></div><div class="line">        android:id=<span class="string">"@+id/article_fragment"</span></div><div class="line">        android:layout_weight=<span class="string">"2"</span></div><div class="line">        android:layout_width=<span class="string">"0dp"</span></div><div class="line">        android:layout_height=<span class="string">"match_parent"</span> /&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="判断加载哪个布局文件"><a href="#判断加载哪个布局文件" class="headerlink" title="判断加载哪个布局文件"></a>判断加载哪个布局文件</h4><p>当设备屏幕尺寸小于large时加载第一个布局文件，否则加载第二个布局文件，是否large则由系统判断，而我们可以通过以下方法判断加载的是哪个布局：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (findViewById(R.id.fragment_container) != null) &#123;</div><div class="line">    // 此处加载了第一个布局文件</div><div class="line">&#125;</div><div class="line"></div><div class="line">ArticleFragment articleFrag = (ArticleFragment) getSupportFragmentManager().findFragmentById(R.id.article_fragment);</div><div class="line"><span class="keyword">if</span> (articleFrag != null) &#123;</div><div class="line">    // 此处加载了第二个布局</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="片段处理"><a href="#片段处理" class="headerlink" title="片段处理"></a>片段处理</h2><p>FragmentManager类提供的方法让您可以在运行时为 Activity 添加、移除和替换片段，从而营造出动态的用户体验。</p>
-<h4 id="在运行时为-Activity-添加片段"><a href="#在运行时为-Activity-添加片段" class="headerlink" title="在运行时为 Activity 添加片段"></a>在运行时为 Activity 添加片段</h4><p>在您的 Activity 内，使用 Support Library API 调用 getSupportFragmentManager() 以获取 FragmentManager。然后，调用 beginTransaction() 创建一个 FragmentTransaction，并调用 add() 添加一个片段。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">import android.support.v4.app.FragmentActivity;</div><div class="line">import android.os.Bundle;</div><div class="line">import android.support.v4.app.FragmentTransaction;</div><div class="line"></div><div class="line">import com.king.demo.R;</div><div class="line"></div><div class="line">public class DynamicFragmentsActivity extends FragmentActivity &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        <span class="built_in">set</span>ContentView(R.layout.news_articles);</div><div class="line"></div><div class="line">        // Check whether the activity is using the layout version with</div><div class="line">        // the fragment_container FrameLayout. If so, we must add the first fragment</div><div class="line">        <span class="keyword">if</span> (findViewById(R.id.fragment_container) != null) &#123;</div><div class="line"></div><div class="line">            // However, <span class="keyword">if</span> we<span class="string">'re being restored from a previous state,</span></div><div class="line">            // then we don't need to <span class="keyword">do</span> anything and should <span class="built_in">return</span> or <span class="keyword">else</span></div><div class="line">            // we could end up with overlapping fragments.</div><div class="line">            <span class="keyword">if</span> (savedInstanceState != null) &#123;</div><div class="line">                <span class="built_in">return</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            // Create an instance of ExampleFragment</div><div class="line">            HeadlinesFragment firstFragment = new HeadlinesFragment();</div><div class="line"></div><div class="line">            // In <span class="keyword">case</span> this activity was started with special instructions from an Intent,</div><div class="line">            // pass the Intent<span class="string">'s extras to the fragment as arguments</span></div><div class="line">            firstFragment.setArguments(getIntent().getExtras());</div><div class="line"></div><div class="line">            // Add the fragment to the 'fragment_container<span class="string">' FrameLayout</span></div><div class="line">            getSupportFragmentManager().beginTransaction()</div><div class="line">                    .add(R.id.fragment_container, firstFragment).commit();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="替换片段"><a href="#替换片段" class="headerlink" title="替换片段"></a>替换片段</h4><p>替换片段的步骤与添加片段类似，只不过调用的方法从 add() 改为 replace()。<br>请谨记，当您执行替换或移除片段等片段事务时，通常最好让用户能够回退并“撤消”更改。 要让用户回退所执行的片段事务，您必须先调用 addToBackStack()，然后再提交 FragmentTransaction。<br>片段替换示例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">// Capture the article fragment from the activity layout</div><div class="line">ArticleFragment articleFrag = (ArticleFragment)</div><div class="line">        getSupportFragmentManager().findFragmentById(R.id.article_fragment);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (articleFrag != null) &#123;</div><div class="line">    // If article frag is available, we<span class="string">'re in two-pane layout...</span></div><div class="line"></div><div class="line">    // Call a method in the ArticleFragment to update its content</div><div class="line">    articleFrag.updateArticleView(position);</div><div class="line">&#125; else &#123;</div><div class="line">    // If the frag is not available, we're <span class="keyword">in</span> the one-pane layout and must swap frags...</div><div class="line"></div><div class="line">    // Create fragment and give it an argument <span class="keyword">for</span> the selected article</div><div class="line">    ArticleFragment newFragment = new ArticleFragment();</div><div class="line">    Bundle args = new Bundle();</div><div class="line">    args.putInt(ArticleFragment.ARG_POSITION, position);</div><div class="line">    newFragment.setArguments(args);</div><div class="line">    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();</div><div class="line"></div><div class="line">    // Replace whatever is <span class="keyword">in</span> the fragment_container view with this fragment,</div><div class="line">    // and add the transaction to the back stack so the user can navigate back</div><div class="line">    transaction.replace(R.id.fragment_container, newFragment);</div><div class="line">    transaction.addToBackStack(null);</div><div class="line"></div><div class="line">    // Commit the transaction</div><div class="line">    transaction.commit();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="片段通信"><a href="#片段通信" class="headerlink" title="片段通信"></a>片段通信</h2><p>通常您希望一个片段与另一个片段进行通信，例如根据用户事件更改内容。所有片段到片段的通信是通过Activity完成的。两个片段不应该直接交流。若要允许片段与其Activity进行通信，您可以在片段类中定义接口并在Activity中实现它。片段捕捉接口实现其onattach()生命周期方法中可以调用接口的方法以进行交流活动。</p>
-<h4 id="1、声明接口"><a href="#1、声明接口" class="headerlink" title="1、声明接口"></a>1、声明接口</h4><p>在HeadlinesFragment声明接口OnHeadlineSelectedListener：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class HeadlinesFragment extends ListFragment &#123;</div><div class="line">    OnHeadlineSelectedListener mCallback;</div><div class="line"></div><div class="line">    // Container Activity must implement this interface</div><div class="line">    public interface OnHeadlineSelectedListener &#123;</div><div class="line">        public void onArticleSelected(int position);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onAttach(Activity activity) &#123;</div><div class="line">        super.onAttach(activity);</div><div class="line"></div><div class="line">        // This makes sure that the container activity has implemented</div><div class="line">        // the callback interface. If not, it throws an exception</div><div class="line">        try &#123;</div><div class="line">            mCallback = (OnHeadlineSelectedListener) activity;</div><div class="line">        &#125; catch (ClassCastException e) &#123;</div><div class="line">            throw new ClassCastException(activity.toString()</div><div class="line">                    + <span class="string">" must implement OnHeadlineSelectedListener"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="2、实现接口"><a href="#2、实现接口" class="headerlink" title="2、实现接口"></a>2、实现接口</h4><p>在DynamicFragmentsActivity中实现接口：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public static class DynamicFragmentsActivity extends Activity</div><div class="line">        implements HeadlinesFragment.OnHeadlineSelectedListener&#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    public void onArticleSelected(int position) &#123;</div><div class="line">        // The user selected the headline of an article from the HeadlinesFragment</div><div class="line">        // Do something here to display that article</div><div class="line"></div><div class="line">        ArticleFragment articleFrag = (ArticleFragment)</div><div class="line">                getSupportFragmentManager().findFragmentById(R.id.article_fragment);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (articleFrag != null) &#123;</div><div class="line">            // If article frag is available, we<span class="string">'re in two-pane layout...</span></div><div class="line"></div><div class="line">            // Call a method in the ArticleFragment to update its content</div><div class="line">            articleFrag.updateArticleView(position);</div><div class="line">        &#125; else &#123;</div><div class="line">            // Otherwise, we're <span class="keyword">in</span> the one-pane layout and must swap frags...</div><div class="line"></div><div class="line">            // Create fragment and give it an argument <span class="keyword">for</span> the selected article</div><div class="line">            ArticleFragment newFragment = new ArticleFragment();</div><div class="line">            Bundle args = new Bundle();</div><div class="line">            args.putInt(ArticleFragment.ARG_POSITION, position);</div><div class="line">            newFragment.setArguments(args);</div><div class="line"></div><div class="line">            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();</div><div class="line"></div><div class="line">            // Replace whatever is <span class="keyword">in</span> the fragment_container view with this fragment,</div><div class="line">            // and add the transaction to the back stack so the user can navigate back</div><div class="line">            transaction.replace(R.id.fragment_container, newFragment);</div><div class="line">            transaction.addToBackStack(null);</div><div class="line"></div><div class="line">            // Commit the transaction</div><div class="line">            transaction.commit();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="3、回调"><a href="#3、回调" class="headerlink" title="3、回调"></a>3、回调</h4><p>在HeadlinesFragment回调接口中的方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class HeadlinesFragment extends ListFragment &#123;</div><div class="line">    OnHeadlineSelectedListener mCallback;</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onListItemClick(ListView l, View v, int position, long id) &#123;</div><div class="line">        // Notify the parent activity of selected item</div><div class="line">        mCallback.onArticleSelected(position);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><a href="https://developer.android.com/training/basics/fragments/index.html" target="_blank" rel="external">参考文档链接</a><br><a href="https://github.com/xianxiaotao/AndroidDemo" target="_blank" rel="external">全部源码链接</a></p>
-
-          
+          界面效果在手机设备上，由于采用单窗格用户界面，因此可能更适合一次只显示一个片段。 相反，由于平板电脑屏幕尺寸较大，可以为用户显示更多信息，因此最好将片段设计为并排显示。
+布局文件小屏布局文件，如手机res/layout/news_articles.xml:12345&lt;?xml version=
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/10/ANDROID/ANDROID Building a Dynamic UI with Fragments/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -410,7 +460,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -468,6 +518,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/28/ANDROID/ANDROID 源码分析事件分发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/03/28/ANDROID/ANDROID 源码分析事件分发/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -494,32 +554,15 @@
       
         
           
-            <h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h4 id="1、Activity-——-gt-Window"><a href="#1、Activity-——-gt-Window" class="headerlink" title="1、Activity ——&gt; Window"></a>1、Activity ——&gt; Window</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Called to process touch screen events.  You can override this to</div><div class="line"> * intercept all touch screen events before they are dispatched to the</div><div class="line"> * window.  Be sure to call this implementation <span class="keyword">for</span> touch screen events</div><div class="line"> * that should be handled normally.</div><div class="line"> *</div><div class="line"> * @param ev The touch screen event.</div><div class="line"> * @<span class="built_in">return</span> boolean Return <span class="literal">true</span> <span class="keyword">if</span> this event was consumed.</div><div class="line"> */</div><div class="line">public boolean dispatchTouchEvent(MotionEvent ev) &#123;</div><div class="line">    <span class="keyword">if</span> (ev.getAction() == MotionEvent.ACTION_DOWN) &#123;</div><div class="line">        onUserInteraction();    // Empty method</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (getWindow().superDispatchTouchEvent(ev)) &#123;</div><div class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> onTouchEvent(ev);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>首先事件开始交给Activity所附属的Window进行分发，如果返回true，整个事件循环就结束了，返回false意味着没人处理，所有View的onTouchEvent都返回了false，此时就会调用Activity的onTouchEvent。</p>
-<h4 id="2、Window-——-gt-PhoneWindow"><a href="#2、Window-——-gt-PhoneWindow" class="headerlink" title="2、Window ——&gt; PhoneWindow"></a>2、Window ——&gt; PhoneWindow</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Abstract base class <span class="keyword">for</span> a top-level window look and behavior policy.  An</div><div class="line"> * instance of this class should be used as the top-level view added to the</div><div class="line"> * window manager. It provides standard UI policies such as a background, title</div><div class="line"> * area, default key processing, etc.</div><div class="line"> *</div><div class="line"> * &lt;p&gt;The only existing implementation of this abstract class is</div><div class="line"> * android.view.PhoneWindow, <span class="built_in">which</span> you should instantiate when needing a</div><div class="line"> * Window.</div><div class="line"> */</div><div class="line">public abstract class Window &#123;</div><div class="line">    /**</div><div class="line">     * Used by custom windows, such as Dialog, to pass the touch screen event</div><div class="line">     * further down the view hierarchy. Application developers should</div><div class="line">     * not need to implement or call this.</div><div class="line">     */</div><div class="line">    public abstract boolean superDispatchTouchEvent(MotionEvent event);</div><div class="line"></div><div class="line">    // other code ... </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Window为抽象类，superDispatchTouchEvent为抽象方法，而注释告知我们唯一实现类是PhoneWindow。</p>
-<h4 id="3、PhoneWindow-——-gt-DecorView"><a href="#3、PhoneWindow-——-gt-DecorView" class="headerlink" title="3、PhoneWindow ——&gt; DecorView"></a>3、PhoneWindow ——&gt; DecorView</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class PhoneWindow extends Window implements MenuBuilder.Callback &#123;</div><div class="line"></div><div class="line">    // This is the top-level view of the window, containing the window decor.  </div><div class="line">    private DecorView mDecor;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public boolean superDispatchTouchEvent(MotionEvent event) &#123;  </div><div class="line">        <span class="built_in">return</span> mDecor.superDispatchTouchEvent(event);  </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    // other code ... </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>PhoneWindow将事件直接传递给了DecorView，那这个DecorView是什么呢？DecorView is the top-level view of the window, containing the window decor.</p>
-<h4 id="4、DecorView-——-gt-ViewGroup"><a href="#4、DecorView-——-gt-ViewGroup" class="headerlink" title="4、DecorView ——&gt; ViewGroup"></a>4、DecorView ——&gt; ViewGroup</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/** @hide */</div><div class="line">public class DecorView extends FrameLayout implements RootViewSurfaceTaker, WindowCallbacks &#123;</div><div class="line">    public boolean superDispatchTouchEvent(MotionEvent event) &#123;</div><div class="line">        <span class="built_in">return</span> super.dispatchTouchEvent(event);     // ViewGroup.</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // other code ... </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>DecorView是一个顶级View，也叫根View，继承FrameLayout，也就是说DecorView是一个ViewGroup。接下来就是将事件分发到ViewGroup的Child。</p>
-<h4 id="5、ViewGroup-——-gt-Children"><a href="#5、ViewGroup-——-gt-Children" class="headerlink" title="5、ViewGroup ——&gt; Children"></a>5、ViewGroup ——&gt; Children</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">public abstract class ViewGroup extends View implements ViewParent, ViewManager &#123;</div><div class="line">    @Override</div><div class="line">    public boolean dispatchTouchEvent(MotionEvent ev) &#123;</div><div class="line">        // other code ...</div><div class="line"></div><div class="line">        // Check <span class="keyword">for</span> interception.</div><div class="line">        final boolean intercepted;</div><div class="line">        <span class="keyword">if</span> (actionMasked == MotionEvent.ACTION_DOWN || mFirstTouchTarget != null) &#123;</div><div class="line">            final boolean disallowIntercept = (mGroupFlags &amp; FLAG_DISALLOW_INTERCEPT) != 0;</div><div class="line">            <span class="keyword">if</span> (!disallowIntercept) &#123;</div><div class="line">                intercepted = onInterceptTouchEvent(ev);</div><div class="line">                ev.setAction(action); // restore action <span class="keyword">in</span> <span class="keyword">case</span> it was changed</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                intercepted = <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // other code ...</div><div class="line"></div><div class="line">        final View[] children = mChildren;</div><div class="line">        <span class="keyword">for</span> (int i = childrenCount - 1; i &gt;= 0; i--) &#123;</div><div class="line">            final int childIndex = getAndVerifyPreorderedIndex(childrenCount, i, customOrder);</div><div class="line">            final View child = getAndVerifyPreorderedView(preorderedList, children, childIndex);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (!canViewReceivePointerEvents(child) || !isTransformedTouchPointInView(x, y, child, null)) &#123;</div><div class="line">                ev.setTargetAccessibilityFocus(<span class="literal">false</span>);</div><div class="line">                <span class="built_in">continue</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            newTouchTarget = getTouchTarget(child);</div><div class="line">            <span class="keyword">if</span> (newTouchTarget != null) &#123;</div><div class="line">                // Child is already receiving touch within its bounds.</div><div class="line">                // Give it the new pointer <span class="keyword">in</span> addition to the ones it is handling.</div><div class="line">                newTouchTarget.pointerIdBits |= idBitsToAssign;</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            resetCancelNextUpFlag(child);</div><div class="line">            <span class="keyword">if</span> (dispatchTransformedTouchEvent(ev, <span class="literal">false</span>, child, idBitsToAssign)) &#123;</div><div class="line">                // Child wants to receive touch within its bounds.</div><div class="line">                mLastTouchDownTime = ev.getDownTime();</div><div class="line">                <span class="keyword">if</span> (preorderedList != null) &#123;</div><div class="line">                    // childIndex points into presorted list, find original index</div><div class="line">                    <span class="keyword">for</span> (int j = 0; j &lt; childrenCount; j++) &#123;</div><div class="line">                        <span class="keyword">if</span> (children[childIndex] == mChildren[j]) &#123;</div><div class="line">                            mLastTouchDownIndex = j;</div><div class="line">                            <span class="built_in">break</span>;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    mLastTouchDownIndex = childIndex;</div><div class="line">                &#125;</div><div class="line">                mLastTouchDownX = ev.getX();</div><div class="line">                mLastTouchDownY = ev.getY();</div><div class="line">                newTouchTarget = addTouchTarget(child, idBitsToAssign);</div><div class="line">                alreadyDispatchedToNewTouchTarget = <span class="literal">true</span>;</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    // other code ... </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上述代码是ViewGroup中dispatchTouchEvent方法的主要分发代码：首先调用onInterceptTouchEvent()判断是否要拦截，如果是false则遍历ViewGroup的所有子元素，判断子元素是否能够接受点击事件以及事件坐标是否落在子元素的区域内；如果某个子元素满足这个条件，那么事件就会传递给它来处理；dispatchTransformedTouchEvent方法中有如下一段代码，即child不是null，就会调用子类的dispatchTouchEvent方法，就交给子元素处理，从而完成一轮事件分发。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (child == null) &#123;</div><div class="line">    handled = super.dispatchTouchEvent(event);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    handled = child.dispatchTouchEvent(event);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>ViewGroup分发事件时，自带记忆功能，即如果某个子元素消耗了ACTION_DOWN事件，那么同一事件序列中的其他事件都会交给它来处理，否则将事件交给它的父类来处理（同样带记忆）。</p>
-<h4 id="6、View"><a href="#6、View" class="headerlink" title="6、View"></a>6、View</h4><p>如果ViewGroup分发的子元素还是ViewGroup，则重复5，直到分发到的子元素是一个View。因为它没有子元素可以向下传递事件，所以只能自己处理。以下是View中的dispatchTouchEvent方法中核心代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Pass the touch screen motion event down to the target view, or this</div><div class="line"> * view <span class="keyword">if</span> it is the target.</div><div class="line"> *</div><div class="line"> * @param event The motion event to be dispatched.</div><div class="line"> * @<span class="built_in">return</span> True <span class="keyword">if</span> the event was handled by the view, <span class="literal">false</span> otherwise.</div><div class="line"> */</div><div class="line">public boolean dispatchTouchEvent(MotionEvent event) &#123;</div><div class="line">    // other code ...</div><div class="line"></div><div class="line">    boolean result = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (onFilterTouchEventForSecurity(event)) &#123;</div><div class="line">        <span class="keyword">if</span> ((mViewFlags &amp; ENABLED_MASK) == ENABLED &amp;&amp; handleScrollBarDragging(event)) &#123;</div><div class="line">            result = <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        //noinspection SimplifiableIfStatement</div><div class="line">        ListenerInfo li = mListenerInfo;</div><div class="line">        <span class="keyword">if</span> (li != null &amp;&amp; li.mOnTouchListener != null</div><div class="line">                &amp;&amp; (mViewFlags &amp; ENABLED_MASK) == ENABLED</div><div class="line">                &amp;&amp; li.mOnTouchListener.onTouch(this, event)) &#123;</div><div class="line">            result = <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!result &amp;&amp; onTouchEvent(event)) &#123;</div><div class="line">            result = <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>首先判断有没有设置OnTouchListener，如果没有设置或其中的onTouch方法返回false，就会调用onTouchEvent()方法了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Implement this method to handle touch screen motion events.</div><div class="line"> * &lt;p&gt;</div><div class="line"> * If this method is used to detect click actions, it is recommended that</div><div class="line"> * the actions be performed by implementing and calling</div><div class="line"> * &#123;@link <span class="comment">#performClick()&#125;. This will ensure consistent system behavior,</span></div><div class="line"> * including:</div><div class="line"> * &lt;ul&gt;</div><div class="line"> * &lt;li&gt;obeying click sound preferences</div><div class="line"> * &lt;li&gt;dispatching OnClickListener calls</div><div class="line"> * &lt;li&gt;handling &#123;@link AccessibilityNodeInfo<span class="comment">#ACTION_CLICK ACTION_CLICK&#125; when</span></div><div class="line"> * accessibility features are enabled</div><div class="line"> * &lt;/ul&gt;</div><div class="line"> *</div><div class="line"> * @param event The motion event.</div><div class="line"> * @<span class="built_in">return</span> True <span class="keyword">if</span> the event was handled, <span class="literal">false</span> otherwise.</div><div class="line"> */</div><div class="line">public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">    final <span class="built_in">float</span> x = event.getX();</div><div class="line">    final <span class="built_in">float</span> y = event.getY();</div><div class="line">    final int viewFlags = mViewFlags;</div><div class="line">    final int action = event.getAction();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ((viewFlags &amp; ENABLED_MASK) == DISABLED) &#123;</div><div class="line">        <span class="keyword">if</span> (action == MotionEvent.ACTION_UP &amp;&amp; (mPrivateFlags &amp; PFLAG_PRESSED) != 0) &#123;</div><div class="line">            <span class="built_in">set</span>Pressed(<span class="literal">false</span>);</div><div class="line">        &#125;</div><div class="line">        // A disabled view that is clickable still consumes the touch</div><div class="line">        // events, it just doesn<span class="string">'t respond to them.</span></div><div class="line">        return (((viewFlags &amp; CLICKABLE) == CLICKABLE</div><div class="line">                || (viewFlags &amp; LONG_CLICKABLE) == LONG_CLICKABLE)</div><div class="line">                || (viewFlags &amp; CONTEXT_CLICKABLE) == CONTEXT_CLICKABLE);</div><div class="line">    &#125;</div><div class="line">    if (mTouchDelegate != null) &#123;</div><div class="line">        if (mTouchDelegate.onTouchEvent(event)) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if (((viewFlags &amp; CLICKABLE) == CLICKABLE ||</div><div class="line">            (viewFlags &amp; LONG_CLICKABLE) == LONG_CLICKABLE) ||</div><div class="line">            (viewFlags &amp; CONTEXT_CLICKABLE) == CONTEXT_CLICKABLE) &#123;</div><div class="line">        switch (action) &#123;</div><div class="line">            case MotionEvent.ACTION_UP:</div><div class="line">                boolean prepressed = (mPrivateFlags &amp; PFLAG_PREPRESSED) != 0;</div><div class="line">                if ((mPrivateFlags &amp; PFLAG_PRESSED) != 0 || prepressed) &#123;</div><div class="line">                    // take focus if we don't have it already and we should <span class="keyword">in</span></div><div class="line">                    // touch mode.</div><div class="line">                    boolean focusTaken = <span class="literal">false</span>;</div><div class="line">                    <span class="keyword">if</span> (isFocusable() &amp;&amp; isFocusableInTouchMode() &amp;&amp; !isFocused()) &#123;</div><div class="line">                        focusTaken = requestFocus();</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="keyword">if</span> (prepressed) &#123;</div><div class="line">                        // The button is being released before we actually</div><div class="line">                        // showed it as pressed.  Make it show the pressed</div><div class="line">                        // state now (before scheduling the click) to ensure</div><div class="line">                        // the user sees it.</div><div class="line">                        <span class="built_in">set</span>Pressed(<span class="literal">true</span>, x, y);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="keyword">if</span> (!mHasPerformedLongPress &amp;&amp; !mIgnoreNextUpEvent) &#123;</div><div class="line">                        // This is a tap, so remove the longpress check</div><div class="line">                        removeLongPressCallback();</div><div class="line"></div><div class="line">                        // Only perform take click actions <span class="keyword">if</span> we were <span class="keyword">in</span> the pressed state</div><div class="line">                        <span class="keyword">if</span> (!focusTaken) &#123;</div><div class="line">                            // Use a Runnable and post this rather than calling</div><div class="line">                            // performClick directly. This lets other visual state</div><div class="line">                            // of the view update before click actions start.</div><div class="line">                            <span class="keyword">if</span> (mPerformClick == null) &#123;</div><div class="line">                                mPerformClick = new PerformClick();</div><div class="line">                            &#125;</div><div class="line">                            <span class="keyword">if</span> (!post(mPerformClick)) &#123;</div><div class="line">                                performClick();</div><div class="line">                            &#125;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="keyword">if</span> (mUnsetPressedState == null) &#123;</div><div class="line">                        mUnsetPressedState = new UnsetPressedState();</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="keyword">if</span> (prepressed) &#123;</div><div class="line">                        postDelayed(mUnsetPressedState,</div><div class="line">                                ViewConfiguration.getPressedStateDuration());</div><div class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!post(mUnsetPressedState)) &#123;</div><div class="line">                        // If the post failed, unpress right now</div><div class="line">                        mUnsetPressedState.run();</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    removeTapCallback();</div><div class="line">                &#125;</div><div class="line">                mIgnoreNextUpEvent = <span class="literal">false</span>;</div><div class="line">                <span class="built_in">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</div><div class="line">                // ...</div><div class="line">                <span class="built_in">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_CANCEL:</div><div class="line">                // ...</div><div class="line">                <span class="built_in">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</div><div class="line">                // ...</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>首先不可用状态下的View照样会消耗点击事件并返回；接着，如果View设置了代理，那么还会执行TouchDelegate的onTouchEvent方法（机制与OnTouchListener类似）；然后具体处理点击事件：只要View的CLICKABLE、LONG_CLICKABLE和CONTEXT_CLICKABLE有一个为true，那么它就会消耗事件，即onTouchEvent方法返回true，不管它是不是DISABLE状态如何；然后当ACTION_UP事件发生时，会调用performClick方法，如果View设置了OnClickListener，那么performClick方法内部会调用它的onClick方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Call this view<span class="string">'s OnClickListener, if it is defined.  Performs all normal</span></div><div class="line"> * actions associated with clicking: reporting accessibility event, playing</div><div class="line"> * a sound, etc.</div><div class="line"> *</div><div class="line"> * @return True there was an assigned OnClickListener that was called, false</div><div class="line"> *         otherwise is returned.</div><div class="line"> */</div><div class="line">public boolean performClick() &#123;</div><div class="line">    final boolean result;</div><div class="line">    final ListenerInfo li = mListenerInfo;</div><div class="line">    if (li != null &amp;&amp; li.mOnClickListener != null) &#123;</div><div class="line">        playSoundEffect(SoundEffectConstants.CLICK);</div><div class="line">        li.mOnClickListener.onClick(this);          // 调用OnClickListener.onClick</div><div class="line">        result = true;</div><div class="line">    &#125; else &#123;</div><div class="line">        result = false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_CLICKED);</div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="传递规则"><a href="#传递规则" class="headerlink" title="传递规则"></a>传递规则</h2><ul>
-<li>同一个事件序列是指从手指触摸屏幕那一刻开始，中间包含数量不定的 move 事件到手指离开屏幕那一刻（down-&gt;move…move-&gt;up)。</li>
-<li>正常情况下一个事件序列只能被一个 View 拦截且消耗，每个 View 一旦决定拦截，同一个事件序列所有事件都会直接交给它处理，并且它的 onInterceptTouchEvent 不会再被调用。</li>
-<li>某个View一旦开始处理事件，如果它不消耗ACTION_DOWN（onTouchEvent返回了false），那么同一事件序列中其他事件都不会再交给它来处理，事件将重新交给他的父元素处理，即父元素的 onTouchEvent 会被调用。</li>
-<li>如果某个View不消耗除ACTION_DOWN以外的其他事件，那么这个点击事件会消失，此时父元素的onTouchEvent并不会被调用，并且当前View可以收到后续事件，最终这些消失的点击事件会传递给Activity 处理。</li>
-<li>View没有onInterceptTouchEvent方法，一旦有事件传递给它，那么它的onTouchEvent方法就会被调用。</li>
-<li>View的onTouchEvent 方法默认消耗事件（返回true），除非他是不可点击的（clickable、longClickable和contextClickable同时为false）。View的longClickable 属性默认都为false，clickable属性分情况，Button默认为true，TextView默认为false。</li>
-<li>onClick发生的前提是View可点击，并且它收到了down和up事件。</li>
-<li>事件传递过程是由外而内，事件总是先传递给父元素，然后在由父元素分发给子View，通过requestDisallowInterceptTouchEvent方法可以在子元素干预父元素的事件分发过程，但ACTION_DOWN事件除外。</li>
-</ul>
-
-          
+          源码分析1、Activity ——&gt; Window123456789101112131415161718/** * Called to process touch screen events.  You can override this to * intercept all touch sc
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/28/ANDROID/ANDROID 源码分析事件分发/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -575,7 +618,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -633,168 +676,15 @@
 
           
             
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、生命周期"><a href="#一、生命周期" class="headerlink" title="一、生命周期"></a>一、生命周期</h2><p><img src="http://ww1.sinaimg.cn/large/adc90466gy1fcptk0wnt2j20e90ifmz4" alt=""><br>整个生命周期来说，成对出现的。onCreate和onDestroy是成对的，代表着创建与销毁；onStart和onStop表示Activity对于程序是否可见（后台）；onResume和onPause表示Activity对于用户是否可见（前台）。</p>
-<h4 id="正常生命周期"><a href="#正常生命周期" class="headerlink" title="正常生命周期"></a>正常生命周期</h4><p>1、启动ActivityA：onCreate() -&gt; onStart() -&gt; onResume()<br>2、按了back键返回：onPause() -&gt; onStop() -&gt; onDestroy()<br>3、用户按了Home键：onPause() -&gt; onStop()<br>4、启动ActivityB：A.onPause() -&gt; B.onCreate() -&gt; B.onStart() -&gt; B.onResume() -&gt; A.onStop()<br>5、ActivityB返回：B.onPause() -&gt; A.onRestart() -&gt; A.onStart() -&gt; A.onResume() -&gt; B.onStop()<br>-&gt; B.onDestroy()</p>
-<h4 id="切换横竖屏幕"><a href="#切换横竖屏幕" class="headerlink" title="切换横竖屏幕"></a>切换横竖屏幕</h4><p>targetSdkVersion 25，没有设置android:configChanges：<br>1、竖屏切横屏：onConfigurationChanged() -&gt; onPause() -&gt; onSaveInstanceState() -&gt; onStop() -&gt; onDestroy() -&gt; onCreate() -&gt; onStart() -&gt; onRestoreInstanceState() -&gt; onResume()<br>2、横屏切竖屏：onConfigurationChanged() -&gt; onPause() -&gt; onSaveInstanceState() -&gt; onStop() -&gt; onDestroy() -&gt; onCreate() -&gt; onStart() -&gt; onRestoreInstanceState() -&gt; onResume()</p>
-<p>本人使用的是模拟器（minSdkVersion 16 / targetSdkVersion 25）测试，无论是否设置Activity的android:configChanges，或者属性值设为orientation或orientation|keyboardHidden，无论是竖屏切横屏还是横屏切竖屏，流程都如上所述，当android:configChanges=”orientation|keyboardHidden|screenSize”时，只会调用onConfigurationChanged()。经过查资料，android:targetSdkVersion这个属性会影响横竖屏切换的生命周期。<a href="http://www.cnblogs.com/xiaoQLu/p/3324503.html" target="_blank" rel="external">详见xiaoQLud的博客</a></p>
-<h4 id="异常生命周期"><a href="#异常生命周期" class="headerlink" title="异常生命周期"></a>异常生命周期</h4><p>1、系统配置发生改变后，默认情况下Activity会被销毁然后重新创建，生命周期参考横竖屏切换。常用的系统配置只有local、orientation和keyboardHidden。<br>2、资源内存不足导致低优先级的Activity被杀死，生命周期参考横竖屏切换。<br>3、运行时发生了异常，程序直接崩溃。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (int i = 10; i &gt;= 0; i++)</div><div class="line">    System.out.println(10 / i)</div></pre></td></tr></table></figure></p>
-<h2 id="二、数据存储"><a href="#二、数据存储" class="headerlink" title="二、数据存储"></a>二、数据存储</h2><p>当Activity在异常情况下被终止，在onStop之前，系统会调用onSaveInstanceState方法，来保存当前Activity状态。当Activity被重新创建后，系统会调用onRestoreInstanceState，并且把Activity销毁时onSaveInstanceState方法所保存的Bundle对象作为参数同时传递给onRestoreInstanceState和onCreate方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">    super.onCreate(savedInstanceState);</div><div class="line">    <span class="built_in">set</span>ContentView(R.layout.activity_main);</div><div class="line">    <span class="keyword">if</span> (savedInstanceState != null) &#123;</div><div class="line">        String name = savedInstanceState.getString(<span class="string">"name"</span>);</div><div class="line">        Log.i(tag, <span class="string">"onCreate() name : "</span> + name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override</div><div class="line">protected void onSaveInstanceState(Bundle outState) &#123;</div><div class="line">    super.onSaveInstanceState(outState);</div><div class="line">    Log.i(tag, <span class="string">"onSaveInstanceState()"</span>);</div><div class="line">    outState.putString(<span class="string">"name"</span>, <span class="string">"xianxiaotao"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override</div><div class="line">protected void onRestoreInstanceState(Bundle savedInstanceState) &#123;</div><div class="line">    super.onRestoreInstanceState(savedInstanceState);</div><div class="line">    String name = savedInstanceState.getString(<span class="string">"name"</span>);</div><div class="line">    Log.i(tag, <span class="string">"onRestoreInstanceState() name : "</span> + name);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>android提供的一些控件也实现了onSaveInstanceState和onRestoreInstanceState方法，如TextView。</p>
-</blockquote>
-<h2 id="三、启动模式"><a href="#三、启动模式" class="headerlink" title="三、启动模式"></a>三、启动模式</h2><p>ActivityManagerService（AMS）内部维护着一个ActivityStack栈，系统会将Activity实例一一放入栈内（先进后出），默认情况下创建一个实例压入栈内。如果多次创建同一个Activity，栈内将压入多个实例。为此，Android提供了启动模式来修改系统的默认行为。目前有四种启动模式：standard、singleTop、singleTask和singleInstance：</p>
-<h4 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h4><p>标准模式，也是系统默认模式。每次启动一个Activity都会重新创建一个新的实例，不管这个实例是否已经存在。谁启动了这个Activity，那么这个Activity就运行在启动它的那个Activity所在的栈中。ABCBB</p>
-<h4 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h4><p>栈顶复用模式。如果新Activity已经位于任务栈的栈顶，那么只调用它的onNewIntent方法实现复用，而不会创建新的实例。如果新的Activity的实例已存在但不是位于栈顶，仍然重新创建。假设目前栈内情况为ABCD（ABCD为四个Activity，A位于栈底），此时再次启动，如果D的启动模式为singleTop，那么栈内仍然是ABCD；如果D的启动模式为standard，D将被重新创建，栈内情况变为ABCDD。</p>
-<h4 id="singleTask"><a href="#singleTask" class="headerlink" title="singleTask"></a>singleTask</h4><p>栈内复用模式。在同一个栈内，它是单实例模式。在这种模式下，启动一个Activity A，系统首先会寻找是否存在A想要的任务栈，如果不存在，就重新创建一个任务栈，然后创建A的实例并压入栈内；如果存在所需的任务栈，这时要看A是否在栈中有实例存在，如果有，那么系统就会把A调到栈顶并调用它的onNewIntent方法，不存在就创建并压入栈中。<br>1、目前任务栈栈S1(ABC)，此时Activity D以singleTask模式请求启动，其所需的任务栈为S2，由于S2和D的实例均不存在，所以系统先创建任务栈S2，然后再创建D的实例并将其放入栈S2中。<br>2、另外一种情况，假设D所需的任务栈为S1，上述S1已存在，所以系统会直接创建D的实例并压入栈S1内。<br>3、如果D所需的任务栈为S1，其中为ADBC，此时系统将D上面的Activity出栈，把D切换到栈顶并调用onNewIntent方法，最终S1栈内为AD。</p>
-<h4 id="singleInstance："><a href="#singleInstance：" class="headerlink" title="singleInstance："></a>singleInstance：</h4><p>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。<br>以下代码是用于测试启动模式的BaseActivity，具体的Activity继承BaseActivity：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">package com.king.bester.demo;</div><div class="line"></div><div class="line">import android.content.Intent;</div><div class="line">import android.content.pm.ActivityInfo;</div><div class="line">import android.content.pm.PackageManager;</div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.os.Bundle;</div><div class="line">import android.util.Log;</div><div class="line"></div><div class="line">public class BaseActivity extends AppCompatActivity &#123;</div><div class="line">    private static final String TAG = <span class="string">"Xian Xiaotao"</span>;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line"></div><div class="line">        // 区别类名，区别同类名是否同实例，区别任务栈</div><div class="line">        Log.i(TAG, <span class="string">"onCreate："</span> + getClass().getSimpleName() + <span class="string">" hasCode:"</span> + this.hashCode() + <span class="string">" TaskId: "</span> + getTaskId());</div><div class="line">        // 任务栈名称，默认为包名相关</div><div class="line">        dumpTaskAffinity();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onNewIntent(Intent intent) &#123;</div><div class="line">        super.onNewIntent(intent);</div><div class="line"></div><div class="line">        Log.i(TAG, <span class="string">"onNewIntent："</span> + getClass().getSimpleName() + <span class="string">" hasCode:"</span> + this.hashCode() + <span class="string">" TaskId: "</span> + getTaskId());</div><div class="line">        dumpTaskAffinity();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected void <span class="function"><span class="title">dumpTaskAffinity</span></span>()&#123;</div><div class="line">        try &#123;</div><div class="line">            ActivityInfo info = this.getPackageManager().getActivityInfo(getComponentName(), PackageManager.GET_META_DATA);</div><div class="line">            Log.i(TAG, <span class="string">"taskAffinity:"</span> + info.taskAffinity);</div><div class="line">        &#125; catch (PackageManager.NameNotFoundException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>配置形式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;activity </div><div class="line">    android:name=<span class="string">".ActivitySingleTop"</span> </div><div class="line">    android:launchMode=<span class="string">"singleTop"</span> </div><div class="line">    android:taskAffinity=<span class="string">"com.king.bester.demo"</span>/&gt;</div></pre></td></tr></table></figure></p>
-<p><a href="http://blog.csdn.net/mynameishuangshuai/article/details/51491074" target="_blank" rel="external">启动模式参考博客</a></p>
-<h2 id="四、意图调用"><a href="#四、意图调用" class="headerlink" title="四、意图调用"></a>四、意图调用</h2><p>启动Activity分为两种，显示调用和隐式调用。显示调用通过指定Intent组件名称来实现的，它一般用在知道目标组件名称的前提下，一般是在相同的应用程序内部实现的。隐式调用通过Intent Filter来实现的，它一般用在没有明确指出目标组件名称的前提下，一般是用于在不同应用程序之间。</p>
-<h4 id="显示调用"><a href="#显示调用" class="headerlink" title="显示调用"></a>显示调用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent=new Intent(MainActivity.this,SettingActivity.class);</div><div class="line">intent.putExtra(EXTRA,contentEditText.getText().toString());</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
-<p>而Manifest文件描述为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:name=<span class="string">".MainActivity"</span> &gt; </div><div class="line">    &lt;intent-filter&gt; </div><div class="line">        &lt;action android:name=<span class="string">"android.intent.action.MAIN"</span> /&gt; </div><div class="line">        &lt;category android:name=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt; </div><div class="line">    &lt;/intent-filter&gt; </div><div class="line">&lt;/activity&gt; </div><div class="line">&lt;activity android:name=<span class="string">".SettingActivity"</span> /&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="隐式调用"><a href="#隐式调用" class="headerlink" title="隐式调用"></a>隐式调用</h4><p>隐式不明确指定启动哪个Activity，而是在Intent Filter中设置Action、Data、Category，让系统来筛选出合适的Activity。清单文件配置如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;manifest xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    package=<span class="string">"com.king.bester.myapplication"</span>&gt;</div><div class="line"></div><div class="line">    &lt;application</div><div class="line">        android:allowBackup=<span class="string">"true"</span></div><div class="line">        android:icon=<span class="string">"@mipmap/ic_launcher"</span></div><div class="line">        android:supportsRtl=<span class="string">"true"</span></div><div class="line">        android:theme=<span class="string">"@style/AppTheme"</span>&gt;</div><div class="line">        &lt;activity android:name=<span class="string">".MainActivity"</span> &gt;</div><div class="line">            &lt;intent-filter&gt;</div><div class="line">                &lt;action android:name=<span class="string">"android.intent.action.MAIN"</span> /&gt;</div><div class="line">                &lt;category android:name=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">        &lt;/activity&gt;</div><div class="line"></div><div class="line">        &lt;activity</div><div class="line">            android:name=<span class="string">".TargetActivity"</span></div><div class="line">            android:launchMode=<span class="string">"singleTask"</span></div><div class="line">            android:taskAffinity=<span class="string">"com.king.bester.myapplication"</span> &gt;</div><div class="line">            &lt;intent-filter&gt;</div><div class="line">                &lt;action android:name=<span class="string">"android.intent.action.SEND"</span>/&gt;</div><div class="line">                &lt;category android:name=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</div><div class="line">                &lt;data android:mimeType=<span class="string">"text/plain"</span>/&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">            &lt;intent-filter&gt;</div><div class="line">                &lt;action android:name=<span class="string">"com.king.bester.demo"</span> /&gt;</div><div class="line">                &lt;action android:name=<span class="string">"com.king.bester.DEMO"</span> /&gt;</div><div class="line">                &lt;category android:name=<span class="string">"com.king.bester.a"</span> /&gt;</div><div class="line">                &lt;category android:name=<span class="string">"com.king.bester.b"</span> /&gt;</div><div class="line">                &lt;category android:name=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</div><div class="line">                &lt;data android:mimeType=<span class="string">"text/plain"</span>/&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">        &lt;/activity&gt;</div><div class="line">    &lt;/application&gt;</div><div class="line"></div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure></p>
-<p>代码调用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 匹配第一组intent-filter</div><div class="line">public void startA(View view) &#123;</div><div class="line">    Intent intent = new Intent();</div><div class="line">    intent.setAction(<span class="string">"android.intent.action.SEND"</span>);</div><div class="line">    intent.setType(<span class="string">"text/plain"</span>);</div><div class="line">    startActivity(intent);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 匹配第二组intent-filter</div><div class="line">public void startB(View view) &#123;</div><div class="line">    Intent intent = new Intent();</div><div class="line">    intent.setAction(<span class="string">"com.king.bester.demo"</span>);</div><div class="line">    intent.addCategory(<span class="string">"com.king.bester.a"</span>);</div><div class="line">    intent.setType(<span class="string">"text/plain"</span>);</div><div class="line">    startActivity(intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>1、startA()中没有设置category，是因为系统在调用startActivity或者startActivityForResult的时候会默认为Intent加上“android.intent.category.DEFAULT”这个category。所以，为了我们的Activity能接收隐式调用，必须在intent-filter中指定这个category。<br>2、action区分大小写<br>3、一个Activity可以有多个intent-filter，一个intent只要能匹配任何一组intent-filter即可启动对应的Activity。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/26/JAVA/JAVA 8 Lambda/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/26/JAVA/JAVA 8 Lambda/" itemprop="url">JAVA | java8之Lambda</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T00:00:00+08:00">
-                2017-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-
-                
-                
-              
-            </span>
-          
-
-          
+                <a href="/2017/03/27/ANDROID/ANDROID Activity/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/03/27/ANDROID/ANDROID Activity/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -822,27 +712,16 @@
       
         
           
-            <h2 id="一、基本语法"><a href="#一、基本语法" class="headerlink" title="一、基本语法"></a>一、基本语法</h2><p>Java是一种面向对象语言，所以必须构造一个对象，这个对象的类需要有一个方法能包含所需的代码。如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class LengthComparator implements Comparator&lt;String&gt; &#123;</div><div class="line">    public int compare(String first, String second) &#123;</div><div class="line">        <span class="built_in">return</span> first.length - second.first;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// uses</div><div class="line">Arrays.sort(strings, new LengthComparator());</div></pre></td></tr></table></figure></p>
-<p>如果使用Lambda表达式，则使用代码更改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Arrays.sort(strings, (String first, String second) -&gt; &#123; <span class="built_in">return</span> first.length - second.first; &#125;));</div></pre></td></tr></table></figure></p>
-<h4 id="简化"><a href="#简化" class="headerlink" title="简化"></a>简化</h4><p>在这里，编译器可以推导出first和second必然是字符串，参数类型可以省略不写；方法体里只有一行，亦可简化。如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Arrays.sort(strings, (first, second) -&gt; first.length() - second.length());</div></pre></td></tr></table></figure></p>
-<h4 id="无参"><a href="#无参" class="headerlink" title="无参"></a>无参</h4><p>即使lambda表达式没有参数，仍然要提供括号，就像无参数方法一样：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">() -&gt; &#123; <span class="keyword">for</span> (int i = 100; i &gt;= 0; i--) System.out.println(i); &#125;</div></pre></td></tr></table></figure></p>
-<h4 id="一参"><a href="#一参" class="headerlink" title="一参"></a>一参</h4><p>如果方法只有一个参数，而且这个参数的类型可以推导得出，那么甚至还可以省略小括号：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ActionListener listener = event -&gt; System.out.println(<span class="string">"The time is "</span> + new Date());</div></pre></td></tr></table></figure></p>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>1）无需指定lambda表达式的返回类型，因为返回类型总是会由上下文推导得出。<br>2）如果一个lambda表达式只在某些分支返回一个值，而在另外一些分支不返回值，这是不合法的。例如，(int x) -&gt; { if (x &gt;= 0) return 1; }就不合法。</p>
-<h4 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">package com.xian.lambda;</div><div class="line"></div><div class="line">import java.util.Arrays;</div><div class="line">import java.util.Date;</div><div class="line"></div><div class="line">import javax.swing.JOptionPane;</div><div class="line">import javax.swing.Timer;</div><div class="line"></div><div class="line">public class LambdaTest &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        String[] masters = &#123;<span class="string">"liyao"</span>, <span class="string">"zhaoyu"</span>, <span class="string">"hufeng"</span>, <span class="string">"xianxiaotao"</span>, <span class="string">"cuihongquan"</span>&#125;;</div><div class="line">        System.out.println(Arrays.toString(masters));</div><div class="line">        System.out.println(<span class="string">"Sorted in dictionary order:"</span>);</div><div class="line">        Arrays.sort(masters);</div><div class="line">        System.out.println(Arrays.toString(masters));</div><div class="line">        System.out.println(<span class="string">"Sorted by length:"</span>);</div><div class="line">        Arrays.sort(masters, (first, second) -&gt; first.length() - second.length());</div><div class="line">        System.out.println(Arrays.toString(masters));</div><div class="line">        </div><div class="line">        Timer t = new Timer(10000, event -&gt; System.out.println(<span class="string">"The time is"</span> + new Date()));</div><div class="line">        t.start();</div><div class="line">        JOptionPane.showMessageDialog(null, <span class="string">"Quit program?"</span>);</div><div class="line">        System.exit(0);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="二、函数式接口"><a href="#二、函数式接口" class="headerlink" title="二、函数式接口"></a>二、函数式接口</h2><p>对于只有一个抽象方法的接口，需要这种接口的对象时，就可以提供一个lambda表达式。这个接口称为函数式接口。如上例中的Comparator接口，或者java.util.function包中的接口Predicate：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public interface Predicate&lt;T&gt; &#123;</div><div class="line">    boolean <span class="built_in">test</span>(T t);</div><div class="line">    // Additional default and static methods</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>ArrayList类有一个removeIf方法它的参数就是一个Predicate。这个接口专门用来传递lambda表达式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list.removeIf(e -&gt; e == null);</div></pre></td></tr></table></figure></p>
-<h2 id="三、方法引用"><a href="#三、方法引用" class="headerlink" title="三、方法引用"></a>三、方法引用</h2><p>表达式System.out::println是一个方法引用，等价于lambda表达式x -&gt; System.out.println(x)。又如下列两行代码等同：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Timer t = new Timer(1000, event -&gt; System.out.println(event));</div><div class="line">Timer t = new Timer(1000, System.out::println);</div></pre></td></tr></table></figure></p>
-<p>操作符 “::” 用来分割方法名与对象或类名。主要分为三种情况：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">objcet::instanceMethod    如：System.out::println             x -&gt; System.out.println(x)</div><div class="line">Class::staticMethod       如：Math::pow                       (x, y) -&gt; Math.pow(x, y)</div><div class="line">Class::instanceMethod     如：String::compareToIgnoreCase     (x, y) -&gt; x.compareToIgnoreCase(y)</div></pre></td></tr></table></figure></p>
-<p>对于第三种情况，第一个参数会成为方法的目标。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Arrays.sort(masters, String::compareToIgnoreCase);</div><div class="line">Arrays.sort(masters, (first, second) -&gt; first.compareToIgnoreCase(second));</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>注意：对于重载方法，编译器会尝试从上下文中找出你指的那一个方法；方法引用不能独立存在，总是会转换为函数式接口的实例；方法引用中可以使用this和super参数，例如this::equals等同于x -&gt; this.equals(x)；使用super作为目标，会调用方法的超类版本，格式为super::instanceMethod；this是指创建lambda表达式的方法所属的对象，super同理。</p>
-</blockquote>
-<h2 id="四、构造器引用"><a href="#四、构造器引用" class="headerlink" title="四、构造器引用"></a>四、构造器引用</h2><p>构造器引用与方法引用类似，只不过方法名为new。例如，Person::new是Person构造器的一个引用。至于哪一个构造器，这取决于上下文。假如你有一个字符串列表，并把它转换为Person对象数组，其如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; names = ...;</div><div class="line">Stream&lt;Person&gt; stream = names.stream().map(Person::new);</div><div class="line">List&lt;Person&gt; people = stream.collect(Collectors.toList());</div></pre></td></tr></table></figure></p>
-<p>根据上下文，编译器会选择一个String参数的构造器。可以用数组类型建立构造器引用。例如，int[]::new，这等价于lambda表达式x -&gt; new int[x]。</p>
-<h2 id="五、变量"><a href="#五、变量" class="headerlink" title="五、变量"></a>五、变量</h2><p>lambda表达式中捕获的变量必须实际上是最终变量，即这个变量初始化之后就不会再为它赋新值。如下例中的text总是指示同一个String对象，所以此处合法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class LambdaTest &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        repeatMessage(<span class="string">"hello"</span>, 1000);</div><div class="line">        JOptionPane.showMessageDialog(null, <span class="string">"Quit program?"</span>);</div><div class="line">        System.exit(0);        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void repeatMessage(String text, int delay) &#123;</div><div class="line">        ActionListener listener = event -&gt; System.out.println(text);</div><div class="line">        new Timer(delay, listener).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>当lambda表达式捕获外围作用域中变量的，无论是外部改变还是内部改变都不合法的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 外部改变：</div><div class="line">public static void repeat(String text, int count) &#123;</div><div class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= count; i++) &#123;</div><div class="line">        ActionListener listener = event -&gt; &#123;</div><div class="line">            System.out.println(i + <span class="string">": "</span> + text);    // Error: Cannot refer to changing i</div><div class="line">        &#125;;</div><div class="line">        new Timer(1000, listener).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 内部改变：</div><div class="line">public static void countDown(int start, int delay) &#123;</div><div class="line">    ActionListener listener = event -&gt; &#123;</div><div class="line">            start--;                                // Error: Cannot mutate captured variable</div><div class="line">            System.out.println(start); </div><div class="line">        &#125;;</div><div class="line">        new Timer(delay, listener).start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
+          一、生命周期整个生命周期来说，成对出现的。onCreate和onDestroy是成对的，代表着创建与销毁；onStart和onStop表示Activity对于程序是否可见（后台）；onResume和onPause表示Activity对于用户是否可见（前台）。
+正常生命周期1、启动ActivityA：
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/27/ANDROID/ANDROID Activity/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -898,7 +777,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -956,6 +835,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/26/JAVA/JAVA 8 Interface/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/03/26/JAVA/JAVA 8 Interface/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -982,12 +871,173 @@
       
         
           
-            <h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p>目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">interface MyComparable&lt;T&gt; &#123;</div><div class="line">    public static &lt;T&gt; int compare(java.lang.Comparable&lt;T&gt; t1, T t2) &#123; <span class="built_in">return</span> t1.compareTo(t2); &#125;</div><div class="line">    int compareTo(T t);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="默认方法"><a href="#默认方法" class="headerlink" title="默认方法"></a>默认方法</h2><p>可以为接口方法提供一个默认实现。必须用default修饰符标记这样一个方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public interface Collection &#123;</div><div class="line">    int size();	// An abstract method</div><div class="line">    default boolean <span class="function"><span class="title">isEmpty</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> size() == 0;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="解决默认方法冲突"><a href="#解决默认方法冲突" class="headerlink" title="解决默认方法冲突"></a>解决默认方法冲突</h2><p>如果先在一个接口中将一个方法定义为默认方法，然后又在超类或另一个接口中定义了同样的方法，会发生什么情况？Java的相应规则如下：<br>1）超类优先。如果超类提供了一个具体方法，同名而且有相同参数类型的默认方法会被忽略。确保与Java SE 7兼容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">interface Named &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">class Person &#123;</div><div class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> getClass().getName(); &#125;</div><div class="line">&#125;</div><div class="line">class Student extends Person implements Named &#123; // super.getName() &#125;</div></pre></td></tr></table></figure></p>
-<p>2）接口冲突。如果两个接口都提供了同名同参的默认方法，实现类必须覆盖这个方法类解决冲突。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">interface Named &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> <span class="string">"Named:"</span> + getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">interface Called &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> <span class="string">"Called:"</span> + getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">class Student implements Named, Called &#123; </div><div class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> Named.super.getName(); &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+          静态方法目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：1234in
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/26/JAVA/JAVA 8 Interface/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/26/JAVA/JAVA 8 Lambda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/26/JAVA/JAVA 8 Lambda/" itemprop="url">JAVA | java8之Lambda</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T00:00:00+08:00">
+                2017-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/26/JAVA/JAVA 8 Lambda/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/03/26/JAVA/JAVA 8 Lambda/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          一、基本语法Java是一种面向对象语言，所以必须构造一个对象，这个对象的类需要有一个方法能包含所需的代码。如下：12345678class LengthComparator implements Comparator&lt;String&gt; &#123;    public int compar
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/26/JAVA/JAVA 8 Lambda/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1043,7 +1093,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1101,6 +1151,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/25/JAVA/JAVA 8 LocalDate/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/03/25/JAVA/JAVA 8 LocalDate/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1127,27 +1187,19 @@
       
         
           
-            <h2 id="java-time-LocalDate-8"><a href="#java-time-LocalDate-8" class="headerlink" title="java.time.LocalDate 8"></a>java.time.LocalDate 8</h2><ul>
-<li>static LocalDate now()<br>构造一个表示当前日期的对象。</li>
-<li>static LocalDate of(int year, int month, int day)<br>构造一个表示给定日期的对象。</li>
-<li>int getYear()</li>
-<li>int getMonthValue()</li>
-<li>int getDayOfMonth()<br>得到当前日期的年、月和日。</li>
-<li>DayOfWeek getDayOfWeek()<br>得到当前日期是星期几，作为DayOfWeek类的一个实例返回。调用getValue来得到1 ~ 7之间的一个数，表示这是星期几，1表示星期一，7表示星期日。</li>
-<li>LocalDate plusDays(int n)</li>
-<li>LocalDate minusDays(int n)<br>生成当前日期之后或之前n天的日期。</li>
-</ul>
-<h2 id="使用LocalDate输出日历"><a href="#使用LocalDate输出日历" class="headerlink" title="使用LocalDate输出日历"></a>使用LocalDate输出日历</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">package com.xian.date18;</div><div class="line"></div><div class="line">import java.time.DayOfWeek;</div><div class="line">import java.time.LocalDate;</div><div class="line"></div><div class="line">public class LocalDateDemo &#123;</div><div class="line">    public static void <span class="built_in">print</span>Calendar(LocalDate date) &#123;</div><div class="line">        int month = date.getMonthValue();</div><div class="line">        int today = date.getDayOfMonth();</div><div class="line">		</div><div class="line">        date = date.minusDays(today - 1);        // <span class="built_in">set</span> to start of month</div><div class="line">        DayOfWeek weekday = date.getDayOfWeek();</div><div class="line">        int value = weekday.getValue();          // 1 = Monday, ... 7 = Sunday</div><div class="line">		</div><div class="line">        System.out.println(<span class="string">"Mon Tue Wed Thu Fri Sat Sun"</span>);</div><div class="line">        <span class="keyword">for</span> (int i = 1; i &lt; value; i++)</div><div class="line">            System.out.print(<span class="string">"    "</span>);</div><div class="line">        <span class="keyword">while</span> (date.getMonthValue() == month) &#123;</div><div class="line">            System.out.printf(<span class="string">"%3d"</span>, date.getDayOfMonth());</div><div class="line">            <span class="keyword">if</span> (date.getDayOfMonth() == today)</div><div class="line">                System.out.print(<span class="string">"*"</span>);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                System.out.print(<span class="string">" "</span>);</div><div class="line">            date = date.plusDays(1);</div><div class="line">            <span class="keyword">if</span> (date.getDayOfWeek().getValue() == 1)</div><div class="line">                System.out.println();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        <span class="built_in">print</span>Calendar(LocalDate.now());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<pre>
-输出：
-Mon Tue Wed Thu Fri Sat Sun
-          1   2   3   4   5 
-  6   7   8   9  10  11  12 
- 13  14  15  16  17  18  19*
- 20  21  22  23  24  25  26 
- 27  28  29  30  31
- </pre>
-          
+          java.time.LocalDate 8
+static LocalDate now()构造一个表示当前日期的对象。
+static LocalDate of(int year, int month, int day)构造一个表示给定日期的对象。
+int getYear()
+int getMonthV
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/25/JAVA/JAVA 8 LocalDate/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1203,7 +1255,7 @@ Mon Tue Wed Thu Fri Sat Sun
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1261,6 +1313,16 @@ Mon Tue Wed Thu Fri Sat Sun
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/01/ANDROID/ANDROID 自定义View 入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/02/01/ANDROID/ANDROID 自定义View 入门/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1287,32 +1349,16 @@ Mon Tue Wed Thu Fri Sat Sun
       
         
           
-            <h2 id="一、自定义View"><a href="#一、自定义View" class="headerlink" title="一、自定义View"></a>一、自定义View</h2><p>Android系统内置的View无法满足业务需求，需要自定义。</p>
-<h4 id="Step-1-继承View"><a href="#Step-1-继承View" class="headerlink" title="Step 1 : 继承View"></a>Step 1 : 继承View</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class CustomView extends View &#123;</div><div class="line">    public CustomView(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public CustomView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>至少写2个构造函数</p>
-</blockquote>
-<h4 id="Step-2-自定义属性"><a href="#Step-2-自定义属性" class="headerlink" title="Step 2 : 自定义属性"></a>Step 2 : 自定义属性</h4><p>有些属性希望由用户指定，只有当用户不指定的时候才用我们硬编码的值，比如默认的宽高，在res/values/styles.xml文件里声明：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;resources&gt;</div><div class="line"></div><div class="line">    &lt;!-- suggestion：the name is the class name --&gt;</div><div class="line">    &lt;<span class="built_in">declare</span>-styleable name=<span class="string">"CustomView"</span>&gt;</div><div class="line">        &lt;attr name=<span class="string">"default_size"</span> format=<span class="string">"dimension"</span> /&gt;</div><div class="line">    &lt;/<span class="built_in">declare</span>-styleable&gt;</div><div class="line"></div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure></p>
-<p>布局文件activity_main.xml中使用自定义的属性<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    xmlns:xian=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    android:layout_width=<span class="string">"match_parent"</span></div><div class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">    &lt;!-- xian为命名空间，名称随便定义，其值固定为<span class="string">"http://schemas.android.com/apk/res-auto"</span> --&gt;</div><div class="line">    &lt;com.king.demo.customview.CustomView</div><div class="line">        android:layout_width=<span class="string">"match_parent"</span></div><div class="line">        android:layout_height=<span class="string">"100dp"</span></div><div class="line">        xian:default_size=<span class="string">"100dp"</span> /&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
-<p>构造器中读取配置信息并初始化<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">private int defaultSize;</div><div class="line">public CustomView(Context context, AttributeSet attrs) &#123;</div><div class="line">    super(context, attrs);</div><div class="line"></div><div class="line">    TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomView);</div><div class="line">    defaultSize = a.getDimensionPixelSize(R.styleable.CustomView_default_size, 100);</div><div class="line">    a.recycle();        // 回收TypedArray对象</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="Step-3-重写onMeasure"><a href="#Step-3-重写onMeasure" class="headerlink" title="Step 3 : 重写onMeasure()"></a>Step 3 : 重写onMeasure()</h4><p>测量宽高尺寸并设置需要的值。如果不需要制定自定义控件的宽高，无需重写此方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</div><div class="line">    super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line"></div><div class="line">    // 重构控件宽高，此处设宽高相等</div><div class="line">    int width = getMySize(100, widthMeasureSpec);</div><div class="line">    int height = getMySize(100, heightMeasureSpec);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (width &lt; height) </div><div class="line">        height = width;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        width = height;</div><div class="line"></div><div class="line">    <span class="built_in">set</span>MeasuredDimension(width, height);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 辅助方法，计算宽高</div><div class="line"> * @param defaultSize 设置宽高默认的值</div><div class="line"> * @param measureSpec </div><div class="line"> * @<span class="built_in">return</span></div><div class="line"> */</div><div class="line">private int getMySize(int defaultSize, int measureSpec) &#123;</div><div class="line">    int mySize = defaultSize;</div><div class="line"></div><div class="line">    int mode = MeasureSpec.getMode(measureSpec);</div><div class="line">    int size = MeasureSpec.getSize(measureSpec);</div><div class="line"></div><div class="line">    switch (mode) &#123;</div><div class="line">        <span class="keyword">case</span> MeasureSpec.UNSPECIFIED:   // 如果没有指定大小，就设置为默认大小</div><div class="line">            mySize = defaultSize;</div><div class="line">            <span class="built_in">break</span>;</div><div class="line">        <span class="keyword">case</span> MeasureSpec.AT_MOST:       // 如果测量模式是最大取值为size</div><div class="line">        <span class="keyword">case</span> MeasureSpec.EXACTLY:       // 如果是固定的大小，那就不要去改变它</div><div class="line">            mySize = size;</div><div class="line">            <span class="built_in">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> mySize;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<ul>
-<li>onMeasure()至少会被调用两次，第一次读取xml文件中的参数layout_width和layout_width，它们可以不用指定具体的尺寸，如值为wrap_content或match_parent。为了更好的适配各种尺寸的屏幕，需要根据父类布局或子类控件宽高动态计算实际宽高，而不是在xml中指定具体的数值。</li>
-<li>widthMeasureSpec和heightMeasureSpec都是int，前面2个bit用于区分不同的测量模式，后面30个bit存放的是尺寸的数据。测量模式分三种：UNSPECIFIED（父容器没有对当前View有任何限制，当前View可以任意取尺寸）、EXACTLY（当前的尺寸就是当前View应该取的尺寸，对应match_parent和固定值）、AT_MOST（当前尺寸是当前View能取的最大尺寸，对应wrap_content）</li>
-</ul>
-</blockquote>
-<h4 id="Step-4-重写onDraw"><a href="#Step-4-重写onDraw" class="headerlink" title="Step 4 : 重写onDraw()"></a>Step 4 : 重写onDraw()</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line"></div><div class="line">    int r = getMeasuredWidth() / 2;</div><div class="line">    int centerX = getLeft() + r;</div><div class="line">    int centerY = getTop() + r;</div><div class="line"></div><div class="line">    Paint paint = new Paint();</div><div class="line">    paint.setColor(Color.RED);</div><div class="line">    canvas.drawCircle(centerX, centerY, r, paint);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://ww1.sinaimg.cn/large/adc90466ly1fdhnwpy6pgj206o0b4wek" alt=""></p>
-<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">package com.king.demo.customview;</div><div class="line"></div><div class="line">import android.content.Context;</div><div class="line">import android.content.res.TypedArray;</div><div class="line">import android.graphics.Canvas;</div><div class="line">import android.graphics.Color;</div><div class="line">import android.graphics.Paint;</div><div class="line">import android.util.AttributeSet;</div><div class="line">import android.view.View;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 继承View，至少写2个构造函数</div><div class="line"> */</div><div class="line">public class CustomView extends View &#123;</div><div class="line">    private int defaultSize;</div><div class="line"></div><div class="line">    public CustomView(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public CustomView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomView);</div><div class="line">        defaultSize = a.getDimensionPixelSize(R.styleable.CustomView_default_size, 100);</div><div class="line">        a.recycle();        // 回收TypedArray对象</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 辅助方法，计算宽高</div><div class="line">     * @param defaultSize 设置宽高默认的值</div><div class="line">     * @param measureSpec</div><div class="line">     * @<span class="built_in">return</span></div><div class="line">     */</div><div class="line">    private int getMySize(int defaultSize, int measureSpec) &#123;</div><div class="line">        int mySize = defaultSize;</div><div class="line"></div><div class="line">        int mode = MeasureSpec.getMode(measureSpec);</div><div class="line">        int size = MeasureSpec.getSize(measureSpec);</div><div class="line"></div><div class="line">        switch (mode) &#123;</div><div class="line">            <span class="keyword">case</span> MeasureSpec.UNSPECIFIED:   // 如果没有指定大小，就设置为默认大小</div><div class="line">                mySize = defaultSize;</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            <span class="keyword">case</span> MeasureSpec.AT_MOST:</div><div class="line">            <span class="keyword">case</span> MeasureSpec.EXACTLY:       // 如果是固定的大小，那就不要去改变它</div><div class="line">                mySize = size;</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> mySize;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</div><div class="line">        super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line"></div><div class="line">        // 重构控件宽高</div><div class="line">        int width = getMySize(defaultSize, widthMeasureSpec);</div><div class="line">        int height = getMySize(defaultSize, heightMeasureSpec);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (width &lt; height) &#123;</div><div class="line">            height = width;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            width = height;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">set</span>MeasuredDimension(width, height);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        int r = getMeasuredWidth() / 2;</div><div class="line">        int centerX = getLeft() + r;</div><div class="line">        int centerY = getTop() + r;</div><div class="line"></div><div class="line">        Paint paint = new Paint();</div><div class="line">        paint.setColor(Color.RED);</div><div class="line">        canvas.drawCircle(centerX, centerY, r, paint);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="二、自定义ViewGroup"><a href="#二、自定义ViewGroup" class="headerlink" title="二、自定义ViewGroup"></a>二、自定义ViewGroup</h2><p>模拟一个简易垂直布局，详情可参考Android内置的LinearLayout源码。</p>
-<h4 id="Step-1-继承ViewGroup"><a href="#Step-1-继承ViewGroup" class="headerlink" title="Step 1 : 继承ViewGroup"></a>Step 1 : 继承ViewGroup</h4><p>必须实现onLayout(boolean changed, int left, int top, int right, int bottom)方法，用于“摆放”各个子View。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by xianxiaotao on 17/3/11.</div><div class="line"> */</div><div class="line">public class SimpleLinearLayout extends ViewGroup &#123;</div><div class="line"></div><div class="line">    public SimpleLinearLayout(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public SimpleLinearLayout(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onLayout(boolean changed, int l, int t, int r, int b) &#123;</div><div class="line">    	// TODO</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="Step-2-自定义属性（同上）"><a href="#Step-2-自定义属性（同上）" class="headerlink" title="Step 2 : 自定义属性（同上）"></a>Step 2 : 自定义属性（同上）</h4><h4 id="Step-3-重写onMeasure-1"><a href="#Step-3-重写onMeasure-1" class="headerlink" title="Step 3 : 重写onMeasure()"></a>Step 3 : 重写onMeasure()</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</div><div class="line">    super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line">    measureChildren(widthMeasureSpec, heightMeasureSpec);   // 触发每个子View的onMeasure方法</div><div class="line"></div><div class="line">    int count = getChildCount();</div><div class="line">    int maxWidth = 0;</div><div class="line">    int height = 0;</div><div class="line">    <span class="keyword">for</span> (int i = 0; i &lt; count; i++) &#123;</div><div class="line">        View child = getChildAt(i);</div><div class="line">        <span class="keyword">if</span> (child == null || child.getVisibility() == View.GONE)</div><div class="line">            <span class="built_in">continue</span>;</div><div class="line"></div><div class="line">        int childWidth = child.getMeasuredWidth();</div><div class="line">        int childHeight = child.getMeasuredHeight();</div><div class="line">        maxWidth = childWidth &gt; maxWidth ? childWidth : maxWidth;</div><div class="line">        height += childHeight;  // 不考虑Margin</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.AT_MOST)</div><div class="line">        maxWidth = MeasureSpec.getSize(widthMeasureSpec);</div><div class="line">    <span class="keyword">if</span> (MeasureSpec.getMode(heightMeasureSpec) != MeasureSpec.AT_MOST)</div><div class="line">        height = MeasureSpec.getSize(heightMeasureSpec);</div><div class="line"></div><div class="line">    <span class="built_in">set</span>MeasuredDimension(maxWidth, height);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="Step-4-重写onLayout"><a href="#Step-4-重写onLayout" class="headerlink" title="Step 4 : 重写onLayout()"></a>Step 4 : 重写onLayout()</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onLayout(boolean changed, int l, int t, int r, int b) &#123;</div><div class="line">    int count = getChildCount();</div><div class="line"></div><div class="line">    int curHeight = t;  // 记录当前的高度位置</div><div class="line">    <span class="keyword">for</span> (int i = 0; i &lt; count; i++) &#123;</div><div class="line">        View child = getChildAt(i);</div><div class="line">        int height = child.getMeasuredHeight();</div><div class="line">        int width = child.getMeasuredWidth();</div><div class="line">        child.layout(l, curHeight, l + width, curHeight + height);</div><div class="line">        curHeight += height;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;LinearLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    xmlns:xian=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    android:layout_width=<span class="string">"match_parent"</span></div><div class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">    &lt;com.king.demo.customview.SimpleLinearLayout</div><div class="line">        android:layout_width=<span class="string">"wrap_content"</span></div><div class="line">        android:layout_height=<span class="string">"wrap_content"</span></div><div class="line">        android:background=<span class="string">"#00FFFF"</span>&gt;</div><div class="line"></div><div class="line">        &lt;Button</div><div class="line">            android:layout_width=<span class="string">"100dp"</span></div><div class="line">            android:layout_height=<span class="string">"wrap_content"</span></div><div class="line">            android:text=<span class="string">"btn"</span> /&gt;</div><div class="line"></div><div class="line">        &lt;Button</div><div class="line">            android:layout_width=<span class="string">"200dp"</span></div><div class="line">            android:layout_height=<span class="string">"wrap_content"</span></div><div class="line">            android:text=<span class="string">"btn"</span> /&gt;</div><div class="line"></div><div class="line">        &lt;Button</div><div class="line">            android:layout_width=<span class="string">"75dp"</span></div><div class="line">            android:layout_height=<span class="string">"wrap_content"</span></div><div class="line">            android:text=<span class="string">"btn"</span> /&gt;</div><div class="line">    &lt;/com.king.demo.customview.SimpleLinearLayout&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
-<h4 id="效果图-1"><a href="#效果图-1" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://ww1.sinaimg.cn/large/adc90466ly1fdivvq0dpvj206o0b4aa5" alt=""></p>
-
-          
+          一、自定义ViewAndroid系统内置的View无法满足业务需求，需要自定义。
+Step 1 : 继承View123456789public class CustomView extends View &#123;    public CustomView(Context context) &#1
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/01/ANDROID/ANDROID 自定义View 入门/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1368,7 +1414,7 @@ Mon Tue Wed Thu Fri Sat Sun
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1426,6 +1472,16 @@ Mon Tue Wed Thu Fri Sat Sun
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/13/PATTERN/Design pattern 策略设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/01/13/PATTERN/Design pattern 策略设计模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1452,22 +1508,16 @@ Mon Tue Wed Thu Fri Sat Sun
       
         
           
-            <p><a href="https://xianxiaotao.github.io/2017/01/01/Design%20pattern/" target="_blank" rel="external">返回设计模式目录</a></p>
-<h2 id="使用模式之前"><a href="#使用模式之前" class="headerlink" title="使用模式之前"></a>使用模式之前</h2><p>给定如下表达式：如”1+4”、”4 *2”、”9- 2”、”3/1”，计算结果并打印。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 由于java7.0的新特性，本类采用switch代替<span class="keyword">if</span>-else</div><div class="line"> * @author xianxiaotao</div><div class="line"> */</div><div class="line">public class CalculateUtil &#123;</div><div class="line">    private <span class="function"><span class="title">CalculateUtil</span></span>()&#123;&#125;</div><div class="line">    </div><div class="line">    /**</div><div class="line">     * 计算表达式，并返回结果</div><div class="line">     * @param exp</div><div class="line">     * @param opt</div><div class="line">     * @<span class="built_in">return</span></div><div class="line">     */</div><div class="line">    public static int calculate(String exp, String opt) &#123;</div><div class="line">        String[] operandStrs = exp.split(opt);</div><div class="line">        int beforeOperand = Integer.parseInt(operandStrs[0].trim());</div><div class="line">        int afterOperand = Integer.parseInt(operandStrs[1].trim());</div><div class="line">        </div><div class="line">        int result = Integer.MIN_VALUE;</div><div class="line">        switch (opt) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">"\\+"</span>:</div><div class="line">            result = beforeOperand + afterOperand;</div><div class="line">            <span class="built_in">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"-"</span>:</div><div class="line">            result = beforeOperand - afterOperand;</div><div class="line">            <span class="built_in">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"\\*"</span>:</div><div class="line">            result = beforeOperand * afterOperand;</div><div class="line">            <span class="built_in">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"/"</span>:</div><div class="line">            result = beforeOperand / afterOperand;</div><div class="line">            <span class="built_in">break</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        System.out.println(calculate(<span class="string">"4 +2"</span>, <span class="string">"\\+"</span>));   // 6</div><div class="line">        System.out.println(calculate(<span class="string">"4 -2"</span>, <span class="string">"-"</span>));     // 2</div><div class="line">        System.out.println(calculate(<span class="string">"4 *2"</span>, <span class="string">"\\*"</span>));   // 8</div><div class="line">        System.out.println(calculate(<span class="string">"4 /2"</span>, <span class="string">"/"</span>));     // 2</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>对于上述代码，新增一个取余表达式与修改加法业务都要修改calculate方法，扩展性和维护性很差。可以使用策略模式规避。</p>
-</blockquote>
-<h2 id="使用策略模式"><a href="#使用策略模式" class="headerlink" title="使用策略模式"></a>使用策略模式</h2><p>新增一个取余表达式，则直接新增一个实现类，无需修改关联代码。使得算法可以自由切换，避免使用多重条件判断，扩展性良好。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">package com.xian.design.strategy;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 此处应该是接口，但我需要一个辅助方法spit，懒得新建一个抽象类并继承之</div><div class="line"> */</div><div class="line">abstract class Calculator &#123;</div><div class="line">    public abstract int calculate(String exp);</div><div class="line">    </div><div class="line">    public int[] split(String exp, String opt) &#123;</div><div class="line">        String array[] = exp.split(opt);</div><div class="line">        int arrayInt[] = new int[2];</div><div class="line">        arrayInt[0] = Integer.parseInt(array[0].trim());</div><div class="line">        arrayInt[1] = Integer.parseInt(array[1].trim());</div><div class="line">        <span class="built_in">return</span> arrayInt; </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Add extends Calculator &#123;  </div><div class="line">    @Override</div><div class="line">    public int calculate(String exp) &#123;</div><div class="line">        int arrayInt[] = split(exp, <span class="string">"\\+"</span>);</div><div class="line">        <span class="built_in">return</span> arrayInt[0] + arrayInt[1];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Sub extends Calculator &#123;  </div><div class="line">    @Override</div><div class="line">    public int calculate(String exp) &#123;</div><div class="line">        int arrayInt[] = split(exp, <span class="string">"-"</span>);</div><div class="line">        <span class="built_in">return</span> arrayInt[0] - arrayInt[1];</div><div class="line">    &#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">class Mul extends Calculator &#123;  </div><div class="line">    @Override</div><div class="line">    public int calculate(String exp) &#123;</div><div class="line">        int arrayInt[] = split(exp, <span class="string">"\\*"</span>);</div><div class="line">        <span class="built_in">return</span> arrayInt[0] * arrayInt[1];</div><div class="line">    &#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">class Div extends Calculator &#123;  </div><div class="line">    @Override</div><div class="line">    public int calculate(String exp) &#123;</div><div class="line">        int arrayInt[] = split(exp, <span class="string">"/"</span>);</div><div class="line">        <span class="built_in">return</span> arrayInt[0] / arrayInt[1];</div><div class="line">    &#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">class Executor &#123;</div><div class="line">    private Calculator calculator;</div><div class="line">    public Executor(Calculator calculator) &#123;</div><div class="line">        this.calculator = calculator;</div><div class="line">    &#125;</div><div class="line">    public int execute(String exp) &#123;</div><div class="line">        <span class="built_in">return</span> calculator.calculate(exp);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class StrategyTest &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Executor executor = new Executor(new Add());</div><div class="line">        System.out.println(<span class="string">"4 + 2 = "</span> + executor.execute(<span class="string">"4 +2"</span>));</div><div class="line">        </div><div class="line">        executor = new Executor(new Sub());</div><div class="line">        System.out.println(<span class="string">"4 - 2 = "</span> + executor.execute(<span class="string">"4 -2"</span>));</div><div class="line">        </div><div class="line">        executor = new Executor(new Mul());</div><div class="line">        System.out.println(<span class="string">"4 * 2 = "</span> + executor.execute(<span class="string">"4 * 2"</span>));</div><div class="line">        </div><div class="line">        executor = new Executor(new Div());</div><div class="line">        System.out.println(<span class="string">"4 / 2 = "</span> + executor.execute(<span class="string">"4/ 2"</span>));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>输出：<br>4 + 2 = 6<br>4 - 2 = 2<br>4 * 2 = 8<br>4 / 2 = 2</p>
-<blockquote>
-<ul>
-<li>策略模式定义了一系列算法，并将每个算法封装起来，使他们可以相互替换，且算法的变化不会影响到使用算法的客户。需要设计一个接口，为一系列实现类提供统一的方法，多个实现类实现该接口。</li>
-<li>如果一个系统的策略多于四个，就需要考虑使用混合模式，解决策略类膨胀的问题。</li>
-<li>所有策略类都需要对外暴露。</li>
-</ul>
-</blockquote>
-
-          
+          返回设计模式目录
+使用模式之前给定如下表达式：如”1+4”、”4 *2”、”9- 2”、”3/1”，计算结果并打印。1234567891011121314151617181920212223242526272829303132333435363738394041424344/** * 由于java7
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/13/PATTERN/Design pattern 策略设计模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1523,7 +1573,7 @@ Mon Tue Wed Thu Fri Sat Sun
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1581,6 +1631,16 @@ Mon Tue Wed Thu Fri Sat Sun
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/12/PATTERN/Design pattern 享元设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/01/12/PATTERN/Design pattern 享元设计模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1607,15 +1667,16 @@ Mon Tue Wed Thu Fri Sat Sun
       
         
           
-            <p><a href="https://xianxiaotao.github.io/2017/01/01/Design%20pattern/" target="_blank" rel="external">返回设计模式目录</a></p>
-<h2 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h2><p>运用共享技术有效地支持大量细粒度的对象，减少创建对象的数量，以减少内存占用和提高性能。在有大量对象时，有可能会造成内存溢出，我们把其中共同的部分抽象出来，如果有相同的业务请求，直接返回在内存中已有的对象，避免重新创建。通常与工厂模式一起使用，而工厂类中含有共享池(HashMap)。</p>
-<h2 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line">package com.xian.design.flyweight;</div><div class="line"></div><div class="line">import java.util.HashMap;</div><div class="line"></div><div class="line">interface Shape &#123;</div><div class="line">    void draw();</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 需要共享的元对象</div><div class="line"> * @author xianxiaotao</div><div class="line"> */</div><div class="line">class Circle implements Shape &#123;</div><div class="line">    private String color;</div><div class="line">    private int x;</div><div class="line">    private int y;</div><div class="line">    private int radius;</div><div class="line">    </div><div class="line">    public Circle(String color) &#123;</div><div class="line">        this.color = color;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void <span class="built_in">set</span>X(int x) &#123;</div><div class="line">        this.x = x;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void <span class="built_in">set</span>Y(int y) &#123;</div><div class="line">        this.y = y;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void <span class="built_in">set</span>Radius(int radius) &#123;</div><div class="line">        this.radius = radius;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void <span class="function"><span class="title">draw</span></span>() &#123;</div><div class="line">        System.out.println(<span class="string">"Circle: Draw() [Color : "</span> + color +<span class="string">", x : "</span> + x +<span class="string">", y :"</span> + y +<span class="string">", radius :"</span> + radius);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 工厂类，提供缓存池，用于控制元对象的重复利用</div><div class="line"> */</div><div class="line">class ShapeFactory &#123;</div><div class="line">    private static final HashMap&lt;String, Shape&gt; circleMap = new HashMap&lt;&gt;();</div><div class="line">    private <span class="function"><span class="title">ShapeFactory</span></span>() &#123;&#125;   // 无需实例化</div><div class="line">    public static Shape getCircle(String color) &#123;</div><div class="line">        Circle circle = (Circle) circleMap.get(color);</div><div class="line">        <span class="keyword">if</span> (null == circle) &#123;</div><div class="line">            circle = new Circle(color);</div><div class="line">            circleMap.put(color, circle);</div><div class="line">            System.out.println(<span class="string">"Creating circle of color : "</span> + color);  // 如果重复利用则不会输出这句</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> circle;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 测试</div><div class="line"> */</div><div class="line">public class FlyweightTest &#123;</div><div class="line">    private static final String[] colors = &#123;<span class="string">"Red"</span>, <span class="string">"Green"</span>, <span class="string">"Blue"</span>, <span class="string">"White"</span>, <span class="string">"Black"</span>&#125;;</div><div class="line">    private static String <span class="function"><span class="title">getRandomColor</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> colors[(int)(Math.random() * colors.length)];</div><div class="line">    &#125;</div><div class="line">    private static int <span class="function"><span class="title">getRandoms</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> (int)(Math.random() * 100);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        <span class="keyword">for</span> (int i = 0; i &lt; 20; i++) &#123;</div><div class="line">            String color = getRandomColor();</div><div class="line">            Circle circle = (Circle) ShapeFactory.getCircle(color);</div><div class="line">            circle.setX(getRandoms());</div><div class="line">            circle.setY(getRandoms());</div><div class="line">            circle.setRadius(getRandoms());</div><div class="line">            circle.draw();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>输出：<br>Creating circle of color : Green<br>Circle: Draw() [Color : Green, x : 69, y :5, radius :73]<br>Creating circle of color : White<br>Circle: Draw() [Color : White, x : 92, y :6, radius :17]<br>Circle: Draw() [Color : White, x : 99, y :8, radius :88]<br>Creating circle of color : Red<br>Circle: Draw() [Color : Red, x : 74, y :18, radius :28]<br>Creating circle of color : Black<br>Circle: Draw() [Color : Black, x : 35, y :47, radius :12]<br>Circle: Draw() [Color : Black, x : 59, y :73, radius :11]<br>Creating circle of color : Blue<br>Circle: Draw() [Color : Blue, x : 25, y :10, radius :52]<br>Circle: Draw() [Color : Black, x : 33, y :83, radius :19]<br>Circle: Draw() [Color : Black, x : 56, y :5, radius :45]<br>Circle: Draw() [Color : Blue, x : 83, y :13, radius :87]<br>Circle: Draw() [Color : Red, x : 49, y :43, radius :48]<br>Circle: Draw() [Color : Green, x : 91, y :33, radius :62]<br>Circle: Draw() [Color : Green, x : 84, y :62, radius :87]<br>Circle: Draw() [Color : White, x : 76, y :4, radius :85]<br>Circle: Draw() [Color : Green, x : 96, y :30, radius :0]<br>Circle: Draw() [Color : White, x : 68, y :54, radius :27]<br>Circle: Draw() [Color : Green, x : 13, y :52, radius :14]<br>Circle: Draw() [Color : Green, x : 44, y :51, radius :70]<br>Circle: Draw() [Color : Red, x : 1, y :46, radius :12]<br>Circle: Draw() [Color : Blue, x : 70, y :12, radius :66]</p>
-<blockquote>
-<p>不同颜色的圆都只创建了一次，其余的都是重复利用，大大减少对象的创建，降低系统的内存，使效率提高。但是重复利用对象时，需要分离出外部状态和内部状态，上述代码Circle属性color是外部状态，x、y、radius是内部状态，但是得必须保证不管内部状态如何变化都不会影响到外部状态。</p>
-</blockquote>
-
-          
+          返回设计模式目录
+享元模式运用共享技术有效地支持大量细粒度的对象，减少创建对象的数量，以减少内存占用和提高性能。在有大量对象时，有可能会造成内存溢出，我们把其中共同的部分抽象出来，如果有相同的业务请求，直接返回在内存中已有的对象，避免重新创建。通常与工厂模式一起使用，而工厂类中含有共享池(HashM
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/12/PATTERN/Design pattern 享元设计模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1671,7 +1732,7 @@ Mon Tue Wed Thu Fri Sat Sun
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1729,6 +1790,16 @@ Mon Tue Wed Thu Fri Sat Sun
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/11/PATTERN/Design pattern 组合设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/01/11/PATTERN/Design pattern 组合设计模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1755,14 +1826,18 @@ Mon Tue Wed Thu Fri Sat Sun
       
         
           
-            <p><a href="https://xianxiaotao.github.io/2017/01/01/Design%20pattern/" target="_blank" rel="external">返回设计模式目录</a></p>
-<h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><p>又叫部分整体模式，用于把一组相似的对象当做一个单一的对象。依据树形结构来组合对象，以便表示部分及整体层次。</p>
-<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>1、算术表达式包括操作数、操作符和另一个操作数，其中，另一个操作符也可以是操作树、操作符和另一个操作数。<br>2、树形菜单<br>3、二叉树<br>4、文件与文件夹的管理<br>5、员工</p>
-<h4 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h4><p>树枝和叶子实现统一接口，树枝内部组合该接口，并且含有内部属性 List，里面放Component。定义时为具体类。</p>
-<h2 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h2><p>演示类使用Employee类来添加部门层次结构，并打印所有员工。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line">package com.xian.design.composite;</div><div class="line"></div><div class="line">import java.util.ArrayList;</div><div class="line">import java.util.List;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 员工类</div><div class="line"> * @author xianxiaotao</div><div class="line"> */</div><div class="line">public class Employee &#123;</div><div class="line">    private String name;</div><div class="line">    private String dept;</div><div class="line">    private int salary;</div><div class="line">    private List&lt;Employee&gt; subordinates;    // 下属员工</div><div class="line">    </div><div class="line">    public Employee(String name, String dept, int salary) &#123;</div><div class="line">        this.name = name;</div><div class="line">        this.dept = dept;</div><div class="line">        this.salary = salary;</div><div class="line">        subordinates = new ArrayList&lt;&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public List&lt;Employee&gt; <span class="function"><span class="title">getSubordinates</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> subordinates;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public void add(Employee e) &#123;</div><div class="line">        subordinates.add(e);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public void remove(Employee e) &#123;</div><div class="line">        subordinates.remove(e);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String <span class="function"><span class="title">toString</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> <span class="string">"Employee [name="</span> + name + <span class="string">", dept="</span> + dept + <span class="string">", salary="</span> + salary + <span class="string">"]"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line"> * 组合模式测试类，打印Employee层次结构</div><div class="line"> * </div><div class="line"> * @author xianxiaotao</div><div class="line"> */</div><div class="line">public class CompositeTest &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Employee CEO = new Employee(<span class="string">"xianxiaotao"</span>, <span class="string">"CEO"</span>, 100000000);</div><div class="line">        </div><div class="line">        Employee headSales = new Employee(<span class="string">"Bill Gates"</span>, <span class="string">"Head Sales"</span>, 50000000);</div><div class="line">        Employee headMarketing = new Employee(<span class="string">"Michel"</span>, <span class="string">"Head Marketing"</span>, 20000000);</div><div class="line">        </div><div class="line">        Employee salesExecutive1 = new Employee(<span class="string">"Richard"</span>, <span class="string">"Sales"</span>, 10000);</div><div class="line">        Employee salesExecutive2 = new Employee(<span class="string">"Rob"</span>, <span class="string">"Sales"</span>, 10000);</div><div class="line">        </div><div class="line">        Employee clerk1 = new Employee(<span class="string">"Laura"</span>, <span class="string">"Marketing"</span>, 10000);</div><div class="line">        Employee clerk2 = new Employee(<span class="string">"Bob"</span>, <span class="string">"Marketing"</span>, 10000);</div><div class="line"></div><div class="line">        CEO.add(headSales);</div><div class="line">        CEO.add(headMarketing);</div><div class="line"></div><div class="line">        headSales.add(salesExecutive1);</div><div class="line">        headSales.add(salesExecutive2);</div><div class="line"></div><div class="line">        headMarketing.add(clerk1);</div><div class="line">        headMarketing.add(clerk2);</div><div class="line">        </div><div class="line">        <span class="built_in">print</span>Employee(CEO, 0);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 利用递归打印树形结构</div><div class="line">    public static void <span class="built_in">print</span>Employee(Employee e, int level) &#123;</div><div class="line">        System.out.print(<span class="string">""</span>);</div><div class="line">        <span class="keyword">for</span> (int i = 0; i &lt; level; i++)</div><div class="line">            System.out.print(<span class="string">"    "</span>);</div><div class="line">        System.out.println(e);</div><div class="line">        </div><div class="line">        List&lt;Employee&gt; employees = e.getSubordinates();</div><div class="line">        <span class="keyword">if</span> (employees.size() &gt; 0) &#123;</div><div class="line">            level++;</div><div class="line">            <span class="keyword">for</span> (Employee employee : employees)</div><div class="line">                <span class="built_in">print</span>Employee(employee, level);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="http://ww1.sinaimg.cn/large/adc90466ly1fdd2p6pkdoj20pq05ygmy" alt=""></p>
+          返回设计模式目录
+组合模式又叫部分整体模式，用于把一组相似的对象当做一个单一的对象。依据树形结构来组合对象，以便表示部分及整体层次。
+使用场景1、算术表达式包括操作数、操作符和另一个操作数，其中，另一个操作符也可以是操作树、操作符和另一个操作数。2、树形菜单3、二叉树4、文件与文件夹的管理5、员工
 
-          
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/11/PATTERN/Design pattern 组合设计模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1835,6 +1910,10 @@ Mon Tue Wed Thu Fri Sat Sun
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="" />
+            
               <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -1856,10 +1935,10 @@ Mon Tue Wed Thu Fri Sat Sun
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -1867,15 +1946,22 @@ Mon Tue Wed Thu Fri Sat Sun
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -1905,7 +1991,8 @@ Mon Tue Wed Thu Fri Sat Sun
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1915,6 +2002,12 @@ Mon Tue Wed Thu Fri Sat Sun
 </div>
 
 
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
@@ -1923,10 +2016,14 @@ Mon Tue Wed Thu Fri Sat Sun
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共112.1k字</span>
+</div>
 
         
 
@@ -1970,6 +2067,8 @@ Mon Tue Wed Thu Fri Sat Sun
   
 
 
+  
+
 
 
 
@@ -2010,6 +2109,11 @@ Mon Tue Wed Thu Fri Sat Sun
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
 
   
 
@@ -2022,13 +2126,6 @@ Mon Tue Wed Thu Fri Sat Sun
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
 
@@ -2070,9 +2167,348 @@ Mon Tue Wed Thu Fri Sat Sun
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
@@ -2095,3 +2531,5 @@ Mon Tue Wed Thu Fri Sat Sun
 
 </body>
 </html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -68,11 +75,13 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="我至诚我道" />
 
 
 
 
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
 
 
 
@@ -80,11 +89,11 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="King">
+<meta property="og:title" content="先小涛">
 <meta property="og:url" content="http://yoursite.com/page/4/index.html">
-<meta property="og:site_name" content="King">
+<meta property="og:site_name" content="先小涛">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="King">
+<meta name="twitter:title" content="先小涛">
 
 
 
@@ -92,9 +101,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -120,7 +129,7 @@
 
 
 
-  <title>King</title>
+  <title>先小涛</title>
   
 
 
@@ -142,6 +151,7 @@
   <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
@@ -151,12 +161,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">King</span>
+        <span class="site-title">先小涛</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">xianxiaotao</p>
+        <p class="site-subtitle">我至诚我道</p>
       
   </div>
 
@@ -186,22 +196,22 @@
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
           </a>
         </li>
       
@@ -217,9 +227,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -257,7 +301,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -315,6 +359,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/01/Custom View/01.1 精通自定义 View 之绘图基础（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/01/Custom View/01.1 精通自定义 View 之绘图基础（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -341,149 +395,18 @@
       
         
           
-            <meta name="referrer" content="no-referrer">
-
-<h2 id="1-1-基本图形绘制"><a href="#1-1-基本图形绘制" class="headerlink" title="1.1 基本图形绘制"></a>1.1 基本图形绘制</h2><h3 id="1-1-1-概述"><a href="#1-1-1-概述" class="headerlink" title="1.1.1 概述"></a>1.1.1 概述</h3><p>画图需要两个工具：纸和笔。在 Android 中，Paint 类就是画笔，而 Canvas 类就是纸，在这里叫作画布。</p>
-<p>凡是跟画笔设置相关的，比如画笔大小、粗细、画笔颜色、透明度、字体的样式等，都在 Paint 类里设置；同样，凡是要画出成品的东西，比如圆形、矩形、文字等，都调用 Canvas 类里的函数生成。</p>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-feca6c269f8bed9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        // 设置画笔</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setColor(Color.RED);</div><div class="line">        mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">        mPaint.setStrokeWidth(50);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        // 画圆</div><div class="line">        canvas.drawCircle(200, 200, 150, mPaint);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>直接在主布局中使用自定义控件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">    &lt;com.xxt.xtest.TestView</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot; /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>在 onDraw() 函数中不能创建变量。因为当需要重绘时就会调用 onDraw() 函数，这样会导致变量一直被重复创建，会引起频繁的程序 GC (回收内存)，进而引起程序卡顿。一般在构造函数中创建变量。</p>
-</blockquote>
-<h3 id="1-1-2-画笔的基本设置"><a href="#1-1-2-画笔的基本设置" class="headerlink" title="1.1.2 画笔的基本设置"></a>1.1.2 画笔的基本设置</h3><h4 id="1-setAntiAlias"><a href="#1-setAntiAlias" class="headerlink" title="1. setAntiAlias()"></a>1. setAntiAlias()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setAntiAlias(boolean aa)</div></pre></td></tr></table></figure>
-<p>表示是否打开抗锯齿功能。抗锯齿是依赖算法的，一般在绘制不规则的图形时使用，比如圆形、文字等。在绘制棱角分明的图像时，比如一个矩形、一张位图，是不需要打开抗锯齿功能的。</p>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-8627a3c3392a00a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Anti Alias &amp; No Anti Alias"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint1, mPaint2;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        mPaint1 = new Paint();</div><div class="line">        mPaint1.setColor(Color.RED);</div><div class="line">        mPaint1.setStyle(Paint.Style.FILL);</div><div class="line">        mPaint1.setAntiAlias(true);</div><div class="line">        mPaint1.setStrokeWidth(50);</div><div class="line"></div><div class="line">        mPaint2 = new Paint();</div><div class="line">        mPaint2.setColor(Color.RED);</div><div class="line">        mPaint2.setStyle(Paint.Style.FILL);</div><div class="line">        mPaint2.setStrokeWidth(50);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        canvas.drawCircle(200, 200, 150, mPaint1);</div><div class="line">        canvas.drawCircle(540, 200, 150, mPaint2);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="2-setColor"><a href="#2-setColor" class="headerlink" title="2. setColor()"></a>2. setColor()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setColor(int color)</div></pre></td></tr></table></figure>
-<p>设置画笔颜色。一个颜色值是由红、绿、蓝三色合成出来的，所以，参数 color 只能取 8 位的 0xAARRGGBB 样式颜色值。其中:</p>
-<ul>
-<li>A 代表透明度(Alpha)，取值范围是 0~255(对应十六进制的 0x00~0xFF)，取值越小，透明度越高，图像也就越透明。当取 0 时，图像完全不可见。</li>
-<li>R 代表红色值(Red)，取值范围是 0~255(对应十六进制的 0x00~0xFF)，取值越小，红色越少。当取 0 时，表示红色完全不可见；当取 255 时，红色完全显示。</li>
-<li>G 代表绿色值(Green)，取值范围是 0~255(对应十六进制的 0x00~0xFF)，取值越小，绿色越少。当取 0 时，表示绿色完全不可见；当取 255 时，绿色完全显示。</li>
-<li>B 代表蓝色值(Blue)，取值范围是 0~255(对应十六进制的 0x00~0xFF)，取值越小，蓝色越少。当取 0 时，表示蓝色完全不可见；当取 255 时，蓝色完全显示。</li>
-</ul>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-f74c4ebbbbb616fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint1, mPaint2;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        mPaint1 = generatePaint(Color.RED, Paint.Style.FILL, 50);</div><div class="line">        mPaint2 = generatePaint(0x7EFFFF00, Paint.Style.FILL, 50);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        canvas.drawCircle(200, 200, 150, mPaint1);</div><div class="line">        canvas.drawCircle(200, 200, 100, mPaint2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private Paint generatePaint(int color, Paint.Style style, int strokeWidth) &#123;</div><div class="line">        Paint paint = new Paint();</div><div class="line">        paint.setColor(color);</div><div class="line">        paint.setStyle(style);</div><div class="line">        paint.setStrokeWidth(strokeWidth);</div><div class="line">        return paint;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="3-setStyle"><a href="#3-setStyle" class="headerlink" title="3. setStyle()"></a>3. setStyle()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setStyle(Style style)</div></pre></td></tr></table></figure>
-<p>设置填充样式，对于文字和几何图形都有效。style 的取值如下：</p>
-<ul>
-<li>Paint.Style.FILL：仅填充内部。</li>
-<li>Paint.Style.FILL_AND_STROKE：填充内部和描边。 </li>
-<li>Paint.Style.STROKE：仅描边。</li>
-</ul>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-b4907639e786fbe2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="依次是 FILL、STROKE、FILL_AND_STROKE "></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">paintF = generatePaint(Color.RED, Paint.Style.FILL, 50);</div><div class="line">paintS = generatePaint(Color.RED, Paint.Style.STROKE, 50);</div><div class="line">paintFS = generatePaint(Color.RED, Paint.Style.FILL_AND_STROKE, 50);</div><div class="line">paintLine = generatePaint(Color.BLACK, Paint.Style.STROKE, 1);</div><div class="line"></div><div class="line">canvas.drawCircle(225, 300, 150, paintF);</div><div class="line">canvas.drawCircle(600, 300, 150, paintS);</div><div class="line">canvas.drawCircle(1000, 300, 150, paintFS);</div><div class="line">canvas.drawLine(225, 150, 1000, 150, paintLine);</div></pre></td></tr></table></figure>
-<h4 id="4-setStrokeWidth"><a href="#4-setStrokeWidth" class="headerlink" title="4. setStrokeWidth()"></a>4. setStrokeWidth()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setStrokeWidth(float width)</div></pre></td></tr></table></figure>
-<p>设置描边宽度值，单位是 px。当画笔的 Style 样式是 STROKE、FILL_AND_STROKE 时有效。当 Style 不起作用时，用于设置画笔宽度。</p>
-<h3 id="1-1-3-Canvas使用基础"><a href="#1-1-3-Canvas使用基础" class="headerlink" title="1.1.3 Canvas使用基础"></a>1.1.3 Canvas使用基础</h3><h4 id="1-画布背景设置"><a href="#1-画布背景设置" class="headerlink" title="1. 画布背景设置"></a>1. 画布背景设置</h4><p>有三种方法可以实现画布背景设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void drawColor(int color)</div><div class="line">void drawARGB(int a, int r, int g, int b)</div><div class="line">void drawRGB(int r, int g, int b)</div></pre></td></tr></table></figure></p>
-<p>drawColor() 函数中参数 color 的取值必须是 8 位的 0xAARRGGBB 样式颜色值。<br>drawARGB() 函数允许分别传入 A、R、G、B 分量，每个颜色值的取值范围都是 0~255(对应十六进制的 0x00~0xFF)，内部会通过这些颜色分量构造出对应的颜色值。 drawRGB() 函数只允许传入 R、G、B 分量，透明度 Alpha 的值取 255。</p>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-b1bc19b811eb6ed6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="将画布默认填充为紫色"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">canvas.drawColor(0xFFFF00FF);</div><div class="line">canvas.drawARGB(0xFF, 0xFF, 0, 0xFF);</div><div class="line">canvas.drawRGB(255, 0, 255);</div></pre></td></tr></table></figure></p>
-<h4 id="2-画直线"><a href="#2-画直线" class="headerlink" title="2. 画直线"></a>2. 画直线</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">void drawLine(float startX, float startY, </div><div class="line">              float stopX, float stopY, Paint paint)</div></pre></td></tr></table></figure>
-<p>参数:</p>
-<ul>
-<li>startX：起始点 X 坐标。 </li>
-<li>startY：起始点 Y 坐标。 </li>
-<li>stopX：终点 X 坐标。</li>
-<li>stopY：终点 Y 坐标。</li>
-</ul>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-030dd0332aa4b222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分别设置 Style：FILL、STROKE、FILL_AND_STROKE"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mPaintF = generatePaint(Color.RED, Paint.Style.FILL, 50);</div><div class="line">mPaintS = generatePaint(Color.RED, Paint.Style.STROKE, 50);</div><div class="line">mPaintFS = generatePaint(Color.RED, Paint.Style.FILL_AND_STROKE, 50);</div></pre></td></tr></table></figure></p>
-<p>从效果图中可以明显看出，直线的粗细与画笔 Style 是没有关系的。当设置不同的 StrokeWidth 时，效果如下图所示。<br><img src="https://upload-images.jianshu.io/upload_images/14186083-db784ea910444557.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="width 分别是 ：5、25、50"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mPaintF = generatePaint(Color.RED, Paint.Style.FILL, 5);</div><div class="line">mPaintS = generatePaint(Color.RED, Paint.Style.STROKE, 25);</div><div class="line">mPaintFS = generatePaint(Color.RED, Paint.Style.FILL_AND_STROKE, 50);</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>可见，直线的粗细是与 paint.setStrokeWidth 有直接关系的。所以，一般而言，paint.setStrokeWidth 在 Style 起作用时，用于设置描边宽度；在 Style 不起作用时，用于设置画笔宽度。</p>
-</blockquote>
-<h4 id="3-多条直线"><a href="#3-多条直线" class="headerlink" title="3. 多条直线"></a>3. 多条直线</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawLines(float[] pts, Paint paint)</div></pre></td></tr></table></figure>
-<p>参数：<br>pts：点的集合。从下面的代码中可以看到，这里不是形成连接线，而是每两个点形成一条直线，pts 的组织方式 {x1,y1,x2,y2,x3,y3,…}。</p>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-39da8a748e08370e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setStrokeWidth(5);</div><div class="line">float []pts = &#123;10,10,100,100,200,200,400,400&#125;;</div><div class="line"></div><div class="line">// onDraw()</div><div class="line">canvas.drawLines(pts, mPaint);</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>上面有 4 个点，分别是(10,10)、(100,100)、(200,200)和(400,400)，两两连成一条直线。</p>
-</blockquote>
-<p>另一个构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawLines(float[] pts, int offset, int count, Paint paint)</div></pre></td></tr></table></figure></p>
-<p>相比上面的构造函数，这里多了两个参数。</p>
-<ul>
-<li>int offset：集合中跳过的数值个数。注意不是点的个数！一个点有两个数值。</li>
-<li>int count：参与绘制的数值个数，指 pts 数组中数值的个数，而不是点的个数，因为一个点有两个数值。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">float[] pts = &#123;10,10,100,100,200,200,400,400&#125;;</div><div class="line">canvas.drawLines(pts, 2, 4, paint);</div></pre></td></tr></table></figure>
-<p>表示从 pts 数组中索引为 2 的数字开始绘图，有 4 个数值参与绘图，也就是点(100,100) 和(200,200)，所以效果图就是这两个点的连线。</p>
-<h4 id="4-点"><a href="#4-点" class="headerlink" title="4. 点"></a>4. 点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawPoint(float x, float y, Paint paint)</div></pre></td></tr></table></figure>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-ddcb9989afa74a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setStrokeWidth(15);</div><div class="line"></div><div class="line">canvas.drawPoint(100, 100, mPaint);</div></pre></td></tr></table></figure></p>
-<p>在(100,100)位置画一个点。同样，点的大小只与 paint.setStrokeWidth(width) 有关，而与 paint.setStyle 无关。</p>
-<h4 id="5-多个点"><a href="#5-多个点" class="headerlink" title="5. 多个点"></a>5. 多个点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void drawPoints(@Size(multiple = 2) @NonNull float[] pts, @NonNull Paint paint)</div><div class="line">void drawPoints(@Size(multiple = 2) float[] pts, int offset, int count,</div><div class="line">                @NonNull Paint paint)</div></pre></td></tr></table></figure>
-<p>这几个参数的含义与多条直线中的参数含义相同。</p>
-<ul>
-<li>float[] pts：点的合集，与上面的直线一致，样式为{x1,y1,x2,y2,x3,y3,…}。</li>
-<li>int offset：集合中跳过的数值个数。注意不是点的个数！一个点有两个数值。</li>
-<li>int count：参与绘制的数值个数，指 pts 数组中数值的个数，而不是点的个数。</li>
-</ul>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-c592a6c5a27809f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">private Paint mPaint;</div><div class="line">float[] pts = &#123;10,10, 100,100, 200,200, 400,400&#125;;</div><div class="line"></div><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setStrokeWidth(15);</div><div class="line"></div><div class="line">canvas.drawPoints(pts, 2, 4, mPaint);</div></pre></td></tr></table></figure></p>
-<p>同样是上面的 4 个点：(10,10)、(100,100)、(200,200)和(400,400)，在 drawPoints()函数里跳过前两个数值，即第一个点的横、纵坐标，画出后面 4 个数值代表的点，即第二、三个点，第四个点没画。</p>
-<h4 id="6-RectF-amp-Rect"><a href="#6-RectF-amp-Rect" class="headerlink" title="6. RectF &amp; Rect"></a>6. RectF &amp; Rect</h4><p>这两个类都是矩形工具类，根据 4 个点构造出一个矩形结构。RectF 与 Rect 中的方法、 成员变量完全一样，唯一不同的是：RectF 是用来保存 float 类型数值的矩形结构的；而 Rect 是用来保存 int 类型数值的矩形结构的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// RectF 的构造函数有如下 4 个,但最常用的还是第二个</div><div class="line">RectF()</div><div class="line">RectF(float left, float top, float right, float bottom)</div><div class="line">RectF(RectF r)</div><div class="line">RectF(Rect r)</div><div class="line"></div><div class="line">// Rect 的构造函数有如下 3 个</div><div class="line">Rect()</div><div class="line">Rect(int left, int top, int right, int bottom)</div><div class="line">Rect(Rect r)</div></pre></td></tr></table></figure></p>
-<p>一般而言，要构造一个矩形结构,可以通过以下两种方法来实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 方法一：直接构造</div><div class="line">Rect rect = new Rect(10,10,100,100); </div><div class="line">// 方法二：间接构造</div><div class="line">Rect rect = new Rect(); </div><div class="line">rect.set(10,10,100,100);</div></pre></td></tr></table></figure></p>
-<h4 id="7-矩形"><a href="#7-矩形" class="headerlink" title="7. 矩形"></a>7. 矩形</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void drawRect(float left, float top, float right, float bottom, Paint paint) </div><div class="line">void drawRect(RectF rect, Paint paint)</div><div class="line">void drawRect(Rect r, Paint paint)</div></pre></td></tr></table></figure>
-<p>第一个函数是直接传入矩形的 4 个点来绘制矩形的；第二、三个函数是根据传入 RectF 或者 Rect 的矩形变量来指定所绘制的矩形的。</p>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-d9020d42098b847c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mPaintS = generatePaint(Color.RED, Paint.Style.STROKE, 15);</div><div class="line">mPaintF = generatePaint(Color.RED, Paint.Style.FILL, 15);</div><div class="line">mRect = new RectF(210f, 10f, 300f, 100f);</div><div class="line"></div><div class="line">// 直接构造</div><div class="line">canvas.drawRect(10, 10, 100, 100, mPaintS);</div><div class="line">// 使用 RectF 构造</div><div class="line">canvas.drawRect(mRect, mPaintF);</div></pre></td></tr></table></figure></p>
-<h4 id="8-圆角矩形"><a href="#8-圆角矩形" class="headerlink" title="8. 圆角矩形"></a>8. 圆角矩形</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawRoundRect(RectF rect, float rx, float ry, Paint paint)</div></pre></td></tr></table></figure>
-<p>参数:</p>
-<ul>
-<li>RectF rect：要绘制的矩形。</li>
-<li>float rx：生成圆角的椭圆的 X 轴半径。 </li>
-<li>float ry：生成圆角的椭圆的 Y 轴半径。</li>
-</ul>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-404c86eeaca6b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="圆角矩形效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mPaintF = generatePaint(Color.RED, Paint.Style.FILL, 15);</div><div class="line">mRect = new RectF(100, 110, 300, 200);</div><div class="line"></div><div class="line">canvas.drawRoundRect(mRect, 20, 10, mPaintF);</div></pre></td></tr></table></figure></p>
-<h4 id="9-圆形"><a href="#9-圆形" class="headerlink" title="9. 圆形"></a>9. 圆形</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawCircle(float cx, float cy, float radius, Paint paint)</div></pre></td></tr></table></figure>
-<p>参数:</p>
-<ul>
-<li>float cx：圆心点的 X 轴坐标。 </li>
-<li>float cy：圆心点的 Y 轴坐标。 </li>
-<li>float radius：圆的半径。</li>
-</ul>
-<h4 id="10-椭圆"><a href="#10-椭圆" class="headerlink" title="10. 椭圆"></a>10. 椭圆</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawOval(RectF oval, Paint paint)</div></pre></td></tr></table></figure>
-<p>参数:<br>RectF oval：用来生成椭圆的矩形。</p>
-<p>椭圆是根据矩形生成的，以矩形的长为椭圆的 X 轴，以矩形的宽为椭圆的 Y 轴。</p>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-eaaa7da91d7639af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="使用矩形画椭圆"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mPaintO = generatePaint(Color.RED, Paint.Style.STROKE, 5);</div><div class="line">mPaintR = generatePaint(Color.BLUE, Paint.Style.STROKE, 5);</div><div class="line">mRect = new RectF(100, 110, 300, 200);</div><div class="line"></div><div class="line">canvas.drawRect(mRect, mPaintR);    // 画矩形</div><div class="line">canvas.drawOval(mRect, mPaintO);    // 画椭圆</div></pre></td></tr></table></figure>
-<h4 id="11-弧"><a href="#11-弧" class="headerlink" title="11. 弧"></a>11. 弧</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">void drawArc(RectF oval, float startAngle, float sweepAngle, </div><div class="line">             boolean useCenter, Paint paint)</div></pre></td></tr></table></figure>
-<p>参数:</p>
-<ul>
-<li>RectF oval：生成椭圆的矩形。</li>
-<li>float startAngle：弧开始的角度，以 X 轴正方向为 0°。</li>
-<li>float sweepAngle：弧持续的角度。</li>
-<li>boolean useCenter：是否有弧的两边。为 true 时，表示带有两边；为 false 时，只有一条弧。</li>
-</ul>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-db6075c61545f92a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="弧 效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mPaint = generatePaint(Color.RED, Paint.Style.STROKE, 5);</div><div class="line">mRect1 = new RectF(100, 100, 200, 200);</div><div class="line">mRect2 = new RectF(220, 100, 320, 200);</div><div class="line"></div><div class="line">// 带弧的两边</div><div class="line">canvas.drawArc(mRect1, 0, 90, true, mPaint);</div><div class="line">// 不带弧的两边</div><div class="line">canvas.drawArc(mRect2, 0, 90, false, mPaint);</div></pre></td></tr></table></figure></p>
-<p>上述代码中，仅将 paint 的样式设置为 FILL 。效果图如下：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-70fd46d585c02d0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="填充样式的弧"></p>
-<blockquote>
-<p>当画笔设为填充模式时，填充区域只限于圆弧的起始点和终点所形成的区域。当带有两边时，会将两边及圆弧内部全部填充；如果没有两边，则只填充圆弧部分。</p>
-</blockquote>
-<h3 id="1-1-4-Rect与RectF"><a href="#1-1-4-Rect与RectF" class="headerlink" title="1.1.4 Rect与RectF"></a>1.1.4 Rect与RectF</h3><h4 id="1-是否包含点、矩形"><a href="#1-是否包含点、矩形" class="headerlink" title="1.是否包含点、矩形"></a>1.是否包含点、矩形</h4><p>1）判断是否包含某个点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">boolean contains(int x, int y)</div></pre></td></tr></table></figure></p>
-<p>该函数用于判断某个点是否在当前矩形中。如果在，则返回 true；如果不在，则返回 false。 参数(x,y)就是当前要判断的点的坐标。</p>
-<p>示例：绘制一个灰色矩形，当手指在这个矩形区域内时，矩形变为红色。<br><img src="https://upload-images.jianshu.io/upload_images/14186083-87a0fbfd0c9002cd.gif?imageMogr2/auto-orient/strip" alt="效果图"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private float mX, mY;</div><div class="line">    private Paint mPaint;</div><div class="line">    private RectF mRect;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void init() &#123;</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setStyle(Paint.Style.FILL);</div><div class="line">        mRect = new RectF(100, 100, 500, 350);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        if (mRect.contains(mX, mY)) &#123;</div><div class="line">            mPaint.setColor(Color.RED);</div><div class="line">        &#125; else &#123;</div><div class="line">            mPaint.setColor(Color.GRAY);</div><div class="line">        &#125;</div><div class="line">        canvas.drawRect(mRect, mPaint);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">        mX = event.getX();</div><div class="line">        mY = event.getY();</div><div class="line">        if (event.getAction() == MotionEvent.ACTION_DOWN) &#123;</div><div class="line">            invalidate();</div><div class="line">            return true;</div><div class="line">        &#125; else if (event.getAction() == MotionEvent.ACTION_UP) &#123;</div><div class="line">            mX = -1;</div><div class="line">            mY = -1;</div><div class="line">        &#125;</div><div class="line">        invalidate();</div><div class="line">        return super.onTouchEvent(event);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上述代码注意两点：</p>
-<ul>
-<li><p>在 MotionEvent.ACTION_DOWN 中返回 true，因为当 MotionEvent. ACTION_DOWN 消息到来时，系统会判断返回值，当返回 true 时，表示当前控件已经在拦截 (消费)这个消息了，所以后续的 ACTION_MOVE、ACTION_UP 消息仍然继续传过来。如果返回 false(系统默认返回 false)，就表示当前控件不需要这个消息，那么后续的 ACTION_MOVE、ACTION_UP 消息就不会再传到这个控件。</p>
-</li>
-<li><p>postInvalidate()和 invalidate()函数都是用来重绘控件的，区别是 invalidate()函数一定要在主线程中执行，否则就会报错；而 postInvalidate()函数则没有那么多讲究，它可以在任何线程中执行，而不必一定是主线程。因为在 postInvalidate()函数中就是利用 handler 给主线程发送刷新界面的消息来实现的，所以它可以在任何线程中执行而不会出错。而正因为它是通过发送消息来实现的，所以它的界面刷新速度可能没有直接调用 invalidate()函数那么快。确定当前线程是主线程的情况下，以 invalidate()函数为主。否则调用调用 postInvalidate()函数为好。因为 onTouchEvent()函数本来就是在主线程中的，所以使用 invalidate()函数更合适。</p>
-</li>
-</ul>
-<p>2）判断是否包含某个矩形<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 根据矩形的 4 个点或者一个 Rect 矩形对象来判断这个矩形是否在当前的矩形区域内。</div><div class="line">boolean contains(float left, float top, float right, float bottom)</div><div class="line">boolean contains(RectF r)</div></pre></td></tr></table></figure></p>
-<h4 id="2-判断两个矩形是否相交"><a href="#2-判断两个矩形是否相交" class="headerlink" title="2.判断两个矩形是否相交"></a>2.判断两个矩形是否相交</h4><p>1）静态方法判断是否相交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static boolean intersects(Rect a, Rect b)</div></pre></td></tr></table></figure></p>
-<p>这是 Rect 类的一个静态方法，用来判断参数中所传入的两个 Rect 矩形是否相交，如果相交则返回 true，否则返回 false。<br>2）成员方法判断是否相交<br>判断当前 Rect 对象与其他矩形是否相交。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">boolean intersects(int left, int top, int right, int bottom)</div></pre></td></tr></table></figure></p>
-<p>使用方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Rect rect_1 = new Rect(10,10,200,200);</div><div class="line">boolean interset1_2 = rect_1.intersects(190, 10, 250, 200);</div></pre></td></tr></table></figure></p>
-<p>3）判断相交并返回结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">boolean intersect(int left, int top, int right, int bottom)</div><div class="line">boolean intersect(Rect r)</div></pre></td></tr></table></figure></p>
-<p>这两个成员方法与 intersects()方法的区别是，不仅会返回是否相交的结果，而且会把相交部分的矩形赋给当前 Rect 对象。如果两个矩形不相交，则当前 Rect 对象的值不变。</p>
-<h4 id="3-合并"><a href="#3-合并" class="headerlink" title="3.合并"></a>3.合并</h4><p>1）合并两个矩形<br>合并两个矩形的意思就是将两个矩形合并成一个矩形，即无论这两个矩形是否相交，取两个矩形最小左上角点作为结果矩形的左上角点，取两个矩形最大右下角点作为结果矩形的右下角点。如果要合并的两个矩形有一方为空，则将有值的一方作为最终结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public void union(int left, int top, int right, int bottom)</div><div class="line">public void union(Rect r)</div></pre></td></tr></table></figure></p>
-<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-03ed1ceee71fd5c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="绿色、红色矩形合并成蓝色矩形"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">mRect1 = new RectF(200, 100, 500, 300);</div><div class="line">mRect2 = new RectF(100, 200, 300, 400);</div><div class="line"></div><div class="line">// 画出右上的红色矩形</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">canvas.drawRect(mRect1, mPaint);</div><div class="line">// 画出左下的绿色矩形</div><div class="line">mPaint.setColor(Color.GREEN);</div><div class="line">canvas.drawRect(mRect2, mPaint);</div><div class="line">// 矩形合并</div><div class="line">mRect1.union(mRect2);</div><div class="line">// 画出合并后的矩形（蓝色部分）</div><div class="line">mPaint.setColor(Color.BLUE);</div><div class="line">canvas.drawRect(mRect1, mPaint);</div></pre></td></tr></table></figure></p>
-<p>2）合并矩形与某个点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void union(int x, int y)</div></pre></td></tr></table></figure></p>
-<p>先判断当前矩形与目标合并点的关系。如果不相交，则根据目标点(x,y)的位置，将目标点设置为当前矩形的左上角点或者右下角点。如果当前矩形是一个空矩形，则最后的结果矩形为([0,0],[x,y])，即结果矩形的左上角点为[0,0]，右下角点为[x,y]。</p>
-<h3 id="1-1-5-Color"><a href="#1-1-5-Color" class="headerlink" title="1.1.5 Color"></a>1.1.5 Color</h3><p>Color 是 Android 中与颜色处理有关的类。</p>
-<h4 id="1-常量颜色"><a href="#1-常量颜色" class="headerlink" title="1. 常量颜色"></a>1. 常量颜色</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@ColorInt public static final int BLACK       = 0xFF000000;</div><div class="line">@ColorInt public static final int DKGRAY      = 0xFF444444;</div><div class="line">@ColorInt public static final int GRAY        = 0xFF888888;</div><div class="line">@ColorInt public static final int LTGRAY      = 0xFFCCCCCC;</div><div class="line">@ColorInt public static final int WHITE       = 0xFFFFFFFF;</div><div class="line">@ColorInt public static final int RED         = 0xFFFF0000;</div><div class="line">@ColorInt public static final int GREEN       = 0xFF00FF00;</div><div class="line">@ColorInt public static final int BLUE        = 0xFF0000FF;</div><div class="line">@ColorInt public static final int YELLOW      = 0xFFFFFF00;</div><div class="line">@ColorInt public static final int CYAN        = 0xFF00FFFF;</div><div class="line">@ColorInt public static final int MAGENTA     = 0xFFFF00FF;</div><div class="line">@ColorInt public static final int TRANSPARENT = 0;</div></pre></td></tr></table></figure>
-<p>Color.XXX 来直接使用这些颜色，比如红色：Color.RED。</p>
-<h4 id="2-构造颜色"><a href="#2-构造颜色" class="headerlink" title="2. 构造颜色"></a>2. 构造颜色</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 带有透明度的颜色</div><div class="line">static int argb(int alpha, int red, int green, int blue)</div><div class="line">// 不带透明度的颜色：alpha 值取 255</div><div class="line">static int rgb(int red, int green, int blue)</div></pre></td></tr></table></figure>
-<p>argb() 函数的源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public static int argb(int alpha, int red, int green, int blue) &#123;</div><div class="line">    // 位运算，值得借鉴</div><div class="line">    return (alpha &lt;&lt; 24) | (red &lt;&lt; 16) | (green &lt;&lt; 8) | blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="3-提取颜色分量"><a href="#3-提取颜色分量" class="headerlink" title="3. 提取颜色分量"></a>3. 提取颜色分量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">static int alpha(int color)</div><div class="line">static int red(int color)</div><div class="line">static int green(int color)</div><div class="line">static int blue(int color)</div></pre></td></tr></table></figure>
-<p>通过上面的 4 个函数提取出对应的 A、R、G、B 颜色分量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 得到的结果 green 的值就是 0x0F</div><div class="line">int green = Color.green(0xFF000F00);</div></pre></td></tr></table></figure></p>
-
           
+
+1.1 基本图形绘制1.1.1 概述画图需要两个工具：纸和笔。在 Android 中，Paint 类就是画笔，而 Canvas 类就是纸，在这里叫作画布。
+凡是跟画笔设置相关的，比如画笔大小、粗细、画笔颜色、透明度、字体的样式等，都在 Paint 类里设置；同样，凡是要画出成品的东西，比如圆形、
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/01/Custom View/01.1 精通自定义 View 之绘图基础（一）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -539,7 +462,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -597,6 +520,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/03/ANDROID/00Catalog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/06/03/ANDROID/00Catalog/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -623,29 +556,25 @@
       
         
           
-            <p>ANDROID 基础知识、中级知识结构目录…</p>
-<h2 id="二、Android中级知识"><a href="#二、Android中级知识" class="headerlink" title="二、Android中级知识"></a>二、Android中级知识</h2><ul>
-<li><a href="">01 Android安全系列篇一(加密、密钥、签名和证书)</a></li>
-</ul>
-<h2 id="一、Android基础知识"><a href="#一、Android基础知识" class="headerlink" title="一、Android基础知识"></a>一、Android基础知识</h2><ul>
-<li><a href="https://xianxiaotao.github.io/2017/05/30/ANDROID/BASE/15%E4%BB%A3%E7%A0%81%E6%8E%A7%E5%88%B6Layout/" target="_blank" rel="external">15 代码控制Layout</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/29/ANDROID/BASE/14Fragment" target="_blank" rel="external">14 Fragment</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/28/ANDROID/BASE/13Android6.0%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86/" target="_blank" rel="external">13 Android6.0运行时权限处理</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/28/ANDROID/BASE/12%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F/" target="_blank" rel="external">12 权限系统</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/28/ANDROID/BASE/11%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/" target="_blank" rel="external">11 日志系统</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/28/ANDROID/BASE/10BroadcastReceiver/" target="_blank" rel="external">10 BroadcastReceiver</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/26/ANDROID/BASE/09Service%E6%80%BB%E7%BB%93%E7%AF%87/" target="_blank" rel="external">09 Service总结篇</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/26/ANDROID/BASE/08Service%E9%80%9A%E4%BF%A1/" target="_blank" rel="external">08 Service通信</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/26/ANDROID/BASE/07Service/" target="_blank" rel="external">07 Service</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/24/ANDROID/BASE/06Context/" target="_blank" rel="external">06 Context</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/24/ANDROID/BASE/05Intent%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%BA%94%E7%94%A8/" target="_blank" rel="external">05 Intent概念及应用</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/23/ANDROID/BASE/04Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/" target="_blank" rel="external">04 Activity启动模式</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/23/ANDROID/BASE/03Activity%E4%B9%8B%E9%97%B4%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0/" target="_blank" rel="external">03 Activity之间传递参数</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/23/ANDROID/BASE/02Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" target="_blank" rel="external">02 Activity生命周期</a></li>
-<li><a href="https://xianxiaotao.github.io/2017/05/23/ANDROID/BASE/01%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_blank" rel="external">01 环境搭建</a></li>
-</ul>
+          ANDROID 基础知识、中级知识结构目录…
+二、Android中级知识
+01 Android安全系列篇一(加密、密钥、签名和证书)
 
-          
+一、Android基础知识
+15 代码控制Layout
+14 Fragment
+13 Android6.0运行时权限处理
+12 权限系统
+11 日志系统
+10 Br
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/03/ANDROID/00Catalog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -701,7 +630,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -759,6 +688,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/01/ANDROID/INTERMEDIATE/01Android安全系列篇一(加密、密钥、签名与证书)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/06/01/ANDROID/INTERMEDIATE/01Android安全系列篇一(加密、密钥、签名与证书)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -785,13 +724,17 @@
       
         
           
-            <h2 id="一、安全要解决什么问题"><a href="#一、安全要解决什么问题" class="headerlink" title="一、安全要解决什么问题"></a>一、安全要解决什么问题</h2><p>在典型的场景中，安全主要用于解决4类需求：</p>
-<h4 id="保密（Security-Confidentiality）"><a href="#保密（Security-Confidentiality）" class="headerlink" title="保密（Security/Confidentiality）"></a>保密（Security/Confidentiality）</h4><p>不希望通信中的信息被第三方窥探；密码；公司机要文件等；</p>
-<h4 id="鉴别-认证（Authentication）"><a href="#鉴别-认证（Authentication）" class="headerlink" title="鉴别/认证（Authentication）"></a>鉴别/认证（Authentication）</h4><p>明确通信对端的身份是你认为的身份。如打电话时通过声音语气等明确对方的身份；银行柜台办理业务时，银行业务员会仔细辨别身份证照片与本人相貌以及问一些能验证身份相关的问题。</p>
-<h4 id="完整性（Integrity）"><a href="#完整性（Integrity）" class="headerlink" title="完整性（Integrity）"></a>完整性（Integrity）</h4><p>能确定信息是否被篡改或丢失。如借钱的收据一般用大写数字，或者阿拉伯数字之间没有空格等要求，防止收据被篡改。</p>
-<h4 id="不可否认性（non-repudiation）"><a href="#不可否认性（non-repudiation）" class="headerlink" title="不可否认性（non-repudiation）"></a>不可否认性（non-repudiation）</h4><p>能明确是谁产生，且无法被“赖掉”。如手印、指纹、皇帝诏书等。</p>
-<h4 id="二、你都会的密码术"><a href="#二、你都会的密码术" class="headerlink" title="二、你都会的密码术"></a>二、你都会的密码术</h4>
-          
+          一、安全要解决什么问题在典型的场景中，安全主要用于解决4类需求：
+保密（Security/Confidentiality）不希望通信中的信息被第三方窥探；密码；公司机要文件等；
+鉴别/认证（Authentication）明确通信对端的身份是你认为的身份。如打电话时通过声音语气等明确对方的身份；银行柜
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/01/ANDROID/INTERMEDIATE/01Android安全系列篇一(加密、密钥、签名与证书)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -847,7 +790,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -905,6 +848,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/31/ANDROID/BASE/16RecyclerView/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/05/31/ANDROID/BASE/16RecyclerView/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -931,8 +884,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/31/ANDROID/BASE/16RecyclerView/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -988,7 +948,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1046,6 +1006,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/30/ANDROID/BASE/15代码控制Layout/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/05/30/ANDROID/BASE/15代码控制Layout/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1072,9 +1042,15 @@
       
         
           
-            <p>虽然Google官方强烈建议我们视图应该在配置文件中定义，但是我们依然得掌握使用代码来控制布局文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">package com.xianxiaotao.layout;</div><div class="line"></div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.os.Bundle;</div><div class="line">import android.view.View;</div><div class="line">import android.view.ViewGroup;</div><div class="line">import android.widget.Button;</div><div class="line">import android.widget.LinearLayout;</div><div class="line"></div><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    private LinearLayout rootView;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line"></div><div class="line">        rootView = new LinearLayout(this);</div><div class="line">        rootView.setOrientation(LinearLayout.VERTICAL);</div><div class="line">        <span class="built_in">set</span>ContentView(rootView);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (int i = 0; i &lt; 5; i++) &#123;</div><div class="line">            Button button = new Button(this);</div><div class="line">            button.setAllCaps(<span class="literal">false</span>);</div><div class="line">            button.setText(<span class="string">"Click To Remove Me"</span>);</div><div class="line">            button.setOnClickListener(new View.<span class="function"><span class="title">OnClickListener</span></span>() &#123;</div><div class="line">                @Override</div><div class="line">                public void onClick(View v) &#123;</div><div class="line">                    rootView.removeView(v);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(</div><div class="line">                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT );</div><div class="line">            lp.weight = 1;</div><div class="line">            rootView.addView(button, lp);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
+          虽然Google官方强烈建议我们视图应该在配置文件中定义，但是我们依然得掌握使用代码来控制布局文件。123456789101112131415161718192021222324252627282930313233343536373839package com.xianxiaotao.layout;
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/30/ANDROID/BASE/15代码控制Layout/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1130,7 +1106,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1188,6 +1164,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/29/ANDROID/BASE/14Fragment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/05/29/ANDROID/BASE/14Fragment/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1214,18 +1200,15 @@
       
         
           
-            <h2 id="一、使用Fragment"><a href="#一、使用Fragment" class="headerlink" title="一、使用Fragment"></a>一、使用Fragment</h2><h4 id="1、自定义SecondFragment"><a href="#1、自定义SecondFragment" class="headerlink" title="1、自定义SecondFragment"></a>1、自定义SecondFragment</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">package com.xianxiaotao.fragment;</div><div class="line"></div><div class="line">import android.os.Bundle;</div><div class="line">import android.support.annotation.Nullable;</div><div class="line">import android.support.v4.app.Fragment;</div><div class="line">import android.view.LayoutInflater;</div><div class="line">import android.view.View;</div><div class="line">import android.view.ViewGroup;</div><div class="line"></div><div class="line">public class SecondFragment extends Fragment &#123;</div><div class="line"></div><div class="line">    @Nullable</div><div class="line">    @Override</div><div class="line">    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) &#123;</div><div class="line">        View root = inflater.inflate(R.layout.fragment_second, container, <span class="literal">false</span>);</div><div class="line">        root.findViewById(R.id.btnBackFirstFragment).setOnClickListener(new View.<span class="function"><span class="title">OnClickListener</span></span>() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                getActivity().getSupportFragmentManager().popBackStack();   // 返回</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="built_in">return</span> root;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="2、自定义FirstFragment"><a href="#2、自定义FirstFragment" class="headerlink" title="2、自定义FirstFragment"></a>2、自定义FirstFragment</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">package com.xianxiaotao.fragment;</div><div class="line"></div><div class="line">import android.os.Bundle;</div><div class="line">import android.support.annotation.Nullable;</div><div class="line">import android.support.v4.app.Fragment;</div><div class="line">import android.view.LayoutInflater;</div><div class="line">import android.view.View;</div><div class="line">import android.view.ViewGroup;</div><div class="line"></div><div class="line">public class FirstFragment extends Fragment &#123;</div><div class="line"></div><div class="line">    @Nullable</div><div class="line">    @Override</div><div class="line">    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) &#123;</div><div class="line">        View root = inflater.inflate(R.layout.fragment_first, container, <span class="literal">false</span>);</div><div class="line">        root.findViewById(R.id.btnStartSecondFragment).setOnClickListener(new View.<span class="function"><span class="title">OnClickListener</span></span>() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;   // SecondFragment替换当前的FirstFragment</div><div class="line">                getActivity().getSupportFragmentManager().beginTransaction()</div><div class="line">                        .addToBackStack(null)   /* 返回键返回上一个Fragment */</div><div class="line">                        .replace(R.id.container, new SecondFragment())</div><div class="line">                        .commit();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="built_in">return</span> root;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="3、MainActivity"><a href="#3、MainActivity" class="headerlink" title="3、MainActivity"></a>3、MainActivity</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">package com.xianxiaotao.fragment;</div><div class="line"></div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.os.Bundle;</div><div class="line"></div><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        <span class="built_in">set</span>ContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (savedInstanceState == null) &#123;</div><div class="line">            getSupportFragmentManager().beginTransaction()</div><div class="line">                    .add(R.id.container, new FirstFragment())</div><div class="line">                    .commit();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="4、布局文件activity-main-xml、fragment-first-xml-和-fragment-second-xml"><a href="#4、布局文件activity-main-xml、fragment-first-xml-和-fragment-second-xml" class="headerlink" title="4、布局文件activity_main.xml、fragment_first.xml 和 fragment_second.xml"></a>4、布局文件activity_main.xml、fragment_first.xml 和 fragment_second.xml</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;FrameLayout</div><div class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    android:id=<span class="string">"@+id/container"</span></div><div class="line">    android:layout_width=<span class="string">"match_parent"</span></div><div class="line">    android:layout_height=<span class="string">"match_parent"</span>/&gt;</div><div class="line"></div><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    android:layout_width=<span class="string">"match_parent"</span></div><div class="line">    android:layout_height=<span class="string">"match_parent"</span></div><div class="line">    android:orientation=<span class="string">"vertical"</span>&gt;</div><div class="line">    &lt;TextView</div><div class="line">        android:text=<span class="string">"This is first fragment"</span></div><div class="line">        android:layout_width=<span class="string">"match_parent"</span></div><div class="line">        android:layout_height=<span class="string">"wrap_content"</span> /&gt;</div><div class="line">    &lt;Button</div><div class="line">        android:text=<span class="string">"Start Second Fragment"</span></div><div class="line">        android:textAllCaps=<span class="string">"false"</span></div><div class="line">        android:layout_width=<span class="string">"wrap_content"</span></div><div class="line">        android:layout_height=<span class="string">"wrap_content"</span></div><div class="line">        android:id=<span class="string">"@+id/btnStartSecondFragment"</span>/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    android:layout_width=<span class="string">"match_parent"</span></div><div class="line">    android:layout_height=<span class="string">"match_parent"</span></div><div class="line">    android:orientation=<span class="string">"vertical"</span>&gt;</div><div class="line">    &lt;TextView</div><div class="line">        android:text=<span class="string">"This is second fragment"</span></div><div class="line">        android:layout_width=<span class="string">"match_parent"</span></div><div class="line">        android:layout_height=<span class="string">"wrap_content"</span> /&gt;</div><div class="line">    &lt;Button</div><div class="line">        android:text=<span class="string">"Go Back"</span></div><div class="line">        android:textAllCaps=<span class="string">"false"</span></div><div class="line">        android:layout_width=<span class="string">"wrap_content"</span></div><div class="line">        android:layout_height=<span class="string">"wrap_content"</span></div><div class="line">        android:id=<span class="string">"@+id/btnBackFirstFragment"</span>/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
-<h4 id="5、静态使用Fragment"><a href="#5、静态使用Fragment" class="headerlink" title="5、静态使用Fragment"></a>5、静态使用Fragment</h4><p>上述为动态的使用Fragment，静态的使用方式是在布局文件里指定使用哪个Fragment：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;fragment  </div><div class="line">    android:id=<span class="string">"@+id/fragment_first"</span>  </div><div class="line">    android:name=<span class="string">"com.xianxiaotao.FirstFragment"</span>  </div><div class="line">    android:layout_width=<span class="string">"match_parent"</span>  </div><div class="line">    android:layout_height=<span class="string">"match_parent"</span> /&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="二、Fragment的生命周期"><a href="#二、Fragment的生命周期" class="headerlink" title="二、Fragment的生命周期"></a>二、Fragment的生命周期</h2><h4 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h4><p>Fragment必须是依存与Activity而存在的，因此Activity的生命周期会直接影响到Fragment的生命周期。官网这张图很好的说明了两者生命周期的关系：<br><img src="http://ww1.sinaimg.cn/large/adc90466ly1fg27lza049j209g0irdgq.jpg" alt="Fragment的生命周期"><br>可以看到Fragment比Activity多了几个额外的生命周期回调方法：<br>onAttach(Activity)<br>当Fragment与Activity发生关联时调用。<br>onCreateView(LayoutInflater, ViewGroup,Bundle)<br>创建该Fragment的视图<br>onActivityCreated(Bundle)<br>当Activity的onCreate方法返回时调用<br>onDestoryView()<br>与onCreateView想对应，当该Fragment的视图被移除时调用<br>onDetach()<br>与onAttach相对应，当Fragment与Activity关联被取消时调用<br>注意：除了onCreateView，其他的所有方法如果你重写了，必须调用父类对于该方法的实现</p>
-<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>在上述Demo中每个Fragment里重写所有的生命周期方法以及MainActivity，并输出日志信息。如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onAttach(Context context) &#123;</div><div class="line">    super.onAttach(context);</div><div class="line">    System.out.println(<span class="string">"FirstFragment onAttach"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="1、启动程序，在MainActivity的onCreate方法中引用了FirstFragment。日志如下："><a href="#1、启动程序，在MainActivity的onCreate方法中引用了FirstFragment。日志如下：" class="headerlink" title="1、启动程序，在MainActivity的onCreate方法中引用了FirstFragment。日志如下："></a>1、启动程序，在MainActivity的onCreate方法中引用了FirstFragment。日志如下：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MainActivity onCreate</div><div class="line">FirstFragment onAttach</div><div class="line">FirstFragment onCreate</div><div class="line">FirstFragment onCreateView</div><div class="line">FirstFragment onActivityCreated</div><div class="line">FirstFragment onStart</div><div class="line">MainActivity onStart</div><div class="line">MainActivity onResume</div><div class="line">FirstFragment onResume</div></pre></td></tr></table></figure>
-<h4 id="2、Start-Second-Fragment，使用SecondFragment替换FirstFragment。日志："><a href="#2、Start-Second-Fragment，使用SecondFragment替换FirstFragment。日志：" class="headerlink" title="2、Start Second Fragment，使用SecondFragment替换FirstFragment。日志："></a>2、Start Second Fragment，使用SecondFragment替换FirstFragment。日志：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">SecondFragment onAttach</div><div class="line">SecondFragment onCreate</div><div class="line">FirstFragment onPause</div><div class="line">FirstFragment onStop</div><div class="line">FirstFragment onDestroyView</div><div class="line">SecondFragment onCreateView</div><div class="line">SecondFragment onActivityCreated</div><div class="line">SecondFragment onStart</div><div class="line">SecondFragment onResume</div></pre></td></tr></table></figure>
-<h4 id="3、Go-Back，由SecondFragment返回到FirstFragment。日志："><a href="#3、Go-Back，由SecondFragment返回到FirstFragment。日志：" class="headerlink" title="3、Go Back，由SecondFragment返回到FirstFragment。日志："></a>3、Go Back，由SecondFragment返回到FirstFragment。日志：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">SecondFragment onPause</div><div class="line">SecondFragment onStop</div><div class="line">SecondFragment onDestroyView</div><div class="line">SecondFragment onDestroy</div><div class="line">SecondFragment onDetach</div><div class="line">FirstFragment onCreateView</div><div class="line">FirstFragment onActivityCreated</div><div class="line">FirstFragment onStart</div><div class="line">FirstFragment onResume</div></pre></td></tr></table></figure>
-<h4 id="4、返回，即退出应用程序。日志："><a href="#4、返回，即退出应用程序。日志：" class="headerlink" title="4、返回，即退出应用程序。日志："></a>4、返回，即退出应用程序。日志：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">FirstFragment onPause</div><div class="line">MainActivity onPause</div><div class="line">FirstFragment onStop</div><div class="line">MainActivity onStop</div><div class="line">FirstFragment onDestroyView</div><div class="line">FirstFragment onDestroy</div><div class="line">FirstFragment onDetach</div><div class="line">MainActivity onDestroy</div></pre></td></tr></table></figure>
-          
+          一、使用Fragment1、自定义SecondFragment12345678910111213141516171819202122232425package com.xianxiaotao.fragment;import android.os.Bundle;import android.suppo
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/29/ANDROID/BASE/14Fragment/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1281,7 +1264,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1339,6 +1322,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/29/ANDROID/BASE/13Android6.0运行时权限处理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/05/29/ANDROID/BASE/13Android6.0运行时权限处理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1365,37 +1358,21 @@
       
         
           
-            <p>参考文档：</p>
-<ul>
-<li><a href="http://developer.android.com/intl/zh-cn/about/versions/marshmallow/android-6.0-changes.html#behavior-runtime-permissions" target="_blank" rel="external">google官方文档</a></li>
-<li><a href="http://blog.csdn.net/lmj623565791/article/details/50709663" target="_blank" rel="external">Android 6.0 运行时权限处理完全解析</a></li>
-<li><a href="http://blog.csdn.net/andrexpert/article/details/53331836" target="_blank" rel="external">探讨Android 6.0及以上新权限系统的检测与处理</a></li>
-</ul>
-<h2 id="一、新的权限机制"><a href="#一、新的权限机制" class="headerlink" title="一、新的权限机制"></a>一、新的权限机制</h2><p>Google将权限分为两类，一类是Normal Permissions，这类权限一般不涉及用户隐私，是不需要用户进行授权的，比如手机震动、访问网络等；另一类是Dangerous Permissions,一般是涉及到用户隐私的，需要用户进行授权，比如读取sdcard、访问通讯录等。</p>
-<h4 id="Normal-Permissions"><a href="#Normal-Permissions" class="headerlink" title="Normal Permissions"></a>Normal Permissions</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">ACCESS_LOCATION_EXTRA_COMMANDS</div><div class="line">ACCESS_NETWORK_STATE</div><div class="line">ACCESS_NOTIFICATION_POLICY</div><div class="line">ACCESS_WIFI_STATE</div><div class="line">BLUETOOTH</div><div class="line">BLUETOOTH_ADMIN</div><div class="line">BROADCAST_STICKY</div><div class="line">CHANGE_NETWORK_STATE</div><div class="line">CHANGE_WIFI_MULTICAST_STATE</div><div class="line">CHANGE_WIFI_STATE</div><div class="line">DISABLE_KEYGUARD</div><div class="line">EXPAND_STATUS_BAR</div><div class="line">GET_PACKAGE_SIZE</div><div class="line">INSTALL_SHORTCUT</div><div class="line">INTERNET</div><div class="line">KILL_BACKGROUND_PROCESSES</div><div class="line">MODIFY_AUDIO_SETTINGS</div><div class="line">NFC</div><div class="line">READ_SYNC_SETTINGS</div><div class="line">READ_SYNC_STATS</div><div class="line">RECEIVE_BOOT_COMPLETED</div><div class="line">REORDER_TASKS</div><div class="line">REQUEST_INSTALL_PACKAGES</div><div class="line">SET_ALARM</div><div class="line">SET_TIME_ZONE</div><div class="line">SET_WALLPAPER</div><div class="line">SET_WALLPAPER_HINTS</div><div class="line">TRANSMIT_IR</div><div class="line">UNINSTALL_SHORTCUT</div><div class="line">USE_FINGERPRINT</div><div class="line">VIBRATE</div><div class="line">WAKE_LOCK</div><div class="line">WRITE_SYNC_SETTINGS</div></pre></td></tr></table></figure>
-<h4 id="Dangerous-Permissions"><a href="#Dangerous-Permissions" class="headerlink" title="Dangerous Permissions"></a>Dangerous Permissions</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">group:android.permission-group.CONTACTS</div><div class="line">    permission:android.permission.WRITE_CONTACTS</div><div class="line">    permission:android.permission.GET_ACCOUNTS</div><div class="line">    permission:android.permission.READ_CONTACTS</div><div class="line"></div><div class="line">group:android.permission-group.PHONE</div><div class="line">    permission:android.permission.READ_CALL_LOG</div><div class="line">    permission:android.permission.READ_PHONE_STATE</div><div class="line">    permission:android.permission.CALL_PHONE</div><div class="line">    permission:android.permission.WRITE_CALL_LOG</div><div class="line">    permission:android.permission.USE_SIP</div><div class="line">    permission:android.permission.PROCESS_OUTGOING_CALLS</div><div class="line">    permission:com.android.voicemail.permission.ADD_VOICEMAIL</div><div class="line"></div><div class="line">group:android.permission-group.CALENDAR</div><div class="line">    permission:android.permission.READ_CALENDAR</div><div class="line">    permission:android.permission.WRITE_CALENDAR</div><div class="line"></div><div class="line">group:android.permission-group.CAMERA</div><div class="line">    permission:android.permission.CAMERA</div><div class="line"></div><div class="line">group:android.permission-group.SENSORS</div><div class="line">    permission:android.permission.BODY_SENSORS</div><div class="line"></div><div class="line">group:android.permission-group.LOCATION</div><div class="line">    permission:android.permission.ACCESS_FINE_LOCATION</div><div class="line">    permission:android.permission.ACCESS_COARSE_LOCATION</div><div class="line"></div><div class="line">group:android.permission-group.STORAGE</div><div class="line">    permission:android.permission.READ_EXTERNAL_STORAGE</div><div class="line">    permission:android.permission.WRITE_EXTERNAL_STORAGE</div><div class="line"></div><div class="line">group:android.permission-group.MICROPHONE</div><div class="line">    permission:android.permission.RECORD_AUDIO</div><div class="line"></div><div class="line">group:android.permission-group.SMS</div><div class="line">    permission:android.permission.READ_SMS</div><div class="line">    permission:android.permission.RECEIVE_WAP_PUSH</div><div class="line">    permission:android.permission.RECEIVE_MMS</div><div class="line">    permission:android.permission.RECEIVE_SMS</div><div class="line">    permission:android.permission.SEND_SMS</div><div class="line">    permission:android.permission.READ_CELL_BROADCASTS</div></pre></td></tr></table></figure>
-<p>Dangerous Permissions分组机制：如果你申请某个危险的权限，假设你的app早已被用户授权了同一组的某个危险权限，那么系统立即授权，而不需要用户点击授权。比如你的app对READ_CONTACTS已经授权了，当你的app申请WRITE_CONTACTS时，系统会直接授权通过。此外，对于申请时弹出的dialog上面的文本说明也是对整个权限组的说明，而不是单个权限的说明。</p>
-<blockquote>
-<p>不过需要注意的是，不要对权限组过多的依赖，尽可能对每个危险权限都进行正常流程的申请，因为在后期的版本中这个权限组可能会产生变化。</p>
-</blockquote>
-<h2 id="二、API的使用"><a href="#二、API的使用" class="headerlink" title="二、API的使用"></a>二、API的使用</h2><h4 id="1、在AndroidManifest文件中添加需要的权限："><a href="#1、在AndroidManifest文件中添加需要的权限：" class="headerlink" title="1、在AndroidManifest文件中添加需要的权限："></a>1、在AndroidManifest文件中添加需要的权限：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=<span class="string">"android.permission.READ_CONTACTS"</span>/&gt;</div></pre></td></tr></table></figure>
-<h4 id="2、检查权限："><a href="#2、检查权限：" class="headerlink" title="2、检查权限："></a>2、检查权限：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">    // 未被授权，申请权限</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    // 已被授权</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ContextCompat.checkSelfPermission：主要用于检测某个权限是否已经被授予，方法返回值为PackageManager.PERMISSION_DENIED或者PackageManager.PERMISSION_GRANTED。当返回DENIED就需要进行申请授权了。</p>
-<h4 id="3、申请权限授权"><a href="#3、申请权限授权" class="headerlink" title="3、申请权限授权"></a>3、申请权限授权</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ActivityCompat.requestPermissions(</div><div class="line">       thisActivity,   /* Context */</div><div class="line">       new String[]&#123;Manifest.permission.READ_CONTACTS&#125;,    /* 需要申请的权限的字符串数组 */</div><div class="line">       MY_PERMISSIONS_REQUEST_READ_CONTACTS    /* requestCode,用于回调时检测 */</div><div class="line">   );</div></pre></td></tr></table></figure>
-<p>该方法是异步的，支持一次性申请多个权限授权，而系统会通过对话框逐一询问用户是否授权。</p>
-<h4 id="4、处理申请回调"><a href="#4、处理申请回调" class="headerlink" title="4、处理申请回调"></a>4、处理申请回调</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResult) &#123;</div><div class="line">    switch(requestCode) &#123;</div><div class="line">        // If request is cancelled, the result arrays are empty.</div><div class="line">        <span class="keyword">if</span> (grantResults.length &gt; 0 &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">            // Permission was granted, yay! Do the contacts-related task you need to do.</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            // Permission denied, boo! Disable the functionality that depends on this permission.</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>对于权限的申请结果，首先验证requestCode定位到你的申请，然后验证grantResults对应于申请的结果，这里的数组对应于申请时的第二个权限字符串数组。如果你同时申请两个权限，那么grantResults的length就为2，分别记录你两个权限的申请结果。如果申请成功，就可以做你的事情了~</p>
-<h4 id="5、还有个API值得提一下："><a href="#5、还有个API值得提一下：" class="headerlink" title="5、还有个API值得提一下："></a>5、还有个API值得提一下：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// Should we show an explanation?</div><div class="line"><span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity, Manifest.permission.READ_CONTACTS)) </div><div class="line">    // Show an expanation to the user *asynchronously* -- don<span class="string">'t block</span></div><div class="line">    // this thread waiting for the user's response! After the user</div><div class="line">    // sees the explanation, try again to request the permission.</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个API主要用于给用户一个申请权限的解释，该方法只有在用户在上一次已经拒绝过你的这个权限申请。也就是说，用户已经拒绝一次了，你又弹个授权框，你需要给用户一个解释，为什么要授权，则使用该方法。</p>
-<h4 id="6、综合上述步骤："><a href="#6、综合上述步骤：" class="headerlink" title="6、综合上述步骤："></a>6、综合上述步骤：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">// Here, thisActivity is the current activity</div><div class="line"><span class="keyword">if</span> (ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.READ_CONTACTS)</div><div class="line">        != PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">    // Should we show an explanation?</div><div class="line">    <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,</div><div class="line">            Manifest.permission.READ_CONTACTS)) &#123;</div><div class="line"></div><div class="line">        // Show an expanation to the user *asynchronously* -- don<span class="string">'t block</span></div><div class="line">        // this thread waiting for the user's response! After the user</div><div class="line">        // sees the explanation, try again to request the permission.</div><div class="line"></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">        // No explanation needed, we can request the permission.</div><div class="line"></div><div class="line">        ActivityCompat.requestPermissions(thisActivity,</div><div class="line">                new String[]&#123;Manifest.permission.READ_CONTACTS&#125;,</div><div class="line">                MY_PERMISSIONS_REQUEST_READ_CONTACTS);</div><div class="line"></div><div class="line">        // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an</div><div class="line">        // app-defined int constant. The callback method gets the</div><div class="line">        // result of the request.</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="三、Simple-Demo-：直接拨打电话"><a href="#三、Simple-Demo-：直接拨打电话" class="headerlink" title="三、Simple Demo ：直接拨打电话"></a>三、Simple Demo ：直接拨打电话</h2><h4 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;manifest xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">          package=<span class="string">"com.xianxiaotao.callphone"</span>&gt;</div><div class="line"></div><div class="line">    &lt;uses-permission android:name=<span class="string">"android.permission.CALL_PHONE"</span>/&gt;</div><div class="line"></div><div class="line">    &lt;application</div><div class="line">        android:allowBackup=<span class="string">"true"</span></div><div class="line">        android:icon=<span class="string">"@mipmap/ic_launcher"</span></div><div class="line">        android:label=<span class="string">"@string/app_name"</span></div><div class="line">        android:supportsRtl=<span class="string">"true"</span></div><div class="line">        android:theme=<span class="string">"@style/AppTheme"</span>&gt;</div><div class="line">        &lt;activity android:name=<span class="string">".MainActivity"</span>&gt;</div><div class="line">            &lt;intent-filter&gt;</div><div class="line">                &lt;action android:name=<span class="string">"android.intent.action.MAIN"</span>/&gt;</div><div class="line">                &lt;category android:name=<span class="string">"android.intent.category.LAUNCHER"</span>/&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">        &lt;/activity&gt;</div><div class="line">    &lt;/application&gt;</div><div class="line"></div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
-<h4 id="MainActivity-java"><a href="#MainActivity-java" class="headerlink" title="MainActivity.java"></a>MainActivity.java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">package com.xianxiaotao.callphone;</div><div class="line"></div><div class="line">import android.Manifest;</div><div class="line">import android.content.Intent;</div><div class="line">import android.content.pm.PackageManager;</div><div class="line">import android.net.Uri;</div><div class="line">import android.support.annotation.NonNull;</div><div class="line">import android.support.v4.app.ActivityCompat;</div><div class="line">import android.support.v4.content.ContextCompat;</div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.os.Bundle;</div><div class="line">import android.view.View;</div><div class="line">import android.widget.Toast;</div><div class="line"></div><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        <span class="built_in">set</span>ContentView(R.layout.activity_main);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void callPhone(View v) &#123;</div><div class="line">        <span class="keyword">if</span> (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">            ActivityCompat.requestPermissions(this, new String[]&#123;Manifest.permission.CALL_PHONE&#125;, MY_PERMISSIONS_REQUEST_CALL_PHONE);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            call();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void <span class="function"><span class="title">call</span></span>() &#123;</div><div class="line">        Intent intent = new Intent(Intent.ACTION_CALL);</div><div class="line">        Uri data = Uri.parse(<span class="string">"tel:"</span> + 10086);</div><div class="line">        intent.setData(data);</div><div class="line">        try &#123;</div><div class="line">            startActivity(intent);</div><div class="line">        &#125; catch (SecurityException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) &#123;</div><div class="line">        <span class="keyword">if</span> (requestCode == MY_PERMISSIONS_REQUEST_CALL_PHONE) &#123;</div><div class="line">            <span class="keyword">if</span> (grantResults[0] == PackageManager.PERMISSION_GRANTED)</div><div class="line">                call();</div><div class="line">            <span class="keyword">else</span></div><div class="line">                Toast.makeText(MainActivity.this, <span class="string">"Permission Denied"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">            <span class="built_in">return</span>;</div><div class="line">        &#125;</div><div class="line">        super.onRequestPermissionsResult(requestCode, permissions, grantResults);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在Android 6.x上运行是，点击testCall，即会弹出授权窗口，如何你Allow则直接拨打电话，如果Denied则Toast弹出”Permission Denied”。</p>
-<blockquote>
-<p>对于Intent这种方式，很多情况下是不需要授权的甚至权限都不需要的，比如以下情况就不需要申请权限：你是到拨号界面而不是直接拨打电话；打开系统图库去选择照片；调用系统相机app去拍照等。</p>
-</blockquote>
+          参考文档：
 
-          
+google官方文档
+Android 6.0 运行时权限处理完全解析
+探讨Android 6.0及以上新权限系统的检测与处理
+
+一、新的权限机制Google将权限分为两类，一类是Normal Permissions，这类权限一般不涉及用户隐私，是不需要用户进行授权的，比如手机震动、访问
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/29/ANDROID/BASE/13Android6.0运行时权限处理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1451,7 +1428,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1509,6 +1486,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/28/ANDROID/BASE/12权限系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/05/28/ANDROID/BASE/12权限系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1535,18 +1522,16 @@
       
         
           
-            <h4 id="请求权限"><a href="#请求权限" class="headerlink" title="请求权限"></a>请求权限</h4><p>代码中包含这样的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mWebView.loadUrl(<span class="string">"https://xianxiaotao.github.io/"</span>);</div></pre></td></tr></table></figure></p>
-<p>我们需要为它请求网络权限，在AndroidMainfest.xml文件中添加以下权限：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=<span class="string">"android.permission.INTERNET"</span>/&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="为代码添加权限检查"><a href="#为代码添加权限检查" class="headerlink" title="为代码添加权限检查"></a>为代码添加权限检查</h4><p>在AndroidMainfest.xml文件中声明一个自定义权限：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;permission android:name=<span class="string">"com.xianxiaotao.checkpermission.permission.DO_SOMETHING"</span> /&gt;</div></pre></td></tr></table></figure></p>
-<p>当我们需要在代码中为应用添加权限检查功能时，如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class CheckPermission &#123;</div><div class="line"></div><div class="line">    public static final String PERMISSION_DO_SOMETHING = <span class="string">"com.xianxiaotao.checkpermission.permission.DO_SOMETHING"</span>;</div><div class="line"></div><div class="line">    public static void <span class="keyword">do</span>Something(Context context) &#123;</div><div class="line">        int checkResult = context.checkCallingOrSelfPermission(PERMISSION_DO_SOMETHING);</div><div class="line">        <span class="keyword">if</span> (checkResult != PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">            throw new SecurityException(<span class="string">"doSomething need permission: "</span> + PERMISSION_DO_SOMETHING);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        System.out.println(<span class="string">"If allowed, do something!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        <span class="built_in">set</span>ContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        CheckPermission.doSomething(this);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>此时运行程序，发生SecurityException。为此，我们需要添加权限：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=<span class="string">"com.xianxiaotao.checkpermission.permission.DO_SOMETHING"</span>/&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="为基本组件添加权限检查"><a href="#为基本组件添加权限检查" class="headerlink" title="为基本组件添加权限检查"></a>为基本组件添加权限检查</h4><p>这种自定义的权限通常是为其他应用访问本应用所设的限制。例如在AndroidMainfest.xml文件中声明一个自定义权限：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;permission android:name=<span class="string">"com.xianxiaotao.music.permission.PLAY_MUSIC"</span> /&gt;</div></pre></td></tr></table></figure></p>
-<p>然后为PlayMusicActivity添加权限检查：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;activity </div><div class="line">    android:name=<span class="string">".activity.PlayMusicActivity"</span></div><div class="line">    android:permission=<span class="string">"com.xianxiaotao.music.permission.PLAY_MUSIC"</span>&gt;</div><div class="line">    &lt;intent-filter&gt;</div><div class="line">        &lt;category android:name=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</div><div class="line">        &lt;action android:name=<span class="string">"com.xianxiaotao.music.intent.action.PLAY_MUSIC"</span>/&gt;</div><div class="line">    &lt;/intent-filter&gt;</div><div class="line">&lt;/activity&gt;</div></pre></td></tr></table></figure></p>
-<p>应用内部执行下列语句，则不需要做额外工作，在同一个应用内，对于四大组件来说默认拥有访问权限。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">startActivity(new Intent(MainActivity.this, PlayMusicActivity.class));</div></pre></td></tr></table></figure></p>
-<p>但是对于其他应用，如果：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">startActivity(new Intent(<span class="string">"com.xianxiaotao.music.permission.PLAY_MUSIC"</span>));</div></pre></td></tr></table></figure></p>
-<p>就需要添加权限才能访问PlayMusicActivity：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=<span class="string">"com.xianxiaotao.music.permission.PLAY_MUSIC"</span>/&gt;</div></pre></td></tr></table></figure></p>
-
-          
+          请求权限代码中包含这样的代码：1mWebView.loadUrl("https://xianxiaotao.github.io/");
+我们需要为它请求网络权限，在AndroidMainfest.xml文件中添加以下权限：1&lt;uses-permission android:name="andr
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/28/ANDROID/BASE/12权限系统/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1602,7 +1587,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1660,6 +1645,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/28/ANDROID/BASE/11日志系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/05/28/ANDROID/BASE/11日志系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1686,18 +1681,15 @@
       
         
           
-            <h2 id="使用日志API"><a href="#使用日志API" class="headerlink" title="使用日志API"></a>使用日志API</h2><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String TAG = <span class="string">"MainActivity"</span>;</div><div class="line"></div><div class="line">Log.e(TAG, <span class="string">"错误信息"</span>);</div><div class="line">Log.w(TAG, <span class="string">"警告信息"</span>);</div><div class="line">Log.i(TAG, <span class="string">"普通信息"</span>);</div><div class="line">Log.d(TAG, <span class="string">"调试信息"</span>);</div><div class="line">Log.v(TAG, <span class="string">"无用信息"</span>); // 便于程序猿唠叨</div></pre></td></tr></table></figure>
-<p>Java日志：System.out对应Log.i；System.err对应Log.w</p>
-<h4 id="日志分类"><a href="#日志分类" class="headerlink" title="日志分类"></a>日志分类</h4><p>在Android Studio中对日志进行分类呈现，便于开发调试：</p>
-<ul>
-<li>Android Monitor -&gt; 选择Log level: Verbose、Debug、Info、Warn、Error</li>
-<li>Regex：进行搜索</li>
-<li>Edit Filter Configuration</li>
-</ul>
-<h4 id="DDMS中查看日志"><a href="#DDMS中查看日志" class="headerlink" title="DDMS中查看日志"></a>DDMS中查看日志</h4><p>1) 使用Android Studio中的DDMS<br>Tools -&gt; Android -&gt; Android Device Monitor<br>2) 独立的 DDMS 查看日志<br>双击Mac电脑上文件：/xianxiaotao/Library/Android/SDK/tools/ddms</p>
-<h2 id="日志工具类"><a href="#日志工具类" class="headerlink" title="日志工具类"></a>日志工具类</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">package com.xianxiaotao.utils;</div><div class="line"></div><div class="line">import android.util.Log;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Log统一管理类</div><div class="line"> */</div><div class="line">public class L &#123;</div><div class="line"></div><div class="line">    private <span class="function"><span class="title">L</span></span>() &#123;</div><div class="line">        /* cannot be instantiated */</div><div class="line">        throw new UnsupportedOperationException(<span class="string">"cannot be instantiated"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static boolean isDebug = <span class="literal">true</span>;   // 是否需要打印bug，可以在application的onCreate函数里面初始化</div><div class="line">    private static final String TAG = <span class="string">"xian"</span>;</div><div class="line"></div><div class="line">    // 下面四个是默认tag的函数</div><div class="line">    public static void v(String msg) &#123;</div><div class="line">        <span class="keyword">if</span> (isDebug)</div><div class="line">            Log.v(TAG, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void d(String msg) &#123;</div><div class="line">        <span class="keyword">if</span> (isDebug)</div><div class="line">            Log.d(TAG, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void i(String msg) &#123;</div><div class="line">        <span class="keyword">if</span> (isDebug)</div><div class="line">            Log.i(TAG, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void w(String msg) &#123;</div><div class="line">        <span class="keyword">if</span> (isDebug)</div><div class="line">            Log.w(TAG, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void e(String msg) &#123;</div><div class="line">        <span class="keyword">if</span> (isDebug)</div><div class="line">            Log.e(TAG, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 下面是传入自定义tag的函数</div><div class="line"></div><div class="line">    public static void v(String tag, String msg) &#123;</div><div class="line">        <span class="keyword">if</span> (isDebug)</div><div class="line">            Log.v(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void d(String tag, String msg) &#123;</div><div class="line">        <span class="keyword">if</span> (isDebug)</div><div class="line">            Log.d(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void i(String tag, String msg) &#123;</div><div class="line">        <span class="keyword">if</span> (isDebug)</div><div class="line">            Log.i(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void w(String tag, String msg) &#123;</div><div class="line">        <span class="keyword">if</span> (isDebug)</div><div class="line">            Log.w(tag, msg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void e(String tag, String msg) &#123;</div><div class="line">        <span class="keyword">if</span> (isDebug)</div><div class="line">            Log.e(tag, msg);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="以后进阶：奔溃日志收集与上传"><a href="#以后进阶：奔溃日志收集与上传" class="headerlink" title="以后进阶：奔溃日志收集与上传"></a>以后进阶：奔溃日志收集与上传</h2>
-          
+          使用日志API使用1234567private static final String TAG = "MainActivity";Log.e(TAG, "错误信息");Log.w(TAG, "警告信息");Log.i(TAG, "普通信息");Log.d(TAG, "调试信息");Log.v(TAG
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/28/ANDROID/BASE/11日志系统/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1753,7 +1745,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
+      <meta itemprop="name" content="先小涛">
     </span>
 
     
@@ -1811,6 +1803,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/28/ANDROID/BASE/10BroadcastReceiver/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/05/28/ANDROID/BASE/10BroadcastReceiver/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1837,55 +1839,21 @@
       
         
           
-            <h2 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h2><h4 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h4><ul>
-<li>有序广播：被广播接收器接收后，可被终止，无法往下继续传达。</li>
-<li>普通广播：发送至每一个已经注册（订阅）的广播接收器，无法被终止。</li>
-</ul>
-<h4 id="广播接收器"><a href="#广播接收器" class="headerlink" title="广播接收器"></a>广播接收器</h4><ul>
-<li>静态注册广播接收器：在AndroidManifest.xml中设置，程序不用启动亦可接收。</li>
-<li>动态注册广播接收器：代码中注册广播，程序未启动时，无法接收广播。</li>
-</ul>
-<h2 id="二、使用BroadcastReceiver"><a href="#二、使用BroadcastReceiver" class="headerlink" title="二、使用BroadcastReceiver"></a>二、使用BroadcastReceiver</h2><h4 id="创建MyReceiver-java"><a href="#创建MyReceiver-java" class="headerlink" title="创建MyReceiver.java"></a>创建MyReceiver.java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">package com.xianxiaotao.learnreceiver;</div><div class="line"></div><div class="line">import android.content.BroadcastReceiver;</div><div class="line">import android.content.Context;</div><div class="line">import android.content.Intent;</div><div class="line"></div><div class="line">public class MyReceiver extends BroadcastReceiver &#123;</div><div class="line"></div><div class="line">    private static final String ARG = <span class="string">"data"</span>;</div><div class="line"></div><div class="line">    public <span class="function"><span class="title">MyReceiver</span></span>() &#123;&#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onReceive(Context context, Intent intent) &#123;</div><div class="line">        System.out.println(<span class="string">"My Receiver : "</span> + intent.getStringExtra(ARG));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 静态注册发送广播方式</div><div class="line">     */</div><div class="line">    public static Intent newIntent(Context context, String args) &#123;</div><div class="line">        Intent intent = new Intent(context, MyReceiver.class);</div><div class="line">        intent.putExtra(ARG, args);</div><div class="line">        <span class="built_in">return</span> intent;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="静态注册"><a href="#静态注册" class="headerlink" title="静态注册"></a>静态注册</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;application&gt;</div><div class="line">    ...</div><div class="line"></div><div class="line">    &lt;receiver</div><div class="line">        android:name=<span class="string">".MyReceiver"</span></div><div class="line">        android:enabled=<span class="string">"true"</span></div><div class="line">        android:exported=<span class="string">"true"</span>&gt;</div><div class="line">    &lt;/receiver&gt;</div><div class="line">&lt;/application&gt;</div></pre></td></tr></table></figure>
-<h4 id="发送广播"><a href="#发送广播" class="headerlink" title="发送广播"></a>发送广播</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sendBroadcast(MyReceiver.newIntent(this, <span class="string">"xianxiaotao"</span>));</div></pre></td></tr></table></figure>
-<h2 id="三、动态注册和注销BroadcastReceiver"><a href="#三、动态注册和注销BroadcastReceiver" class="headerlink" title="三、动态注册和注销BroadcastReceiver"></a>三、动态注册和注销BroadcastReceiver</h2><h4 id="动态注册不需要在AndroidMainfest-xml文件中配置"><a href="#动态注册不需要在AndroidMainfest-xml文件中配置" class="headerlink" title="动态注册不需要在AndroidMainfest.xml文件中配置"></a>动态注册不需要在AndroidMainfest.xml文件中配置</h4><p>删除AndroidMainfest.xml文件中对MyReceiver的声明</p>
-<h4 id="为MyReceiver增加动新的发送广播方式"><a href="#为MyReceiver增加动新的发送广播方式" class="headerlink" title="为MyReceiver增加动新的发送广播方式"></a>为MyReceiver增加动新的发送广播方式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class MyReceiver extends BroadcastReceiver &#123;</div><div class="line"></div><div class="line">    private static final String ARG = <span class="string">"data"</span>;</div><div class="line">    public static final String ACTION = <span class="string">"MyReceiver.intent.action"</span>;</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 动态注册发送广播方式</div><div class="line">     */</div><div class="line">    public static Intent newIntent(String args) &#123;</div><div class="line">        Intent intent = new Intent(MyReceiver.ACTION);</div><div class="line">        intent.putExtra(ARG, args);</div><div class="line">        <span class="built_in">return</span> intent;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="MainActivity中动态注册、发送广播和注销广播"><a href="#MainActivity中动态注册、发送广播和注销广播" class="headerlink" title="MainActivity中动态注册、发送广播和注销广播"></a>MainActivity中动态注册、发送广播和注销广播</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity implements View.OnClickListener &#123;</div><div class="line"></div><div class="line">    private MyReceiver mMyReceiver = null;</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onClick(View v) &#123;</div><div class="line">        switch (v.getId()) &#123;</div><div class="line">            <span class="keyword">case</span> R.id.btnSendBroadcast:		// 发送广播</div><div class="line">                sendBroadcast(MyReceiver.newIntent(<span class="string">"xianxiaotao"</span>));</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.btnRegBroadcast:		// 注册广播</div><div class="line">                <span class="keyword">if</span> (mMyReceiver == null) &#123;</div><div class="line">                    mMyReceiver = new MyReceiver();</div><div class="line">                    registerReceiver(mMyReceiver, new IntentFilter(MyReceiver.ACTION));</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.btnUnregBroadcast:	// 注销广播</div><div class="line">                <span class="keyword">if</span> (mMyReceiver != null) &#123;</div><div class="line">                    unregisterReceiver(mMyReceiver);</div><div class="line">                    mMyReceiver = null;</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>实际开发中必须在onDestroy方法中注销广播，否则有内存泄漏的风险！！！</p>
-</blockquote>
-<h2 id="四、动态注册和静态注册的区别"><a href="#四、动态注册和静态注册的区别" class="headerlink" title="四、动态注册和静态注册的区别"></a>四、动态注册和静态注册的区别</h2><ul>
-<li>动态注册的广播会受Activity的生命周期的影响，当Activity销毁的时候，广播就失效了。</li>
-<li>而静态注册的广播，即使Activity销毁了，仍然可以收到广播。更牛掰的是即使杀死进程，仍然可以收到广播，关于这点不同的手机测试的结果是不同的。</li>
-<li>静态注册的广播，必需单独成一个类，不能像动态注册那样写在某个界面里。</li>
-</ul>
-<blockquote>
-<p>在Android中，有一些action是不支持静态注册的：</p>
-<ul>
-<li>android.intent.action.SCREEN_ON</li>
-<li>android.intent.action.SCREEN_OFF</li>
-<li>android.intent.action.BATTERY_CHANGED</li>
-<li>android.intent.action.CONFIGURATION_CHANGED</li>
-<li>android.intent.action.TIME_TICK</li>
-</ul>
-</blockquote>
-<h2 id="五、BroadcastReceiver的优先级"><a href="#五、BroadcastReceiver的优先级" class="headerlink" title="五、BroadcastReceiver的优先级"></a>五、BroadcastReceiver的优先级</h2><h4 id="配置文件中可以设置优先级：android-priority-”10”"><a href="#配置文件中可以设置优先级：android-priority-”10”" class="headerlink" title="配置文件中可以设置优先级：android:priority=”10”"></a>配置文件中可以设置优先级：android:priority=”10”</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;manifest xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">          package=<span class="string">"com.xianxiaotao.learnreceiver"</span>&gt;</div><div class="line">    &lt;application&gt;</div><div class="line"></div><div class="line">        ...</div><div class="line"></div><div class="line">        &lt;receiver</div><div class="line">            android:name=<span class="string">".MyReceiver"</span></div><div class="line">            android:enabled=<span class="string">"true"</span></div><div class="line">            android:exported=<span class="string">"true"</span>&gt;</div><div class="line">            &lt;intent-filter android:priority=<span class="string">"10"</span>&gt;</div><div class="line">                &lt;action android:name=<span class="string">"com.xianxiaotao.learnreceiver.intent.action"</span>/&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">        &lt;/receiver&gt;</div><div class="line">    &lt;/application&gt;</div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
-<h4 id="发送、终止-拦截有序广播"><a href="#发送、终止-拦截有序广播" class="headerlink" title="发送、终止/拦截有序广播"></a>发送、终止/拦截有序广播</h4><ul>
-<li>发送有序广播必须使用sendOrderedBroadcast()方法。</li>
-<li>终止有序广播需要在onReceive()方法里使用abortBroadcast()。</li>
-<li>终止的是普通广播则会发生RuntimeException。</li>
-</ul>
-<h4 id="有序广播优先级规则"><a href="#有序广播优先级规则" class="headerlink" title="有序广播优先级规则"></a>有序广播优先级规则</h4><ul>
-<li>优先级高的先接收（数字越大，优先级越高，其范围有待研究）</li>
-<li>同优先级的动静态广播接收器，动态优先于静态</li>
-<li>同优先级的动态广播接收器，或者同优先级的静态广播接收器，按照注册顺序。即静态：先扫描的大于后扫描的，动态：先注册的大于后注册的。</li>
-</ul>
-<h4 id="普通广播优先级规则"><a href="#普通广播优先级规则" class="headerlink" title="普通广播优先级规则"></a>普通广播优先级规则</h4><ul>
-<li>无视优先级，动态广播接收器优先于静态广播接收器。</li>
-<li>按照注册顺序。静态：先扫描的大于后扫描的，动态：先注册的大于后注册的。</li>
-</ul>
+          一、基本概念广播
+有序广播：被广播接收器接收后，可被终止，无法往下继续传达。
+普通广播：发送至每一个已经注册（订阅）的广播接收器，无法被终止。
 
-          
+广播接收器
+静态注册广播接收器：在AndroidManifest.xml中设置，程序不用启动亦可接收。
+动态注册广播接收器：代码中注册广播，程序未启动时，
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/28/ANDROID/BASE/10BroadcastReceiver/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1958,6 +1926,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="" />
+            
               <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -1979,10 +1951,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -1990,15 +1962,22 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -2028,7 +2007,8 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -2038,6 +2018,12 @@
 </div>
 
 
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
@@ -2046,10 +2032,14 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共112.1k字</span>
+</div>
 
         
 
@@ -2093,6 +2083,8 @@
   
 
 
+  
+
 
 
 
@@ -2133,6 +2125,11 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
 
   
 
@@ -2145,13 +2142,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
 
@@ -2193,9 +2183,348 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
@@ -2218,3 +2547,5 @@
 
 </body>
 </html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
