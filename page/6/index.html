@@ -729,151 +729,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/26/JAVA/JAVA 8 Interface/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="King">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/26/JAVA/JAVA 8 Interface/" itemprop="url">JAVA | java8之Interface</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T00:00:00+08:00">
-                2017-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p>目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">interface MyComparable&lt;T&gt; &#123;</div><div class="line">    public static &lt;T&gt; int compare(java.lang.Comparable&lt;T&gt; t1, T t2) &#123; <span class="built_in">return</span> t1.compareTo(t2); &#125;</div><div class="line">    int compareTo(T t);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="默认方法"><a href="#默认方法" class="headerlink" title="默认方法"></a>默认方法</h2><p>可以为接口方法提供一个默认实现。必须用default修饰符标记这样一个方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public interface Collection &#123;</div><div class="line">    int size();	// An abstract method</div><div class="line">    default boolean <span class="function"><span class="title">isEmpty</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> size() == 0;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="解决默认方法冲突"><a href="#解决默认方法冲突" class="headerlink" title="解决默认方法冲突"></a>解决默认方法冲突</h2><p>如果先在一个接口中将一个方法定义为默认方法，然后又在超类或另一个接口中定义了同样的方法，会发生什么情况？Java的相应规则如下：<br>1）超类优先。如果超类提供了一个具体方法，同名而且有相同参数类型的默认方法会被忽略。确保与Java SE 7兼容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">interface Named &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">class Person &#123;</div><div class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> getClass().getName(); &#125;</div><div class="line">&#125;</div><div class="line">class Student extends Person implements Named &#123; // super.getName() &#125;</div></pre></td></tr></table></figure></p>
-<p>2）接口冲突。如果两个接口都提供了同名同参的默认方法，实现类必须覆盖这个方法类解决冲突。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">interface Named &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> <span class="string">"Named:"</span> + getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">interface Called &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> <span class="string">"Called:"</span> + getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">class Student implements Named, Called &#123; </div><div class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> Named.super.getName(); &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/26/JAVA/JAVA 8 Lambda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -986,6 +841,151 @@
 <p>根据上下文，编译器会选择一个String参数的构造器。可以用数组类型建立构造器引用。例如，int[]::new，这等价于lambda表达式x -&gt; new int[x]。</p>
 <h2 id="五、变量"><a href="#五、变量" class="headerlink" title="五、变量"></a>五、变量</h2><p>lambda表达式中捕获的变量必须实际上是最终变量，即这个变量初始化之后就不会再为它赋新值。如下例中的text总是指示同一个String对象，所以此处合法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class LambdaTest &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        repeatMessage(<span class="string">"hello"</span>, 1000);</div><div class="line">        JOptionPane.showMessageDialog(null, <span class="string">"Quit program?"</span>);</div><div class="line">        System.exit(0);        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void repeatMessage(String text, int delay) &#123;</div><div class="line">        ActionListener listener = event -&gt; System.out.println(text);</div><div class="line">        new Timer(delay, listener).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>当lambda表达式捕获外围作用域中变量的，无论是外部改变还是内部改变都不合法的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 外部改变：</div><div class="line">public static void repeat(String text, int count) &#123;</div><div class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= count; i++) &#123;</div><div class="line">        ActionListener listener = event -&gt; &#123;</div><div class="line">            System.out.println(i + <span class="string">": "</span> + text);    // Error: Cannot refer to changing i</div><div class="line">        &#125;;</div><div class="line">        new Timer(1000, listener).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 内部改变：</div><div class="line">public static void countDown(int start, int delay) &#123;</div><div class="line">    ActionListener listener = event -&gt; &#123;</div><div class="line">            start--;                                // Error: Cannot mutate captured variable</div><div class="line">            System.out.println(start); </div><div class="line">        &#125;;</div><div class="line">        new Timer(delay, listener).start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/26/JAVA/JAVA 8 Interface/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="King">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/26/JAVA/JAVA 8 Interface/" itemprop="url">JAVA | java8之Interface</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T00:00:00+08:00">
+                2017-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p>目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">interface MyComparable&lt;T&gt; &#123;</div><div class="line">    public static &lt;T&gt; int compare(java.lang.Comparable&lt;T&gt; t1, T t2) &#123; <span class="built_in">return</span> t1.compareTo(t2); &#125;</div><div class="line">    int compareTo(T t);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="默认方法"><a href="#默认方法" class="headerlink" title="默认方法"></a>默认方法</h2><p>可以为接口方法提供一个默认实现。必须用default修饰符标记这样一个方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public interface Collection &#123;</div><div class="line">    int size();	// An abstract method</div><div class="line">    default boolean <span class="function"><span class="title">isEmpty</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> size() == 0;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="解决默认方法冲突"><a href="#解决默认方法冲突" class="headerlink" title="解决默认方法冲突"></a>解决默认方法冲突</h2><p>如果先在一个接口中将一个方法定义为默认方法，然后又在超类或另一个接口中定义了同样的方法，会发生什么情况？Java的相应规则如下：<br>1）超类优先。如果超类提供了一个具体方法，同名而且有相同参数类型的默认方法会被忽略。确保与Java SE 7兼容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">interface Named &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">class Person &#123;</div><div class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> getClass().getName(); &#125;</div><div class="line">&#125;</div><div class="line">class Student extends Person implements Named &#123; // super.getName() &#125;</div></pre></td></tr></table></figure></p>
+<p>2）接口冲突。如果两个接口都提供了同名同参的默认方法，实现类必须覆盖这个方法类解决冲突。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">interface Named &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> <span class="string">"Named:"</span> + getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">interface Called &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> <span class="string">"Called:"</span> + getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">class Student implements Named, Called &#123; </div><div class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> Named.super.getName(); &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
           
         
