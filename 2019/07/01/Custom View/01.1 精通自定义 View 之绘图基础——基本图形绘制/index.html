@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Custom View," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1.1.1 概述画图需要两个工具：纸和笔。在 Android 中，Paint 类就是画笔，而 Canvas 类就是纸，在这里叫作画布。
+凡是跟画笔设置相关的，比如画笔大小、粗细、画笔颜色、透明度、字体的样式等，都在 Paint 类里设置；同样，凡是要画出成品的东西，比如圆形、矩形、文字等，都调用 Canvas 类里的函数生成。
+示例：
+12345678910111213141516171819">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01.1 精通自定义 View 之绘图基础——基本图形绘制">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/Custom View/01.1 精通自定义 View 之绘图基础——基本图形绘制/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="1.1.1 概述画图需要两个工具：纸和笔。在 Android 中，Paint 类就是画笔，而 Canvas 类就是纸，在这里叫作画布。
+凡是跟画笔设置相关的，比如画笔大小、粗细、画笔颜色、透明度、字体的样式等，都在 Paint 类里设置；同样，凡是要画出成品的东西，比如圆形、矩形、文字等，都调用 Canvas 类里的函数生成。
+示例：
+12345678910111213141516171819">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-feca6c269f8bed9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8627a3c3392a00a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-f74c4ebbbbb616fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b4907639e786fbe2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b1bc19b811eb6ed6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-030dd0332aa4b222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-db784ea910444557.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-39da8a748e08370e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ddcb9989afa74a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-c592a6c5a27809f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-d9020d42098b847c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-404c86eeaca6b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-eaaa7da91d7639af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-db6075c61545f92a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-70fd46d585c02d0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-87a0fbfd0c9002cd.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-03ed1ceee71fd5c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-04T06:02:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="01.1 精通自定义 View 之绘图基础——基本图形绘制">
+<meta name="twitter:description" content="1.1.1 概述画图需要两个工具：纸和笔。在 Android 中，Paint 类就是画笔，而 Canvas 类就是纸，在这里叫作画布。
+凡是跟画笔设置相关的，比如画笔大小、粗细、画笔颜色、透明度、字体的样式等，都在 Paint 类里设置；同样，凡是要画出成品的东西，比如圆形、矩形、文字等，都调用 Canvas 类里的函数生成。
+示例：
+12345678910111213141516171819">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-feca6c269f8bed9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/Custom View/01.1 精通自定义 View 之绘图基础——基本图形绘制/"/>
+
+
+
+
+
+  <title>01.1 精通自定义 View 之绘图基础——基本图形绘制 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/Custom View/01.1 精通自定义 View 之绘图基础——基本图形绘制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">01.1 精通自定义 View 之绘图基础——基本图形绘制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T07:24:00+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Custom-View/" itemprop="url" rel="index">
+                    <span itemprop="name">Custom View</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/01/Custom View/01.1 精通自定义 View 之绘图基础——基本图形绘制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/01/Custom View/01.1 精通自定义 View 之绘图基础——基本图形绘制/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<h3 id="1-1-1-概述"><a href="#1-1-1-概述" class="headerlink" title="1.1.1 概述"></a>1.1.1 概述</h3><p>画图需要两个工具：纸和笔。在 Android 中，Paint 类就是画笔，而 Canvas 类就是纸，在这里叫作画布。</p>
+<p>凡是跟画笔设置相关的，比如画笔大小、粗细、画笔颜色、透明度、字体的样式等，都在 Paint 类里设置；同样，凡是要画出成品的东西，比如圆形、矩形、文字等，都调用 Canvas 类里的函数生成。</p>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-feca6c269f8bed9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        // 设置画笔</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setColor(Color.RED);</div><div class="line">        mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">        mPaint.setStrokeWidth(50);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        // 画圆</div><div class="line">        canvas.drawCircle(200, 200, 150, mPaint);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>直接在主布局中使用自定义控件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">    &lt;com.xxt.xtest.TestView</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot; /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>在 onDraw() 函数中不能创建变量。因为当需要重绘时就会调用 onDraw() 函数，这样会导致变量一直被重复创建，会引起频繁的程序 GC (回收内存)，进而引起程序卡顿。一般在构造函数中创建变量。</p>
+</blockquote>
+<h3 id="1-1-2-画笔的基本设置"><a href="#1-1-2-画笔的基本设置" class="headerlink" title="1.1.2 画笔的基本设置"></a>1.1.2 画笔的基本设置</h3><h4 id="1-setAntiAlias"><a href="#1-setAntiAlias" class="headerlink" title="1. setAntiAlias()"></a>1. setAntiAlias()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setAntiAlias(boolean aa)</div></pre></td></tr></table></figure>
+<p>表示是否打开抗锯齿功能。抗锯齿是依赖算法的，一般在绘制不规则的图形时使用，比如圆形、文字等。在绘制棱角分明的图像时，比如一个矩形、一张位图，是不需要打开抗锯齿功能的。</p>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-8627a3c3392a00a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Anti Alias &amp; No Anti Alias"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint1, mPaint2;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        mPaint1 = new Paint();</div><div class="line">        mPaint1.setColor(Color.RED);</div><div class="line">        mPaint1.setStyle(Paint.Style.FILL);</div><div class="line">        mPaint1.setAntiAlias(true);</div><div class="line">        mPaint1.setStrokeWidth(50);</div><div class="line"></div><div class="line">        mPaint2 = new Paint();</div><div class="line">        mPaint2.setColor(Color.RED);</div><div class="line">        mPaint2.setStyle(Paint.Style.FILL);</div><div class="line">        mPaint2.setStrokeWidth(50);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        canvas.drawCircle(200, 200, 150, mPaint1);</div><div class="line">        canvas.drawCircle(540, 200, 150, mPaint2);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="2-setColor"><a href="#2-setColor" class="headerlink" title="2. setColor()"></a>2. setColor()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setColor(int color)</div></pre></td></tr></table></figure>
+<p>设置画笔颜色。一个颜色值是由红、绿、蓝三色合成出来的，所以，参数 color 只能取 8 位的 0xAARRGGBB 样式颜色值。其中:</p>
+<ul>
+<li>A 代表透明度(Alpha)，取值范围是 0~255(对应十六进制的 0x00~0xFF)，取值越小，透明度越高，图像也就越透明。当取 0 时，图像完全不可见。</li>
+<li>R 代表红色值(Red)，取值范围是 0~255(对应十六进制的 0x00~0xFF)，取值越小，红色越少。当取 0 时，表示红色完全不可见；当取 255 时，红色完全显示。</li>
+<li>G 代表绿色值(Green)，取值范围是 0~255(对应十六进制的 0x00~0xFF)，取值越小，绿色越少。当取 0 时，表示绿色完全不可见；当取 255 时，绿色完全显示。</li>
+<li>B 代表蓝色值(Blue)，取值范围是 0~255(对应十六进制的 0x00~0xFF)，取值越小，蓝色越少。当取 0 时，表示蓝色完全不可见；当取 255 时，蓝色完全显示。</li>
+</ul>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-f74c4ebbbbb616fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint1, mPaint2;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        mPaint1 = generatePaint(Color.RED, Paint.Style.FILL, 50);</div><div class="line">        mPaint2 = generatePaint(0x7EFFFF00, Paint.Style.FILL, 50);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        canvas.drawCircle(200, 200, 150, mPaint1);</div><div class="line">        canvas.drawCircle(200, 200, 100, mPaint2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private Paint generatePaint(int color, Paint.Style style, int strokeWidth) &#123;</div><div class="line">        Paint paint = new Paint();</div><div class="line">        paint.setColor(color);</div><div class="line">        paint.setStyle(style);</div><div class="line">        paint.setStrokeWidth(strokeWidth);</div><div class="line">        return paint;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="3-setStyle"><a href="#3-setStyle" class="headerlink" title="3. setStyle()"></a>3. setStyle()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setStyle(Style style)</div></pre></td></tr></table></figure>
+<p>设置填充样式，对于文字和几何图形都有效。style 的取值如下：</p>
+<ul>
+<li>Paint.Style.FILL：仅填充内部。</li>
+<li>Paint.Style.FILL_AND_STROKE：填充内部和描边。 </li>
+<li>Paint.Style.STROKE：仅描边。</li>
+</ul>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-b4907639e786fbe2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="依次是 FILL、STROKE、FILL_AND_STROKE "></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">paintF = generatePaint(Color.RED, Paint.Style.FILL, 50);</div><div class="line">paintS = generatePaint(Color.RED, Paint.Style.STROKE, 50);</div><div class="line">paintFS = generatePaint(Color.RED, Paint.Style.FILL_AND_STROKE, 50);</div><div class="line">paintLine = generatePaint(Color.BLACK, Paint.Style.STROKE, 1);</div><div class="line"></div><div class="line">canvas.drawCircle(225, 300, 150, paintF);</div><div class="line">canvas.drawCircle(600, 300, 150, paintS);</div><div class="line">canvas.drawCircle(1000, 300, 150, paintFS);</div><div class="line">canvas.drawLine(225, 150, 1000, 150, paintLine);</div></pre></td></tr></table></figure>
+<h4 id="4-setStrokeWidth"><a href="#4-setStrokeWidth" class="headerlink" title="4. setStrokeWidth()"></a>4. setStrokeWidth()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setStrokeWidth(float width)</div></pre></td></tr></table></figure>
+<p>设置描边宽度值，单位是 px。当画笔的 Style 样式是 STROKE、FILL_AND_STROKE 时有效。当 Style 不起作用时，用于设置画笔宽度。</p>
+<h3 id="1-1-3-Canvas使用基础"><a href="#1-1-3-Canvas使用基础" class="headerlink" title="1.1.3 Canvas使用基础"></a>1.1.3 Canvas使用基础</h3><h4 id="1-画布背景设置"><a href="#1-画布背景设置" class="headerlink" title="1. 画布背景设置"></a>1. 画布背景设置</h4><p>有三种方法可以实现画布背景设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void drawColor(int color)</div><div class="line">void drawARGB(int a, int r, int g, int b)</div><div class="line">void drawRGB(int r, int g, int b)</div></pre></td></tr></table></figure></p>
+<p>drawColor() 函数中参数 color 的取值必须是 8 位的 0xAARRGGBB 样式颜色值。<br>drawARGB() 函数允许分别传入 A、R、G、B 分量，每个颜色值的取值范围都是 0~255(对应十六进制的 0x00~0xFF)，内部会通过这些颜色分量构造出对应的颜色值。 drawRGB() 函数只允许传入 R、G、B 分量，透明度 Alpha 的值取 255。</p>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-b1bc19b811eb6ed6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="将画布默认填充为紫色"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">canvas.drawColor(0xFFFF00FF);</div><div class="line">canvas.drawARGB(0xFF, 0xFF, 0, 0xFF);</div><div class="line">canvas.drawRGB(255, 0, 255);</div></pre></td></tr></table></figure></p>
+<h4 id="2-画直线"><a href="#2-画直线" class="headerlink" title="2. 画直线"></a>2. 画直线</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">void drawLine(float startX, float startY, </div><div class="line">              float stopX, float stopY, Paint paint)</div></pre></td></tr></table></figure>
+<p>参数:</p>
+<ul>
+<li>startX：起始点 X 坐标。 </li>
+<li>startY：起始点 Y 坐标。 </li>
+<li>stopX：终点 X 坐标。</li>
+<li>stopY：终点 Y 坐标。</li>
+</ul>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-030dd0332aa4b222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分别设置 Style：FILL、STROKE、FILL_AND_STROKE"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mPaintF = generatePaint(Color.RED, Paint.Style.FILL, 50);</div><div class="line">mPaintS = generatePaint(Color.RED, Paint.Style.STROKE, 50);</div><div class="line">mPaintFS = generatePaint(Color.RED, Paint.Style.FILL_AND_STROKE, 50);</div></pre></td></tr></table></figure></p>
+<p>从效果图中可以明显看出，直线的粗细与画笔 Style 是没有关系的。当设置不同的 StrokeWidth 时，效果如下图所示。<br><img src="https://upload-images.jianshu.io/upload_images/14186083-db784ea910444557.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="width 分别是 ：5、25、50"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mPaintF = generatePaint(Color.RED, Paint.Style.FILL, 5);</div><div class="line">mPaintS = generatePaint(Color.RED, Paint.Style.STROKE, 25);</div><div class="line">mPaintFS = generatePaint(Color.RED, Paint.Style.FILL_AND_STROKE, 50);</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>可见，直线的粗细是与 paint.setStrokeWidth 有直接关系的。所以，一般而言，paint.setStrokeWidth 在 Style 起作用时，用于设置描边宽度；在 Style 不起作用时，用于设置画笔宽度。</p>
+</blockquote>
+<h4 id="3-多条直线"><a href="#3-多条直线" class="headerlink" title="3. 多条直线"></a>3. 多条直线</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawLines(float[] pts, Paint paint)</div></pre></td></tr></table></figure>
+<p>参数：<br>pts：点的集合。从下面的代码中可以看到，这里不是形成连接线，而是每两个点形成一条直线，pts 的组织方式 {x1,y1,x2,y2,x3,y3,…}。</p>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-39da8a748e08370e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setStrokeWidth(5);</div><div class="line">float []pts = &#123;10,10,100,100,200,200,400,400&#125;;</div><div class="line"></div><div class="line">// onDraw()</div><div class="line">canvas.drawLines(pts, mPaint);</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>上面有 4 个点，分别是(10,10)、(100,100)、(200,200)和(400,400)，两两连成一条直线。</p>
+</blockquote>
+<p>另一个构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawLines(float[] pts, int offset, int count, Paint paint)</div></pre></td></tr></table></figure></p>
+<p>相比上面的构造函数，这里多了两个参数。</p>
+<ul>
+<li>int offset：集合中跳过的数值个数。注意不是点的个数！一个点有两个数值。</li>
+<li>int count：参与绘制的数值个数，指 pts 数组中数值的个数，而不是点的个数，因为一个点有两个数值。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">float[] pts = &#123;10,10,100,100,200,200,400,400&#125;;</div><div class="line">canvas.drawLines(pts, 2, 4, paint);</div></pre></td></tr></table></figure>
+<p>表示从 pts 数组中索引为 2 的数字开始绘图，有 4 个数值参与绘图，也就是点(100,100) 和(200,200)，所以效果图就是这两个点的连线。</p>
+<h4 id="4-点"><a href="#4-点" class="headerlink" title="4. 点"></a>4. 点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawPoint(float x, float y, Paint paint)</div></pre></td></tr></table></figure>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-ddcb9989afa74a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setStrokeWidth(15);</div><div class="line"></div><div class="line">canvas.drawPoint(100, 100, mPaint);</div></pre></td></tr></table></figure></p>
+<p>在(100,100)位置画一个点。同样，点的大小只与 paint.setStrokeWidth(width) 有关，而与 paint.setStyle 无关。</p>
+<h4 id="5-多个点"><a href="#5-多个点" class="headerlink" title="5. 多个点"></a>5. 多个点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void drawPoints(@Size(multiple = 2) @NonNull float[] pts, @NonNull Paint paint)</div><div class="line">void drawPoints(@Size(multiple = 2) float[] pts, int offset, int count,</div><div class="line">                @NonNull Paint paint)</div></pre></td></tr></table></figure>
+<p>这几个参数的含义与多条直线中的参数含义相同。</p>
+<ul>
+<li>float[] pts：点的合集，与上面的直线一致，样式为{x1,y1,x2,y2,x3,y3,…}。</li>
+<li>int offset：集合中跳过的数值个数。注意不是点的个数！一个点有两个数值。</li>
+<li>int count：参与绘制的数值个数，指 pts 数组中数值的个数，而不是点的个数。</li>
+</ul>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-c592a6c5a27809f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">private Paint mPaint;</div><div class="line">float[] pts = &#123;10,10, 100,100, 200,200, 400,400&#125;;</div><div class="line"></div><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setStrokeWidth(15);</div><div class="line"></div><div class="line">canvas.drawPoints(pts, 2, 4, mPaint);</div></pre></td></tr></table></figure></p>
+<p>同样是上面的 4 个点：(10,10)、(100,100)、(200,200)和(400,400)，在 drawPoints()函数里跳过前两个数值，即第一个点的横、纵坐标，画出后面 4 个数值代表的点，即第二、三个点，第四个点没画。</p>
+<h4 id="6-RectF-amp-Rect"><a href="#6-RectF-amp-Rect" class="headerlink" title="6. RectF &amp; Rect"></a>6. RectF &amp; Rect</h4><p>这两个类都是矩形工具类，根据 4 个点构造出一个矩形结构。RectF 与 Rect 中的方法、 成员变量完全一样，唯一不同的是：RectF 是用来保存 float 类型数值的矩形结构的；而 Rect 是用来保存 int 类型数值的矩形结构的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// RectF 的构造函数有如下 4 个,但最常用的还是第二个</div><div class="line">RectF()</div><div class="line">RectF(float left, float top, float right, float bottom)</div><div class="line">RectF(RectF r)</div><div class="line">RectF(Rect r)</div><div class="line"></div><div class="line">// Rect 的构造函数有如下 3 个</div><div class="line">Rect()</div><div class="line">Rect(int left, int top, int right, int bottom)</div><div class="line">Rect(Rect r)</div></pre></td></tr></table></figure></p>
+<p>一般而言，要构造一个矩形结构,可以通过以下两种方法来实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 方法一：直接构造</div><div class="line">Rect rect = new Rect(10,10,100,100); </div><div class="line">// 方法二：间接构造</div><div class="line">Rect rect = new Rect(); </div><div class="line">rect.set(10,10,100,100);</div></pre></td></tr></table></figure></p>
+<h4 id="7-矩形"><a href="#7-矩形" class="headerlink" title="7. 矩形"></a>7. 矩形</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void drawRect(float left, float top, float right, float bottom, Paint paint) </div><div class="line">void drawRect(RectF rect, Paint paint)</div><div class="line">void drawRect(Rect r, Paint paint)</div></pre></td></tr></table></figure>
+<p>第一个函数是直接传入矩形的 4 个点来绘制矩形的；第二、三个函数是根据传入 RectF 或者 Rect 的矩形变量来指定所绘制的矩形的。</p>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-d9020d42098b847c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mPaintS = generatePaint(Color.RED, Paint.Style.STROKE, 15);</div><div class="line">mPaintF = generatePaint(Color.RED, Paint.Style.FILL, 15);</div><div class="line">mRect = new RectF(210f, 10f, 300f, 100f);</div><div class="line"></div><div class="line">// 直接构造</div><div class="line">canvas.drawRect(10, 10, 100, 100, mPaintS);</div><div class="line">// 使用 RectF 构造</div><div class="line">canvas.drawRect(mRect, mPaintF);</div></pre></td></tr></table></figure></p>
+<h4 id="8-圆角矩形"><a href="#8-圆角矩形" class="headerlink" title="8. 圆角矩形"></a>8. 圆角矩形</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawRoundRect(RectF rect, float rx, float ry, Paint paint)</div></pre></td></tr></table></figure>
+<p>参数:</p>
+<ul>
+<li>RectF rect：要绘制的矩形。</li>
+<li>float rx：生成圆角的椭圆的 X 轴半径。 </li>
+<li>float ry：生成圆角的椭圆的 Y 轴半径。</li>
+</ul>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-404c86eeaca6b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="圆角矩形效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mPaintF = generatePaint(Color.RED, Paint.Style.FILL, 15);</div><div class="line">mRect = new RectF(100, 110, 300, 200);</div><div class="line"></div><div class="line">canvas.drawRoundRect(mRect, 20, 10, mPaintF);</div></pre></td></tr></table></figure></p>
+<h4 id="9-圆形"><a href="#9-圆形" class="headerlink" title="9. 圆形"></a>9. 圆形</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawCircle(float cx, float cy, float radius, Paint paint)</div></pre></td></tr></table></figure>
+<p>参数:</p>
+<ul>
+<li>float cx：圆心点的 X 轴坐标。 </li>
+<li>float cy：圆心点的 Y 轴坐标。 </li>
+<li>float radius：圆的半径。</li>
+</ul>
+<h4 id="10-椭圆"><a href="#10-椭圆" class="headerlink" title="10. 椭圆"></a>10. 椭圆</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawOval(RectF oval, Paint paint)</div></pre></td></tr></table></figure>
+<p>参数:<br>RectF oval：用来生成椭圆的矩形。</p>
+<p>椭圆是根据矩形生成的，以矩形的长为椭圆的 X 轴，以矩形的宽为椭圆的 Y 轴。</p>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-eaaa7da91d7639af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="使用矩形画椭圆"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mPaintO = generatePaint(Color.RED, Paint.Style.STROKE, 5);</div><div class="line">mPaintR = generatePaint(Color.BLUE, Paint.Style.STROKE, 5);</div><div class="line">mRect = new RectF(100, 110, 300, 200);</div><div class="line"></div><div class="line">canvas.drawRect(mRect, mPaintR);    // 画矩形</div><div class="line">canvas.drawOval(mRect, mPaintO);    // 画椭圆</div></pre></td></tr></table></figure>
+<h4 id="11-弧"><a href="#11-弧" class="headerlink" title="11. 弧"></a>11. 弧</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">void drawArc(RectF oval, float startAngle, float sweepAngle, </div><div class="line">             boolean useCenter, Paint paint)</div></pre></td></tr></table></figure>
+<p>参数:</p>
+<ul>
+<li>RectF oval：生成椭圆的矩形。</li>
+<li>float startAngle：弧开始的角度，以 X 轴正方向为 0°。</li>
+<li>float sweepAngle：弧持续的角度。</li>
+<li>boolean useCenter：是否有弧的两边。为 true 时，表示带有两边；为 false 时，只有一条弧。</li>
+</ul>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-db6075c61545f92a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="弧 效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mPaint = generatePaint(Color.RED, Paint.Style.STROKE, 5);</div><div class="line">mRect1 = new RectF(100, 100, 200, 200);</div><div class="line">mRect2 = new RectF(220, 100, 320, 200);</div><div class="line"></div><div class="line">// 带弧的两边</div><div class="line">canvas.drawArc(mRect1, 0, 90, true, mPaint);</div><div class="line">// 不带弧的两边</div><div class="line">canvas.drawArc(mRect2, 0, 90, false, mPaint);</div></pre></td></tr></table></figure></p>
+<p>上述代码中，仅将 paint 的样式设置为 FILL 。效果图如下：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-70fd46d585c02d0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="填充样式的弧"></p>
+<blockquote>
+<p>当画笔设为填充模式时，填充区域只限于圆弧的起始点和终点所形成的区域。当带有两边时，会将两边及圆弧内部全部填充；如果没有两边，则只填充圆弧部分。</p>
+</blockquote>
+<h3 id="1-1-4-Rect与RectF"><a href="#1-1-4-Rect与RectF" class="headerlink" title="1.1.4 Rect与RectF"></a>1.1.4 Rect与RectF</h3><h4 id="1-是否包含点、矩形"><a href="#1-是否包含点、矩形" class="headerlink" title="1.是否包含点、矩形"></a>1.是否包含点、矩形</h4><p>1）判断是否包含某个点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">boolean contains(int x, int y)</div></pre></td></tr></table></figure></p>
+<p>该函数用于判断某个点是否在当前矩形中。如果在，则返回 true；如果不在，则返回 false。 参数(x,y)就是当前要判断的点的坐标。</p>
+<p>示例：绘制一个灰色矩形，当手指在这个矩形区域内时，矩形变为红色。<br><img src="https://upload-images.jianshu.io/upload_images/14186083-87a0fbfd0c9002cd.gif?imageMogr2/auto-orient/strip" alt="效果图"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private float mX, mY;</div><div class="line">    private Paint mPaint;</div><div class="line">    private RectF mRect;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void init() &#123;</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setStyle(Paint.Style.FILL);</div><div class="line">        mRect = new RectF(100, 100, 500, 350);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        if (mRect.contains(mX, mY)) &#123;</div><div class="line">            mPaint.setColor(Color.RED);</div><div class="line">        &#125; else &#123;</div><div class="line">            mPaint.setColor(Color.GRAY);</div><div class="line">        &#125;</div><div class="line">        canvas.drawRect(mRect, mPaint);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">        mX = event.getX();</div><div class="line">        mY = event.getY();</div><div class="line">        if (event.getAction() == MotionEvent.ACTION_DOWN) &#123;</div><div class="line">            invalidate();</div><div class="line">            return true;</div><div class="line">        &#125; else if (event.getAction() == MotionEvent.ACTION_UP) &#123;</div><div class="line">            mX = -1;</div><div class="line">            mY = -1;</div><div class="line">        &#125;</div><div class="line">        invalidate();</div><div class="line">        return super.onTouchEvent(event);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述代码注意两点：</p>
+<ul>
+<li><p>在 MotionEvent.ACTION_DOWN 中返回 true，因为当 MotionEvent. ACTION_DOWN 消息到来时，系统会判断返回值，当返回 true 时，表示当前控件已经在拦截 (消费)这个消息了，所以后续的 ACTION_MOVE、ACTION_UP 消息仍然继续传过来。如果返回 false(系统默认返回 false)，就表示当前控件不需要这个消息，那么后续的 ACTION_MOVE、ACTION_UP 消息就不会再传到这个控件。</p>
+</li>
+<li><p>postInvalidate()和 invalidate()函数都是用来重绘控件的，区别是 invalidate()函数一定要在主线程中执行，否则就会报错；而 postInvalidate()函数则没有那么多讲究，它可以在任何线程中执行，而不必一定是主线程。因为在 postInvalidate()函数中就是利用 handler 给主线程发送刷新界面的消息来实现的，所以它可以在任何线程中执行而不会出错。而正因为它是通过发送消息来实现的，所以它的界面刷新速度可能没有直接调用 invalidate()函数那么快。确定当前线程是主线程的情况下，以 invalidate()函数为主。否则调用调用 postInvalidate()函数为好。因为 onTouchEvent()函数本来就是在主线程中的，所以使用 invalidate()函数更合适。</p>
+</li>
+</ul>
+<p>2）判断是否包含某个矩形<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 根据矩形的 4 个点或者一个 Rect 矩形对象来判断这个矩形是否在当前的矩形区域内。</div><div class="line">boolean contains(float left, float top, float right, float bottom)</div><div class="line">boolean contains(RectF r)</div></pre></td></tr></table></figure></p>
+<h4 id="2-判断两个矩形是否相交"><a href="#2-判断两个矩形是否相交" class="headerlink" title="2.判断两个矩形是否相交"></a>2.判断两个矩形是否相交</h4><p>1）静态方法判断是否相交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static boolean intersects(Rect a, Rect b)</div></pre></td></tr></table></figure></p>
+<p>这是 Rect 类的一个静态方法，用来判断参数中所传入的两个 Rect 矩形是否相交，如果相交则返回 true，否则返回 false。<br>2）成员方法判断是否相交<br>判断当前 Rect 对象与其他矩形是否相交。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">boolean intersects(int left, int top, int right, int bottom)</div></pre></td></tr></table></figure></p>
+<p>使用方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Rect rect_1 = new Rect(10,10,200,200);</div><div class="line">boolean interset1_2 = rect_1.intersects(190, 10, 250, 200);</div></pre></td></tr></table></figure></p>
+<p>3）判断相交并返回结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">boolean intersect(int left, int top, int right, int bottom)</div><div class="line">boolean intersect(Rect r)</div></pre></td></tr></table></figure></p>
+<p>这两个成员方法与 intersects()方法的区别是，不仅会返回是否相交的结果，而且会把相交部分的矩形赋给当前 Rect 对象。如果两个矩形不相交，则当前 Rect 对象的值不变。</p>
+<h4 id="3-合并"><a href="#3-合并" class="headerlink" title="3.合并"></a>3.合并</h4><p>1）合并两个矩形<br>合并两个矩形的意思就是将两个矩形合并成一个矩形，即无论这两个矩形是否相交，取两个矩形最小左上角点作为结果矩形的左上角点，取两个矩形最大右下角点作为结果矩形的右下角点。如果要合并的两个矩形有一方为空，则将有值的一方作为最终结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public void union(int left, int top, int right, int bottom)</div><div class="line">public void union(Rect r)</div></pre></td></tr></table></figure></p>
+<p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-03ed1ceee71fd5c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="绿色、红色矩形合并成蓝色矩形"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">mRect1 = new RectF(200, 100, 500, 300);</div><div class="line">mRect2 = new RectF(100, 200, 300, 400);</div><div class="line"></div><div class="line">// 画出右上的红色矩形</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">canvas.drawRect(mRect1, mPaint);</div><div class="line">// 画出左下的绿色矩形</div><div class="line">mPaint.setColor(Color.GREEN);</div><div class="line">canvas.drawRect(mRect2, mPaint);</div><div class="line">// 矩形合并</div><div class="line">mRect1.union(mRect2);</div><div class="line">// 画出合并后的矩形（蓝色部分）</div><div class="line">mPaint.setColor(Color.BLUE);</div><div class="line">canvas.drawRect(mRect1, mPaint);</div></pre></td></tr></table></figure></p>
+<p>2）合并矩形与某个点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void union(int x, int y)</div></pre></td></tr></table></figure></p>
+<p>先判断当前矩形与目标合并点的关系。如果不相交，则根据目标点(x,y)的位置，将目标点设置为当前矩形的左上角点或者右下角点。如果当前矩形是一个空矩形，则最后的结果矩形为([0,0],[x,y])，即结果矩形的左上角点为[0,0]，右下角点为[x,y]。</p>
+<h3 id="1-1-5-Color"><a href="#1-1-5-Color" class="headerlink" title="1.1.5 Color"></a>1.1.5 Color</h3><p>Color 是 Android 中与颜色处理有关的类。</p>
+<h4 id="1-常量颜色"><a href="#1-常量颜色" class="headerlink" title="1. 常量颜色"></a>1. 常量颜色</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@ColorInt public static final int BLACK       = 0xFF000000;</div><div class="line">@ColorInt public static final int DKGRAY      = 0xFF444444;</div><div class="line">@ColorInt public static final int GRAY        = 0xFF888888;</div><div class="line">@ColorInt public static final int LTGRAY      = 0xFFCCCCCC;</div><div class="line">@ColorInt public static final int WHITE       = 0xFFFFFFFF;</div><div class="line">@ColorInt public static final int RED         = 0xFFFF0000;</div><div class="line">@ColorInt public static final int GREEN       = 0xFF00FF00;</div><div class="line">@ColorInt public static final int BLUE        = 0xFF0000FF;</div><div class="line">@ColorInt public static final int YELLOW      = 0xFFFFFF00;</div><div class="line">@ColorInt public static final int CYAN        = 0xFF00FFFF;</div><div class="line">@ColorInt public static final int MAGENTA     = 0xFFFF00FF;</div><div class="line">@ColorInt public static final int TRANSPARENT = 0;</div></pre></td></tr></table></figure>
+<p>Color.XXX 来直接使用这些颜色，比如红色：Color.RED。</p>
+<h4 id="2-构造颜色"><a href="#2-构造颜色" class="headerlink" title="2. 构造颜色"></a>2. 构造颜色</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 带有透明度的颜色</div><div class="line">static int argb(int alpha, int red, int green, int blue)</div><div class="line">// 不带透明度的颜色：alpha 值取 255</div><div class="line">static int rgb(int red, int green, int blue)</div></pre></td></tr></table></figure>
+<p>argb() 函数的源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public static int argb(int alpha, int red, int green, int blue) &#123;</div><div class="line">    // 位运算，值得借鉴</div><div class="line">    return (alpha &lt;&lt; 24) | (red &lt;&lt; 16) | (green &lt;&lt; 8) | blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="3-提取颜色分量"><a href="#3-提取颜色分量" class="headerlink" title="3. 提取颜色分量"></a>3. 提取颜色分量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">static int alpha(int color)</div><div class="line">static int red(int color)</div><div class="line">static int green(int color)</div><div class="line">static int blue(int color)</div></pre></td></tr></table></figure>
+<p>通过上面的 4 个函数提取出对应的 A、R、G、B 颜色分量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 得到的结果 green 的值就是 0x0F</div><div class="line">int green = Color.green(0xFF000F00);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Custom-View/" rel="tag"><i class="fa fa-tag"></i> Custom View</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/03/ANDROID/00Catalog/" rel="next" title="ANDROID 目录">
+                <i class="fa fa-chevron-left"></i> ANDROID 目录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/01/Custom View/01.2 精通自定义 View 之绘图基础——路径/" rel="prev" title="01.2 精通自定义 View 之绘图基础——路径">
+                01.2 精通自定义 View 之绘图基础——路径 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-概述"><span class="nav-text">1.1.1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-画笔的基本设置"><span class="nav-text">1.1.2 画笔的基本设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-setAntiAlias"><span class="nav-text">1. setAntiAlias()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-setColor"><span class="nav-text">2. setColor()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-setStyle"><span class="nav-text">3. setStyle()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-setStrokeWidth"><span class="nav-text">4. setStrokeWidth()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-Canvas使用基础"><span class="nav-text">1.1.3 Canvas使用基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-画布背景设置"><span class="nav-text">1. 画布背景设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-画直线"><span class="nav-text">2. 画直线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-多条直线"><span class="nav-text">3. 多条直线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-点"><span class="nav-text">4. 点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-多个点"><span class="nav-text">5. 多个点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-RectF-amp-Rect"><span class="nav-text">6. RectF & Rect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-矩形"><span class="nav-text">7. 矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-圆角矩形"><span class="nav-text">8. 圆角矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-圆形"><span class="nav-text">9. 圆形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-椭圆"><span class="nav-text">10. 椭圆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-弧"><span class="nav-text">11. 弧</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-Rect与RectF"><span class="nav-text">1.1.4 Rect与RectF</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-是否包含点、矩形"><span class="nav-text">1.是否包含点、矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-判断两个矩形是否相交"><span class="nav-text">2.判断两个矩形是否相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-合并"><span class="nav-text">3.合并</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-5-Color"><span class="nav-text">1.1.5 Color</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-常量颜色"><span class="nav-text">1. 常量颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-构造颜色"><span class="nav-text">2. 构造颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-提取颜色分量"><span class="nav-text">3. 提取颜色分量</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共113k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
