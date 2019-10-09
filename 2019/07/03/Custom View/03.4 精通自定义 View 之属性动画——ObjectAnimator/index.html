@@ -89,21 +89,21 @@
 
 
 <meta name="description" content="3.4.1 概述1. 引入ObjectAnimator 派生自 ValueAnimator，所以 ValueAnimator 能用的方法，ObjectAnimator 都能用，ObjectAnimator 是 ValueAnimator 的子类。
-ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里我以 ofFloat() 做个例子：123Objec">
+ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里我以 ofFloat() 做个例子：123Obje">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03.4 精通自定义 View 之属性动画——ObjectAnimator">
 <meta property="og:url" content="http://yoursite.com/2019/07/03/Custom View/03.4 精通自定义 View 之属性动画——ObjectAnimator/index.html">
 <meta property="og:site_name" content="先小涛">
 <meta property="og:description" content="3.4.1 概述1. 引入ObjectAnimator 派生自 ValueAnimator，所以 ValueAnimator 能用的方法，ObjectAnimator 都能用，ObjectAnimator 是 ValueAnimator 的子类。
-ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里我以 ofFloat() 做个例子：123Objec">
+ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里我以 ofFloat() 做个例子：123Obje">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3983615-03594160fc705404?imageMogr2/auto-orient/strip|imageView2/2/w/1187/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-7e772b9076b48c45.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-e4d89fda63bedd35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-04T06:58:43.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:20:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03.4 精通自定义 View 之属性动画——ObjectAnimator">
 <meta name="twitter:description" content="3.4.1 概述1. 引入ObjectAnimator 派生自 ValueAnimator，所以 ValueAnimator 能用的方法，ObjectAnimator 都能用，ObjectAnimator 是 ValueAnimator 的子类。
-ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里我以 ofFloat() 做个例子：123Objec">
+ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里我以 ofFloat() 做个例子：123Obje">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3983615-03594160fc705404?imageMogr2/auto-orient/strip|imageView2/2/w/1187/format/webp">
 
 
@@ -403,6 +403,7 @@ ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里�
       
         <meta name="referrer" content="no-referrer">
 
+<p><div id="jump1"></div></p>
 <h3 id="3-4-1-概述"><a href="#3-4-1-概述" class="headerlink" title="3.4.1 概述"></a>3.4.1 概述</h3><h4 id="1-引入"><a href="#1-引入" class="headerlink" title="1. 引入"></a>1. 引入</h4><p>ObjectAnimator 派生自 ValueAnimator，所以 ValueAnimator 能用的方法，ObjectAnimator 都能用，ObjectAnimator 是 ValueAnimator 的子类。</p>
 <p>ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里我以 ofFloat() 做个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ObjectAnimator animator = ObjectAnimator.ofFloat(mView, &quot;alpha&quot;, 1, 0, 1);</div><div class="line">animator.setDuration(2000);</div><div class="line">animator.start();</div></pre></td></tr></table></figure></p>
 <p>其构造函数如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static ObjectAnimator ofFloat(Object target, String propertyName,  float... values)</div></pre></td></tr></table></figure></p>
@@ -438,6 +439,7 @@ ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里�
 <ul>
 <li>float alpha：改变透明度</li>
 </ul>
+<p><div id="jump2"></div></p>
 <h3 id="3-4-2-ObjectAnimator-动画原理"><a href="#3-4-2-ObjectAnimator-动画原理" class="headerlink" title="3.4.2 ObjectAnimator 动画原理"></a>3.4.2 ObjectAnimator 动画原理</h3><p><img src="https://upload-images.jianshu.io/upload_images/3983615-03594160fc705404?imageMogr2/auto-orient/strip|imageView2/2/w/1187/format/webp" alt=""></p>
 <p>与 ValueAnimator 不同的是最后一步，在 ValueAnimator 中，我们要通过添加监听器来监听当前数字值。而在 ObjectAnimator 中，则是先根据属性值拼装成对应的 set 函数的名字，比如这里的 scaleY 的拼装方法就是将属性的第一个字母强制大写后，与 set 拼接，所以就是 setScaleY 。然后通过反射找到对应控件的 setScaleY(float scaleY) 函数，将当前数字值做为 setScaleY(float scale) 的参数将其传入。</p>
 <p>如果我们要自定义 ObjectAnimator 属性就要注意以下几个点：</p>
@@ -445,11 +447,13 @@ ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里�
 <li>在命名时 set 之后的名字就是属性的名字。同时属性名字第一个字母不区分大小写，后面的名字必须与属性的名字相同。</li>
 <li>在知道参数类型后我们才能确定我们是调用 ofFloat 还是 ofInt，这个参数是根据 setXXX 方法中的参数类型决定的。例如：setAlpha(float alpha) 其中参数类型是 float 所以上面我们使用的是 ofFloat，当然 ObjectAnimator 继承 ValueAnimatior 也有。ofObject()支持任意类型，不过和前面我们讲到的一样这里我们就要自定义自己的估值器了。</li>
 </ul>
+<p><div id="jump3"></div></p>
 <h3 id="3-4-3-自定义-ObjectAnimator-属性"><a href="#3-4-3-自定义-ObjectAnimator-属性" class="headerlink" title="3.4.3 自定义 ObjectAnimator 属性"></a>3.4.3 自定义 ObjectAnimator 属性</h3><p><img src="https://upload-images.jianshu.io/upload_images/14186083-7e772b9076b48c45.gif?imageMogr2/auto-orient/strip" alt=""></p>
 <p>自定义 FallingBallImageView 和 Evaluator<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class FallingBallImageView extends AppCompatImageView &#123;</div><div class="line">    public FallingBallImageView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setFallingPos(Point pos) &#123;</div><div class="line">        layout(pos.x, pos.y, pos.x + getWidth(), pos.y + getHeight());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static class FallingBallEvaluator implements TypeEvaluator&lt;Point&gt; &#123;</div><div class="line">        private Point point = new Point();</div><div class="line">        @Override</div><div class="line">        public Point evaluate(float fraction, Point startValue, Point endValue) &#123;</div><div class="line">            point.x = (int)(startValue.x + fraction * (endValue.x - startValue.x));</div><div class="line">            if (fraction * 2 &lt; 1) &#123;</div><div class="line">                point.y = (int) (startValue.y + fraction * 2 * (endValue.y - startValue.y));</div><div class="line">            &#125; else &#123;</div><div class="line">                point.y = endValue.y;</div><div class="line">            &#125;</div><div class="line">            return point;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>在代码中，开始动画：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.act_main);</div><div class="line"></div><div class="line">        final FallingBallImageView view = findViewById(R.id.ball_img);</div><div class="line">        findViewById(R.id.start_btn).setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                ObjectAnimator animator = ObjectAnimator.ofObject(view, &quot;fallingPos&quot;,</div><div class="line">                        new FallingBallImageView.FallingBallEvaluator(),</div><div class="line">                        new Point(0, 0), new Point(500, 500));</div><div class="line">                animator.setDuration(2000);</div><div class="line">                animator.start();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>布局文件 act_main.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:layout_gravity=&quot;center_horizontal&quot;</div><div class="line">    android:orientation=&quot;horizontal&quot;&gt;</div><div class="line"></div><div class="line">    &lt;com.xxt.xtest.FallingBallImageView</div><div class="line">        android:id=&quot;@+id/ball_img&quot;</div><div class="line">        android:layout_width=&quot;50dp&quot;</div><div class="line">        android:layout_height=&quot;50dp&quot;</div><div class="line">        android:src=&quot;@drawable/circle&quot;/&gt;</div><div class="line">    &lt;Button</div><div class="line">        android:id=&quot;@+id/start_btn&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:layout_marginLeft=&quot;30dp&quot;</div><div class="line">        android:text=&quot;开启动画&quot;/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
 <p>其中，drawable/circle.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;shape</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:shape=&quot;oval&quot;&gt;</div><div class="line">    &lt;solid android:color=&quot;#FF0000&quot;/&gt;</div><div class="line">&lt;/shape&gt;</div></pre></td></tr></table></figure></p>
+<p><div id="jump4"></div></p>
 <h3 id="3-4-4-何时需要实现对应的-get-函数"><a href="#3-4-4-何时需要实现对应的-get-函数" class="headerlink" title="3.4.4 何时需要实现对应的 get 函数"></a>3.4.4 何时需要实现对应的 get 函数</h3><p>ObjectAnimator 有三个构造函数：ofInt()、ofFloat() 和 ofObject()，它们的最后一个参数都是可变长参数，用于指定动画值的变化区间。如果我们只定义一个值，如上例中改成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ObjectAnimator animator = ObjectAnimator.ofObject(view, &quot;fallingPos&quot;,</div><div class="line">                        new FallingBallImageView.FallingBallEvaluator(),</div><div class="line">                        new Point(500, 500));</div></pre></td></tr></table></figure></p>
 <p>则会发生异常，信息如下：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-e4d89fda63bedd35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
@@ -457,6 +461,7 @@ ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里�
 <blockquote>
 <p>总结：当且仅当动画只有一个过渡值时，系统才会调用属性对应的 get 函数来得到动画的初始值。当不存在 get 函数时，则会去动画参数类型的默认值作为初始值；当无法取得动画参数类型的默认值时，则会直接奔溃。</p>
 </blockquote>
+<p><div id="jump4"></div></p>
 <h3 id="3-4-5-常用函数"><a href="#3-4-5-常用函数" class="headerlink" title="3.4.5 常用函数"></a>3.4.5 常用函数</h3><p>用法和效果与 ValueAnimator 的函数是完全一样的。</p>
 
       
@@ -584,7 +589,7 @@ ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -737,7 +742,7 @@ ObjectAnimator 重载了几个方法，例如 ofInt()，ofFloat() 等，这里�
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

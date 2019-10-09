@@ -89,30 +89,33 @@
 
 
 <meta name="description" content="通过 LinearGradient 可以实现线性渐变效果。
+
 7.5.1 概述1. 构造函数第一个构造函数：12public LinearGradient(float x0, float y0, float x1, float y1,        int color0, int color1, TileMode tile)
 
-(x0,y0) ：起始渐变点坐标；(x1,y1) ：结束渐变点坐标">
+(x0,y0) ：起始渐变点坐标；(x1,y1) ：结束渐变点坐">
 <meta property="og:type" content="article">
 <meta property="og:title" content="07.5 精通自定义 View 之 绘图进阶——Shader 之 LinearGradient">
 <meta property="og:url" content="http://yoursite.com/2019/07/07/Custom View/07.5 精通自定义 View 之 绘图进阶——Shader 之 LinearGradient/index.html">
 <meta property="og:site_name" content="先小涛">
 <meta property="og:description" content="通过 LinearGradient 可以实现线性渐变效果。
+
 7.5.1 概述1. 构造函数第一个构造函数：12public LinearGradient(float x0, float y0, float x1, float y1,        int color0, int color1, TileMode tile)
 
-(x0,y0) ：起始渐变点坐标；(x1,y1) ：结束渐变点坐标">
+(x0,y0) ：起始渐变点坐标；(x1,y1) ：结束渐变点坐">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-bd6dbc498b7ed192.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2d1eccd29d3cf068.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b3a9b6144803c90f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-d78f1af0694fccb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-d3c178884edce57a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-1df20933fc32f800.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2019-10-04T07:26:26.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:33:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="07.5 精通自定义 View 之 绘图进阶——Shader 之 LinearGradient">
 <meta name="twitter:description" content="通过 LinearGradient 可以实现线性渐变效果。
+
 7.5.1 概述1. 构造函数第一个构造函数：12public LinearGradient(float x0, float y0, float x1, float y1,        int color0, int color1, TileMode tile)
 
-(x0,y0) ：起始渐变点坐标；(x1,y1) ：结束渐变点坐标">
+(x0,y0) ：起始渐变点坐标；(x1,y1) ：结束渐变点坐">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-bd6dbc498b7ed192.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -414,6 +417,7 @@
 
 
 <p>通过 LinearGradient 可以实现线性渐变效果。</p>
+<p><div id="jump1"></div></p>
 <h3 id="7-5-1-概述"><a href="#7-5-1-概述" class="headerlink" title="7.5.1 概述"></a>7.5.1 概述</h3><h4 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1. 构造函数"></a>1. 构造函数</h4><p>第一个构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public LinearGradient(float x0, float y0, float x1, float y1,</div><div class="line">        int color0, int color1, TileMode tile)</div></pre></td></tr></table></figure></p>
 <ul>
 <li>(x0,y0) ：起始渐变点坐标；(x1,y1) ：结束渐变点坐标。</li>
@@ -441,6 +445,7 @@
 <p>下面利用 drawText() 函数实现一个渐变文字效果。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-d3c178884edce57a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private String mText;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        setLayerType(LAYER_TYPE_SOFTWARE, null);</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setTextSize(80);</div><div class="line">        mText = &quot;欢迎关注先先生的Blog&quot;;</div><div class="line"></div><div class="line">        float width = mPaint.measureText(mText);</div><div class="line">        int[] colors = &#123;0xFFFF0000, 0xFF00FF00, 0xFF0000FF, 0xFFFFFF00, 0xFF00FFFF&#125;;</div><div class="line">        float[] pos = &#123;0f, 0.2f, 0.4f, 0.6f, 1.0f&#125;;</div><div class="line">        LinearGradient gradient = new LinearGradient(0, 0, width / 2f, 0,</div><div class="line">                colors, pos, Shader.TileMode.MIRROR);</div><div class="line">        mPaint.setShader(gradient);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line">        canvas.drawText(mText, 0, 100, mPaint);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><div id="jump2"></div></p>
 <h3 id="7-5-2-示例：闪光文字效果"><a href="#7-5-2-示例：闪光文字效果" class="headerlink" title="7.5.2 示例：闪光文字效果"></a>7.5.2 示例：闪光文字效果</h3><p><img src="https://upload-images.jianshu.io/upload_images/14186083-1df20933fc32f800.gif?imageMogr2/auto-orient/strip" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">public class TestView extends AppCompatTextView &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private LinearGradient mLinearGradient;</div><div class="line">    private int mDx;</div><div class="line">    private Matrix mMatrix;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        setLayerType(LAYER_TYPE_SOFTWARE, null);</div><div class="line">        mPaint = getPaint();</div><div class="line">        mMatrix = new Matrix();</div><div class="line">        int length = (int) mPaint.measureText(getText().toString());</div><div class="line">        createAnim(length);</div><div class="line">        createLinearGradient(length);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void createAnim(int length) &#123;</div><div class="line">        ValueAnimator animator = ValueAnimator.ofInt(0, 2 * length);</div><div class="line">        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">                mDx = (Integer) animation.getAnimatedValue();</div><div class="line">                postInvalidate();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        animator.setRepeatMode(ValueAnimator.RESTART);</div><div class="line">        animator.setRepeatCount(ValueAnimator.INFINITE);</div><div class="line">        animator.setDuration(2000);</div><div class="line">        animator.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void createLinearGradient(int length) &#123;</div><div class="line">        mLinearGradient = new LinearGradient(-length, 0, 0, 0,</div><div class="line">                new int[]&#123;getCurrentTextColor(), 0xFF00FF00, getCurrentTextColor()&#125;,</div><div class="line">                new float[]&#123;0, 0.5f, 1&#125;,</div><div class="line">                Shader.TileMode.CLAMP);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        mMatrix.reset();</div><div class="line">        mMatrix.setTranslate(mDx, 0);</div><div class="line">        mLinearGradient.setLocalMatrix(mMatrix);</div><div class="line">        mPaint.setShader(mLinearGradient);</div><div class="line"></div><div class="line">        super.onDraw(canvas);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在 res/layout/act_main.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line">    &lt;com.xxt.xtest.TestView</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:layout_margin=&quot;20dp&quot;</div><div class="line">        android:textSize=&quot;24sp&quot;</div><div class="line">        android:text=&quot;欢迎关注先先生的Blog&quot;/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
@@ -571,7 +576,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -724,7 +729,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

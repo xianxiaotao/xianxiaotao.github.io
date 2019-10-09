@@ -93,7 +93,8 @@
 View Animation（视图动画，API Level 1）|—- Tween Animation（补间动画）|—- Frame Animation（逐帧动画）
 Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- ObjectAnimator
 
-2.1.1 概述视图动画分为 5 种类型组成：scale：">
+
+2.1.1 概述视图动画分为 5 种类型组成：scale">
 <meta property="og:type" content="article">
 <meta property="og:title" content="02.1 精通自定义 View 之视图动画——视图动画标签">
 <meta property="og:url" content="http://yoursite.com/2019/07/02/Custom View/02.1 精通自定义 View 之视图动画——视图动画标签/index.html">
@@ -103,13 +104,14 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 View Animation（视图动画，API Level 1）|—- Tween Animation（补间动画）|—- Frame Animation（逐帧动画）
 Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- ObjectAnimator
 
-2.1.1 概述视图动画分为 5 种类型组成：scale：">
+
+2.1.1 概述视图动画分为 5 种类型组成：scale">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-7756d7b6da97fa09.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-584dead53190f9d3.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-dba6e63da35e2b0a.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a869cc5df2429999.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-bf4c19f3e714f6c4.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2019-10-04T06:23:15.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:02:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.1 精通自定义 View 之视图动画——视图动画标签">
 <meta name="twitter:description" content="Animation：
@@ -117,7 +119,8 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 View Animation（视图动画，API Level 1）|—- Tween Animation（补间动画）|—- Frame Animation（逐帧动画）
 Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- ObjectAnimator
 
-2.1.1 概述视图动画分为 5 种类型组成：scale：">
+
+2.1.1 概述视图动画分为 5 种类型组成：scale">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-7756d7b6da97fa09.gif?imageMogr2/auto-orient/strip">
 
 
@@ -422,10 +425,12 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 <li>View Animation（视图动画，API Level 1）<br>|—- Tween Animation（补间动画）<br>|—- Frame Animation（逐帧动画）</li>
 <li>Property Animation（属性动画，API Level 11）<br>|—- ValueAnimator<br>|—- ObjectAnimator</li>
 </ul>
+<p><div id="jump1"></div></p>
 <h3 id="2-1-1-概述"><a href="#2-1-1-概述" class="headerlink" title="2.1.1 概述"></a>2.1.1 概述</h3><p>视图动画分为 5 种类型组成：<br>scale：渐变透明度动画效果<br>alpha：渐变尺寸伸缩动画效果<br>rotate：画面转移旋转动画效果<br>translate：画面变化位置移动动画效果<br>set：定义动画集</p>
 <h4 id="1-配置-XML-动画文件"><a href="#1-配置-XML-动画文件" class="headerlink" title="1. 配置 XML 动画文件"></a>1. 配置 XML 动画文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;&gt;</div><div class="line">&lt;scale xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:fromXScale=&quot;0.0&quot;</div><div class="line">    android:toXScale=&quot;1.4&quot;</div><div class="line">    android:fromYScale=&quot;0.0&quot;</div><div class="line">    android:toYScale=&quot;1.4&quot;</div><div class="line">    android:duration=&quot;700&quot;</div></pre></td></tr></table></figure>
 <h4 id="2-动画文件存放位置"><a href="#2-动画文件存放位置" class="headerlink" title="2. 动画文件存放位置"></a>2. 动画文件存放位置</h4><p>存放在 res/anim 文件夹下，访问时使用 R.anim.XXX。<br>存放在 res/drawable 文件夹下，访问时使用 R.drawable.XXX。</p>
 <h4 id="3-使用动画文件"><a href="#3-使用动画文件" class="headerlink" title="3. 使用动画文件"></a>3. 使用动画文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">View view = findViewById(R.id.view);</div><div class="line">Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale_anim);</div><div class="line">view.startAnimation(animation);</div></pre></td></tr></table></figure>
+<p><div id="jump2"></div></p>
 <h3 id="2-1-2-scale-标签"><a href="#2-1-2-scale-标签" class="headerlink" title="2.1.2 scale 标签"></a>2.1.2 scale 标签</h3><p>scale 标签用于缩放动画，可以实现动态调整控件尺寸的效果：</p>
 <ul>
 <li>android:fromXScale：动画开始时，控件在 X 轴方向上相对自身的缩放比例，浮点值。1.0 代表自身无变化，0.5 表示缩小一倍，2.0 代表放大一倍。</li>
@@ -439,6 +444,7 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 <p>缩放动画 scale2.xml：android:pivotX=”50%”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;scale xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:fromXScale=&quot;0.0&quot;</div><div class="line">    android:toXScale=&quot;1.0&quot;</div><div class="line">    android:fromYScale=&quot;0.0&quot;</div><div class="line">    android:toYScale=&quot;1.0&quot;</div><div class="line">    android:pivotX=&quot;50%&quot;</div><div class="line">    android:duration=&quot;700&quot;/&gt;</div></pre></td></tr></table></figure></p>
 <p>缩放动画 scale3.xml：android:pivotX=”50%”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;scale xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:fromXScale=&quot;0.0&quot;</div><div class="line">    android:toXScale=&quot;1.0&quot;</div><div class="line">    android:fromYScale=&quot;0.0&quot;</div><div class="line">    android:toYScale=&quot;1.0&quot;</div><div class="line">    android:pivotX=&quot;50%p&quot;</div><div class="line">    android:duration=&quot;700&quot;/&gt;</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-7756d7b6da97fa09.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump3"></div></p>
 <h3 id="2-1-3-Animation-继承属性"><a href="#2-1-3-Animation-继承属性" class="headerlink" title="2.1.3 Animation 继承属性"></a>2.1.3 Animation 继承属性</h3><p>所有的动画都继承自 Animation 类，它的内部实现了一些共用的动画属性：</p>
 <ul>
 <li>android:duration：一次动画的持续时间，单位毫秒。</li>
@@ -449,6 +455,7 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 <li>android:repeatMode：设定重复的类型，有 reverse（倒序回放） 和 restart（重放） 两个值。与 repeatCount 一起使用才有效果。</li>
 <li>android:interpolator：设定插值器，指定动画效果，比如弹跳效果。</li>
 </ul>
+<p><div id="jump4"></div></p>
 <h3 id="2-1-4-alpha-标签"><a href="#2-1-4-alpha-标签" class="headerlink" title="2.1.4 alpha 标签"></a>2.1.4 alpha 标签</h3><p>alpha 标签用于实现渐变透明度动画效果。除从 Animation 类继承而来的属性外，自身所具有的属性如下：</p>
 <ul>
 <li>android:fromAlpha：动画开始的透明度，取值范围 0.0 ~ 1.0，0.0 表示完全透明，1.0 表示完全不透明。</li>
@@ -456,6 +463,7 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 </ul>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;alpha xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:fromAlpha=&quot;1.0&quot;</div><div class="line">    android:toAlpha=&quot;0.5&quot;</div><div class="line">    android:repeatMode=&quot;reverse&quot;</div><div class="line">    android:repeatCount=&quot;infinite&quot;</div><div class="line">    android:duration=&quot;700&quot;/&gt;</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-584dead53190f9d3.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump5"></div></p>
 <h3 id="2-1-5-rotate-标签"><a href="#2-1-5-rotate-标签" class="headerlink" title="2.1.5 rotate 标签"></a>2.1.5 rotate 标签</h3><p>rotate 标签用于实现画面转移旋转动画效果。除从 Animation 类继承而来的属性外，自身所具有的属性如下：</p>
 <ul>
 <li>android:fromDegrees：动画开始旋转时的角度位置，正值代表顺时针方向的度数，负值代表逆时针方向的度数。</li>
@@ -465,6 +473,7 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 </ul>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;rotate xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:fromDegrees=&quot;0&quot;</div><div class="line">    android:toDegrees=&quot;180&quot;</div><div class="line">    android:pivotX=&quot;50%&quot;</div><div class="line">    android:pivotY=&quot;50%&quot;</div><div class="line">    android:repeatMode=&quot;restart&quot;</div><div class="line">    android:repeatCount=&quot;infinite&quot;</div><div class="line">    android:duration=&quot;700&quot;/&gt;</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-dba6e63da35e2b0a.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump6"></div></p>
 <h3 id="2-1-6-translate-标签"><a href="#2-1-6-translate-标签" class="headerlink" title="2.1.6 translate 标签"></a>2.1.6 translate 标签</h3><p>translate 标签用于实现画面转移旋转动画效果。除从 Animation 类继承而来的属性外，自身所具有的属性如下：</p>
 <ul>
 <li>android:fromXDelta：起始点 X 轴坐标，可以是数值、百分数、百分数p。</li>
@@ -474,6 +483,7 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 </ul>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;translate xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:fromXDelta=&quot;0&quot;</div><div class="line">    android:fromYDelta=&quot;0&quot;</div><div class="line">    android:toXDelta=&quot;-50%&quot;</div><div class="line">    android:toYDelta=&quot;-50%&quot;</div><div class="line">    android:duration=&quot;1500&quot;/&gt;</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-a869cc5df2429999.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump7"></div></p>
 <h3 id="2-1-7-set-标签"><a href="#2-1-7-set-标签" class="headerlink" title="2.1.7 set 标签"></a>2.1.7 set 标签</h3><p>set 标签是一个容器类标签，用于定义动画集。前面的 4 个标签只能完成特定的功能，而 set 标签则可以把这些动画效果组合起来，共同完成一个动画。set 标签自身没有属性，它的属性都是从 Animation 类继承而来的。当这些属性用于 set 标签时，就会对 set 标签下的所有子控件产生作用。但 repeateCount 属性是无效的，必须对每个动画单独设置才有作用。</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:duration=&quot;2000&quot;</div><div class="line">    android:fillAfter=&quot;true&quot;&gt;</div><div class="line">    &lt;alpha</div><div class="line">        android:fromAlpha=&quot;0.0&quot;</div><div class="line">        android:toAlpha=&quot;1.0&quot;/&gt;</div><div class="line">    &lt;scale</div><div class="line">        android:fromXScale=&quot;0.0&quot;</div><div class="line">        android:toXScale=&quot;1.4&quot;</div><div class="line">        android:fromYScale=&quot;0.0&quot;</div><div class="line">        android:toYScale=&quot;1.4&quot;</div><div class="line">        android:pivotX=&quot;50%&quot;</div><div class="line">        android:pivotY=&quot;50%&quot; /&gt;</div><div class="line">    &lt;rotate</div><div class="line">        android:fromDegrees=&quot;0&quot;</div><div class="line">        android:toDegrees=&quot;720&quot;</div><div class="line">        android:pivotX=&quot;50%&quot;</div><div class="line">        android:pivotY=&quot;50%&quot;/&gt;</div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-bf4c19f3e714f6c4.gif?imageMogr2/auto-orient/strip" alt=""></p>
@@ -603,7 +613,7 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -756,7 +766,7 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

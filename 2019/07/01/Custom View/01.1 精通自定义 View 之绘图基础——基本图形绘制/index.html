@@ -117,7 +117,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-70fd46d585c02d0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-87a0fbfd0c9002cd.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-03ed1ceee71fd5c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-04T06:02:47.000Z">
+<meta property="og:updated_time" content="2019-10-09T01:55:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.1 精通自定义 View 之绘图基础——基本图形绘制">
 <meta name="twitter:description" content="1.1.1 概述画图需要两个工具：纸和笔。在 Android 中，Paint 类就是画笔，而 Canvas 类就是纸，在这里叫作画布。
@@ -421,8 +421,8 @@
       
 
       
-        <meta name="referrer" content="no-referrer">
-
+        <p><meta name="referrer" content="no-referrer"></p>
+<p><div id="jump1"></div></p>
 <h3 id="1-1-1-概述"><a href="#1-1-1-概述" class="headerlink" title="1.1.1 概述"></a>1.1.1 概述</h3><p>画图需要两个工具：纸和笔。在 Android 中，Paint 类就是画笔，而 Canvas 类就是纸，在这里叫作画布。</p>
 <p>凡是跟画笔设置相关的，比如画笔大小、粗细、画笔颜色、透明度、字体的样式等，都在 Paint 类里设置；同样，凡是要画出成品的东西，比如圆形、矩形、文字等，都调用 Canvas 类里的函数生成。</p>
 <p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-feca6c269f8bed9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"></p>
@@ -431,6 +431,7 @@
 <blockquote>
 <p>在 onDraw() 函数中不能创建变量。因为当需要重绘时就会调用 onDraw() 函数，这样会导致变量一直被重复创建，会引起频繁的程序 GC (回收内存)，进而引起程序卡顿。一般在构造函数中创建变量。</p>
 </blockquote>
+<p><div id="jump2"></div></p>
 <h3 id="1-1-2-画笔的基本设置"><a href="#1-1-2-画笔的基本设置" class="headerlink" title="1.1.2 画笔的基本设置"></a>1.1.2 画笔的基本设置</h3><h4 id="1-setAntiAlias"><a href="#1-setAntiAlias" class="headerlink" title="1. setAntiAlias()"></a>1. setAntiAlias()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setAntiAlias(boolean aa)</div></pre></td></tr></table></figure>
 <p>表示是否打开抗锯齿功能。抗锯齿是依赖算法的，一般在绘制不规则的图形时使用，比如圆形、文字等。在绘制棱角分明的图像时，比如一个矩形、一张位图，是不需要打开抗锯齿功能的。</p>
 <p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-8627a3c3392a00a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Anti Alias &amp; No Anti Alias"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint1, mPaint2;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        mPaint1 = new Paint();</div><div class="line">        mPaint1.setColor(Color.RED);</div><div class="line">        mPaint1.setStyle(Paint.Style.FILL);</div><div class="line">        mPaint1.setAntiAlias(true);</div><div class="line">        mPaint1.setStrokeWidth(50);</div><div class="line"></div><div class="line">        mPaint2 = new Paint();</div><div class="line">        mPaint2.setColor(Color.RED);</div><div class="line">        mPaint2.setStyle(Paint.Style.FILL);</div><div class="line">        mPaint2.setStrokeWidth(50);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        canvas.drawCircle(200, 200, 150, mPaint1);</div><div class="line">        canvas.drawCircle(540, 200, 150, mPaint2);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -454,6 +455,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">paintF = generatePaint(Color.RED, Paint.Style.FILL, 50);</div><div class="line">paintS = generatePaint(Color.RED, Paint.Style.STROKE, 50);</div><div class="line">paintFS = generatePaint(Color.RED, Paint.Style.FILL_AND_STROKE, 50);</div><div class="line">paintLine = generatePaint(Color.BLACK, Paint.Style.STROKE, 1);</div><div class="line"></div><div class="line">canvas.drawCircle(225, 300, 150, paintF);</div><div class="line">canvas.drawCircle(600, 300, 150, paintS);</div><div class="line">canvas.drawCircle(1000, 300, 150, paintFS);</div><div class="line">canvas.drawLine(225, 150, 1000, 150, paintLine);</div></pre></td></tr></table></figure>
 <h4 id="4-setStrokeWidth"><a href="#4-setStrokeWidth" class="headerlink" title="4. setStrokeWidth()"></a>4. setStrokeWidth()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setStrokeWidth(float width)</div></pre></td></tr></table></figure>
 <p>设置描边宽度值，单位是 px。当画笔的 Style 样式是 STROKE、FILL_AND_STROKE 时有效。当 Style 不起作用时，用于设置画笔宽度。</p>
+<p><div id="jump3"></div></p>
 <h3 id="1-1-3-Canvas使用基础"><a href="#1-1-3-Canvas使用基础" class="headerlink" title="1.1.3 Canvas使用基础"></a>1.1.3 Canvas使用基础</h3><h4 id="1-画布背景设置"><a href="#1-画布背景设置" class="headerlink" title="1. 画布背景设置"></a>1. 画布背景设置</h4><p>有三种方法可以实现画布背景设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void drawColor(int color)</div><div class="line">void drawARGB(int a, int r, int g, int b)</div><div class="line">void drawRGB(int r, int g, int b)</div></pre></td></tr></table></figure></p>
 <p>drawColor() 函数中参数 color 的取值必须是 8 位的 0xAARRGGBB 样式颜色值。<br>drawARGB() 函数允许分别传入 A、R、G、B 分量，每个颜色值的取值范围都是 0~255(对应十六进制的 0x00~0xFF)，内部会通过这些颜色分量构造出对应的颜色值。 drawRGB() 函数只允许传入 R、G、B 分量，透明度 Alpha 的值取 255。</p>
 <p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-b1bc19b811eb6ed6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="将画布默认填充为紫色"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">canvas.drawColor(0xFFFF00FF);</div><div class="line">canvas.drawARGB(0xFF, 0xFF, 0, 0xFF);</div><div class="line">canvas.drawRGB(255, 0, 255);</div></pre></td></tr></table></figure></p>
@@ -534,6 +536,7 @@
 <blockquote>
 <p>当画笔设为填充模式时，填充区域只限于圆弧的起始点和终点所形成的区域。当带有两边时，会将两边及圆弧内部全部填充；如果没有两边，则只填充圆弧部分。</p>
 </blockquote>
+<p><div id="jump4"></div></p>
 <h3 id="1-1-4-Rect与RectF"><a href="#1-1-4-Rect与RectF" class="headerlink" title="1.1.4 Rect与RectF"></a>1.1.4 Rect与RectF</h3><h4 id="1-是否包含点、矩形"><a href="#1-是否包含点、矩形" class="headerlink" title="1.是否包含点、矩形"></a>1.是否包含点、矩形</h4><p>1）判断是否包含某个点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">boolean contains(int x, int y)</div></pre></td></tr></table></figure></p>
 <p>该函数用于判断某个点是否在当前矩形中。如果在，则返回 true；如果不在，则返回 false。 参数(x,y)就是当前要判断的点的坐标。</p>
 <p>示例：绘制一个灰色矩形，当手指在这个矩形区域内时，矩形变为红色。<br><img src="https://upload-images.jianshu.io/upload_images/14186083-87a0fbfd0c9002cd.gif?imageMogr2/auto-orient/strip" alt="效果图"></p>
@@ -555,6 +558,7 @@
 <p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-03ed1ceee71fd5c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="绿色、红色矩形合并成蓝色矩形"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">mRect1 = new RectF(200, 100, 500, 300);</div><div class="line">mRect2 = new RectF(100, 200, 300, 400);</div><div class="line"></div><div class="line">// 画出右上的红色矩形</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">canvas.drawRect(mRect1, mPaint);</div><div class="line">// 画出左下的绿色矩形</div><div class="line">mPaint.setColor(Color.GREEN);</div><div class="line">canvas.drawRect(mRect2, mPaint);</div><div class="line">// 矩形合并</div><div class="line">mRect1.union(mRect2);</div><div class="line">// 画出合并后的矩形（蓝色部分）</div><div class="line">mPaint.setColor(Color.BLUE);</div><div class="line">canvas.drawRect(mRect1, mPaint);</div></pre></td></tr></table></figure></p>
 <p>2）合并矩形与某个点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void union(int x, int y)</div></pre></td></tr></table></figure></p>
 <p>先判断当前矩形与目标合并点的关系。如果不相交，则根据目标点(x,y)的位置，将目标点设置为当前矩形的左上角点或者右下角点。如果当前矩形是一个空矩形，则最后的结果矩形为([0,0],[x,y])，即结果矩形的左上角点为[0,0]，右下角点为[x,y]。</p>
+<p><div id="jump5"></div></p>
 <h3 id="1-1-5-Color"><a href="#1-1-5-Color" class="headerlink" title="1.1.5 Color"></a>1.1.5 Color</h3><p>Color 是 Android 中与颜色处理有关的类。</p>
 <h4 id="1-常量颜色"><a href="#1-常量颜色" class="headerlink" title="1. 常量颜色"></a>1. 常量颜色</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@ColorInt public static final int BLACK       = 0xFF000000;</div><div class="line">@ColorInt public static final int DKGRAY      = 0xFF444444;</div><div class="line">@ColorInt public static final int GRAY        = 0xFF888888;</div><div class="line">@ColorInt public static final int LTGRAY      = 0xFFCCCCCC;</div><div class="line">@ColorInt public static final int WHITE       = 0xFFFFFFFF;</div><div class="line">@ColorInt public static final int RED         = 0xFFFF0000;</div><div class="line">@ColorInt public static final int GREEN       = 0xFF00FF00;</div><div class="line">@ColorInt public static final int BLUE        = 0xFF0000FF;</div><div class="line">@ColorInt public static final int YELLOW      = 0xFFFFFF00;</div><div class="line">@ColorInt public static final int CYAN        = 0xFF00FFFF;</div><div class="line">@ColorInt public static final int MAGENTA     = 0xFFFF00FF;</div><div class="line">@ColorInt public static final int TRANSPARENT = 0;</div></pre></td></tr></table></figure>
 <p>Color.XXX 来直接使用这些颜色，比如红色：Color.RED。</p>
@@ -688,7 +692,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -841,7 +845,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

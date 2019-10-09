@@ -90,23 +90,23 @@
 
 <meta name="description" content="4.2.1 概述使用 ObjectAnimator：12ObjectAnimator animator = ObjectAnimator.ofFloat(mView, &amp;quot;alpha&amp;quot;, 0f);animator.start();
 使用 ViewPropertyAnimator：1mView.animate().alpha(0f);
-除此之外，还可以非常容易地将多个动画结合起">
+除此之外，还可以非常容易地将多个动画结合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="04.2 精通自定义 View 之属性动画进阶——ViewPropertyAnimator">
 <meta property="og:url" content="http://yoursite.com/2019/07/04/Custom View/04.2 精通自定义 View 之属性动画进阶——ViewPropertyAnimator/index.html">
 <meta property="og:site_name" content="先小涛">
 <meta property="og:description" content="4.2.1 概述使用 ObjectAnimator：12ObjectAnimator animator = ObjectAnimator.ofFloat(mView, &amp;quot;alpha&amp;quot;, 0f);animator.start();
 使用 ViewPropertyAnimator：1mView.animate().alpha(0f);
-除此之外，还可以非常容易地将多个动画结合起">
+除此之外，还可以非常容易地将多个动画结合">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-4c85d0f46e0e3cea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-f744e1aa04b08df1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-aa7a1ac92a785e49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-04T07:10:31.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:23:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="04.2 精通自定义 View 之属性动画进阶——ViewPropertyAnimator">
 <meta name="twitter:description" content="4.2.1 概述使用 ObjectAnimator：12ObjectAnimator animator = ObjectAnimator.ofFloat(mView, &amp;quot;alpha&amp;quot;, 0f);animator.start();
 使用 ViewPropertyAnimator：1mView.animate().alpha(0f);
-除此之外，还可以非常容易地将多个动画结合起">
+除此之外，还可以非常容易地将多个动画结合">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-4c85d0f46e0e3cea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -406,6 +406,7 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><div id="jump1"></div></p>
 <h3 id="4-2-1-概述"><a href="#4-2-1-概述" class="headerlink" title="4.2.1 概述"></a>4.2.1 概述</h3><p>使用 ObjectAnimator：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjectAnimator animator = ObjectAnimator.ofFloat(mView, &quot;alpha&quot;, 0f);</div><div class="line">animator.start();</div></pre></td></tr></table></figure></p>
 <p>使用 ViewPropertyAnimator：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mView.animate().alpha(0f);</div></pre></td></tr></table></figure></p>
 <p>除此之外，还可以非常容易地将多个动画结合起来。比如：将控件移动到点 (50, 100) 且完全透明。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mView.animate().x(50).y(100).alpha(0f);</div></pre></td></tr></table></figure></p>
@@ -416,6 +417,7 @@
 <li>每个属性提供两种类型方法设置。如：scaleX()、scaleXBy()。</li>
 <li>该类只能通过 View 的 animate() 获取其实例对象的引用。</li>
 </ul>
+<p><div id="jump2"></div></p>
 <h3 id="4-2-2-常用函数"><a href="#4-2-2-常用函数" class="headerlink" title="4.2.2 常用函数"></a>4.2.2 常用函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">view.animate()                  // 获取ViewPropertyAnimator对象</div><div class="line">        // 位移</div><div class="line">        .translationX(100)</div><div class="line">        .translationXBy(100)</div><div class="line">        .translationY(100)</div><div class="line">        .translationYBy(100)</div><div class="line">        .translationZ(100)      // Z 轴移动，API 21 添加</div><div class="line">        .translationZBy(100)    // API 21 添加</div><div class="line">        // 改变坐标</div><div class="line">        .x(100)</div><div class="line">        .xBy(100)</div><div class="line">        .y(100)</div><div class="line">        .yBy(100)</div><div class="line">        // 改变透明度</div><div class="line">        .alpha(0.1f)</div><div class="line">        .alphaBy(0.1f)</div><div class="line">        // 改变透明度</div><div class="line">        .scaleX(0.1f)</div><div class="line">        .scaleXBy(0.1f)</div><div class="line">        .scaleY(0.1f)</div><div class="line">        .scaleYBy(0.1f)</div><div class="line">        // 旋转</div><div class="line">        .rotation(180)</div><div class="line">        .rotationX(180)</div><div class="line">        .rotationBy(180)</div><div class="line">        .rotationY(180)</div><div class="line">        .rotationYBy(180)</div><div class="line">        // 持续时间</div><div class="line">        .setDuration(1000)</div><div class="line">        // 动画开始时执行 runnable，API 16 添加</div><div class="line">        .withStartAction(new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">        // 动画结束时执行 runnable，API 16 添加</div><div class="line">        .withEndAction(new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">        .withLayer()            // 硬件加速,API 16添加</div><div class="line">        .setStartDelay(1000)    // 执行延迟</div><div class="line">        // 设置插值器</div><div class="line">        .setInterpolator(new LinearInterpolator())</div><div class="line">        // 设置更新监听</div><div class="line">        .setUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onAnimationUpdate(ValueAnimator animation) &#123;&#125;</div><div class="line">        &#125;)</div><div class="line">        // 动画监听</div><div class="line">        .setListener(new Animator.AnimatorListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onAnimationStart(Animator animation) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onAnimationEnd(Animator animation) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onAnimationCancel(Animator animation) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onAnimationRepeat(Animator animation) &#123;&#125;</div><div class="line">        &#125;)</div><div class="line">        .start();</div></pre></td></tr></table></figure>
 <p>举例说明一下 xxxX() 和 xxxXBy() 函数之间的区别。如 scaleY(2f) 和 scaleYBy(2f)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    private TextView tv1, tv2;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.act_main);</div><div class="line"></div><div class="line">        Button startBtn = findViewById(R.id.start_btn);</div><div class="line">        tv1 = findViewById(R.id.tv1);</div><div class="line">        tv2 = findViewById(R.id.tv2);</div><div class="line"></div><div class="line">        startBtn.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                tv1.animate().scaleX(2f);</div><div class="line">                tv2.animate().scaleXBy(2f);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>原图：</p>
@@ -550,7 +552,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,7 +705,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

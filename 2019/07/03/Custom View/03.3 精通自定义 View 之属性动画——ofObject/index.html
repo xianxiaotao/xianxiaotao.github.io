@@ -89,23 +89,26 @@
 
 
 <meta name="description" content="1public static ValueAnimator ofObject(TypeEvaluator evaluator, Object... values)
+
 3.3.1 示例：字母从 A 变化到 Z
-123456789101112131415161718192021222324private void startAnim() &amp;#123;    ValueAnimator animato">
+123456789101112131415161718192021222324private void startAnim() &amp;#123;    ValueAnimator animat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03.3 精通自定义 View 之属性动画——ofObject">
 <meta property="og:url" content="http://yoursite.com/2019/07/03/Custom View/03.3 精通自定义 View 之属性动画——ofObject/index.html">
 <meta property="og:site_name" content="先小涛">
 <meta property="og:description" content="1public static ValueAnimator ofObject(TypeEvaluator evaluator, Object... values)
+
 3.3.1 示例：字母从 A 变化到 Z
-123456789101112131415161718192021222324private void startAnim() &amp;#123;    ValueAnimator animato">
+123456789101112131415161718192021222324private void startAnim() &amp;#123;    ValueAnimator animat">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-7be4c63a0f016955.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-3e1482dc4d082b7f.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2019-10-04T07:03:41.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:18:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03.3 精通自定义 View 之属性动画——ofObject">
 <meta name="twitter:description" content="1public static ValueAnimator ofObject(TypeEvaluator evaluator, Object... values)
+
 3.3.1 示例：字母从 A 变化到 Z
-123456789101112131415161718192021222324private void startAnim() &amp;#123;    ValueAnimator animato">
+123456789101112131415161718192021222324private void startAnim() &amp;#123;    ValueAnimator animat">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-7be4c63a0f016955.gif?imageMogr2/auto-orient/strip">
 
 
@@ -407,8 +410,10 @@
 
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static ValueAnimator ofObject(TypeEvaluator evaluator, Object... values)</div></pre></td></tr></table></figure>
+<p><div id="jump1"></div></p>
 <h3 id="3-3-1-示例：字母从-A-变化到-Z"><a href="#3-3-1-示例：字母从-A-变化到-Z" class="headerlink" title="3.3.1 示例：字母从 A 变化到 Z"></a>3.3.1 示例：字母从 A 变化到 Z</h3><p><img src="https://upload-images.jianshu.io/upload_images/14186083-7be4c63a0f016955.gif?imageMogr2/auto-orient/strip" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">private void startAnim() &#123;</div><div class="line">    ValueAnimator animator = ValueAnimator.ofObject(new CharEvaluator(),</div><div class="line">            Character.valueOf(&apos;A&apos;), Character.valueOf(&apos;Z&apos;));</div><div class="line">    animator.setDuration(3000);</div><div class="line">    animator.setInterpolator(new AccelerateInterpolator());</div><div class="line">    animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">            char text = (Character) animation.getAnimatedValue();</div><div class="line">            mView.setText(String.valueOf(text));</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    animator.start();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class CharEvaluator implements TypeEvaluator&lt;Character&gt; &#123;</div><div class="line">    @Override</div><div class="line">    public Character evaluate(float fraction, Character startValue, Character endValue) &#123;</div><div class="line">        int startInt = (int) startValue;</div><div class="line">        int endInt = (int) endValue;</div><div class="line">        int value = (int) (startInt + fraction * (endInt - startInt));</div><div class="line">        return (char) value;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><div id="jump2"></div></p>
 <h3 id="3-3-2-示例：抛物动画"><a href="#3-3-2-示例：抛物动画" class="headerlink" title="3.3.2 示例：抛物动画"></a>3.3.2 示例：抛物动画</h3><p><img src="https://upload-images.jianshu.io/upload_images/14186083-3e1482dc4d082b7f.gif?imageMogr2/auto-orient/strip" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">private void startAnim() &#123;</div><div class="line">    ValueAnimator animator = ValueAnimator.ofObject(new FallingBallEvaluator(),</div><div class="line">            new Point(0, mTop), new Point(500, 500));</div><div class="line">    animator.setDuration(3000);</div><div class="line">    animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">            Point p = (Point) animation.getAnimatedValue();</div><div class="line">            mView.layout(p.x, p.y, p.x + mView.getWidth(), p.y + mView.getHeight());</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    animator.start();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class FallingBallEvaluator implements TypeEvaluator&lt;Point&gt; &#123;</div><div class="line">    private Point point = new Point();</div><div class="line">    @Override</div><div class="line">    public Point evaluate(float fraction, Point startValue, Point endValue) &#123;</div><div class="line">        point.x = (int)(startValue.x + fraction * (endValue.x - startValue.x));</div><div class="line">        if (fraction * 2 &lt; 1) &#123;</div><div class="line">            point.y = (int) (startValue.y + fraction * 2 * (endValue.y - startValue.y));</div><div class="line">        &#125; else &#123;</div><div class="line">            point.y = endValue.y;</div><div class="line">        &#125;</div><div class="line">        return point;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
@@ -536,7 +541,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -689,7 +694,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

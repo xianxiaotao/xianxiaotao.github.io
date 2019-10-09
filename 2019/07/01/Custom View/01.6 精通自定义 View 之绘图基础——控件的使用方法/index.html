@@ -88,16 +88,16 @@
 
 
 
-<meta name="description" content="1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        super(context);    &amp;#">
+<meta name="description" content="1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        super(context);    &amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01.6 精通自定义 View 之绘图基础——控件的使用方法">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/Custom View/01.6 精通自定义 View 之绘图基础——控件的使用方法/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        super(context);    &amp;#">
-<meta property="og:updated_time" content="2019-10-04T06:18:39.000Z">
+<meta property="og:description" content="1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        super(context);    &amp;">
+<meta property="og:updated_time" content="2019-10-09T02:01:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.6 精通自定义 View 之绘图基础——控件的使用方法">
-<meta name="twitter:description" content="1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        super(context);    &amp;#">
+<meta name="twitter:description" content="1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        super(context);    &amp;">
 
 
 
@@ -396,10 +396,13 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><div id="jump1"></div></p>
 <h3 id="1-6-1-控件概述"><a href="#1-6-1-控件概述" class="headerlink" title="1.6.1 控件概述"></a>1.6.1 控件概述</h3><p>在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class CustomView extends View &#123;</div><div class="line">    public CustomView(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line">    public CustomView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">    &#125;</div><div class="line">    public CustomView(Context context, AttributeSet attrs, int defStyle) &#123; </div><div class="line">        super(context, attrs, defStyle);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>其实每种构造函数都是在特定的使用情景下所必须实现的，否则将会报 inflate 错误。</p>
+<p><div id="jump2"></div></p>
 <h3 id="1-6-2-通过XML引入控件"><a href="#1-6-2-通过XML引入控件" class="headerlink" title="1.6.2 通过XML引入控件"></a>1.6.2 通过XML引入控件</h3><p>使用以下方式引入控件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout ...&gt;</div><div class="line">    &lt;com.xxt.xtest.CustomView ... /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
 <p>就必须实现第二个构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public CustomView(Context context, AttributeSet attrs) &#123;</div><div class="line">    super(context, attrs);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><div id="jump3"></div></p>
 <h3 id="1-6-3-动态添加控件"><a href="#1-6-3-动态添加控件" class="headerlink" title="1.6.3 动态添加控件"></a>1.6.3 动态添加控件</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">LinearLayout rootView = (LinearLayout)findViewById(R.id.root);</div><div class="line">CustomView customView = new CustomView(this);</div><div class="line">LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams (</div><div class="line">                LinearLayout.LayoutParams.MATCH_PARENT, </div><div class="line">                LinearLayout.LayoutParams.MATCH_PARENT);</div><div class="line">rootView.addView(customView,layoutParams);</div></pre></td></tr></table></figure></p>
 <h4 id="2-LayoutParams"><a href="#2-LayoutParams" class="headerlink" title="2. LayoutParams"></a>2. LayoutParams</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 第一个构造函数常用</div><div class="line">public LayoutParams(int width, int height)</div><div class="line">// 用于从 AttributeSet 中􏰑取出 layout_width、 layout_height 等各属性的值</div><div class="line">public LayoutParams(Context c, AttributeSet attrs)</div><div class="line">public LayoutParams(LayoutParams source)</div></pre></td></tr></table></figure>
 <p>每个容器类控件都会实现一套 LayoutParams 类，而子类则用的是父容器的 LayoutParams 类。比如上述中父容器是 LinearLayout，所以使用 LinearLayout.LayoutParams。之所以不能共用，是因为各个容器所对应的布局属性是不一样的。</p>
@@ -536,7 +539,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -689,7 +692,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

@@ -98,7 +98,7 @@ Resource ID
 
 
 
-AccelerateDecelerateInterpolato">
+AccelerateDecelerateInterpolat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="02.3 精通自定义 View 之视图动画——插值器初探">
 <meta property="og:url" content="http://yoursite.com/2019/07/02/Custom View/02.3 精通自定义 View 之视图动画——插值器初探/index.html">
@@ -113,7 +113,7 @@ Resource ID
 
 
 
-AccelerateDecelerateInterpolato">
+AccelerateDecelerateInterpolat">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-1a5e986db80513d8.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-908e70cfe467c264.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-6d0ff5568b75446f.gif?imageMogr2/auto-orient/strip">
@@ -123,7 +123,7 @@ AccelerateDecelerateInterpolato">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-f1c535299a35ee11.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-c3efadfe7e3bb00a.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-5eb085b89d61c217.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2019-10-04T06:47:41.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:05:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.3 精通自定义 View 之视图动画——插值器初探">
 <meta name="twitter:description" content="2.3.0 概述有关动画的变化速率的问题是由 Interpolator 类来决定的。Interpolator 叫插值器，也叫加速器，是用来指定动画如何变化的变量。它只是一个接口，通过实现这个接口就可以自定义动画的变化速率。系统提供了如下几个实现了插值器的类：
@@ -136,7 +136,7 @@ Resource ID
 
 
 
-AccelerateDecelerateInterpolato">
+AccelerateDecelerateInterpolat">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-1a5e986db80513d8.gif?imageMogr2/auto-orient/strip">
 
 
@@ -436,6 +436,7 @@ AccelerateDecelerateInterpolato">
       
         <meta name="referrer" content="no-referrer">
 
+<p><div id="jump0"></div></p>
 <h3 id="2-3-0-概述"><a href="#2-3-0-概述" class="headerlink" title="2.3.0 概述"></a>2.3.0 概述</h3><p>有关动画的变化速率的问题是由 Interpolator 类来决定的。Interpolator 叫插值器，也叫加速器，是用来指定动画如何变化的变量。它只是一个接口，通过实现这个接口就可以自定义动画的变化速率。系统提供了如下几个实现了插值器的类：</p>
 <table>
 <thead>
@@ -486,24 +487,32 @@ AccelerateDecelerateInterpolato">
 <p>关于插值器，有两种使用方法。</p>
 <h4 id="方法一、在-XML-文件中引用插值器"><a href="#方法一、在-XML-文件中引用插值器" class="headerlink" title="方法一、在 XML 文件中引用插值器"></a>方法一、在 XML 文件中引用插值器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;alpha xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:fromAlpha=&quot;1.0&quot;</div><div class="line">    android:toAlpha=&quot;0.1&quot;</div><div class="line">    android:duration=&quot;3000&quot;</div><div class="line">    android:interpolator=&quot;@android:anim/accelerate_interpolator&quot;/&gt;</div></pre></td></tr></table></figure>
 <h4 id="方法二、通过-setInterpolator-函数设置插值器"><a href="#方法二、通过-setInterpolator-函数设置插值器" class="headerlink" title="方法二、通过 setInterpolator() 函数设置插值器"></a>方法二、通过 setInterpolator() 函数设置插值器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">AlphaAnimation alphaAnim = new AlphaAnimation(1.0f, 0.1f);</div><div class="line">alphaAnim.setDuration(3000);</div><div class="line">alphaAnim.setInterpolator(new LinearInterpolator());</div></pre></td></tr></table></figure>
+<p><div id="jump1"></div></p>
 <h3 id="2-3-1-AccelerateDecelerateInterpolator"><a href="#2-3-1-AccelerateDecelerateInterpolator" class="headerlink" title="2.3.1 AccelerateDecelerateInterpolator"></a>2.3.1 AccelerateDecelerateInterpolator</h3><p>加速减速插值器，表示在开始与结束的地方速率改变比较慢，在中间的时候加速。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">TranslateAnimation alphaAnim = new TranslateAnimation(</div><div class="line">        Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_PARENT, 0.5f,</div><div class="line">        Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_PARENT, 0.5f);</div><div class="line">alphaAnim.setDuration(2000);</div><div class="line">alphaAnim.setFillAfter(true);</div><div class="line">alphaAnim.setInterpolator(new AccelerateDecelerateInterpolator());</div><div class="line">view.startAnimation(alphaAnim);</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-1a5e986db80513d8.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump2"></div></p>
 <h3 id="2-3-2-AccelerateInterpolator"><a href="#2-3-2-AccelerateInterpolator" class="headerlink" title="2.3.2 AccelerateInterpolator"></a>2.3.2 AccelerateInterpolator</h3><p>加速插值器，表示在动画开始的地方速率比较慢，然后开始加速。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new AccelerateInterpolator());</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-908e70cfe467c264.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump3"></div></p>
 <h3 id="2-3-3-DecelerateInterpolator"><a href="#2-3-3-DecelerateInterpolator" class="headerlink" title="2.3.3 DecelerateInterpolator"></a>2.3.3 DecelerateInterpolator</h3><p>减速插值器，表示在动画开始的一瞬间加速到最大值，然后逐渐变慢。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new DecelerateInterpolator());</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-6d0ff5568b75446f.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump4"></div></p>
 <h3 id="2-3-4-LinearInterpolator"><a href="#2-3-4-LinearInterpolator" class="headerlink" title="2.3.4 LinearInterpolator"></a>2.3.4 LinearInterpolator</h3><p>线性插值器，也称匀速插值器，显然，它的速率是保持恒定的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new LinearInterpolator());</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-377ec8feea0f4d15.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump5"></div></p>
 <h3 id="2-3-5-BounceInterpolator"><a href="#2-3-5-BounceInterpolator" class="headerlink" title="2.3.5 BounceInterpolator"></a>2.3.5 BounceInterpolator</h3><p>弹跳插值器，模拟了控件自由落地后回弹的效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new BounceInterpolator());</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-41e10e83f1b030b5.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump6"></div></p>
 <h3 id="2-3-6-AnticipateInterpolator"><a href="#2-3-6-AnticipateInterpolator" class="headerlink" title="2.3.6 AnticipateInterpolator"></a>2.3.6 AnticipateInterpolator</h3><p>初始偏移插值器，表示在动画开始的时候向前偏移一段距离，然后应用动画。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public AnticipateInterpolator()</div><div class="line">public AnticipateInterpolator(float tension)</div></pre></td></tr></table></figure></p>
 <p>参数 float tension 对应的 XML 属性为 android:tension，表示张力值，默认值为 2。值越大，初始的偏移量越大，而且速度越快。0 表示不偏移。</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new AnticipateInterpolator(4));</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-238aad363372258f.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump7"></div></p>
 <h3 id="2-3-7-OvershootInterpolator"><a href="#2-3-7-OvershootInterpolator" class="headerlink" title="2.3.7 OvershootInterpolator"></a>2.3.7 OvershootInterpolator</h3><p>结束偏移插值器，表示在动画结束的时候沿动画方向继续运动一段距离后再结束动画。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public OvershootInterpolator()</div><div class="line">public OvershootInterpolator(float tension)</div></pre></td></tr></table></figure></p>
 <p>参数 float tension 对应的 XML 属性为 android:tension，表示张力值，默认值为 2。值越大，结束时的偏移量越大。0 表示不偏移。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new OvershootInterpolator());</div></pre></td></tr></table></figure>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-f1c535299a35ee11.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump8"></div></p>
 <h3 id="2-3-8-AnticipateOvershootInterpolator"><a href="#2-3-8-AnticipateOvershootInterpolator" class="headerlink" title="2.3.8 AnticipateOvershootInterpolator"></a>2.3.8 AnticipateOvershootInterpolator</h3><p>是 AnticipateInterpolator 和 OvershootInterpolator 的合体，即在动画开始时向前偏移一段距离后，在动画结束的时候沿动画方向继续运动一段距离后再结束动画。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public AnticipateOvershootInterpolator()</div><div class="line">public AnticipateOvershootInterpolator(float tension)</div><div class="line">public AnticipateOvershootInterpolator(float tension, float extraTension)</div></pre></td></tr></table></figure></p>
 <ul>
 <li>参数 float tension 对应的 XML 属性为 android:tension，表示张力值，默认值为 2。值越大，初始和结束的偏移量越大。0 表示不偏移。</li>
@@ -511,6 +520,7 @@ AccelerateDecelerateInterpolato">
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alphaAnim.setInterpolator(new AnticipateOvershootInterpolator());</div></pre></td></tr></table></figure>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-c3efadfe7e3bb00a.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p><div id="jump9"></div></p>
 <h3 id="2-3-9-CycleInterpolator"><a href="#2-3-9-CycleInterpolator" class="headerlink" title="2.3.9 CycleInterpolator"></a>2.3.9 CycleInterpolator</h3><p>循环插值器，表示动画循环播放特定的次数，速率沿正弦曲线改变。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">TranslateAnimation alphaAnim = new TranslateAnimation(</div><div class="line">        Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_PARENT, 0.5f,</div><div class="line">        Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_PARENT, 0.5f);</div><div class="line">alphaAnim.setDuration(2000);</div><div class="line">alphaAnim.setFillAfter(true);</div><div class="line">alphaAnim.setInterpolator(new CycleInterpolator());</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-5eb085b89d61c217.gif?imageMogr2/auto-orient/strip" alt=""></p>
 <blockquote>
@@ -642,7 +652,7 @@ AccelerateDecelerateInterpolato">
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -795,7 +805,7 @@ AccelerateDecelerateInterpolato">
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

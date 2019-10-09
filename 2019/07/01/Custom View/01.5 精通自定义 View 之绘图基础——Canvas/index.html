@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-e72dba62b99c9ddf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-31634c0bd9bd9969.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a07fbe9ca6c6be10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-04T06:17:42.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:00:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.5 精通自定义 View 之绘图基础——Canvas">
 <meta name="twitter:description" content="1.5.1 Canvas变换1. 平移(Translate)画布的原始状态是以左上角为原点，向右是X轴正方向，向下是Y轴正方向。1void translate(float dx, float dy)
@@ -413,6 +413,7 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><div id="jump1"></div></p>
 <h3 id="1-5-1-Canvas变换"><a href="#1-5-1-Canvas变换" class="headerlink" title="1.5.1 Canvas变换"></a>1.5.1 Canvas变换</h3><h4 id="1-平移-Translate"><a href="#1-平移-Translate" class="headerlink" title="1. 平移(Translate)"></a>1. 平移(Translate)</h4><p>画布的原始状态是以左上角为原点，向右是X轴正方向，向下是Y轴正方向。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void translate(float dx, float dy)</div></pre></td></tr></table></figure></p>
 <p>参数:<br>float dx：水平方向平移的距离，正数为向正方向(向右)平移的量，负数为向负方向 (向左)平移的量。<br>float dy：垂直方向平移的距离，正数为向正方向(向下)平移的量，负数为向负方向 (向上)平移的量。</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">paintGreen = generatePaint(Color.GREEN, Paint.Style.STROKE, 3);</div><div class="line">paintRed = generatePaint(Color.RED, Paint.Style.STROKE, 3);</div><div class="line">rect = new Rect(20,20,400,220);</div><div class="line"></div><div class="line">canvas.drawRect(rect, paintGreen);</div><div class="line">// 画布平移</div><div class="line">canvas.translate(100, 100);</div><div class="line">canvas.drawRect(rect, paintRed);</div></pre></td></tr></table></figure></p>
@@ -458,6 +459,7 @@
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">canvas.drawColor(Color.RED);</div><div class="line">canvas.clipRect(new Rect(100, 100, 200, 200));</div><div class="line">canvas.drawColor(Color.GREEN);</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-289bb5e9e5ff331a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>先把背景色涂成红色，显示在屏幕上，然后裁剪画布，最后将最新的画布涂成绿色。可见，绿色部分只有一小块，而不再是整个屏幕。</p>
+<p><div id="jump2"></div></p>
 <h3 id="1-5-2-画布的保存与恢复"><a href="#1-5-2-画布的保存与恢复" class="headerlink" title="1.5.2 画布的保存与恢复"></a>1.5.2 画布的保存与恢复</h3><h4 id="1-save-和-restore-函数"><a href="#1-save-和-restore-函数" class="headerlink" title="1. save()和 restore()函数"></a>1. save()和 restore()函数</h4><p>前面介绍的所有对画布的操作都是不可逆的，如果要对画布的大小和状态(旋转角度、扭曲等)进行实时保存和恢复，需要借助save()和 restore() 这两个函数。</p>
 <p>save() ：每次调用，都会先保存当前画布的状态，然后将其放入特定的栈中。<br>restore() ：每次调用，都会把栈中顶层的画布状态取出来，并按照这个状态恢复当前的画布，然后在这个画布上作画。</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">canvas.drawColor(Color.RED);</div><div class="line">// 保存当前画布大小,即整屏 canvas.save();</div><div class="line">canvas.clipRect(new Rect(100, 100, 800, 800));</div><div class="line">canvas.drawColor(Color.GREEN);</div><div class="line">// 恢复整屏画布 canvas.restore();</div><div class="line">canvas.drawColor(Color.BLUE);</div></pre></td></tr></table></figure></p>
@@ -466,11 +468,13 @@
 <p>在利用 save()函数保存画布时，会有一个 int 类型的返回值。该返回值是当前所保存的画布所在栈的索引。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void restoreToCount(int saveCount);</div></pre></td></tr></table></figure></p>
 <p>而 restoreToCount()函数的用法就是一直出栈，直到指定索引的画布出栈为止，即将指定索引的画布作为当前画布。</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line">    canvas.drawColor(Color.RED); </div><div class="line">    // 保存的画布大小为全屏幕大小</div><div class="line">    int c1 = canvas.save();</div><div class="line">    canvas.clipRect(new Rect(100, 100, 800, 800));</div><div class="line">    canvas.drawColor(Color.GREEN); </div><div class="line">    // 保存的画布大小为Rect(100, 100, 800, 800)</div><div class="line">    int c2 = canvas.save();</div><div class="line"></div><div class="line">    canvas.clipRect(new Rect(200, 200, 700, 700));</div><div class="line">    canvas.drawColor(Color.BLUE); </div><div class="line">    // 保存的画布大小为Rect(200, 200, 700, 700)</div><div class="line">    int c3 = canvas.save();</div><div class="line"></div><div class="line">    canvas.clipRect(new Rect(300, 300, 600, 600));</div><div class="line">    canvas.drawColor(Color.BLACK); </div><div class="line">    // 保存的画布大小为Rect(300, 300, 600, 600)</div><div class="line">    int c4 = canvas.save();</div><div class="line"></div><div class="line">    canvas.clipRect(new Rect(400, 400, 500, 500));</div><div class="line">    canvas.drawColor(Color.WHITE);</div><div class="line"></div><div class="line"></div><div class="line">    // 连续三次出栈，将最后一次出栈的画布状态</div><div class="line">    // 作为当前画布，并填充为黄色 </div><div class="line">    // canvas.restore();</div><div class="line">    // canvas.restore();</div><div class="line">    // canvas.restore();</div><div class="line">    canvas.restoreToCount(c2); </div><div class="line">    canvas.drawColor(Color.YELLOW);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><div id="jump3"></div></p>
 <h3 id="1-5-3-示例一-圆形头像"><a href="#1-5-3-示例一-圆形头像" class="headerlink" title="1.5.3 示例一:圆形头像"></a>1.5.3 示例一:圆形头像</h3><p><img src="https://upload-images.jianshu.io/upload_images/14186083-e72dba62b99c9ddf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Path mPath;</div><div class="line">    private Bitmap mBmp;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void init() &#123;</div><div class="line">        // 禁用硬件加速</div><div class="line">        // setLayerType(LAYER_TYPE_SOFTWARE, null);</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPath = new Path();</div><div class="line">        mBmp = BitmapFactory.decodeResource(getResources(), R.drawable.image);</div><div class="line">        int x = mBmp.getWidth() / 2;</div><div class="line">        int y = mBmp.getHeight() / 2;</div><div class="line">        int r = Math.min(x, y);</div><div class="line">        mPath.addCircle(x, y, r, Path.Direction.CCW);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line">        canvas.save();</div><div class="line">        canvas.clipPath(mPath);</div><div class="line">        canvas.drawBitmap(mBmp, 0, 0, mPaint);</div><div class="line">        canvas.restore();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>前面说过，在使用 clip 系列函数时，要禁用硬件加速功能。 setLayerType(LAYER_TYPE_SOFTWARE,null);<br>然而在手机型号 Pixel XL 上测试，是否禁用硬件加速功能并不影响 clip 函数。</p>
 </blockquote>
+<p><div id="jump4"></div></p>
 <h3 id="1-5-4-示例二：裁剪动画"><a href="#1-5-4-示例二：裁剪动画" class="headerlink" title="1.5.4 示例二：裁剪动画"></a>1.5.4 示例二：裁剪动画</h3><p><img src="https://upload-images.jianshu.io/upload_images/14186083-31634c0bd9bd9969.gif?imageMogr2/auto-orient/strip" alt=""></p>
 <h4 id="1-原理"><a href="#1-原理" class="headerlink" title="1. 原理"></a>1. 原理</h4><p>动画原理就是每次将裁剪区域变大，在裁剪区域内的图像就会显示出来，而裁剪区域之外的图像不会显示。而关键问题在于如何计算裁剪区域。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-a07fbe9ca6c6be10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
@@ -603,7 +607,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -756,7 +760,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

@@ -89,19 +89,22 @@
 
 
 <meta name="description" content="在 xml 中对应 animator 总共有三个标签，分别是：123&amp;lt;animator /&amp;gt;: 对应ValueAnimator&amp;lt;objectAnimator /&amp;gt;: 对应ObjectAnimator&amp;lt;set /&amp;gt;: 对应AnimatorSet
-3.6.1 animator 标签1. 概述下面是完整的 animator 所有的字段及取值范围：123456789">
+
+3.6.1 animator 标签1. 概述下面是完整的 animator 所有的字段及取值范围：12345678">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03.6 精通自定义 View 之属性动画——Animator 动画的 XML 实现">
 <meta property="og:url" content="http://yoursite.com/2019/07/03/Custom View/03.6 精通自定义 View 之属性动画——Animator 动画的 XML 实现/index.html">
 <meta property="og:site_name" content="先小涛">
 <meta property="og:description" content="在 xml 中对应 animator 总共有三个标签，分别是：123&amp;lt;animator /&amp;gt;: 对应ValueAnimator&amp;lt;objectAnimator /&amp;gt;: 对应ObjectAnimator&amp;lt;set /&amp;gt;: 对应AnimatorSet
-3.6.1 animator 标签1. 概述下面是完整的 animator 所有的字段及取值范围：123456789">
+
+3.6.1 animator 标签1. 概述下面是完整的 animator 所有的字段及取值范围：12345678">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-cf80cc3cfd34b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-04T07:01:24.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:22:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03.6 精通自定义 View 之属性动画——Animator 动画的 XML 实现">
 <meta name="twitter:description" content="在 xml 中对应 animator 总共有三个标签，分别是：123&amp;lt;animator /&amp;gt;: 对应ValueAnimator&amp;lt;objectAnimator /&amp;gt;: 对应ObjectAnimator&amp;lt;set /&amp;gt;: 对应AnimatorSet
-3.6.1 animator 标签1. 概述下面是完整的 animator 所有的字段及取值范围：123456789">
+
+3.6.1 animator 标签1. 概述下面是完整的 animator 所有的字段及取值范围：12345678">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-cf80cc3cfd34b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -402,6 +405,7 @@
         <meta name="referrer" content="no-referrer">
 
 <p>在 xml 中对应 animator 总共有三个标签，分别是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;animator /&gt;: 对应ValueAnimator</div><div class="line">&lt;objectAnimator /&gt;: 对应ObjectAnimator</div><div class="line">&lt;set /&gt;: 对应AnimatorSet</div></pre></td></tr></table></figure></p>
+<p><div id="jump1"></div></p>
 <h3 id="3-6-1-animator-标签"><a href="#3-6-1-animator-标签" class="headerlink" title="3.6.1 animator 标签"></a>3.6.1 animator 标签</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>下面是完整的 animator 所有的字段及取值范围：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;animator</div><div class="line">    android:duration=&quot;int&quot;</div><div class="line">    android:valueFrom=&quot;float | int | color&quot;</div><div class="line">    android:valueTo=&quot;float | int | color&quot;</div><div class="line">    android:startOffset=&quot;int&quot;</div><div class="line">    android:repeatCount=&quot;int&quot;</div><div class="line">    android:repeatMode=[&quot;repeat&quot; | &quot;reverse&quot;]</div><div class="line">    android:valueType=[&quot;intType&quot; | &quot;floatType&quot;]</div><div class="line">    android:interpolator=[&quot;@android:interpolator/XXX&quot;]/&gt;</div></pre></td></tr></table></figure></p>
 <ul>
 <li><strong>android:duration</strong>：每次动画播放的时长。</li>
@@ -417,6 +421,7 @@
 <p>加载 XML 文件到程序中的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ValueAnimator valueAnimator = (ValueAnimator) AnimatorInflater.loadAnimator(</div><div class="line">    MainActivity.this,R.animator.animator);</div><div class="line">valueAnimator.start();</div></pre></td></tr></table></figure></p>
 <h4 id="2-示例"><a href="#2-示例" class="headerlink" title="2. 示例"></a>2. 示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;animator xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">          android:valueFrom=&quot;0&quot;</div><div class="line">          android:valueTo=&quot;300&quot;</div><div class="line">          android:duration=&quot;1000&quot;</div><div class="line">          android:valueType=&quot;intType&quot;</div><div class="line">          android:interpolator=&quot;@android:anim/bounce_interpolator&quot;/&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">ValueAnimator valueAnimator = (ValueAnimator) AnimatorInflater.loadAnimator(</div><div class="line">        MainActivity.this, R.animator.animator);</div><div class="line">valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">   @Override</div><div class="line">   public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">       int offset = (int)animation.getAnimatedValue();</div><div class="line">       mTv1.layout(offset, offset, mTv1.getWidth() + offset,</div><div class="line">                   mTv1.getHeight() + offset);</div><div class="line">   &#125;</div><div class="line">&#125;);</div><div class="line">valueAnimator.start();</div></pre></td></tr></table></figure>
+<p><div id="jump2"></div></p>
 <h3 id="3-6-2-objectAnimator-标签"><a href="#3-6-2-objectAnimator-标签" class="headerlink" title="3.6.2 objectAnimator 标签"></a>3.6.2 objectAnimator 标签</h3><h4 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1. 概述"></a>1. 概述</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;objectAnimator</div><div class="line">    android:propertyName=&quot;string&quot;</div><div class="line">    android:duration=&quot;int&quot;</div><div class="line">    android:valueFrom=&quot;float | int | color&quot;</div><div class="line">    android:valueTo=&quot;float | int | color&quot;</div><div class="line">    android:startOffset=&quot;int&quot;</div><div class="line">    android:repeatCount=&quot;int&quot;</div><div class="line">    android:repeatMode=[&quot;repeat&quot; | &quot;reverse&quot;]</div><div class="line">    android:valueType=[&quot;intType&quot; | &quot;floatType&quot;]</div><div class="line">    android:interpolator=[&quot;@android:interpolator/XXX&quot;]/&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>android:propertyName</strong>：对应属性名，即 ObjectAnimator 所需要操作的属性名。其它字段的意义与 animator 的意义与取值是一样的，下面再重新列举一下。</li>
@@ -425,6 +430,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ObjectAnimator animator = (ObjectAnimator) AnimatorInflater.loadAnimator(</div><div class="line">        MainActivity.this, R.animator.object_animator);</div><div class="line">animator.setTarget(mTv1);</div><div class="line">animator.start();</div></pre></td></tr></table></figure>
 <h4 id="3-color"><a href="#3-color" class="headerlink" title="3. color"></a>3. color</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;objectAnimator xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:propertyName=&quot;BackgroundColor&quot;</div><div class="line">    android:duration=&quot;5000&quot;</div><div class="line">    android:valueFrom=&quot;#ffff00ff&quot;</div><div class="line">    android:valueTo=&quot;#ffffff00&quot;/&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ObjectAnimator animator = (ObjectAnimator) AnimatorInflater.loadAnimator(</div><div class="line">        MainActivity.this, R.animator.color_animator);</div><div class="line">animator.setTarget(mTv1);</div><div class="line">animator.start();</div></pre></td></tr></table></figure>
+<p><div id="jump3"></div></p>
 <h3 id="3-6-3-set-标签"><a href="#3-6-3-set-标签" class="headerlink" title="3.6.3 set 标签"></a>3.6.3 set 标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;set android:ordering=[&quot;together&quot; | &quot;sequentially&quot;]&gt;</div></pre></td></tr></table></figure>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:ordering=&quot;together&quot;&gt;</div><div class="line">    &lt;objectAnimator</div><div class="line">        android:propertyName=&quot;x&quot;</div><div class="line">        android:duration=&quot;500&quot;</div><div class="line">        android:valueFrom=&quot;0&quot;</div><div class="line">        android:valueTo=&quot;400&quot;</div><div class="line">        android:valueType=&quot;floatType&quot;/&gt;</div><div class="line">    &lt;objectAnimator</div><div class="line">        android:propertyName=&quot;y&quot;</div><div class="line">        android:duration=&quot;500&quot;</div><div class="line">        android:valueFrom=&quot;0&quot;</div><div class="line">        android:valueTo=&quot;300&quot;</div><div class="line">        android:valueType=&quot;floatType&quot;/&gt;</div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure></p>
 <p>加载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(</div><div class="line">        MainActivity.this, R.animator.set_animator);</div><div class="line">set.setTarget(mTv1);</div><div class="line">set.start();</div></pre></td></tr></table></figure></p>
@@ -554,7 +560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -707,7 +713,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

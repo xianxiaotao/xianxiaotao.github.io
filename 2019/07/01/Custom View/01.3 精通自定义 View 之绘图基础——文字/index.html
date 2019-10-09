@@ -92,7 +92,7 @@
 
 普通设置
 
-12345678910// 设置画笔宽度paint.setStrokeWidth (5); // 指定是否使用抗锯齿功能。如果使用,则会使绘图速度变慢paint.setAntiAlias(true);// 绘图样式,对于文字和几何图形都有效paint.setStyle(Paint.Style.FILL);//">
+12345678910// 设置画笔宽度paint.setStrokeWidth (5); // 指定是否使用抗锯齿功能。如果使用,则会使绘图速度变慢paint.setAntiAlias(true);// 绘图样式,对于文字和几何图形都有效paint.setStyle(Paint.Style.FILL);/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01.3 精通自定义 View 之绘图基础——文字">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/Custom View/01.3 精通自定义 View 之绘图基础——文字/index.html">
@@ -101,7 +101,7 @@
 
 普通设置
 
-12345678910// 设置画笔宽度paint.setStrokeWidth (5); // 指定是否使用抗锯齿功能。如果使用,则会使绘图速度变慢paint.setAntiAlias(true);// 绘图样式,对于文字和几何图形都有效paint.setStyle(Paint.Style.FILL);//">
+12345678910// 设置画笔宽度paint.setStrokeWidth (5); // 指定是否使用抗锯齿功能。如果使用,则会使绘图速度变慢paint.setAntiAlias(true);// 绘图样式,对于文字和几何图形都有效paint.setStyle(Paint.Style.FILL);/">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-16b11cc8b1731a0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ff624351d68401c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-16487debfb27c72b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -114,14 +114,14 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b07302336ad691c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2dc4d2f717e87dc7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ee96a269fc0c1fe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-04T06:10:07.000Z">
+<meta property="og:updated_time" content="2019-10-09T01:57:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.3 精通自定义 View 之绘图基础——文字">
 <meta name="twitter:description" content="1.3.1 Paint设置Paint 与文字相关的设置方法有如下几个：
 
 普通设置
 
-12345678910// 设置画笔宽度paint.setStrokeWidth (5); // 指定是否使用抗锯齿功能。如果使用,则会使绘图速度变慢paint.setAntiAlias(true);// 绘图样式,对于文字和几何图形都有效paint.setStyle(Paint.Style.FILL);//">
+12345678910// 设置画笔宽度paint.setStrokeWidth (5); // 指定是否使用抗锯齿功能。如果使用,则会使绘图速度变慢paint.setAntiAlias(true);// 绘图样式,对于文字和几何图形都有效paint.setStyle(Paint.Style.FILL);/">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-16b11cc8b1731a0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -421,6 +421,7 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><div id="jump1"></div></p>
 <h3 id="1-3-1-Paint设置"><a href="#1-3-1-Paint设置" class="headerlink" title="1.3.1 Paint设置"></a>1.3.1 Paint设置</h3><p>Paint 与文字相关的设置方法有如下几个：</p>
 <ul>
 <li>普通设置</li>
@@ -457,6 +458,7 @@
 <p>该函数用于在水平方向拉伸文字。参数 float scaleX 表示拉伸倍数，当取值为 1 时，表示不拉伸。默认为不拉伸。</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 正常样式</div><div class="line">canvas.drawText(mName, 100, 200, mPaint);</div><div class="line">// 拉伸两倍</div><div class="line">mPaint.setTextScaleX(2f);</div><div class="line">canvas.drawText(mName, 100, 300, mPaint);</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-f24aeccf2715d7a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="字体水平拉伸"></p>
+<p><div id="jump2"></div></p>
 <h3 id="1-3-2-Canvas绘制文本"><a href="#1-3-2-Canvas绘制文本" class="headerlink" title="1.3.2 Canvas绘制文本"></a>1.3.2 Canvas绘制文本</h3><h4 id="1-普通绘制"><a href="#1-普通绘制" class="headerlink" title="1. 普通绘制"></a>1. 普通绘制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 该函数可以指定起始点(x, y)来绘制文字</div><div class="line">void drawText(String text, float x, float y, Paint paint)</div><div class="line">// 通过指定字符串中字符的起始和终止位置截取字符串的一部分绘制</div><div class="line">void drawText(String text, int start, int end, float x, float y, Paint paint)</div><div class="line">void drawText(char[] text, int index, int count, float x, float y, Paint paint)</div><div class="line">void drawText(CharSequence text, int start, </div><div class="line">              int end, float x, float y, Paint paint)</div></pre></td></tr></table></figure>
 <p>参数：<br>int start：表示起始绘制字符所在字符串中的索引。<br>int end：表示结束绘制字符所在字符串中的索引。<br>int index：指定起始绘制字符的位置。<br>int count：指定从起始绘制字符开始绘制几个字符。</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">canvas.drawText(&quot;先小涛后大浪&quot;, 1, 4, 100, 200, mPaint);</div></pre></td></tr></table></figure></p>
@@ -478,6 +480,7 @@
 </ul>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setTextSize(50);</div><div class="line">mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">mName = &quot;先小涛后大浪&quot;;</div><div class="line">mPath1 = new Path();</div><div class="line">mPath1.addCircle(220, 300, 150, Path.Direction.CCW);</div><div class="line">mPath2 = new Path();</div><div class="line">mPath2.addCircle(600, 300, 150, Path.Direction.CCW);</div><div class="line"></div><div class="line">// 辅助中线</div><div class="line">canvas.drawLine(70, 300, 750, 300, mPaint);</div><div class="line">canvas.drawPath(mPath1, mPaint);</div><div class="line">canvas.drawPath(mPath2, mPaint);</div><div class="line">mPaint.setColor(Color.BLUE);</div><div class="line">canvas.drawTextOnPath(mName, mPath1, 0, 0, mPaint);</div><div class="line">canvas.drawTextOnPath(mName, mPath2, 80, 50, mPaint);</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-3b672e6d1a2b4c3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><div id="jump3"></div></p>
 <h3 id="1-3-3-设置字体样式"><a href="#1-3-3-设置字体样式" class="headerlink" title="1.3.3 设置字体样式"></a>1.3.3 设置字体样式</h3><p>在 Paint 中有一个函数是专门用来设置字体样式的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Typeface setTypeface(Typeface typeface)</div></pre></td></tr></table></figure></p>
 <p>Typeface 是专门用来设置字体样式的类，通过 paint.setTypeface()函数来指定即将绘制的文字的字体样式。可以指定系统中的字体样式，也可以在自定义的样式文件中获取。在构建 Typeface 类时，可以指定所用样式的正常体、斜体、粗体等。如果在指定样式中没有相关文 字的样式，就会用系统默认的样式来显示，一般默认是宋体。</p>
 <h4 id="1-使用系统中的字体样式"><a href="#1-使用系统中的字体样式" class="headerlink" title="1. 使用系统中的字体样式"></a>1. 使用系统中的字体样式</h4><p>1）使用 Android 自带的字体样式<br>在 Typeface 类中保存着三种自带的字体样式：Typeface.SANS_SERIF、Typeface.MONOSPACE 和 Typeface.SERIF。</p>
@@ -631,7 +634,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -784,7 +787,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

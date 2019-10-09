@@ -93,7 +93,7 @@
 在 canvas 在利用 drawText 绘制文字时，也是有规则的，这个规则就是基线！我们先来看一下什么是基线：
 
 可见基线就是四线格中的第三条线。也就是说，只要基线的位置定了，那文字的位置必然是定了的！
-2. canvas.drawText()1）canvas.d">
+2. canvas.drawText()1）canvas.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="06.2 精通自定义 View 之 Paint 基本使用——文字">
 <meta property="og:url" content="http://yoursite.com/2019/07/06/Custom View/06.2 精通自定义 View 之 Paint 基本使用——文字/index.html">
@@ -103,7 +103,7 @@
 在 canvas 在利用 drawText 绘制文字时，也是有规则的，这个规则就是基线！我们先来看一下什么是基线：
 
 可见基线就是四线格中的第三条线。也就是说，只要基线的位置定了，那文字的位置必然是定了的！
-2. canvas.drawText()1）canvas.d">
+2. canvas.drawText()1）canvas.">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b796318147ad1ee8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ab25407ebd89fbb0?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-6799d753bccdd71f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -121,7 +121,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ebb6cef9d9cbf11e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ea033f084880c022.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-1072d0900b738e32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-04T07:18:41.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:29:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="06.2 精通自定义 View 之 Paint 基本使用——文字">
 <meta name="twitter:description" content="6.2.1 概述1. 四线格与基线小时候，我们在刚开始学习写字母时，用的本子是四线格的，我们必须把字母按照规则写在四线格内。
@@ -129,7 +129,7 @@
 在 canvas 在利用 drawText 绘制文字时，也是有规则的，这个规则就是基线！我们先来看一下什么是基线：
 
 可见基线就是四线格中的第三条线。也就是说，只要基线的位置定了，那文字的位置必然是定了的！
-2. canvas.drawText()1）canvas.d">
+2. canvas.drawText()1）canvas.">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-b796318147ad1ee8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -429,6 +429,7 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><div id="jump1"></div></p>
 <h3 id="6-2-1-概述"><a href="#6-2-1-概述" class="headerlink" title="6.2.1 概述"></a>6.2.1 概述</h3><h4 id="1-四线格与基线"><a href="#1-四线格与基线" class="headerlink" title="1. 四线格与基线"></a>1. 四线格与基线</h4><p>小时候，我们在刚开始学习写字母时，用的本子是四线格的，我们必须把字母按照规则写在四线格内。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-b796318147ad1ee8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>在 canvas 在利用 drawText 绘制文字时，也是有规则的，这个规则就是基线！我们先来看一下什么是基线：</p>
@@ -456,6 +457,7 @@
 <h4 id="4-注意"><a href="#4-注意" class="headerlink" title="4. 注意"></a>4. 注意</h4><p>这里需要再次强调的是：相对位置是根据所要绘制文字所在矩形来计算的。比如，只写一个大写字母 A，将其相对位置设置为 Paint.Align.CENTER。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mPaint.setTextAlign(Paint.Align.CENTER);</div><div class="line">canvas.drawText(&quot;A&quot;, baseLineX, baseLineY, mPaint);</div></pre></td></tr></table></figure></p>
 <p>效果如下图所示：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-e0e6bdfd3959f399.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><div id="jump2"></div></p>
 <h3 id="6-2-2-绘图四线格与-FontMetrics"><a href="#6-2-2-绘图四线格与-FontMetrics" class="headerlink" title="6.2.2 绘图四线格与 FontMetrics"></a>6.2.2 绘图四线格与 FontMetrics</h3><h4 id="1-文字的绘图四线格"><a href="#1-文字的绘图四线格" class="headerlink" title="1. 文字的绘图四线格"></a>1. 文字的绘图四线格</h4><p>除了基线以外，系统在绘制文字时还有 4 条线，分别是 ascent、descent、top、bottom，如下图所示。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-f4f98522d06491b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <ul>
@@ -495,6 +497,7 @@
 <p>4）示例：计算 Text 四线格位置</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-dbe98aa14347e5e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Paint.FontMetrics mFm;</div><div class="line"></div><div class="line">    public TestView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setColor(Color.GREEN);</div><div class="line">        mPaint.setTextSize(120);</div><div class="line">        mPaint.setTextAlign(Paint.Align.LEFT);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        int baseLineX = 0;</div><div class="line">        int baseLineY = 200;</div><div class="line"></div><div class="line">        // 写文字</div><div class="line">        canvas.drawText(&quot;harvic\&apos;s blog&quot;, baseLineX, baseLineY, mPaint);</div><div class="line">        // 计算各线在位置</div><div class="line">        mFm = mPaint.getFontMetrics();</div><div class="line">        float ascent = baseLineY + mFm.ascent;</div><div class="line">        float descent = baseLineY + mFm.descent;</div><div class="line">        float top = baseLineY + mFm.top;</div><div class="line">        float bottom = baseLineY + mFm.bottom;</div><div class="line">        // 画基线</div><div class="line">        mPaint.setColor(Color.RED);</div><div class="line">        canvas.drawLine(baseLineX, baseLineY, 3000, baseLineY, mPaint);</div><div class="line">        // 画 top</div><div class="line">        mPaint.setColor(Color.BLUE);</div><div class="line">        canvas.drawLine(baseLineX, top, 3000, top, mPaint);</div><div class="line">        // 画 ascent</div><div class="line">        mPaint.setColor(Color.GREEN);</div><div class="line">        canvas.drawLine(baseLineX, ascent, 3000, ascent, mPaint);</div><div class="line">        // 画 descent</div><div class="line">        mPaint.setColor(Color.YELLOW);</div><div class="line">        canvas.drawLine(baseLineX, descent, 3000, descent, mPaint);</div><div class="line">        // 画 bottom</div><div class="line">        mPaint.setColor(Color.RED);</div><div class="line">        canvas.drawLine(baseLineX, bottom, 3000, bottom, mPaint);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><div id="jump3"></div></p>
 <h3 id="6-2-3-常用函数"><a href="#6-2-3-常用函数" class="headerlink" title="6.2.3 常用函数"></a>6.2.3 常用函数</h3><h4 id="1-字符串所占高度和宽度"><a href="#1-字符串所占高度和宽度" class="headerlink" title="1. 字符串所占高度和宽度"></a>1. 字符串所占高度和宽度</h4><p>1）高度<br>字符串所占高度很容易得到，直接用 bottom 线所在位置的 Y 坐标减去 top 线所在位置的 Y 坐标就是字符串所占的高度：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mFm = mPaint.getFontMetricsInt();</div><div class="line">int top = baseLineY + fm.top;</div><div class="line">int bottom = baseLineY + fm.bottom;</div><div class="line">// 所占高度</div><div class="line">int height = bottom - top;</div></pre></td></tr></table></figure></p>
 <p>2）、宽度<br>宽度是非常容易得到的，直接利用下面的函数就可以得到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int width = mPaint.measureText(&quot;harvic&apos;s blog&quot;);</div></pre></td></tr></table></figure></p>
 <h4 id="2-最小矩形"><a href="#2-最小矩形" class="headerlink" title="2. 最小矩形"></a>2. 最小矩形</h4><p>1）概述<br>要获取最小矩形，也是通过系统函数来获取的，函数及意义如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获取指定字符串所对应的最小矩形，以（0，0）点所在位置为基线</div><div class="line"> * @param text  要测量最小矩形的字符串</div><div class="line"> * @param start 要测量起始字符在字符串中的索引</div><div class="line"> * @param end   所要测量的字符的长度</div><div class="line"> * @param bounds 接收测量结果</div><div class="line"> */</div><div class="line">public void getTextBounds(String text, int start, int end, Rect bounds);</div></pre></td></tr></table></figure></p>
@@ -508,6 +511,7 @@
 <p>所以矩形应当所在实际位置的坐标是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Rect minRect = new Rect();</div><div class="line">paint.getTextBounds(text,0,text.length(),minRect);</div><div class="line">// 最小矩形，实际 top 位置</div><div class="line">int minTop = bounds.top + baselineY;</div><div class="line">// 最小矩形，实际 bottom 位置</div><div class="line">int minBottom = bounds.bottom + baselineY;</div></pre></td></tr></table></figure></p>
 <p>3）完整的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line"></div><div class="line">    String text = &quot;harvic\&apos;s blog&quot;;</div><div class="line">    int baseLineY = 200;</div><div class="line">    int baseLineX = 0 ;</div><div class="line"></div><div class="line">    // 设置paint</div><div class="line">    Paint paint = new Paint();</div><div class="line">    paint.setTextSize(120); //以px为单位</div><div class="line">    paint.setTextAlign(Paint.Align.LEFT);</div><div class="line"></div><div class="line">    // 画text所占的区域</div><div class="line">    Paint.FontMetricsInt fm = paint.getFontMetricsInt();</div><div class="line">    int top = baseLineY + fm.top;</div><div class="line">    int bottom = baseLineY + fm.bottom;</div><div class="line">    int width = (int)paint.measureText(text);</div><div class="line">    Rect rect = new Rect(baseLineX,top,baseLineX+width,bottom);</div><div class="line"></div><div class="line">    paint.setColor(Color.GREEN);</div><div class="line">    canvas.drawRect(rect,paint);</div><div class="line"></div><div class="line">    // 画最小矩形</div><div class="line">    Rect minRect = new Rect();</div><div class="line">    paint.getTextBounds(text,0,text.length(),minRect);</div><div class="line">    minRect.top = baseLineY + minRect.top;</div><div class="line">    minRect.bottom = baseLineY + minRect.bottom;</div><div class="line">    paint.setColor(Color.RED);</div><div class="line">    canvas.drawRect(minRect,paint);</div><div class="line"></div><div class="line">    // 写文字</div><div class="line">    paint.setColor(Color.BLACK);</div><div class="line">    canvas.drawText(text, baseLineX, baseLineY, paint);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-ebb6cef9d9cbf11e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><div id="jump4"></div></p>
 <h3 id="6-2-4-示例：定点写字"><a href="#6-2-4-示例：定点写字" class="headerlink" title="6.2.4 示例：定点写字"></a>6.2.4 示例：定点写字</h3><h4 id="1-给定左上顶点绘图"><a href="#1-给定左上顶点绘图" class="headerlink" title="1. 给定左上顶点绘图"></a>1. 给定左上顶点绘图</h4><p><img src="https://upload-images.jianshu.io/upload_images/14186083-ea033f084880c022.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>在这个图中，我们给定左上角的位置，即 (left,top)；我们知道要画文字，drawText() 中传进去的 Y 坐标是基线的位置，所以我们就必须根据 top 的位置计算出 baseline 的位置。</p>
 <p>我们来看一个公式：<br>FontMetrics.top = top - baseline;</p>
@@ -649,7 +653,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -802,7 +806,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

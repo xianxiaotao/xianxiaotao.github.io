@@ -89,13 +89,15 @@
 
 
 <meta name="description" content="1.2.1 概述画笔所画出来的一段不间断的曲线就是路径。在 Android 中，Path 类就代表路径。在 Canvas 中绘制路径的方法如下：1void drawPath(Path path, Paint paint)
-1.2.2 直线路径画一条直线路径,一般涉及下面三个函数：1234567// (x1,y1)是直线的起始点，即将直线路径的绘制点定在(x1,y1)位置void moveTo(">
+
+1.2.2 直线路径画一条直线路径,一般涉及下面三个函数：1234567// (x1,y1)是直线的起始点，即将直线路径的绘制点定在(x1,y1)位置void moveT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01.2 精通自定义 View 之绘图基础——路径">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/Custom View/01.2 精通自定义 View 之绘图基础——路径/index.html">
 <meta property="og:site_name" content="先小涛">
 <meta property="og:description" content="1.2.1 概述画笔所画出来的一段不间断的曲线就是路径。在 Android 中，Path 类就代表路径。在 Canvas 中绘制路径的方法如下：1void drawPath(Path path, Paint paint)
-1.2.2 直线路径画一条直线路径,一般涉及下面三个函数：1234567// (x1,y1)是直线的起始点，即将直线路径的绘制点定在(x1,y1)位置void moveTo(">
+
+1.2.2 直线路径画一条直线路径,一般涉及下面三个函数：1234567// (x1,y1)是直线的起始点，即将直线路径的绘制点定在(x1,y1)位置void moveT">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8e38ddf81a7fe2a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-7331c6d8b5f45ab1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-df222124d40335a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -109,11 +111,12 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8148a61181bf97db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8112a78ff86dbea8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-69b3cadcd1005e2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-04T06:11:28.000Z">
+<meta property="og:updated_time" content="2019-10-09T01:56:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.2 精通自定义 View 之绘图基础——路径">
 <meta name="twitter:description" content="1.2.1 概述画笔所画出来的一段不间断的曲线就是路径。在 Android 中，Path 类就代表路径。在 Canvas 中绘制路径的方法如下：1void drawPath(Path path, Paint paint)
-1.2.2 直线路径画一条直线路径,一般涉及下面三个函数：1234567// (x1,y1)是直线的起始点，即将直线路径的绘制点定在(x1,y1)位置void moveTo(">
+
+1.2.2 直线路径画一条直线路径,一般涉及下面三个函数：1234567// (x1,y1)是直线的起始点，即将直线路径的绘制点定在(x1,y1)位置void moveT">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-8e38ddf81a7fe2a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -413,10 +416,13 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><div id="jump1"></div></p>
 <h3 id="1-2-1-概述"><a href="#1-2-1-概述" class="headerlink" title="1.2.1 概述"></a>1.2.1 概述</h3><p>画笔所画出来的一段不间断的曲线就是路径。在 Android 中，Path 类就代表路径。在 Canvas 中绘制路径的方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void drawPath(Path path, Paint paint)</div></pre></td></tr></table></figure></p>
+<p><div id="jump2"></div></p>
 <h3 id="1-2-2-直线路径"><a href="#1-2-2-直线路径" class="headerlink" title="1.2.2 直线路径"></a>1.2.2 直线路径</h3><p>画一条直线路径,一般涉及下面三个函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// (x1,y1)是直线的起始点，即将直线路径的绘制点定在(x1,y1)位置</div><div class="line">void moveTo(float x1, float y1)</div><div class="line">// (x2,y2)是直线的终点，又是下一次绘制直线路径的起始点；lineTo()函数可以一直使用。</div><div class="line">void lineTo(float x2, float y2)</div><div class="line">// 如果连续画了几条直线，但没有形成闭环，</div><div class="line">// 那么调用 close()函数会将路径首尾点连接起来，形成闭环。</div><div class="line">void close()</div></pre></td></tr></table></figure></p>
 <p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-8e38ddf81a7fe2a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="闭环 &amp; 不闭环三角形"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 初始化</div><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">mPaint.setStrokeWidth(5);</div><div class="line">mPath = new Path();</div><div class="line"></div><div class="line">// 闭环</div><div class="line">mPath.moveTo(20, 20);</div><div class="line">mPath.lineTo(20, 120);</div><div class="line">mPath.lineTo(300, 120);</div><div class="line">mPath.close();</div><div class="line">canvas.drawPath(mPath, mPaint);</div><div class="line"></div><div class="line">// 不闭环</div><div class="line">mPath.moveTo(320, 20);</div><div class="line">mPath.lineTo(320, 120);</div><div class="line">mPath.lineTo(600, 120);</div><div class="line">canvas.drawPath(mPath, mPaint);</div></pre></td></tr></table></figure></p>
 <p>闭合三角形：先沿逆时针方向画了两条直线，分别是从(10, 10)到(10, 100)和从(10, 100)到(300, 100)，然后利用 path.close()函数将路径闭合，路径的终点(300,100)就会自行向路径的起始点 (10,10)画一条闭合线，所以最终我们看到的是一个路径闭合的三角形。</p>
+<p><div id="jump3"></div></p>
 <h3 id="1-2-3-弧线路径"><a href="#1-2-3-弧线路径" class="headerlink" title="1.2.3 弧线路径"></a>1.2.3 弧线路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void arcTo(RectF oval, float startAngle, float sweepAngle)</div></pre></td></tr></table></figure>
 <p>这是一个画弧线路径的方法，弧线是从椭圆上截取的一部分。<br>参数:</p>
 <ul>
@@ -434,6 +440,7 @@
 <p>参数 boolean forceMoveTo 的含义是是否强制将弧的起始点作为绘制起始位置。</p>
 <p>将上面的代码稍加改造：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// mPath.arcTo(mRect, 0, 90);</div><div class="line">mPath.arcTo(mRect, 0, 90, true);</div></pre></td></tr></table></figure></p>
 <p>效果如下：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-df222124d40335a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><div id="jump4"></div></p>
 <h3 id="1-2-4-addXXX系列函数"><a href="#1-2-4-addXXX系列函数" class="headerlink" title="1.2.4 addXXX系列函数"></a>1.2.4 addXXX系列函数</h3><p>路径一般都是连贯的，而 addXXX 系列函数可以让我们直接往 Path 中添加一些曲线，而不必考虑连贯性。</p>
 <p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-37511e3dbeff4d95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">mPaint.setStrokeWidth(5);</div><div class="line"></div><div class="line">mPath = new Path();</div><div class="line">mPath.moveTo(40, 40);</div><div class="line">mPath.lineTo(100, 100);</div><div class="line">mRect = new RectF(100, 100, 200, 200);</div><div class="line">mPath.addArc(mRect, 0, 90);</div><div class="line"></div><div class="line">canvas.drawPath(mPath, mPaint);</div></pre></td></tr></table></figure></p>
 <p>先绘制了从(40,40)到(100,100)的线段，但是在我们往路径中添加了一条弧线之后，弧线并没有与线段连接。除了 addArc()函数，Path 类还提供了一系列的 add 函数：</p>
@@ -481,6 +488,7 @@
 </ul>
 <p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-e199e6473c71e84a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mPath.addArc(new RectF(100, 100, 300, 200), 0, 180);</div><div class="line">canvas.drawPath(mPath, mPaint);</div></pre></td></tr></table></figure>
+<p><div id="jump5"></div></p>
 <h3 id="1-2-5-填充模式"><a href="#1-2-5-填充模式" class="headerlink" title="1.2.5 填充模式"></a>1.2.5 填充模式</h3><p>Path 的填充模式与 Paint 的填充模式不同。Path 的填充模式是指填充 Path 的哪部分。Path.FillType 表示 Path 的填充模式，它有 4 个枚举值。</p>
 <ul>
 <li>FillType.WINDING：默认值，当两个图形相交时，取相交和自身部分显示。 </li>
@@ -490,6 +498,7 @@
 </ul>
 <p>Inverse 就是取反的意思，所以 FillType.INVERSE_WINDING 就是取 FillType.WINDING 的相反部分；同理，FillType.INVERSE_EVEN_ODD 就是取 FillType.EVEN_ODD 的相反部分。</p>
 <p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-fa947014b8824235.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setStyle(Paint.Style.FILL);</div><div class="line">mPaint.setAntiAlias(true);</div><div class="line"></div><div class="line">mPath = new Path();</div><div class="line">mPath.addRect(100, 100, 300, 300, Path.Direction.CW);</div><div class="line">mPath.addCircle(300, 300, 100, Path.Direction.CW);</div><div class="line">mPath.setFillType(Path.FillType.INVERSE_EVEN_ODD);</div><div class="line"></div><div class="line">canvas.drawPath(mPath, mPaint);</div></pre></td></tr></table></figure></p>
+<p><div id="jump5"></div></p>
 <h3 id="1-2-6-重置路径"><a href="#1-2-6-重置路径" class="headerlink" title="1.2.6 重置路径"></a>1.2.6 重置路径</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h4><p>当我们需要重绘一条全新的路径时，Android 开发人员为了重复利用空间，允许我们重置路径对象。路径对象一旦被重置，其中保存的所有路径都将被清空，这样我们就不需要重新定义一个路径对象了。重新定义路径对象的问题在于老对象的回收和新对象的内存分配，当然这些过程都是会消耗手机性能的。</p>
 <p>系统提供了两个重置路径的方法，分别是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">void reset();</div><div class="line">void rewind();</div></pre></td></tr></table></figure></p>
 <p>这两个函数的共同点是都会清空内部所保存的所有路径，但二者也有区别。</p>
@@ -627,7 +636,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -780,7 +789,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

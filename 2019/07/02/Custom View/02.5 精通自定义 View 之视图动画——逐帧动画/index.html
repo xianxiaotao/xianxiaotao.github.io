@@ -97,7 +97,7 @@
 <meta property="og:description" content="2.5.1 XML 实现新建一个动画 XML 文件，在文件中使用  标签来定义动画帧序列，使用  标签来定义动画的每一帧，并在其中指定帧的持续时间等属性。
 1）定义 XML 动画文件res/drawable/playing_anim.xml 或 res/anim/playing_anim.xml12345678910111213141516171819202122232425262728&amp;l">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6770217-058c430641bcb12d.gif?imageMogr2/auto-orient/strip|imageView2/2/w/360/format/webp">
-<meta property="og:updated_time" content="2019-10-04T07:59:50.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:07:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.5 精通自定义 View 之视图动画——逐帧动画">
 <meta name="twitter:description" content="2.5.1 XML 实现新建一个动画 XML 文件，在文件中使用  标签来定义动画帧序列，使用  标签来定义动画的每一帧，并在其中指定帧的持续时间等属性。
@@ -401,7 +401,7 @@
       
         <meta name="referrer" content="no-referrer">
 
-
+<p><div id="jump1"></div></p>
 <h3 id="2-5-1-XML-实现"><a href="#2-5-1-XML-实现" class="headerlink" title="2.5.1 XML 实现"></a>2.5.1 XML 实现</h3><p>新建一个动画 XML 文件，在文件中使用 <animation-list> 标签来定义动画帧序列，使用 <item> 标签来定义动画的每一帧，并在其中指定帧的持续时间等属性。</item></animation-list></p>
 <h4 id="1）定义-XML-动画文件"><a href="#1）定义-XML-动画文件" class="headerlink" title="1）定义 XML 动画文件"></a>1）定义 XML 动画文件</h4><p>res/drawable/playing_anim.xml 或 res/anim/playing_anim.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;animation-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:oneshot=&quot;false&quot;&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img00&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img01&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img02&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img03&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img04&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img05&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img06&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img07&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img08&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img10&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img11&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img12&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img13&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img14&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img15&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img16&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img17&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img18&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img19&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img20&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img21&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img22&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img23&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">    &lt;item android:drawable=&quot;@mipmap/img24&quot; android:duration=&quot;120&quot; /&gt;</div><div class="line">&lt;/animation-list&gt;</div></pre></td></tr></table></figure></p>
 <blockquote>
@@ -412,6 +412,7 @@
 <blockquote>
 <p>注意：<br>android:src 对应 image.getDrawable()；<br>android:background 对应 image.getBackground();</p>
 </blockquote>
+<p><div id="jump2"></div></p>
 <h3 id="2-5-2-代码实现"><a href="#2-5-2-代码实现" class="headerlink" title="2.5.2 代码实现"></a>2.5.2 代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">AnimationDrawable animationDrawable = new AnimationDrawable();</div><div class="line">int id = 0;</div><div class="line">for (int i = 0; i &lt; 24; i++) &#123;</div><div class="line">    if (i &lt; 10) &#123;</div><div class="line">        id = getResources().getIdentifier(&quot;img0&quot; + i, &quot;mipmap&quot;, </div><div class="line">                getPackageName());</div><div class="line">    &#125; else  &#123;</div><div class="line">        id = getResources().getIdentifier(&quot;img&quot; + i, &quot;mipmap&quot;, </div><div class="line">                getPackageName());</div><div class="line">    &#125;</div><div class="line">    Drawable drawable = getResources().getDrawable(id);</div><div class="line">    animationDrawable.addFrame(drawable, 120);</div><div class="line">&#125;</div><div class="line">image.setImageDrawable(animationDrawable);</div><div class="line">animationDrawable.setOneShot(false);</div><div class="line">animationDrawable.start();</div></pre></td></tr></table></figure>
 <p><img src="https://upload-images.jianshu.io/upload_images/6770217-058c430641bcb12d.gif?imageMogr2/auto-orient/strip|imageView2/2/w/360/format/webp" alt=""></p>
 <blockquote>
@@ -543,7 +544,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -696,7 +697,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

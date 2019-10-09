@@ -89,23 +89,26 @@
 
 
 <meta name="description" content="视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。
+
 3.2.1 自定义插值器插值器就是用来控制动画的区间值如何被计算出来的。
-1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator extends BaseInterpola">
+1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator extends BaseInterpol">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03.2 精通自定义 View 之属性动画——自定义插值器与 Evaluator">
 <meta property="og:url" content="http://yoursite.com/2019/07/03/Custom View/03.2 精通自定义 View 之属性动画——自定义插值器与 Evaluator/index.html">
 <meta property="og:site_name" content="先小涛">
 <meta property="og:description" content="视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。
+
 3.2.1 自定义插值器插值器就是用来控制动画的区间值如何被计算出来的。
-1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator extends BaseInterpola">
+1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator extends BaseInterpol">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9125154-ce9829a138c8d3c5.png?imageMogr2/auto-orient/strip|imageView2/2/w/949/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2e9430c61cdc0015.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2019-10-04T07:02:39.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:09:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03.2 精通自定义 View 之属性动画——自定义插值器与 Evaluator">
 <meta name="twitter:description" content="视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。
+
 3.2.1 自定义插值器插值器就是用来控制动画的区间值如何被计算出来的。
-1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator extends BaseInterpola">
+1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator extends BaseInterpol">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9125154-ce9829a138c8d3c5.png?imageMogr2/auto-orient/strip|imageView2/2/w/949/format/webp">
 
 
@@ -406,6 +409,7 @@
         <meta name="referrer" content="no-referrer">
 
 <p>视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。</p>
+<p><div id="jump1"></div></p>
 <h3 id="3-2-1-自定义插值器"><a href="#3-2-1-自定义插值器" class="headerlink" title="3.2.1 自定义插值器"></a>3.2.1 自定义插值器</h3><p>插值器就是用来控制动画的区间值如何被计算出来的。</p>
 <h4 id="1、系统自带插值器"><a href="#1、系统自带插值器" class="headerlink" title="1、系统自带插值器"></a>1、系统自带插值器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class AccelerateDecelerateInterpolator extends BaseInterpolator  &#123;</div><div class="line">    public AccelerateDecelerateInterpolator() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @SuppressWarnings(&#123;&quot;UnusedDeclaration&quot;&#125;)</div><div class="line">    public AccelerateDecelerateInterpolator(Context context, AttributeSet attrs) &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public float getInterpolation(float input) &#123;</div><div class="line">        return (float)(Math.cos((input + 1) * Math.PI) / 2.0f) + 0.5f;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">// 最终实现的接口：TimeInterpolator</div><div class="line">public interface TimeInterpolator &#123;</div><div class="line">    float getInterpolation(float input);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在 TimeInterpolator 的代码里，它只有一个函数 float getInterpolation(float input)。</p>
@@ -418,6 +422,7 @@
 <h4 id="2、自定义插值器示例"><a href="#2、自定义插值器示例" class="headerlink" title="2、自定义插值器示例"></a>2、自定义插值器示例</h4><p>想要先减速后加速的效果，可以重写 getInterpolation 方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">float x = (-1 + input * 2.0f) / 4f; // -0.25 ~ 0.25</div><div class="line">float y = (float) Math.tan(x * Math.PI);</div><div class="line">return y / 2f + 0.5f;</div></pre></td></tr></table></figure></p>
 <p>由于 tan 函数曲线变化不明显，导致加速减速效果也不明显，趋向于匀速。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class DecelerateAccelerateInterpolator implements TimeInterpolator &#123;</div><div class="line">    public DecelerateAccelerateInterpolator() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @SuppressWarnings(&#123;&quot;UnusedDeclaration&quot;&#125;)</div><div class="line">    public DecelerateAccelerateInterpolator(Context context, AttributeSet attrs) &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public float getInterpolation(float input) &#123;</div><div class="line">        float x = (-1 + input * 2.0f) / 4f; // -0.25 ~ 0.25</div><div class="line">        float y = (float) Math.tan(x * Math.PI);</div><div class="line">        return y / 2f + 0.5f;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">animator.setInterpolator(new DecelerateAccelerateInterpolator());</div></pre></td></tr></table></figure></p>
+<p><div id="jump2"></div></p>
 <h3 id="3-2-2-Evaluator"><a href="#3-2-2-Evaluator" class="headerlink" title="3.2.2 Evaluator"></a>3.2.2 Evaluator</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p><img src="https://upload-images.jianshu.io/upload_images/9125154-ce9829a138c8d3c5.png?imageMogr2/auto-orient/strip|imageView2/2/w/949/format/webp" alt=""></p>
 <p>上图所述的 4 个步骤的具体含义是：<br>1）ofInt（0，400）：表示指定动画的数值区间，从0运动到400。<br>2）插值器：在动画开始后通过插值器会返回当前动画进度所对应的数值进度，这个数值进度是以小数表示的，如0.2。<br>3）Evaluator：我们通过监听器拿到的是当前动画所对应的具体数值，而不是用小数表示的数值。那么必须有一个地方会根据当前的数值进度将其转换为对应的数值，这个地方就是Evaluator。Evaluator用于将从插值器返回的数值进度（小数，0 - 1.0）转换成对应的数值。<br>4）监听器返回：在 AnimatorUpdateListener 监听器中使用 animation.getAnimatedValue() 函数拿到 Evaluator 中返回的数值。</p>
 <h4 id="2-各种-Evaluator"><a href="#2-各种-Evaluator" class="headerlink" title="2. 各种 Evaluator"></a>2. 各种 Evaluator</h4><p>插值器返回的小数值表示的是当前动画的数值进度，这对于无论是使用 ofFloat() 函数还是使用 ofInt() 函数定义的动画都是适用的。因为无论是什么动画，它的进度必然在 0～1 之间。0 表示还没开始，1 表示动画结束，这对于任何动画都是适用的。</p>
@@ -566,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -719,7 +724,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         

@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ca07885ef1838c7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-64d6af67e125a769.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-7a5cfd013c874038.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-04T07:24:20.000Z">
+<meta property="og:updated_time" content="2019-10-09T02:32:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="07.3 精通自定义 View 之 绘图进阶——BlurMaskFilter 发光效果与图片阴影">
 <meta name="twitter:description" content="在这张效果图中涉及三个发光效果：文字、图形和位图。
@@ -422,6 +422,7 @@
 <li>与 setShadowLayer() 函数一样，发光效果使用的也是高斯模糊算法，并且只会影响边缘部分图像，内部图像是不受影响的。</li>
 <li>发光效果是无法指定发光颜色的，采用边缘部分的颜色取样来进行模糊发光。所以边缘是什么颜色，发出的光也就是什么颜色的。</li>
 </ul>
+<p><div id="jump1"></div></p>
 <h3 id="7-3-1-概述"><a href="#7-3-1-概述" class="headerlink" title="7.3.1 概述"></a>7.3.1 概述</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public MaskFilter setMaskFilter(MaskFilter maskfilter)</div></pre></td></tr></table></figure>
 <p>setMaskFilter() 函数中的 MaskFilter 也是没有具体实现的，是通过派生子类来实现具体的不同功能的。MaskFilter 有两个派生类：BlurMaskFilter 和 EmbossMaskFilter。其中，BlurMaskFilter 就能够实现发光效果；而 EmbossMaskFilter 则可以用于实现浮雕效果，用处很少，这里就不再讲解了。另一点需要注意的是，setMaskFilter() 函数是不支持硬件加速的，必须关闭硬件加速才可以。</p>
 <p>BlurMaskFilter 的构造函数如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public BlurMaskFilter(float radius, Blur style)</div></pre></td></tr></table></figure></p>
@@ -436,6 +437,7 @@
 <blockquote>
 <p>其中，Blur.OUTER 比较特殊，在这种模式下仅显示发光效果，会把原图像中除发光部分外的其他部分全部变为透明。</p>
 </blockquote>
+<p><div id="jump2"></div></p>
 <h3 id="7-3-2-给图片添加纯色阴影"><a href="#7-3-2-给图片添加纯色阴影" class="headerlink" title="7.3.2 给图片添加纯色阴影"></a>7.3.2 给图片添加纯色阴影</h3><p>大家是否可以看出来发光效果与 setShadowLayer() 函数所生成的阴影之间有什么联系？</p>
 <p>先来分析一下 setShadowLayer() 函数的阴影形成过程（假定阴影画笔是灰色）。对于文字和图形，它首先产生一个跟原型一样的灰色副本。然后对这个灰色副本应用 BlurMaskFilter，使其内外发光；这样就形成了所谓的阴影，当然最后再偏移一段距离。</p>
 <p>所以，我们要给图片添加灰色阴影效果，就可以仿照这个过程：先绘制一幅跟图片一样大小的灰色图像，然后给这个灰色图形应用 BlurMaskFilter 使其内外发光，最后偏移原图形一段距离绘制阴影。</p>
@@ -457,6 +459,7 @@
 <h4 id="2-绘制阴影"><a href="#2-绘制阴影" class="headerlink" title="2. 绘制阴影"></a>2. 绘制阴影</h4><p>在上面灰色纯色图像的基础上，将此灰色图像使用 BlurMaskFilter 使其内外发光。然后再在灰色模糊阴影的基础上画上原图像，就形成了模糊阴影。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Bitmap mBitmap, mAlphaBmp;</div><div class="line">    private Rect mRect;</div><div class="line">    private BlurMaskFilter mFilter;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        setLayerType(LAYER_TYPE_SOFTWARE, null);</div><div class="line">        mPaint = new Paint();</div><div class="line">        mRect = new Rect();</div><div class="line">        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.dog);</div><div class="line">        mAlphaBmp = mBitmap.extractAlpha();</div><div class="line">        mFilter = new BlurMaskFilter(30, BlurMaskFilter.Blur.NORMAL);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line">        int width = 200;</div><div class="line">        int height = width * mAlphaBmp.getHeight() / mAlphaBmp.getWidth();</div><div class="line">        mRect.set(50, 50, 50 + width, 50 + height);</div><div class="line"></div><div class="line">        // 绘制灰色阴影</div><div class="line">        mPaint.setColor(Color.GRAY);</div><div class="line">        mPaint.setMaskFilter(mFilter);</div><div class="line">        canvas.drawBitmap(mAlphaBmp, null, mRect, mPaint);</div><div class="line"></div><div class="line">        // 绘制原图</div><div class="line">        mPaint.setMaskFilter(null);</div><div class="line">        canvas.translate(-10, -10);</div><div class="line">        canvas.drawBitmap(mBitmap, null, mRect, mPaint);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>效果如下图所示。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-64d6af67e125a769.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><div id="jump3"></div></p>
 <h3 id="7-3-3-封装控件"><a href="#7-3-3-封装控件" class="headerlink" title="7.3.3 封装控件"></a>7.3.3 封装控件</h3><p>将它封装成一个控件，具有如下功能：</p>
 <ul>
 <li>让用户定义图片内容。</li>
@@ -597,7 +600,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -750,7 +753,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共113k字</span>
+  <span class="post-count">博客全站共117.5k字</span>
 </div>
 
         
