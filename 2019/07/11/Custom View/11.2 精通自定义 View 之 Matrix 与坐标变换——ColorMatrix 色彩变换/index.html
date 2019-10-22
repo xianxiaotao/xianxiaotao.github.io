@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Custom View," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="11.2.1 色彩变换矩阵对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。
+1. 色彩信息的矩阵表示由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值。$$ \left[ \begin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换">
+<meta property="og:url" content="http://yoursite.com/2019/07/11/Custom View/11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="11.2.1 色彩变换矩阵对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。
+1. 色彩信息的矩阵表示由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值。$$ \left[ \begin">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-65968173a9ff1c69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-53ad1961066a0714.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-40bfc3d34d47dc8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-32174d42e4b29379.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-0be65968c5d44c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-45b981d952839f0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-bd12812a0945e1a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-89be53a5c44e1d14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b3ba32645756773a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-48b458e1e54db702.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-d71bec3124ade35c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-16150536456eb83f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ff2dadf5ca618b87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-7dc283195247047d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-06dc50244970cb7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-9c329370c6741f14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2ab0e18e38b1a69d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-4432b05b5b2d8427.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-56ec63b6df2ee7eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-554ef9bc51e003f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-c05e54e35dba0905.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-94625175286b6f21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8c23292396f0f991.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2019-10-22T08:20:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换">
+<meta name="twitter:description" content="11.2.1 色彩变换矩阵对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。
+1. 色彩信息的矩阵表示由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值。$$ \left[ \begin">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-65968173a9ff1c69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/11/Custom View/11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换/"/>
+
+
+
+
+
+  <title>11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/Custom View/11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-11T02:00:00+08:00">
+                2019-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Custom-View/" itemprop="url" rel="index">
+                    <span itemprop="name">Custom View</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/11/Custom View/11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/11/Custom View/11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<p><div id="jump1"></div></p>
+<h3 id="11-2-1-色彩变换矩阵"><a href="#11-2-1-色彩变换矩阵" class="headerlink" title="11.2.1 色彩变换矩阵"></a>11.2.1 色彩变换矩阵</h3><p>对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。</p>
+<h4 id="1-色彩信息的矩阵表示"><a href="#1-色彩信息的矩阵表示" class="headerlink" title="1. 色彩信息的矩阵表示"></a>1. 色彩信息的矩阵表示</h4><p>由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值。<br>$$ \left[ \begin{matrix} Red &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; Green &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; Blue &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; Alpha \end{matrix} \right]$$</p>
+<blockquote>
+<p>注意:对于色彩变换矩阵，这里的色彩顺序是 R、G、B、A，而不是 A、R、G、B。</p>
+</blockquote>
+<p>如果想将色彩 (0,255,0,255) 更改为半透明，则可以使用下面的矩阵运算来表示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-65968173a9ff1c69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>上面使用四阶矩阵完全可以改变图片的 RGBA 值，但考虑一种情况：如果我们只想在原有的 R 色上增加一些分量呢?</p>
+<p>这时，我们就得再多加一阶来表示平移变换。所，一个既包含线性变换又包含平移变换的组合变换称为仿射变换。使用四阶色彩变换矩阵来修改色彩，只能对色彩的每个分量值进行乘(除)运算。如果要对这些分量值进行加减法运算(平移变换)，则只能通过五阶矩阵来完成。</p>
+<p>考虑下面这个变换：<br>1）红色分量值更改为原来的 2 倍。<br>2）绿色分量值增加 100。</p>
+<p>这个变换使用四阶矩阵的乘法无法实现。所以，应该在四阶色彩变换矩阵上增加一个“哑元坐标”，来实现所列的矩阵运算。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-53ad1961066a0714.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在这个矩阵中，分量值用的是 100。</p>
+<h4 id="2-Android-中的色彩变换矩阵"><a href="#2-Android-中的色彩变换矩阵" class="headerlink" title="2. Android 中的色彩变换矩阵"></a>2. Android 中的色彩变换矩阵</h4><p>在 Android 中，色彩变换矩阵的表示形式也是五阶的。所以，在默认情况下，色彩变换矩阵的形式如下:<br>$$ \left[ \begin{matrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\end{matrix} \right]$$</p>
+<p>Android 中的色彩变换矩阵是用 ColorMatrix 类来表示的。使用 ColorMatrix 类的方法如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">       1, 0, 0, 0, 0,</div><div class="line">       0, 1, 0, 0, 0,</div><div class="line">       0, 0, 1, 0, 0,</div><div class="line">       0, 0, 0, 0.5, 0,</div><div class="line">&#125;);</div><div class="line">mPaint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));</div></pre></td></tr></table></figure></p>
+<p>有关 setColorFilter() 函数的其他用法，将在本节末尾详细讲解。</p>
+<h4 id="3-示例：彩色图片的蓝色通道输出"><a href="#3-示例：彩色图片的蓝色通道输出" class="headerlink" title="3. 示例：彩色图片的蓝色通道输出"></a>3. 示例：彩色图片的蓝色通道输出</h4><p>下面以为 Bitmap 应用 ColorMatrix 类为例,代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line">    private Paint mPaint = new Paint();</div><div class="line">    private Bitmap bitmap;  // 位图</div><div class="line">    private Rect rect;</div><div class="line">    private ColorMatrixColorFilter colorMatrixColorFilter;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        mPaint.setAntiAlias(true);</div><div class="line">        // 获取位图</div><div class="line">        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.dog);</div><div class="line">        rect = new Rect();</div><div class="line">        // 生成色彩变换矩阵</div><div class="line">        ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">                0, 0, 0, 0, 0,</div><div class="line">                0, 0, 0, 0, 0,</div><div class="line">                0, 0, 1, 0, 0,</div><div class="line">                0, 0, 0, 1, 0,</div><div class="line">        &#125;);</div><div class="line">        colorMatrixColorFilter = new ColorMatrixColorFilter(colorMatrix);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        rect.set(0, 0, 500, 500 * bitmap.getHeight() / bitmap.getWidth());</div><div class="line">        // 绘制原始位图</div><div class="line">        canvas.drawBitmap(bitmap, null, rect, mPaint);</div><div class="line">        canvas.translate(510, 0);</div><div class="line"></div><div class="line">        mPaint.setColorFilter(colorMatrixColorFilter);</div><div class="line">        canvas.drawBitmap(bitmap, null, rect, mPaint);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里分两次绘制了一个 Bitmap，先绘制了一个原始图像,然后利用 ColorMatrix 类生成了 一个仅包含蓝色的图像。用过 Photoshop 的读者应该很清楚,这跟 Photoshop 中蓝色通道的效 果是一致的。效果如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-40bfc3d34d47dc8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><div id="jump2"></div></p>
+<h3 id="11-2-2-色彩的几种运算方式"><a href="#11-2-2-色彩的几种运算方式" class="headerlink" title="11.2.2 色彩的几种运算方式"></a>11.2.2 色彩的几种运算方式</h3><h4 id="1-色彩的平移运算"><a href="#1-色彩的平移运算" class="headerlink" title="1. 色彩的平移运算"></a>1. 色彩的平移运算</h4><p>1）增加色彩饱和度<br>色彩的平移运算实际上就是色彩的加法运算，其实就是在色彩变换矩阵的最后一列加上某个值，这样可以增加特定色彩的饱和度。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-32174d42e4b29379.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>比如，同样是上面的图片，我们给它应用下面的色彩值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">       1, 0, 0, 0, 0,</div><div class="line">       0, 1, 0, 0, 50,</div><div class="line">       0, 0, 1, 0, 0,</div><div class="line">       0, 0, 0, 1, 0,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>在绿色值上添加增量 50，即增大绿色的饱和度。效果如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-0be65968c5d44c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>同样，左侧是原图，右侧是增大绿色饱和度后的效果。大家要特别注意的是，由于图片是由一个个像素组成的，所以用每个像素所对应的色彩数组来乘以色彩变换矩阵，结果就是变换后的当前点的颜色值。在应用 ColorMatrix 类后，图片中每个像素的绿色值都增加了 50, 从小狗的脸上也可以看出来。</p>
+<p>2）色彩反转/反相功能<br>色彩平移除增加指定色彩的饱和度以外，另一个应用就是色彩反转，也就是 Photoshop 中的反相功能。色彩反转就是求出每个色彩的补值来作为目标图像的对应颜色值。示例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">        -1, 0, 0, 0, 255,</div><div class="line">        0, -1, 0, 0, 255,</div><div class="line">        0, 0, -1, 0, 255,</div><div class="line">        0, 0, 0, 1, 0,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-45b981d952839f0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="2-色彩的缩放运算"><a href="#2-色彩的缩放运算" class="headerlink" title="2. 色彩的缩放运算"></a>2. 色彩的缩放运算</h4><p>1）调节亮度<br>色彩的缩放运算其实就是色彩的乘法运算。将色彩变换矩阵对角线上分别代表 R、G、B、 A 的几个值分别乘以指定的值，就是所谓的缩放运算，如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-bd12812a0945e1a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们可以针对某个颜色值进行放大/缩小运算。但是当对 R、G、B、A 同时进行放大/缩小运算时，就是对亮度进行调节。</p>
+<p>看下面将亮度增大 1.2 倍的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">        1.2f, 0, 0, 0, 0,</div><div class="line">        0, 1.2f, 0, 0, 0,</div><div class="line">        0, 0, 1.2f, 0, 0,</div><div class="line">        0, 0, 0, 1, 0,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-89be53a5c44e1d14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>2）通道输出<br>由于在色彩变换矩阵中对角线上的数的取值范围为 0~1，所以，当取 0 时，这个色彩就完全不显示；当 R、G 都取 0，而独有 B 取 1 时,就只显示蓝色，所形成的图像也就是我们通常所说的蓝色通道。看一下几个通道输出的效果图，如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-b3ba32645756773a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 红色通道矩阵</div><div class="line">ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">        1, 0, 0, 0, 0,</div><div class="line">        0, 0, 0, 0, 0,</div><div class="line">        0, 0, 0, 0, 0,</div><div class="line">        0, 0, 0, 1, 0,</div><div class="line">&#125;);</div><div class="line">// 绿色通道矩阵</div><div class="line">ColorMatrix colorMatrix2 = new ColorMatrix(new float[]&#123;</div><div class="line">        0, 0, 0, 0, 0,</div><div class="line">        0, 1, 0, 0, 0,</div><div class="line">        0, 0, 0, 0, 0,</div><div class="line">        0, 0, 0, 1, 0,</div><div class="line">&#125;);</div><div class="line">// 蓝色通道矩阵</div><div class="line">ColorMatrix colorMatrix3 = new ColorMatrix(new float[]&#123;</div><div class="line">        0, 0, 0, 0, 0,</div><div class="line">        0, 0, 0, 0, 0,</div><div class="line">        0, 0, 1, 0, 0,</div><div class="line">        0, 0, 0, 1, 0,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="3-色彩的旋转运算"><a href="#3-色彩的旋转运算" class="headerlink" title="3. 色彩的旋转运算"></a>3. 色彩的旋转运算</h4><p>RGB 色是如何旋转的呢？首先用 R、G、B 三色建立立体坐标系，如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-48b458e1e54db702.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>所以，我们可以把一个色彩值看成三维空间里的一个点，色彩值的三个分量可以看成该点的坐标(三维坐标)。我们先不考虑在三个维度综合情况下是怎么旋转的，来看看将某个轴作为 Z 轴，在另外两个轴形成的平面上旋转的情况。下图分析了将蓝色轴作为 Z 轴，仅在红 — 绿平面上旋转 a 度的情况。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-d71bec3124ade35c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>可以看到，在旋转后，原 R 在 R 轴上的分量变为原 Rxcosa，原 G 在 R 轴上也有了分量，但分量落在了负轴上，所以要减去这部分分量，最终的结果是最终的 R=原 R×cosa-原 G×sina。 下面来看一下几种旋转计算及结果矩阵(注意：这几张图只标记了原 X 轴色彩分量的旋转，没有把 Y 轴色彩分量的旋转标记出来)。</p>
+<p>1）绕蓝色轴旋转 θ 度</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-16150536456eb83f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>对应的色彩变换矩阵如下：<br>$$ \left[ \begin{matrix} cosθ &amp; sinθ &amp; 0 &amp; 0 &amp; 0\ -sinθ &amp; cosθ &amp; 0 &amp; 0 &amp; 0\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{matrix} \right]$$</p>
+<p>2）绕红色轴旋转 θ 度</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-ff2dadf5ca618b87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>对应的色彩变换矩阵如下：<br>$$ \left[ \begin{matrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\ 0 &amp; cosθ &amp; sinθ &amp; 0 &amp; 0\ 0 &amp; -sinθ &amp; cosθ &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{matrix} \right]$$</p>
+<p>3）绕绿色轴旋转 θ 度</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-7dc283195247047d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>对应的色彩变换矩阵如下：<br>$$ \left[ \begin{matrix} cosθ &amp; 0 &amp; -sinθ &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\ sinθ &amp; 0 &amp; cosθ &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{matrix} \right]$$</p>
+<p>当围绕红色轴进行色彩旋转时，由于当前红色轴的色彩是不变的,而仅利用三角函数来动态变更绿色和蓝色的颜色值，这种改变就叫作色相调节。当围绕红色轴旋转时，是对图片进行红色色相的调节；当围绕蓝色轴旋转时，是对图片进行蓝色色相的调节；当围绕绿色轴旋转时，是对图片进行绿色色相的调节。</p>
+<p>下面我们会再次讲到 ColorMatrix 的色彩旋转函数，这里先理解原理，代码和效果后面会给出。</p>
+<h4 id="4-色彩的投射运算"><a href="#4-色彩的投射运算" class="headerlink" title="4. 色彩的投射运算"></a>4. 色彩的投射运算</h4><p>我们再回过头来看看色彩变换矩阵运算的公式，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-06dc50244970cb7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在上式中，把红色运算单独标记出来。在运算中，它们就是利用 G、B、A 的颜色值的分量来增加红色值的。</p>
+<p>来看具体的运算：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-9c329370c6741f14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>注意：最终结果的 220=0.2×100+1×200，可见绿色分量在原有绿色分量的基础上增加了红色分量值的 0.2 倍。利用其他色彩分量的倍数来更改自己色彩分量的值，这种运算就叫作投射运算。</p>
+</blockquote>
+<p>在对下图中阴影部分的值进行修改时，所使用的增加值来自其他色彩分量的信息。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-2ab0e18e38b1a69d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>应用一：黑白图片</strong><br>色彩投射的一个最简单的应用就是将彩色图片变为黑白图片。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">        0.213f, 0.715f, 0.072f, 0, 0,</div><div class="line">        0.213f, 0.715f, 0.072f, 0, 0,</div><div class="line">        0.213f, 0.715f, 0.072f, 0, 0,</div><div class="line">        0, 0, 0, 1, 0,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-4432b05b5b2d8427.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>首先了解一下去色原理：只要把 R、G、B 三通道的色彩信息设置成一样，即 R=G=B，图像就变成了灰色。并且，为了保证图像亮度不变，同一个通道中的 R+G+B=1，如 0.213+0.715+0.072=1。</p>
+<p>下面谈一下 0.213、0.715、0.072 这三个数字的由来。</p>
+<p>按理说应该把 R、G、B 平分，都是 0.3333333。三个数字应该是根据色彩光波频率及色彩心理学计算出来的。</p>
+<p>在作用于人眼的光线中，彩色光要明显强于无色光。如果对一张图像按 RGB 平分理论给图像去色，人眼就会明显感觉到图像变暗了(当然可能有心理上的原因，也有光波的科学依据)。另外，在彩色图像中能够识别的一些细节也可能会丢失。</p>
+<p>所以 Google 最终给出的颜色值就是上面的三个数字：0.213、0.715、0.072。我们在给图像去色时保留了大量的 G 通道信息，使得图像不至于变暗或者绿色信息不至于丢失。</p>
+<p><strong>应用二：色彩反色</strong><br>利用色彩变换矩阵将两个颜色反转，这种操作就叫作色彩反色。比如，将红色和绿色反色(红绿反色)，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">        0, 1, 0, 0, 0,</div><div class="line">        1, 0, 0, 0, 0,</div><div class="line">        0, 0, 1, 0, 0,</div><div class="line">        0, 0, 0, 1, 0,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-56ec63b6df2ee7eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>左侧为原图，右侧为红绿反色以后的效果图。</p>
+<p>从色彩变换矩阵中可以看出，红绿反色的关键在于，第一行用绿色来代替红色，第二行用红色来代替绿色。类似的可以有红蓝反色、绿蓝反色等，对应矩阵难度不大，就不再细讲了。</p>
+<p><strong>应用三：照片变旧</strong><br>投射运算的另一个应用是照片变旧，其对应的矩阵如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">        1/2f, 1/2f, 1/2f, 0, 0,</div><div class="line">        1/3f, 1/3f, 1/3f, 0, 0,</div><div class="line">        1/4f, 1/4f, 1/4f, 0, 0,</div><div class="line">        0, 0, 0, 1, 0,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-554ef9bc51e003f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><div id="jump3"></div></p>
+<h3 id="11-2-3-ColorMatrix-函数"><a href="#11-2-3-ColorMatrix-函数" class="headerlink" title="11.2.3 ColorMatrix 函数"></a>11.2.3 ColorMatrix 函数</h3><p>上一小节讲述了利用色彩变换矩阵来进行的一些运算，但这些都是需要特定的色彩设计基础的。在 Android 中，ColorMatrix 自带一些函数，用来帮助我们完成调整饱和度、色彩旋转等操作。</p>
+<h4 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1. 构造函数"></a>1. 构造函数</h4><p>ColorMatrix 共有三个构造函数，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ColorMatrix()</div><div class="line">ColorMatrix(float[] src)</div><div class="line">ColorMatrix(ColorMatrix src)</div></pre></td></tr></table></figure></p>
+<p>在这三个构造函数中，我们已经使用过第二个构造函数；至于第三个构造函数，就是利用另一个 ColorMatrix 实例来复制一个一样的 ColorMatrix 对象。</p>
+<h4 id="2-设置和重置函数"><a href="#2-设置和重置函数" class="headerlink" title="2. 设置和重置函数"></a>2. 设置和重置函数</h4><p>第一个构造函数 ColorMatrix() 需要与其他函数共用才行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public void set(ColorMatrix src)</div><div class="line">public void set(float[] src)</div><div class="line">public void reset()</div></pre></td></tr></table></figure></p>
+<p>上面的函数是设置和重置函数，重置后，对应的数组如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Set this colormatrix to identity: </div><div class="line"> * [ 1 0 0 0 0   -redvector</div><div class="line"> *   0 1 0 0 0   -greenvector</div><div class="line"> *   0 0 1 0 0   -bluevector</div><div class="line"> *   0 0 0 1 0 ] -alphavector</div><div class="line"> */</div></pre></td></tr></table></figure></p>
+<h4 id="3-setSaturation-函数——设置饱和度"><a href="#3-setSaturation-函数——设置饱和度" class="headerlink" title="3. setSaturation() 函数——设置饱和度"></a>3. setSaturation() 函数——设置饱和度</h4><p>我们可以通过色彩的平移运算单独增强 R、G、B 其中一个分量的饱和度，但当我们需要整体增强色彩饱和度时，需要如何来做呢？ ColorMatrix 提供了一个函数来整体增强色彩饱和度，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 整体增强色彩饱和度，即同时增强 R、G、B 的色彩饱和度 </div><div class="line">public void setSaturation(float sat)</div></pre></td></tr></table></figure></p>
+<p>其中，参数 float sat 表示把当前色彩饱和度放大的倍数。当取值为 0 时，表示完全无色彩，即灰度图像(黑白图像)；当取值为 1 时，表示色彩不变动；;当取值大于 1 时，显示色彩过度饱和。</p>
+<p>举个例子：滑块默认在 1 倍的位置，向左到底是 0，向右到底是 20(饱和度放大 20 倍)。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-c05e54e35dba0905.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>布局非常简单，下面是一张图片，上面是一个 SeekBar，核心处理代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    private SeekBar mSeekBar;</div><div class="line">    private ImageView mImageView;</div><div class="line">    private Bitmap mOriginBmp, mTempBmp;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.act_main);</div><div class="line"></div><div class="line">        mImageView = findViewById(R.id.img);</div><div class="line">        mSeekBar = findViewById(R.id.seek_bar);</div><div class="line">        mOriginBmp = BitmapFactory.decodeResource(getResources(), R.drawable.meinv);</div><div class="line">        mTempBmp = Bitmap.createBitmap(mOriginBmp.getWidth(), mOriginBmp.getHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">        mSeekBar.setMax(20);</div><div class="line">        mSeekBar.setProgress(1);</div><div class="line">        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) &#123;</div><div class="line">                Bitmap bitmap = handleColorMatrixBmp(progress);</div><div class="line">                mImageView.setImageBitmap(bitmap);</div><div class="line">            &#125;</div><div class="line">            @Override</div><div class="line">            public void onStartTrackingTouch(SeekBar seekBar) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onStopTrackingTouch(SeekBar seekBar) &#123;&#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private Bitmap handleColorMatrixBmp(int progress)&#123;</div><div class="line">        // 创建一个相同尺寸的可变的位图区，用于绘制调色后的图片</div><div class="line">        Canvas canvas = new Canvas(mTempBmp);</div><div class="line">        // 得到画笔对象</div><div class="line">        Paint paint = new Paint();</div><div class="line">        ColorMatrix mSaturationMatrix = new ColorMatrix();</div><div class="line">        mSaturationMatrix.setSaturation(progress);</div><div class="line">        // 设置色彩变换效果</div><div class="line">        paint.setColorFilter(new ColorMatrixColorFilter(mSaturationMatrix));</div><div class="line">        // 将色彩变换后的图片输出到新创建的位图区</div><div class="line">        canvas.drawBitmap(mOriginBmp, 0, 0, paint);</div><div class="line">        // 返回新的位图,即调色处理后的图片</div><div class="line">        return mTempBmp;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>布局：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;</div><div class="line">    android:background=&quot;#EEE&quot;&gt;</div><div class="line">    &lt;LinearLayout</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;40dp&quot;</div><div class="line">        android:gravity=&quot;center_vertical&quot;</div><div class="line">        android:orientation=&quot;horizontal&quot;&gt;</div><div class="line">        &lt;TextView</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:text=&quot;饱和度&quot;/&gt;</div><div class="line">        &lt;SeekBar</div><div class="line">            android:id=&quot;@+id/seek_bar&quot;</div><div class="line">            android:layout_width=&quot;match_parent&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot; /&gt;</div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">    &lt;ImageView</div><div class="line">        android:id=&quot;@+id/img&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:src=&quot;@drawable/meinv&quot;/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="4-setScale-函数——色彩缩放"><a href="#4-setScale-函数——色彩缩放" class="headerlink" title="4. setScale() 函数——色彩缩放"></a>4. setScale() 函数——色彩缩放</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void setScale(float rScale, float gScale, float bScale,float aScale)</div></pre></td></tr></table></figure>
+<p>这个函数共有 4 个参数，分别对应 R、G、B、A 颜色值的缩放倍数。比如，在小狗图片中,绿色占大部分，所以我们仅将绿色放大 1.3 倍。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-94625175286b6f21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line">    private Paint mPaint = new Paint();</div><div class="line">    private Bitmap bitmap;  // 位图</div><div class="line">    private Rect rect;</div><div class="line">    private ColorMatrixColorFilter colorMatrixColorFilter;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        mPaint.setAntiAlias(true);</div><div class="line">        // 获取位图</div><div class="line">        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.dog);</div><div class="line">        rect = new Rect();</div><div class="line">        // 生成色彩变换矩阵</div><div class="line">        ColorMatrix colorMatrix = new ColorMatrix();</div><div class="line">        colorMatrix.setScale(1,1.3f,1,1);</div><div class="line">        colorMatrixColorFilter = new ColorMatrixColorFilter(colorMatrix);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line">        rect.set(0, 0, 500, 500 * bitmap.getHeight() / bitmap.getWidth());</div><div class="line">        // 绘制原始位图</div><div class="line">        canvas.drawBitmap(bitmap, null, rect, mPaint);</div><div class="line">        canvas.translate(510, 0);</div><div class="line">        mPaint.setColorFilter(colorMatrixColorFilter);</div><div class="line">        canvas.drawBitmap(bitmap, null, rect, mPaint);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="5-setRotate-函数——色彩旋转"><a href="#5-setRotate-函数——色彩旋转" class="headerlink" title="5. setRotate() 函数——色彩旋转"></a>5. setRotate() 函数——色彩旋转</h4><p>上面在讲解色彩旋转运算时，列出了在色彩旋转时的效果和原理。由于涉及正、余弦函数的计算，而且这些公式推导起来具有一定的难度，所以 Android 已经封装好了色彩旋转的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 将旋转围绕某一个颜色轴进行</div><div class="line"> * axis=0 围绕红色轴旋转</div><div class="line"> * axis=1 围绕绿色轴旋转</div><div class="line"> * axis=2 围绕蓝色轴旋转</div><div class="line"> */</div><div class="line">public void setRotate(int axis, float degrees);</div></pre></td></tr></table></figure></p>
+<ul>
+<li>int axis：表示围绕哪个轴旋转，取值为0、1、2。当取值为 0 时，表示围绕红色轴旋转；当取值为 1 时，表示围绕绿色轴旋转；当取值为 2 时，表示围绕蓝色轴旋转。</li>
+<li>float degrees：表示旋转的度数。</li>
+</ul>
+<p>同样利用上面色彩旋转的图像和滑动条的框架，来看一下当围绕某一个颜色轴旋转时色相变化的效果。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-8c23292396f0f991.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    private SeekBar mSeekBar;</div><div class="line">    private ImageView mImageView;</div><div class="line">    private Bitmap mOriginBmp, mTempBmp;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.act_main);</div><div class="line"></div><div class="line">        mImageView = findViewById(R.id.img);</div><div class="line">        mSeekBar = findViewById(R.id.seek_bar);</div><div class="line">        mOriginBmp = BitmapFactory.decodeResource(getResources(), R.drawable.meinv);</div><div class="line">        mTempBmp = Bitmap.createBitmap(mOriginBmp.getWidth(), mOriginBmp.getHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">        mSeekBar.setMax(360);</div><div class="line">        mSeekBar.setProgress(180);</div><div class="line">        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) &#123;</div><div class="line">                Bitmap bitmap = handleColorMatrixBmp(progress);</div><div class="line">                mImageView.setImageBitmap(bitmap);</div><div class="line">            &#125;</div><div class="line">            @Override</div><div class="line">            public void onStartTrackingTouch(SeekBar seekBar) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onStopTrackingTouch(SeekBar seekBar) &#123;&#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private Bitmap handleColorMatrixBmp(int progress) &#123;</div><div class="line">        Canvas canvas = new Canvas(mTempBmp);</div><div class="line">        Paint paint = new Paint();</div><div class="line">        ColorMatrix colorMatrix = new ColorMatrix();</div><div class="line">        colorMatrix.setRotate(0,progress - 180);</div><div class="line">        paint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));</div><div class="line">        canvas.drawBitmap(mOriginBmp, 0, 0, paint);</div><div class="line">        return mTempBmp;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将当前 progress 位置减去 180，即中间位置的数字。所以，中间位置的色彩旋转度数为 0，整个旋转度数的范围是 -180°~180°；360° 正好是正/余弦函数的一个最小正周期。</p>
+<p>上面的效果针对的是红色色相。同理，可以得到围绕绿色轴旋转的效果图。</p>
+<p><div id="jump4"></div></p>
+<h3 id="11-2-4-ColorMatrix-相乘"><a href="#11-2-4-ColorMatrix-相乘" class="headerlink" title="11.2.4 ColorMatrix 相乘"></a>11.2.4 ColorMatrix 相乘</h3><p>矩阵相乘涉及三个函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void setConcat(ColorMatrix matA, ColorMatrix matB)</div></pre></td></tr></table></figure></p>
+<p>这个函数接收两个 ColorMatrix 矩阵 matA 和 matB，乘法规则为 matA×matB，然后将结果作为当前 ColorMatrix 的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void preConcat(ColorMatrix preMatrix)</div></pre></td></tr></table></figure></p>
+<p>假设当前矩阵为 A，那么 preConcat() 函数的含义就是将当前的矩阵 A 乘以 preMatrix。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void postConcat(ColorMatrix postMatrix)</div></pre></td></tr></table></figure></p>
+<p>postConcat() 函数的含义就是 postMatrix 乘以当前矩阵 A。</p>
+<p>由于这部分内容基本用不到，有关这几个函数的具体应用这里就不再详细讲述，有兴趣的读者可以参考 <a href="http://blog.csdn.net/harvic880925/article/details/51187277" target="_blank" rel="external">Paint 之 ColorMatrix 与滤镜效果</a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Custom-View/" rel="tag"><i class="fa fa-tag"></i> Custom View</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/11/Custom View/11.1 精通自定义 View 之 Matrix 与坐标变换——矩阵运算/" rel="next" title="11.1 精通自定义 View 之 Matrix 与坐标变换——矩阵运算">
+                <i class="fa fa-chevron-left"></i> 11.1 精通自定义 View 之 Matrix 与坐标变换——矩阵运算
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2200/01/01/Custom View/00 Android 自定义控件 目录/" rel="prev" title="精通 Android 自定义 View 目录">
+                精通 Android 自定义 View 目录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-2-1-色彩变换矩阵"><span class="nav-text">11.2.1 色彩变换矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-色彩信息的矩阵表示"><span class="nav-text">1. 色彩信息的矩阵表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Android-中的色彩变换矩阵"><span class="nav-text">2. Android 中的色彩变换矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-示例：彩色图片的蓝色通道输出"><span class="nav-text">3. 示例：彩色图片的蓝色通道输出</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-2-2-色彩的几种运算方式"><span class="nav-text">11.2.2 色彩的几种运算方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-色彩的平移运算"><span class="nav-text">1. 色彩的平移运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-色彩的缩放运算"><span class="nav-text">2. 色彩的缩放运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-色彩的旋转运算"><span class="nav-text">3. 色彩的旋转运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-色彩的投射运算"><span class="nav-text">4. 色彩的投射运算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-2-3-ColorMatrix-函数"><span class="nav-text">11.2.3 ColorMatrix 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-构造函数"><span class="nav-text">1. 构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-设置和重置函数"><span class="nav-text">2. 设置和重置函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-setSaturation-函数——设置饱和度"><span class="nav-text">3. setSaturation() 函数——设置饱和度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-setScale-函数——色彩缩放"><span class="nav-text">4. setScale() 函数——色彩缩放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-setRotate-函数——色彩旋转"><span class="nav-text">5. setRotate() 函数——色彩旋转</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-2-4-ColorMatrix-相乘"><span class="nav-text">11.2.4 ColorMatrix 相乘</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共136.7k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

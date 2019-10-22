@@ -111,7 +111,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8148a61181bf97db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8112a78ff86dbea8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-69b3cadcd1005e2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-09T13:32:49.000Z">
+<meta property="og:updated_time" content="2019-10-10T01:19:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.2 精通自定义 View 之绘图基础——路径">
 <meta name="twitter:description" content="1.2.1 概述画笔所画出来的一段不间断的曲线就是路径。在 Android 中，Path 类就代表路径。在 Canvas 中绘制路径的方法如下：1void drawPath(Path path, Paint paint)
@@ -421,7 +421,7 @@
 <p><div id="jump2"></div></p>
 <h3 id="1-2-2-直线路径"><a href="#1-2-2-直线路径" class="headerlink" title="1.2.2 直线路径"></a>1.2.2 直线路径</h3><p>画一条直线路径,一般涉及下面三个函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// (x1,y1)是直线的起始点，即将直线路径的绘制点定在(x1,y1)位置</div><div class="line">void moveTo(float x1, float y1)</div><div class="line">// (x2,y2)是直线的终点，又是下一次绘制直线路径的起始点；lineTo()函数可以一直使用。</div><div class="line">void lineTo(float x2, float y2)</div><div class="line">// 如果连续画了几条直线，但没有形成闭环，</div><div class="line">// 那么调用 close()函数会将路径首尾点连接起来，形成闭环。</div><div class="line">void close()</div></pre></td></tr></table></figure></p>
 <p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-8e38ddf81a7fe2a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="闭环 &amp; 不闭环三角形"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 初始化</div><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">mPaint.setStrokeWidth(5);</div><div class="line">mPath = new Path();</div><div class="line"></div><div class="line">// 闭环</div><div class="line">mPath.moveTo(20, 20);</div><div class="line">mPath.lineTo(20, 120);</div><div class="line">mPath.lineTo(300, 120);</div><div class="line">mPath.close();</div><div class="line">canvas.drawPath(mPath, mPaint);</div><div class="line"></div><div class="line">// 不闭环</div><div class="line">mPath.moveTo(320, 20);</div><div class="line">mPath.lineTo(320, 120);</div><div class="line">mPath.lineTo(600, 120);</div><div class="line">canvas.drawPath(mPath, mPaint);</div></pre></td></tr></table></figure></p>
-<p>闭合三角形：先沿逆时针方向画了两条直线，分别是从(10, 10)到(10, 100)和从(10, 100)到(300, 100)，然后利用 path.close()函数将路径闭合，路径的终点(300,100)就会自行向路径的起始点 (10,10)画一条闭合线，所以最终我们看到的是一个路径闭合的三角形。</p>
+<p>闭合三角形：先沿逆时针方向画了两条直线，分别是从(20, 20)到(20, 120)和从(20, 120)到(300, 120)，然后利用 path.close()函数将路径闭合，路径的终点(300,120)就会自行向路径的起始点 (20,20)画一条闭合线，所以最终我们看到的是一个路径闭合的三角形。</p>
 <p><div id="jump3"></div></p>
 <h3 id="1-2-3-弧线路径"><a href="#1-2-3-弧线路径" class="headerlink" title="1.2.3 弧线路径"></a>1.2.3 弧线路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void arcTo(RectF oval, float startAngle, float sweepAngle)</div></pre></td></tr></table></figure>
 <p>这是一个画弧线路径的方法，弧线是从椭圆上截取的一部分。<br>参数:</p>
@@ -431,7 +431,7 @@
 <li>float sweepAngle：弧持续的角度。</li>
 </ul>
 <p>示例：<br><img src="https://upload-images.jianshu.io/upload_images/14186083-7331c6d8b5f45ab1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 初始化</div><div class="line">mPaint = new Paint();</div><div class="line">mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">mPaint.setStrokeWidth(5);</div><div class="line">mRect = new RectF(100, 20, 200, 100);</div><div class="line">mPath = new Path();</div><div class="line">mPath.moveTo(20, 20);</div><div class="line">mPath.arcTo(mRect, 0, 90);</div><div class="line"></div><div class="line">// onDraw</div><div class="line">mPaint.setColor(Color.LTGRAY);</div><div class="line">canvas.drawRect(mRect, mPaint);</div><div class="line">mPaint.setColor(Color.RED);</div><div class="line">canvas.drawPath(mPath, mPaint);</div></pre></td></tr></table></figure></p>
-<p>上述示例中弧最终还是会和起始点(10,10)连接起来。因为在默认情况下路径都是连贯的，除非以下两种情况：</p>
+<p>上述示例中弧最终还是会和起始点(20,20)连接起来。因为在默认情况下路径都是连贯的，除非以下两种情况：</p>
 <ul>
 <li>调用 addXXX 系列函数(参见 1.2.4 节)，将直接添加固定形状的路径。</li>
 <li>调用 moveTo()函数改变绘制起始位置。</li>
@@ -637,7 +637,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">83</span>
+                  <span class="site-state-item-count">91</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -790,7 +790,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共117.5k字</span>
+  <span class="post-count">博客全站共136.7k字</span>
 </div>
 
         
