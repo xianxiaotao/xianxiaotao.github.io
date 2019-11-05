@@ -121,7 +121,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2f8eb2e0056cb6b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-59955a6e7c542f66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-27b56dc51d2daac6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-22T03:17:40.000Z">
+<meta property="og:updated_time" content="2019-11-05T00:48:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10.1 精通自定义 View 之 Android 画布——ShapeDrawable">
 <meta name="twitter:description" content="前面，我们提到了获取画布的几种方法。除了重写系统的 onDraw()、dispatchDraw() 函数，还可以通过以下方法获得画布：
@@ -566,6 +566,7 @@
 <p>从效果图中可以看出，宽度使用的是 TextView 的宽度，而高度则使用的是 TestDrawable 的默认高度。之所以会出现这样的效果，是因为在使用 setBackgroundDrawable() 函数设置自定义 Drawable 时，自定义 Drawable 的宽度和高度计算是将 View 的宽、高和自定义 Drawable 的宽、高进行对比，哪个值大就用哪个值作为控件的宽、高的。而这个最终值就会通过 setBounds() 函数传递给自定义 Drawable。</p>
 <h4 id="4-自定义-Drawable-与自定义-View-的区别"><a href="#4-自定义-Drawable-与自定义-View-的区别" class="headerlink" title="4. 自定义 Drawable 与自定义 View 的区别"></a>4. 自定义 Drawable 与自定义 View 的区别</h4><p>自定义 Drawable 的使用场景很明确，要么使用在可以设置 Drawable 的函数中（比如 setImageDrawable() 等），要么替代 Bitmap 用于 View 中（比如放大镜效果）。</p>
 <p>而自定义 View 的功能十分强大，自定义 Drawable 和 Bitmap 无法完成的功能可以使用自定义 View 来完成。</p>
+<p><div id="jump5"></div></p>
 <h3 id="10-1-5-Drawable-与-Bitmap-的对比"><a href="#10-1-5-Drawable-与-Bitmap-的对比" class="headerlink" title="10.1.5 Drawable 与 Bitmap 的对比"></a>10.1.5 Drawable 与 Bitmap 的对比</h3><h4 id="1-定义对比"><a href="#1-定义对比" class="headerlink" title="1. 定义对比"></a>1. 定义对比</h4><p>Bitmap 称作位图，一般位图的文件格式扩展名为 .bmp，当然编码器也有很多，如 RGB565、RGB8888。作为一种逐像素的显示对象，其执行效率高；但存储效率低。</p>
 <p>Drawable 作为 Android 下通用的图形对象，它可以装载常用格式的图像，比如 GIF、PNG、JPG 和 BMP，还提供了一些高级的可视化对象，比如渐变、图形等。</p>
 <p>也就是说，Bitmap 是 Drawable，而 Drawable 不一定是 Bitmap。</p>
