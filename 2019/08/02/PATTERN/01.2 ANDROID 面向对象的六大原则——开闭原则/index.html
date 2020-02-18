@@ -99,7 +99,7 @@
 
 第一篇中已经实现了内存缓存类 ImageCache.java，我们还需要增加一个 SD 卡缓存类 DiskCache.java。123456789101112131415161718192021222324252627282930313233343536373839">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-27a4841b8ee201ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2020-02-18T06:05:51.000Z">
+<meta property="og:updated_time" content="2020-02-18T07:47:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.2 ANDROID 面向对象的六大原则——开闭原则">
 <meta name="twitter:description" content="请使用双缓存技术（内存、SD 卡）继续优化图片加载器？图片加载器见第一篇：ANDROID 面向对象的六大原则——单一职责原则
@@ -424,7 +424,9 @@
 <p>经过此次重构，没有了那么多的 if-else 语句，没有了各种各样的缓存实现对象、布尔变量，代码确实清晰简洁。用户可以通过setImageCache(ImageCache cache) 函数设置缓存实现，也就是通常说的依赖注入。具体如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">ImageLoader imageLoader = new ImageLoader();</div><div class="line">// 使用内存缓存</div><div class="line">imageLoader.setImageCache(new MemoryCache());</div><div class="line">// 使用 SD 卡缓存</div><div class="line">imageLoader.setImageCache(new DiskCache());</div><div class="line">// 使用双缓存</div><div class="line">imageLoader.setImageCache(new DoubleCache());</div><div class="line">// 使用自定义的图片缓存实现</div><div class="line">imageLoader.setImageCache(new ImageCache() &#123;</div><div class="line">    @Override</div><div class="line">    public Bitmap get(String url) &#123;</div><div class="line">        return null; // 从缓存中获取图片</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void put(String url, Bitmap bitmap) &#123;</div><div class="line">        // 缓存图片</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>在上述代码中，通过 setImageCache(ImageCache cache) 方法注入不同的缓存实现，这样不仅能够使 ImageLoader 更简单、健壮，也使得 ImageLoader 的可扩展性、灵活性更高。MemoryCache、DiskCache、DoubleCache 缓存图片的具体实现完全不一样，但是，它们的一个特点是，都实现了 ImageCache 接口。当用户需要自定义实现缓存策略时，只需要新建一个实现 ImageCache 接口的类，然后构造该类的对象，并且通过 setImageCache 函数注入到 ImageLoader 中，这样 ImageLoader 就实现了千变万化的缓存策略，且扩展这些缓存策略并不会导致 ImageLoader 类的修改。</p>
 <p>开闭原则指导我们，当软件需要变化时，应该尽量通过扩展的方式来实现变化，而不是通过修改已有的代码来实现。但是通过继承等方式添加新的实现，这会导致类型的膨胀以及历史遗留代码的冗余。在开发过程中需要自己结合具体情况进行考量。</p>
-<h3 id="开闭原则概述"><a href="#开闭原则概述" class="headerlink" title="开闭原则概述"></a>开闭原则概述</h3><p><strong>软件实体应当对扩展开放，对修改关闭 (Software entities should be open for extension, but closed for modification)。</strong></p>
+<hr>
+<h3 id="开闭原则概述"><a href="#开闭原则概述" class="headerlink" title="开闭原则概述"></a>开闭原则概述</h3><hr>
+<p><strong>软件实体应当对扩展开放，对修改关闭 (Software entities should be open for extension, but closed for modification)。</strong></p>
 <p><strong>开闭原则</strong>是面向对象设计中“可复用设计”的基石，是设计模式最基本的法则。其他五大设计原则和 23 种设计模式都可以看做是开闭原则的实现方法和手段。</p>
 <p>说的通俗一点就是，已经开发好的软件实体（如类、模块、函数），在升级迭代引入新功能时，不应该修改已有的代码，而是在已有代码的基础上，添加新代码来实现。</p>
 
@@ -467,8 +469,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/01/Custom View/X001 圆角圆形 ImageView/" rel="prev" title="X001 圆角圆形 ImageView">
-                X001 圆角圆形 ImageView <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/03/PATTERN/01.3 ANDROID 面向对象的六大原则——里氏替换原则/" rel="prev" title="01.3 ANDROID 面向对象的六大原则——里氏替换原则">
+                01.3 ANDROID 面向对象的六大原则——里氏替换原则 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -553,7 +555,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -706,7 +708,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共168.9k字</span>
+  <span class="post-count">博客全站共170.8k字</span>
 </div>
 
         
