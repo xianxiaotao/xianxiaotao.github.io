@@ -88,20 +88,23 @@
 
 
 
-<meta name="description" content="第一篇：单一职责原则第二篇：开闭原则
-第三篇：本文前一篇博文中的图片加载器项目，MemoryCache、DiskCache、DoubleCache 都可以替换 ImageCache 的工作，并且能够保证行为的正确性。ImageCache 建立了获取缓存图片、保存缓存图片的接口规范，MemoryCache 等根据接口规范实现了相应的功能，用户只需要在使用时指定具体的缓存对象就可以动态地替换 I">
+<meta name="description" content="第一篇：单一职责原则第二篇：开闭原则第三篇：本文
+
+前一篇博文中的图片加载器项目，MemoryCache、DiskCache、DoubleCache 都可以替换 ImageCache 的工作，并且能够保证行为的正确性。ImageCache 建立了获取缓存图片、保存缓存图片的接口规范，MemoryCache 等根据接口规范实现了相应的功能，用户只需要在使用时指定具体的缓存对象就可以动态地替换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01.3 ANDROID 面向对象的六大原则——里氏替换原则">
 <meta property="og:url" content="http://yoursite.com/2019/08/03/PATTERN/01.3 ANDROID 面向对象的六大原则——里氏替换原则/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="第一篇：单一职责原则第二篇：开闭原则
-第三篇：本文前一篇博文中的图片加载器项目，MemoryCache、DiskCache、DoubleCache 都可以替换 ImageCache 的工作，并且能够保证行为的正确性。ImageCache 建立了获取缓存图片、保存缓存图片的接口规范，MemoryCache 等根据接口规范实现了相应的功能，用户只需要在使用时指定具体的缓存对象就可以动态地替换 I">
+<meta property="og:description" content="第一篇：单一职责原则第二篇：开闭原则第三篇：本文
+
+前一篇博文中的图片加载器项目，MemoryCache、DiskCache、DoubleCache 都可以替换 ImageCache 的工作，并且能够保证行为的正确性。ImageCache 建立了获取缓存图片、保存缓存图片的接口规范，MemoryCache 等根据接口规范实现了相应的功能，用户只需要在使用时指定具体的缓存对象就可以动态地替换">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ae70d1d61a1d7785.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2020-02-18T11:36:51.000Z">
+<meta property="og:updated_time" content="2020-02-18T13:26:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.3 ANDROID 面向对象的六大原则——里氏替换原则">
-<meta name="twitter:description" content="第一篇：单一职责原则第二篇：开闭原则
-第三篇：本文前一篇博文中的图片加载器项目，MemoryCache、DiskCache、DoubleCache 都可以替换 ImageCache 的工作，并且能够保证行为的正确性。ImageCache 建立了获取缓存图片、保存缓存图片的接口规范，MemoryCache 等根据接口规范实现了相应的功能，用户只需要在使用时指定具体的缓存对象就可以动态地替换 I">
+<meta name="twitter:description" content="第一篇：单一职责原则第二篇：开闭原则第三篇：本文
+
+前一篇博文中的图片加载器项目，MemoryCache、DiskCache、DoubleCache 都可以替换 ImageCache 的工作，并且能够保证行为的正确性。ImageCache 建立了获取缓存图片、保存缓存图片的接口规范，MemoryCache 等根据接口规范实现了相应的功能，用户只需要在使用时指定具体的缓存对象就可以动态地替换">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-ae70d1d61a1d7785.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -402,8 +405,9 @@
         <meta name="referrer" content="no-referrer">
 
 <hr>
-<p><a href="https://xianxiaotao.github.io/2019/08/01/PATTERN/01.1%20ANDROID%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99%E2%80%94%E2%80%94%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" target="_blank" rel="external">第一篇：单一职责原则</a><br><a href="https://xianxiaotao.github.io/2019/08/02/PATTERN/01.2%20ANDROID%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99%E2%80%94%E2%80%94%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" target="_blank" rel="external">第二篇：开闭原则</a></p>
-<h2 id="第三篇：本文"><a href="#第三篇：本文" class="headerlink" title="第三篇：本文"></a><a href="">第三篇：本文</a></h2><p>前一篇博文中的图片加载器项目，MemoryCache、DiskCache、DoubleCache 都可以替换 ImageCache 的工作，并且能够保证行为的正确性。ImageCache 建立了获取缓存图片、保存缓存图片的接口规范，MemoryCache 等根据接口规范实现了相应的功能，用户只需要在使用时指定具体的缓存对象就可以动态地替换 ImageLoader 中的缓存策略。这就使得 ImageLoader 的缓存系统具有了无限的可能性，也就是保证了可扩展性。</p>
+<p><a href="https://xianxiaotao.github.io/2019/08/01/PATTERN/01.1%20ANDROID%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99%E2%80%94%E2%80%94%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" target="_blank" rel="external">第一篇：单一职责原则</a><br><a href="https://xianxiaotao.github.io/2019/08/02/PATTERN/01.2%20ANDROID%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99%E2%80%94%E2%80%94%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" target="_blank" rel="external">第二篇：开闭原则</a><br><a href="">第三篇：本文</a></p>
+<hr>
+<p>前一篇博文中的图片加载器项目，MemoryCache、DiskCache、DoubleCache 都可以替换 ImageCache 的工作，并且能够保证行为的正确性。ImageCache 建立了获取缓存图片、保存缓存图片的接口规范，MemoryCache 等根据接口规范实现了相应的功能，用户只需要在使用时指定具体的缓存对象就可以动态地替换 ImageLoader 中的缓存策略。这就使得 ImageLoader 的缓存系统具有了无限的可能性，也就是保证了可扩展性。</p>
 <p>想象一种情况，当 ImageLoader 中的 setImageCache(ImageCache cache) 中的 cache 对象不能被子类所替换，那么用户如何设置不同的缓存对象，以及用户如何定义自己的缓存实现，通过前文中的 useDiskCache 方法吗？显然不是的，里氏替换原则就为这类问题提供了指导原则，也就是建立抽象，通过抽象建立规范，具体的实现在运行时替换掉抽象，保证系统的扩展性、灵活性。</p>
 <p>开闭原则和里氏替换原则往往是生死相依、不离不弃的，通过里氏替换来达到对扩展开放，对修改关闭的效果。然而，这两个原则都同时强调了一个 OOP 的重要特性——抽象。因此，在开发过程中运用抽象是走向代码优化的重要一步。</p>
 <hr>
@@ -672,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第三篇：本文"><span class="nav-text">第三篇：本文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-text">应用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-text">应用</span></a></li></ol></div>
             
 
           </div>
