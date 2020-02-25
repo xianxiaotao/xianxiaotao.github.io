@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PATTERN," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="介绍
+策略模式：策略模式定义了一系列算法，并将每一个算法封装起来，而且使它们可以相互替换。策略模式让算法独立于使用它的客户端而独立变化。
+在软件开发中常常遇到这样的情况：实现某一功能可以有多种算法或者策略，我们根据实际情况选择不同的算法或者策略来完成该功能。例如，排序算法，可以使用插入排序、归并排序、冒泡排序等。
+针对这种情况，一种常规的方法是将多种算法写到一个类中。例如，需要提供多种排序算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="06 设计模式——策略模式">
+<meta property="og:url" content="http://yoursite.com/2019/08/12/PATTERN/06 设计模式——策略模式/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="介绍
+策略模式：策略模式定义了一系列算法，并将每一个算法封装起来，而且使它们可以相互替换。策略模式让算法独立于使用它的客户端而独立变化。
+在软件开发中常常遇到这样的情况：实现某一功能可以有多种算法或者策略，我们根据实际情况选择不同的算法或者策略来完成该功能。例如，排序算法，可以使用插入排序、归并排序、冒泡排序等。
+针对这种情况，一种常规的方法是将多种算法写到一个类中。例如，需要提供多种排序算">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b576235c8d49057c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-594f6a6d59530211.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-02-25T16:01:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="06 设计模式——策略模式">
+<meta name="twitter:description" content="介绍
+策略模式：策略模式定义了一系列算法，并将每一个算法封装起来，而且使它们可以相互替换。策略模式让算法独立于使用它的客户端而独立变化。
+在软件开发中常常遇到这样的情况：实现某一功能可以有多种算法或者策略，我们根据实际情况选择不同的算法或者策略来完成该功能。例如，排序算法，可以使用插入排序、归并排序、冒泡排序等。
+针对这种情况，一种常规的方法是将多种算法写到一个类中。例如，需要提供多种排序算">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-b576235c8d49057c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/12/PATTERN/06 设计模式——策略模式/"/>
+
+
+
+
+
+  <title>06 设计模式——策略模式 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/PATTERN/06 设计模式——策略模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">06 设计模式——策略模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T01:00:00+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PATTERN/" itemprop="url" rel="index">
+                    <span itemprop="name">PATTERN</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/12/PATTERN/06 设计模式——策略模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/12/PATTERN/06 设计模式——策略模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<hr>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><hr>
+<p>策略模式：<strong>策略模式定义了一系列算法，并将每一个算法封装起来，而且使它们可以相互替换。策略模式让算法独立于使用它的客户端而独立变化</strong>。</p>
+<p>在软件开发中常常遇到这样的情况：实现某一功能可以有多种算法或者策略，我们根据实际情况选择不同的算法或者策略来完成该功能。例如，排序算法，可以使用插入排序、归并排序、冒泡排序等。</p>
+<p>针对这种情况，一种常规的方法是将多种算法写到一个类中。例如，需要提供多种排序算法，可以将这些算法写到一个类中，每一个方法对应一个具体的排序算法；当然，也可以将这些排序算法封装在一个统一的方法中，通过 if…else… 或者 case 等条件判断语句来选择具体的算法。这两种实现方法我们都可以称为硬编码。然而，当很多算法集中在一个类中时，这个类就会变得臃肿，维护成本会变高，在维护时也更容易引发错误。如果我们需要增加一种新的排序算法，需要修改封装算法类的源代码。这就明显违反了开闭原则和单一职责原则。</p>
+<p>如果将这些算法或者策略抽象出来，提供一个统一的接口，不同的算法或者策略有不同的实现类，这样在程序客户端就可以通过注入不同的实现对象来实现算法或者策略的动态替换，这种模式的可扩展性、可维护性也就更高，也就是我们要说的<strong>策略模式</strong>。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>结构清晰明了、使用简单直观；</li>
+<li>耦合度相对而言较低，扩展方便；</li>
+<li>操作封装也更为彻底，数据更为安全。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>随着策略的增加，子类也会变得繁多。</li>
+</ul>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><ul>
+<li>针对同一类型问题的多种处理方式，仅仅是具体行为有差别时。</li>
+<li>需要安全地封装多种同一类型的操作时。</li>
+<li>出现同一抽象类有多个子类，而又需要使用 if-else 或者 switch-case 来选择具体子类时。</li>
+</ul>
+<h4 id="UML-关系图"><a href="#UML-关系图" class="headerlink" title="UML 关系图"></a>UML 关系图</h4><p><img src="https://upload-images.jianshu.io/upload_images/14186083-b576235c8d49057c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>上图中的角色介绍：</p>
+<ul>
+<li>Context：用来操作策略的上下文环境；</li>
+<li>Strategy：策略的抽象；</li>
+<li>ConcreteStrategyA、ConcreteStrategyB：具体的策略实现。</li>
+</ul>
+<hr>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><hr>
+<p>下面我们以计算不同交通工具的车费来简单看看策略模式的实现。</p>
+<h4 id="常规实现"><a href="#常规实现" class="headerlink" title="常规实现"></a>常规实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">public class PriceCalculator &#123;</div><div class="line">    // 公交车类型</div><div class="line">    private static final int BUS = 1;</div><div class="line">    // 地铁类型</div><div class="line">    private static final int SUBWAY = 2;</div><div class="line"></div><div class="line">    public int calculatePrice(int km, int type) &#123;</div><div class="line">        if (type == BUS) &#123;</div><div class="line">            return busPrice(km);</div><div class="line">        &#125; else if (type == SUBWAY) &#123;</div><div class="line">            return subwayPrice(km);</div><div class="line">        &#125;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 十公里之内一元，超过十公里之后每加一元钱可以乘 5 公里</div><div class="line">     * @param km 公里数</div><div class="line">     * @return 公交车车费</div><div class="line">     */</div><div class="line">    private int busPrice(int km) &#123;</div><div class="line">        // 超过十公里的总距离</div><div class="line">        int extraTotal = km - 10;</div><div class="line">        // 超过的距离是 5 公里的倍数</div><div class="line">        int extraFactor = extraTotal / 5;</div><div class="line">        // 超过的距离对 5 公里取余</div><div class="line">        int fraction = extraTotal % 5;</div><div class="line">        // 价格计算</div><div class="line">        int price = 1 + extraFactor * 1 ;</div><div class="line">        return fraction &gt; 0 ? ++price : price;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 6 公里（含）内 3 元；6 ~ 12 公里（含）4 元；</div><div class="line">     * 12 ~ 22 公里（含）5元；22 ~ 32 公里（含）6元；</div><div class="line">     * @param km 公里数</div><div class="line">     * @return 地铁车费</div><div class="line">     */</div><div class="line">    private int subwayPrice(int km) &#123;</div><div class="line">        if (km &lt;= 6) &#123;</div><div class="line">            return 3;</div><div class="line">        &#125; else if (km &lt;= 12) &#123;</div><div class="line">            return 4;</div><div class="line">        &#125; else if (km &lt;= 22) &#123;</div><div class="line">            return 5;</div><div class="line">        &#125; else if (km &lt;= 32) &#123;</div><div class="line">            return 6;</div><div class="line">        &#125;</div><div class="line">        // 其他距离简化为 7 元</div><div class="line">        return 7;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>PriceCalculator 类很明显地问题就是并不是单一职责，首先他承担了计算公交车和地铁乘坐价格的职责；另一个问题就是通过 if-else 的形式来判断使用哪种计算形式。当我们增加一种出行方式时，如出租车，那么我们就需要在 PriceCalculator 中增加一个方法来计算出租车出行的价格，并且再 calculatePrice(int km, int type) 函数中增加一个判断，代码添加后大致如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class PriceCalculator &#123;</div><div class="line">    // 公交车类型</div><div class="line">    private static final int BUS = 1;</div><div class="line">    // 地铁类型</div><div class="line">    private static final int SUBWAY = 2;</div><div class="line">    // 出租车类型</div><div class="line">    private static final int TEXI = 3;</div><div class="line"></div><div class="line">    public int calculatePrice(int km, int type) &#123;</div><div class="line">        if (type == BUS) &#123;</div><div class="line">            return busPrice(km);</div><div class="line">        &#125; else if (type == SUBWAY) &#123;</div><div class="line">            return subwayPrice(km);</div><div class="line">        &#125; else if (type == TEXI) &#123;</div><div class="line">            return taxiPrice(km);</div><div class="line">        &#125;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 简单计算为每公里 2 元钱</div><div class="line">     * @param km 公里数</div><div class="line">     * @return 出租车费</div><div class="line">     */</div><div class="line">    private int taxiPrice(int km) &#123;</div><div class="line">        return km * 2;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 其他代码</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>此时代码已经比较混乱，各种 if-else 缠绕其中。当价格的计算方法变化时，需要直接修改这个类中的代码，那么很可能有一段代码是其他几个计算方法所共同使用的，这就容易引入错误。另外，在增加出行方式时，需要手动修改，添加 if-else。这类代码必然是难以应对变化的，难以维护的。下面我们对上述示例用策略模式进行重构。</p>
+<h4 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h4><p>首先需要定义一个抽象的价格计算接口。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public interface CalculateStrategy &#123;</div><div class="line">    /**</div><div class="line">     * 按距离来计算价格</div><div class="line">     * @param km 公里数</div><div class="line">     * @return 价格</div><div class="line">     */</div><div class="line">    int calculatePrice(int km);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对于每一种出行方式我们都有一个独立的计算策略类，这些策略类都实现了 CalculateStrategy 接口。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">// 公交车价格计算策略</div><div class="line">public class BusStrategy implements CalculateStrategy &#123;</div><div class="line">    /**</div><div class="line">     * 十公里之内一元，超过十公里之后每加一元钱可以乘 5 公里</div><div class="line">     * @param km 公里数</div><div class="line">     * @return 公交车车费</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public int calculatePrice(int km) &#123;</div><div class="line">        // 超过十公里的总距离</div><div class="line">        int extraTotal = km - 10;</div><div class="line">        // 超过的距离是 5 公里的倍数</div><div class="line">        int extraFactor = extraTotal / 5;</div><div class="line">        // 超过的距离对 5 公里取余</div><div class="line">        int fraction = extraTotal % 5;</div><div class="line">        // 价格计算</div><div class="line">        int price = 1 + extraFactor * 1 ;</div><div class="line">        return fraction &gt; 0 ? ++price : price;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">// 地铁价格计算策略</div><div class="line">public class SubwayStrategy implements CalculateStrategy &#123;</div><div class="line">    /**</div><div class="line">     * 6 公里（含）内 3 元；6 ~ 12 公里（含）4 元；</div><div class="line">     * 12 ~ 22 公里（含）5元；22 ~ 32 公里（含）6元；</div><div class="line">     * @param km 公里数</div><div class="line">     * @return 地铁车费</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public int calculatePrice(int km) &#123;</div><div class="line">        if (km &lt;= 6) &#123;</div><div class="line">            return 3;</div><div class="line">        &#125; else if (km &lt;= 12) &#123;</div><div class="line">            return 4;</div><div class="line">        &#125; else if (km &lt;= 22) &#123;</div><div class="line">            return 5;</div><div class="line">        &#125; else if (km &lt;= 32) &#123;</div><div class="line">            return 6;</div><div class="line">        &#125;</div><div class="line">        // 其他距离简化为 7 元</div><div class="line">        return 7;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>再创建一个扮演 Context 角色的类。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class TrafficCalculator &#123;</div><div class="line">    private CalculateStrategy mStrategy;</div><div class="line"></div><div class="line">    public CalculateStrategy getStrategy() &#123;</div><div class="line">        return mStrategy;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setStrategy(CalculateStrategy strategy) &#123;</div><div class="line">        this.mStrategy = strategy;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        TrafficCalculator calculator = new TrafficCalculator();</div><div class="line">        calculator.setStrategy(new BusStrategy());</div><div class="line">        calculator.calculatePrice(16);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这种方案在隐藏实现的同时，可扩展性变得很强。例如，当我们需要增加出租车的计算策略时，只需要添加一个出租车计算策略类，然后将该策略设置给 TrafficCalculator。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 出租车价格计算策略</div><div class="line">public class TaxiStrategy implements CalculateStrategy &#123;</div><div class="line">    /**</div><div class="line">     * 简单计算为每公里 2 元钱</div><div class="line">     * @param km 公里数</div><div class="line">     * @return 出租车费</div><div class="line">     */</div><div class="line">    private int taxiPrice(int km) &#123;</div><div class="line">        return km * 2;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>讲策略注入到 TrafficCalculator 中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">TrafficCalculator calculator = new TrafficCalculator();</div><div class="line">calculator.setmStrategy(new TaxiStrategy());</div><div class="line">calculator.calculatePrice(16);</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="模式在-ANDROID-中的应用"><a href="#模式在-ANDROID-中的应用" class="headerlink" title="模式在 ANDROID 中的应用"></a>模式在 ANDROID 中的应用</h3><hr>
+<p>ANDROID 中属性动画的时间差值器分为线性差值器、加速减速差值器等，这些差值器里面就用到了策略模式来隔离不同的动画速率计算算法。源码追踪关键方法依次为：</p>
+<ul>
+<li>View：<br>boolean draw(Canvas canvas, ViewGroup parent, long drawingTime)<br>private boolean applyLegacyAnimation(ViewGroup parent, long drawingTime, Animation a, boolean scalingRequired)</li>
+<li>Animation：<br>public boolean getTransformation(long currentTime, Transformation outTransformation,float scale)<br>public boolean getTransformation(long currentTime, Transformation outTransformation)</li>
+<li>Interpolator：<br>float getInterpolation(float input)</li>
+</ul>
+<p>插值器在属性动画中扮演了很重要的角色。它将动画的速率计算封装到一个抽象中，也就是 Interpolator 中，该接口只有一个 getInterpolation(float input) 方法，通过这个方法来修改动画的流逝时间比，依次达到动画的加速、减速等效果，结构如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-594f6a6d59530211.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>Interpolator 就是这个计算策略的抽象，LinearInterpolator、CycleInterpolator 等插值器就是具体的实现策略，通过注入不同的插值器实现不同的动态效果。</p>
+<hr>
+<h3 id="策略模式实战"><a href="#策略模式实战" class="headerlink" title="策略模式实战"></a>策略模式实战</h3><hr>
+<p>在我们加载图片项目 ImageLoader 中，加载请求会被封装成一个 Request 对象添加到请求队列中，ImageLoader 会为每个请求分配一个序列号，越晚加入的请求序列号值越大，默认情况下 ImageLoader 会按照先后顺序加载图片。但是现实中，我们可能需要最后添加到队列的请求先被执行。例如，在滚动 ListView 时，最后一项肯定是最晚被加载的，此时它却显示在屏幕上的，而其它优先被加载的请求却不在屏幕显示范围。当需求是在屏幕上显示的 Item View 的图片优先被加载，我们就需要 ImageLoader 支持从请求队列的尾部开始加载。也就是，这里至少需要两种策略。</p>
+<p>依照策略模式，代码实现如下所示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 加载策略接口</div><div class="line"> */</div><div class="line">public interface LoadPolicy &#123;</div><div class="line">    int compare(BitmapRequest request1, BitmapRequest request2);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 顺序加载策略</div><div class="line"> */</div><div class="line">public class SerialPolicy implements LoadPolicy &#123;</div><div class="line">    @Override</div><div class="line">    public int compare(BitmapRequest request1, BitmapRequest request2) &#123;</div><div class="line">        return request1.serialNum - request2.serialNum;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 逆序加载策略</div><div class="line"> */</div><div class="line">public class SerialPolicy implements LoadPolicy &#123;</div><div class="line">    @Override</div><div class="line">    public int compare(BitmapRequest request1, BitmapRequest request2) &#123;</div><div class="line">        return request2.serialNum - request1.serialNum;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class BitmapRequest implements Comparable&lt;BitmapRequest&gt; &#123;</div><div class="line">    // 加载策略，默认顺序加载策略</div><div class="line">    private LoadPolicy mLoadPolicy = new SerialPolicy();</div><div class="line"></div><div class="line">    public void setLoadPolicy(LoadPolicy loadPolicy) &#123;</div><div class="line">        this.mLoadPolicy = loadPolicy;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int compareTo(BitmapRequest another) &#123;</div><div class="line">        return mLoadPolicy.compare(this, another);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PATTERN/" rel="tag"><i class="fa fa-tag"></i> PATTERN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/11/PATTERN/05 设计模式——抽象工厂模式/" rel="next" title="05 设计模式——抽象工厂模式">
+                <i class="fa fa-chevron-left"></i> 05 设计模式——抽象工厂模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/01/Custom View/X001 圆角圆形 ImageView/" rel="prev" title="X001 圆角圆形 ImageView">
+                X001 圆角圆形 ImageView <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景"><span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UML-关系图"><span class="nav-text">UML 关系图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常规实现"><span class="nav-text">常规实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#策略模式"><span class="nav-text">策略模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式在-ANDROID-中的应用"><span class="nav-text">模式在 ANDROID 中的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#策略模式实战"><span class="nav-text">策略模式实战</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共190.8k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
