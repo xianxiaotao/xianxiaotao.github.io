@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PATTERN," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="介绍
+中介者（Mediator）模式：定义一个中介对象来封装一系列对象之间的交互，使原有对象之间的耦合松散，且可以独立地改变它们之间的交互。中介者模式又叫调停模式，它是迪米特法则的典型应用。
+在现实生活中，常常会出现好多对象之间存在复杂的交互关系，这种交互关系常常是“网状结构”，它要求每个对象都必须知道它需要交互的对象。例如，每个人必须记住他（她）所有朋友的电话；而且，朋友中如果有人的电话修">
+<meta property="og:type" content="article">
+<meta property="og:title" content="16 设计模式——中介者模式">
+<meta property="og:url" content="http://yoursite.com/2019/08/22/PATTERN/16 设计模式——中介者模式/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="介绍
+中介者（Mediator）模式：定义一个中介对象来封装一系列对象之间的交互，使原有对象之间的耦合松散，且可以独立地改变它们之间的交互。中介者模式又叫调停模式，它是迪米特法则的典型应用。
+在现实生活中，常常会出现好多对象之间存在复杂的交互关系，这种交互关系常常是“网状结构”，它要求每个对象都必须知道它需要交互的对象。例如，每个人必须记住他（她）所有朋友的电话；而且，朋友中如果有人的电话修">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6163786-9895aed658c4cd0c.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/431/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6163786-9f940f9d6c3755a7.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/427/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-1b7bcadcf0abb67a.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ea27b82b9898512f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-03-05T05:53:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="16 设计模式——中介者模式">
+<meta name="twitter:description" content="介绍
+中介者（Mediator）模式：定义一个中介对象来封装一系列对象之间的交互，使原有对象之间的耦合松散，且可以独立地改变它们之间的交互。中介者模式又叫调停模式，它是迪米特法则的典型应用。
+在现实生活中，常常会出现好多对象之间存在复杂的交互关系，这种交互关系常常是“网状结构”，它要求每个对象都必须知道它需要交互的对象。例如，每个人必须记住他（她）所有朋友的电话；而且，朋友中如果有人的电话修">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6163786-9895aed658c4cd0c.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/431/format/webp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/22/PATTERN/16 设计模式——中介者模式/"/>
+
+
+
+
+
+  <title>16 设计模式——中介者模式 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/PATTERN/16 设计模式——中介者模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">16 设计模式——中介者模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T01:00:00+08:00">
+                2019-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PATTERN/" itemprop="url" rel="index">
+                    <span itemprop="name">PATTERN</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/22/PATTERN/16 设计模式——中介者模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/22/PATTERN/16 设计模式——中介者模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<hr>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><hr>
+<p>中介者（Mediator）模式：<strong>定义一个中介对象来封装一系列对象之间的交互，使原有对象之间的耦合松散，且可以独立地改变它们之间的交互</strong>。中介者模式又叫调停模式，它是迪米特法则的典型应用。</p>
+<p>在现实生活中，常常会出现好多对象之间存在复杂的交互关系，这种交互关系常常是“网状结构”，它要求每个对象都必须知道它需要交互的对象。例如，每个人必须记住他（她）所有朋友的电话；而且，朋友中如果有人的电话修改了，他（她）必须告诉其他所有的朋友修改，这叫作“牵一发而动全身”，非常复杂。</p>
+<p>如果把这种“网状结构”改为“星形结构”的话，将大大降低它们之间的“耦合性”，这时只要找一个“中介者”就可以了。如前面所说的“每个人必须记住所有朋友电话”的问题，只要在网上建立一个每个朋友都可以访问的“通信录”就解决了。这样的例子还有很多，例如，你刚刚参力口工作想租房，可以找“房屋中介”；或者，自己刚刚到一个陌生城市找工作，可以找“人才交流中心”帮忙。</p>
+<p>在软件的开发过程中，这样的例子也很多，例如，在 MVC 框架中，控制器（C）就是模型（M）和视图（V）的中介者；还有大家常用的 QQ 聊天程序的“中介者”是 QQ 服务器。所有这些，都可以采用“中介者模式”来实现，它将大大降低对象之间的耦合性，提高系统的灵活性。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>降低了对象之间的耦合性，使得对象易于独立地被复用。</li>
+<li>将对象间的多对多关联转变为一对多的关联，提高系统的灵活性，使得系统易于维护和扩展。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>当同事类太多时，中介者的职责将很大，它会变得复杂而庞大，以至于系统难以维护。</li>
+</ul>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>当程序存在大量的类时，多个对象之间存在着依赖的关系，呈现出网状结构，那么程序的可读性和可维护性就变差了，并且修改一个类需要牵涉到其他类，不符合开闭原则。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6163786-9895aed658c4cd0c.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/431/format/webp" alt="网状结构"></p>
+<p>因此我们可以引入中介者，将网状结构转化成星型结构，可以降低程序的复杂性，并且可以减少各个对象之间的耦合。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6163786-9f940f9d6c3755a7.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/427/format/webp" alt="星型结构"></p>
+<hr>
+<h3 id="结构与实现"><a href="#结构与实现" class="headerlink" title="结构与实现"></a>结构与实现</h3><hr>
+<p>模式包含以下主要角色。</p>
+<ul>
+<li>Mediator（抽象中介者角色）：抽象类或者接口，定义统一的接口，用于各同事角色之间的通信。</li>
+<li>ConcreteMediator（具体中介者角色）：继承或者实现了抽象中介者，实现了父类定义的方法，协调各个具体同事进行通信。</li>
+<li>Colleague（抽象同事角色）：抽象类或者接口，定义统一的接口，它只知道中介者而不知道其他同事对象。</li>
+<li>ConcreteColleague（具体同事角色）：继承或者实现了抽象同事角色，每个具体同事类都知道自己本身的行为，其他的行为只能通过中介者去进行。</li>
+</ul>
+<p>其结构图如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-1b7bcadcf0abb67a.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>中介者模式的实现代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">public class MediatorPattern &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Mediator md = new ConcreteMediator();</div><div class="line">        Colleague c1,c2;</div><div class="line">        c1 = new ConcreteColleague1();</div><div class="line">        c2 = new ConcreteColleague2();</div><div class="line">        md.register(c1);</div><div class="line">        md.register(c2);</div><div class="line">        c1.send();</div><div class="line">        System.out.println(&quot;-------------&quot;);</div><div class="line">        c2.send();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 抽象中介者</div><div class="line">abstract class Mediator &#123;</div><div class="line">    public abstract void register(Colleague colleague);</div><div class="line">    public abstract void relay(Colleague cl); // 转发</div><div class="line">&#125;</div><div class="line">// 具体中介者</div><div class="line">class ConcreteMediator extends Mediator &#123;</div><div class="line">    private List&lt;Colleague&gt; colleagues = new ArrayList&lt;&gt;();</div><div class="line">    public void register(Colleague colleague) &#123;</div><div class="line">        if (!colleagues.contains(colleague)) &#123;</div><div class="line">            colleagues.add(colleague);</div><div class="line">            colleague.setMedium(this);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    public void relay(Colleague cl) &#123;</div><div class="line">        for (Colleague ob : colleagues) &#123;</div><div class="line">            if (!ob.equals(cl)) &#123;</div><div class="line">                ob.receive();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 抽象同事类</div><div class="line">abstract class Colleague &#123;</div><div class="line">    protected Mediator mediator;</div><div class="line">    public void setMedium(Mediator mediator) &#123;</div><div class="line">        this.mediator = mediator;</div><div class="line">    &#125;</div><div class="line">    public abstract void receive();</div><div class="line">    public abstract void send();</div><div class="line">&#125;</div><div class="line">// 具体同事类</div><div class="line">class ConcreteColleague1 extends Colleague &#123;</div><div class="line">    public void receive() &#123;</div><div class="line">        System.out.println(&quot;具体同事类1收到请求。&quot;);</div><div class="line">    &#125;</div><div class="line">    public void send() &#123;</div><div class="line">        System.out.println(&quot;具体同事类1发出请求。&quot;);</div><div class="line">        mediator.relay(this); // 请中介者转发</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 具体同事类</div><div class="line">class ConcreteColleague2 extends Colleague &#123;</div><div class="line">    public void receive() &#123;</div><div class="line">        System.out.println(&quot;具体同事类2收到请求。&quot;);</div><div class="line">    &#125;</div><div class="line">    public void send() &#123;</div><div class="line">        System.out.println(&quot;具体同事类2发出请求。&quot;);</div><div class="line">        mediator.relay(this); //请中介者转发</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>程序的运行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">具体同事类1发出请求。</div><div class="line">具体同事类2收到请求。</div><div class="line">-------------</div><div class="line">具体同事类2发出请求。</div><div class="line">具体同事类1收到请求。</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><hr>
+<p>我们的电脑组件异常之多，读取一个 CD 光盘需要使用 CPU 、光驱、声卡、显卡、内存等一系列组件。如果我们不使用设计模式，那我们每个组件都要保持其他组件的引用，这就会造成我们的类结构复杂难懂，变成一个网状结构。</p>
+<p>解决方法：使用中介者模式可以使一系列组件只和我们的中介（主板）打交道，这就将网状结构变成星型结构。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div></pre></td><td class="code"><pre><div class="line">public abstract class Mediator &#123;</div><div class="line">    /**</div><div class="line">     * 同事对象改变时通知中介者的方法</div><div class="line">     * 同事对象改变时由中介者去通知其他同事。</div><div class="line">     * @param c Colleague</div><div class="line">     */</div><div class="line">    public abstract void changed(Colleague c);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//主板</div><div class="line">public class MainBoard extends Mediator &#123;</div><div class="line">    private CDDevice cd;                // 光驱设备</div><div class="line">    private CPU cpu;                    // CPU</div><div class="line">    private SoundCard soundCard;        // 声卡设备</div><div class="line">    private GraphicsCard graphicsCard;  // 显卡设备</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void changed(Colleague c) &#123;</div><div class="line">        // 如果 CD 读取到数据</div><div class="line">        if (c == cd) &#123;</div><div class="line">            handleCD((CDDevice) c);</div><div class="line">        &#125; else if (c == cpu) &#123;</div><div class="line">            handleCPU((CPU) c);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void handleCD(CDDevice c) &#123;</div><div class="line">        cpu.setData(c.read());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void handleCPU(CPU c) &#123;</div><div class="line">        soundCard.videoPlay(c.getDataSound());</div><div class="line">        graphicsCard.videoPlay(c.getDataVideo());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setCpu(CPU cpu) &#123;</div><div class="line">        this.cpu = cpu;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setSoundCard(SoundCard soundCard) &#123;</div><div class="line">        this.soundCard = soundCard;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setgCard(GraphicsCard graphicsCard) &#123;</div><div class="line">        this.graphicsCard = graphicsCard;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setCd(CDDevice cd) &#123;</div><div class="line">        this.cd = cd;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public abstract class Colleague &#123;</div><div class="line">    private Mediator mediator;</div><div class="line"></div><div class="line">    public Colleague(Mediator mediator) &#123;</div><div class="line">        this.mediator = mediator;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class CDDevice extends Colleague &#123;</div><div class="line"></div><div class="line">    private String data;</div><div class="line"></div><div class="line">    public CDDevice(Mediator mediator) &#123;</div><div class="line">        super(mediator);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String read() &#123;</div><div class="line">        return data;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 加载视频数据</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public void load() &#123;</div><div class="line">        data = &quot;视频数据，音频数据&quot;;</div><div class="line">        mediator.changed(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public class CPU extends Colleague &#123;</div><div class="line"></div><div class="line">    private String dataVideo, dataSound;    // 视频和音频数据</div><div class="line"></div><div class="line">    public CPU(Mediator mediator) &#123;</div><div class="line">        super(mediator);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getDataVideo() &#123;</div><div class="line">        return dataVideo;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getDataSound() &#123;</div><div class="line">        return dataSound;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setData(String data) &#123;</div><div class="line">        // 分割音、视频数据</div><div class="line">        String[] tmp = data.split(&quot;,&quot;);</div><div class="line">        this.dataVideo = tmp[0];</div><div class="line">        this.dataSound =  tmp[1];</div><div class="line">        // 告诉中介者自身状态改变</div><div class="line">        mediator.changed(this);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class GraphicsCard extends Colleague &#123;</div><div class="line">    public GraphicsCard(Mediator mediator) &#123;</div><div class="line">        super(mediator);</div><div class="line">    &#125;</div><div class="line">    public void videoPlay(String data)&#123;</div><div class="line">        System.out.println(&quot;视频：&quot;+ data);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class SoundCard extends Colleague &#123;</div><div class="line">    public SoundCard(Mediator mediator) &#123;</div><div class="line">        super(mediator);</div><div class="line">    &#125;</div><div class="line">    public void videoPlay(String data)&#123;</div><div class="line">        System.out.println(&quot;音频：&quot;+ data);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>每个对象只需要关心自己的职责，自己事情处理完成后通知中介者，让中介者调节指导下一步操作。</p>
+<p>客户端代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class Client &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        MainBoard mainBoard = new MainBoard();</div><div class="line"></div><div class="line">        CDDevice cd = new CDDevice(mainBoard);</div><div class="line">        CPU cpu = new CPU(mainBoard);</div><div class="line">        GCard gc = new GCard(mainBoard);</div><div class="line">        SoundCard sc = new SoundCard(mainBoard);</div><div class="line"></div><div class="line">        mainBoard.setCd(cd);</div><div class="line">        mainBoard.setCpu(cpu);</div><div class="line">        mainBoard.setgCard(gc);</div><div class="line">        mainBoard.setSoundCard(sc);</div><div class="line"></div><div class="line">        cd.load();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="ANDROID-源码中的实现"><a href="#ANDROID-源码中的实现" class="headerlink" title="ANDROID 源码中的实现"></a>ANDROID 源码中的实现</h3><hr>
+<p>ANDROID 中的锁屏功能就用到了中介者模式，KeyguardService（锁屏服务）通过 KeyguardViewMediator（锁屏中介者）来协调各种 Manager 的状态以达到锁屏的功能。这里各种 Manager 都充当了同事的角色。源码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">// 锁屏服务，同事角色</div><div class="line">public class KeyguardService extends Service &#123;</div><div class="line">    // 锁屏中介者</div><div class="line">    private KeyguardViewMediator mKeyguardViewMediator;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onCreate() &#123;</div><div class="line">        ((SystemUIApplication) getApplication()).startServicesIfNeeded();</div><div class="line">        // 初始化中介者</div><div class="line">        mKeyguardViewMediator = ((SystemUIApplication) getApplication()).getComponent(KeyguardViewMediator.class);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private final IKeyguardService.Stub mBinder = new IKeyguardService.Stub() &#123;</div><div class="line"></div><div class="line">        @Override // Binder interface</div><div class="line">        public void addStateMonitorCallback(IKeyguardStateCallback callback) &#123;</div><div class="line">            checkPermission();</div><div class="line">            // 调用中介者的接口</div><div class="line">            mKeyguardViewMediator.addStateMonitorCallback(callback);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override // Binder interface</div><div class="line">        public void verifyUnlock(IKeyguardExitCallback callback) &#123;</div><div class="line">            checkPermission();</div><div class="line">            // 调用中介者的接口</div><div class="line">            mKeyguardViewMediator.verifyUnlock(callback);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 其他代码略</div><div class="line"></div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 锁屏中介者</div><div class="line">public class KeyguardViewMediator extends SystemUI &#123;</div><div class="line">    // 各种 Manager，同事角色</div><div class="line">    private AlarmManager mAlarmManager;</div><div class="line">    private AudioManager mAudioManager;</div><div class="line">    private StatusBarManager mStatusBarManager;</div><div class="line">    private PowerManager mPM;</div><div class="line">    private IWindowManager mWM;</div><div class="line">    private TrustManager mTrustManager;</div><div class="line">    private SearchManager mSearchManager;</div><div class="line">    private PowerManager.WakeLock mShowKeyguardWakeLock;</div><div class="line">    private StatusBarKeyguardViewManager mStatusBarKeyguardViewManager;</div><div class="line"></div><div class="line">    //其他代码略</div><div class="line"></div><div class="line">    // 通过 AudioManager 去播放声音</div><div class="line">    private void playSound(int soundId) &#123;</div><div class="line">        if (soundId == 0) return;</div><div class="line">        final ContentResolver cr = mContext.getContentResolver();</div><div class="line">        if (Settings.System.getInt(cr, Settings.System.LOCKSCREEN_SOUNDS_ENABLED, 1) == 1) &#123;</div><div class="line"></div><div class="line">            mLockSounds.stop(mLockSoundStreamId);</div><div class="line">            // Init mAudioManager</div><div class="line">            if (mAudioManager == null) &#123;</div><div class="line">                mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);</div><div class="line">                if (mAudioManager == null) return;</div><div class="line">                mUiSoundsStreamType = mAudioManager.getUiSoundsStreamType();</div><div class="line">            &#125;</div><div class="line">            // If the stream is muted, don&apos;t play the sound</div><div class="line">            if (mAudioManager.isStreamMute(mUiSoundsStreamType)) return;</div><div class="line"></div><div class="line">            mLockSoundStreamId = mLockSounds.play(soundId,</div><div class="line">                    mLockSoundVolume, mLockSoundVolume, 1/*priortiy*/, 0/*loop*/, 1.0f/*rate*/);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>KeyguardViewMediator 中通过 playSound 方法能够协调 AudioManager 去控制声音的播放等等，其他 Manager 同理。</p>
+<hr>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><hr>
+<p>登录界面运用中介者模式，如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-ea27b82b9898512f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>一个简单的登录界面，包含两个文本框、两个复选框、两个按钮。只有 6 个元素，但要实现如下逻辑：<br>1）当用户名没有输入时，除了账户文本输入框、取消按钮外均不可用；当有用户名输入时，记住账号也可用。<br>2）当密码文本框有输入时，自动登录、确定按钮皆可用，否则皆不可用。<br>3）勾选自动登录，那么记住账号会被同时勾选。<br>4）清空密码，取消自动登录选中状态并且不可用；清空账号则取消两个复选框的状态并且都不可用。<br>5）……</p>
+<p>这是一个多 UI 控件交互的情景，此时很适合让 Activity 来充当一个中介者并在其中处理相关逻辑。具体代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div></pre></td><td class="code"><pre><div class="line">public class LoginActivity extends BaseActivity &#123;</div><div class="line"></div><div class="line">    private EditText etAccount, etPassword;</div><div class="line">    private CheckBox cbRemember, cbAuto;</div><div class="line">    private Button btnEnsure, btnCancel;</div><div class="line"></div><div class="line">    private String strAccount, strPassword; // 账户、密码</div><div class="line">    private boolean isRemember, isAuto;     // 是否记住账号、自动登录</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.act_test);</div><div class="line"></div><div class="line">        initViews();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void initViews() &#123;</div><div class="line">        etAccount = findViewById(R.id.login_account_et);</div><div class="line">        etPassword = findViewById(R.id.login_password_et);</div><div class="line"></div><div class="line">        cbRemember = findViewById(R.id.login_remember_cb);</div><div class="line">        cbAuto = findViewById(R.id.login_auto_cb);</div><div class="line"></div><div class="line">        btnEnsure = findViewById(R.id.login_ensure_btn);</div><div class="line">        btnCancel = findViewById(R.id.login_cancel_btn);</div><div class="line"></div><div class="line">        // 账户</div><div class="line">        etAccount.addTextChangedListener(new TextWatcher() &#123;</div><div class="line">            @Override</div><div class="line">            public void beforeTextChanged(CharSequence s, int start, int count, int after) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onTextChanged(CharSequence s, int start, int before, int count) &#123;</div><div class="line">                // 回传数据</div><div class="line">                strAccount = s.toString();</div><div class="line">                // 通知 Activity 状态改变</div><div class="line">                change();</div><div class="line">            &#125;</div><div class="line">            @Override</div><div class="line">            public void afterTextChanged(Editable s) &#123;&#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        // 密码</div><div class="line">        etPassword.setEnabled(false);</div><div class="line">        etPassword.addTextChangedListener(new TextWatcher() &#123;</div><div class="line">            @Override</div><div class="line">            public void beforeTextChanged(CharSequence s, int start, int count, int after) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onTextChanged(CharSequence s, int start, int before, int count) &#123;</div><div class="line">                // 回传数据</div><div class="line">                strPassword = s.toString();</div><div class="line">                // 通知 Activity 状态改变</div><div class="line">                change();</div><div class="line">            &#125;</div><div class="line">            @Override</div><div class="line">            public void afterTextChanged(Editable s) &#123;&#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        // 记住账户</div><div class="line">        cbRemember.setEnabled(false);</div><div class="line">        cbRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) &#123;</div><div class="line">                // 回传数据</div><div class="line">                isRemember = isChecked;</div><div class="line">                // 通知 Activity 状态改变</div><div class="line">                change();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        // 自动登录</div><div class="line">        cbAuto.setEnabled(false);</div><div class="line">        cbAuto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) &#123;</div><div class="line">                // 回传数据</div><div class="line">                isAuto = isChecked;</div><div class="line">                isRemember = isAuto || isRemember;</div><div class="line">                // 通知 Activity 状态改变</div><div class="line">                change();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        // 确定按钮</div><div class="line">        btnEnsure.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                Toast.makeText(LoginActivity.this, &quot;登录成功&quot;, Toast.LENGTH_LONG).show();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        // 取消按钮</div><div class="line">        btnCancel.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                Toast.makeText(LoginActivity.this, &quot;取消登录&quot;, Toast.LENGTH_LONG).show();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 各控件状态改变后协调各控件状态显示</div><div class="line">     */</div><div class="line">    private void change() &#123;</div><div class="line">        if (TextUtils.isEmpty(strAccount)) &#123;</div><div class="line">            etPassword.setEnabled(false);</div><div class="line">            cbRemember.setEnabled(false);</div><div class="line">            cbAuto.setEnabled(false);</div><div class="line">            btnEnsure.setEnabled(false);</div><div class="line">            btnCancel.setEnabled(true);</div><div class="line">            isRemember = false;</div><div class="line">            isAuto = false;</div><div class="line">        &#125; else if (!TextUtils.isEmpty(strAccount)</div><div class="line">                &amp;&amp; TextUtils.isEmpty(strPassword)) &#123;</div><div class="line">            etPassword.setEnabled(true);</div><div class="line">            cbRemember.setEnabled(true);</div><div class="line">            cbAuto.setEnabled(false);</div><div class="line">            btnEnsure.setEnabled(false);</div><div class="line">            btnCancel.setEnabled(true);</div><div class="line">            isAuto = false;</div><div class="line">        &#125; else if (!TextUtils.isEmpty(strAccount)</div><div class="line">                &amp;&amp; !TextUtils.isEmpty(strPassword)) &#123;</div><div class="line">            etPassword.setEnabled(true);</div><div class="line">            cbRemember.setEnabled(true);</div><div class="line">            cbAuto.setEnabled(true);</div><div class="line">            btnEnsure.setEnabled(true);</div><div class="line">            btnCancel.setEnabled(true);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        cbRemember.setChecked(isRemember);</div><div class="line">        cbAuto.setChecked(isAuto);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PATTERN/" rel="tag"><i class="fa fa-tag"></i> PATTERN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/21/PATTERN/15 设计模式——访问者模式/" rel="next" title="15 设计模式——访问者模式">
+                <i class="fa fa-chevron-left"></i> 15 设计模式——访问者模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/23/PATTERN/17 设计模式——代理模式/" rel="prev" title="17 设计模式——代理模式">
+                17 设计模式——代理模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">135</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景"><span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构与实现"><span class="nav-text">结构与实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANDROID-源码中的实现"><span class="nav-text">ANDROID 源码中的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战"><span class="nav-text">实战</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共236.8k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
