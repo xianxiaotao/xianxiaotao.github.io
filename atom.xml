@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-07T12:45:38.000Z</updated>
+  <updated>2020-03-07T18:50:06.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/9999/01/01/0%20ANDROID%20%E5%8D%9A%E5%AE%A2%E7%9B%AE%E5%BD%95/"/>
     <id>http://yoursite.com/9999/01/01/0 ANDROID 博客目录/</id>
     <published>9998-12-31T16:00:00.000Z</published>
-    <updated>2020-03-07T12:45:38.000Z</updated>
+    <updated>2020-03-07T18:50:06.000Z</updated>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><details><br><summary><strong>2 DESIGN PATTERN</strong></summary><br><br></details><hr><details><br><summary><strong>1 JAVA</strong></summary><br><a href="">01 泛型详解</a><br><a href="">03 反射一：基本类周边信息获取</a><br><a href="">04 反射二：泛型相关周边信息获取</a><br><a href="">05 反射三：类内部信息获取</a><br></details>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><p>ANDROID 博客总目录<br>JAVA、DESIGN PATTERN、ANDROID、CUSTOM VIEW …</p><details><br><summary><strong>2 DESIGN PATTERN</strong></summary><br><br></details><hr><details><br><summary><strong>1 JAVA</strong></summary><br><a href="https://xianxiaotao.github.io/1900/01/01/JAVA/01%20泛型详解/" target="_blank" rel="external">01 泛型详解</a><br><a href="https://xianxiaotao.github.io/1900/01/02/JAVA/02%20反射一：基本类周边信息获取/" target="_blank" rel="external">02 反射一：基本类周边信息获取</a><br><a href="">04 反射二：泛型相关周边信息获取</a><br><a href="">05 反射三：类内部信息获取</a><br></details>]]></content>
     
     <summary type="html">
     
@@ -31,19 +31,17 @@
       
         &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 
-&lt;details&gt;&lt;br&gt;&lt;summary&gt;&lt;strong&gt;2 DESIGN PATTERN&lt;/strong&gt;&lt;/summary&gt;&lt;br&gt;&lt;br&gt;&lt;/details&gt;
-
-&lt;hr&gt;
-&lt;det
+&lt;p&gt;ANDROID 博客总目录&lt;br&gt;JAVA、DESIGN PATTERN、ANDROID、CUSTOM VIEW …&lt;/p&gt;
+&lt;details&gt;&lt;br&gt;&lt;summary&gt;&lt;stron
       
     
     </summary>
     
     
-      <category term="Catalog" scheme="http://yoursite.com/categories/Catalog/"/>
+      <category term="CATALOG" scheme="http://yoursite.com/categories/CATALOG/"/>
     
     
-      <category term="Catalog" scheme="http://yoursite.com/tags/Catalog/"/>
+      <category term="CATALOG" scheme="http://yoursite.com/tags/CATALOG/"/>
     
   </entry>
   
