@@ -88,16 +88,19 @@
 
 
 
-<meta name="description" content="JAVA为基于TCP协议开发提供了相关API，具体代码如下。客户端：12345678Socket client = new Socket(&quot;localhost&quot;, 9876);	// 创建客户端，并指定服务器端地址和端口DataOutputStream dos = new DataOutputStream(client.getOutputStream());dos.writeUTF(&quot;客户端向">
+<meta name="description" content="相关文章：Java SocketJava Socket 聊天室原理Java Socket 如何演化成 Tomcat
+JAVA为基于TCP协议开发提供了相关API，具体代码如下。客户端：12345678Socket client = new Socket(&quot;localhost&quot;, 9876);	// 创建客户端，并指定服务器端地址和端口DataOutputStream dos = new Dat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Socket 之聊天室原理">
 <meta property="og:url" content="http://yoursite.com/1900/01/14/00JAVA/14 Java Socket 聊天室原理/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="JAVA为基于TCP协议开发提供了相关API，具体代码如下。客户端：12345678Socket client = new Socket(&quot;localhost&quot;, 9876);	// 创建客户端，并指定服务器端地址和端口DataOutputStream dos = new DataOutputStream(client.getOutputStream());dos.writeUTF(&quot;客户端向">
-<meta property="og:updated_time" content="2020-03-11T13:46:55.000Z">
+<meta property="og:description" content="相关文章：Java SocketJava Socket 聊天室原理Java Socket 如何演化成 Tomcat
+JAVA为基于TCP协议开发提供了相关API，具体代码如下。客户端：12345678Socket client = new Socket(&quot;localhost&quot;, 9876);	// 创建客户端，并指定服务器端地址和端口DataOutputStream dos = new Dat">
+<meta property="og:updated_time" content="2020-03-11T14:34:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Socket 之聊天室原理">
-<meta name="twitter:description" content="JAVA为基于TCP协议开发提供了相关API，具体代码如下。客户端：12345678Socket client = new Socket(&quot;localhost&quot;, 9876);	// 创建客户端，并指定服务器端地址和端口DataOutputStream dos = new DataOutputStream(client.getOutputStream());dos.writeUTF(&quot;客户端向">
+<meta name="twitter:description" content="相关文章：Java SocketJava Socket 聊天室原理Java Socket 如何演化成 Tomcat
+JAVA为基于TCP协议开发提供了相关API，具体代码如下。客户端：12345678Socket client = new Socket(&quot;localhost&quot;, 9876);	// 创建客户端，并指定服务器端地址和端口DataOutputStream dos = new Dat">
 
 
 
@@ -396,6 +399,7 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p>相关文章：<br><a href="https://xianxiaotao.github.io/1900/01/13/00JAVA/13%20Java%20Socket/" target="_blank" rel="external">Java Socket</a><br><a href="https://xianxiaotao.github.io/1900/01/14/00JAVA/14%20Java%20Socket%20%E8%81%8A%E5%A4%A9%E5%AE%A4%E5%8E%9F%E7%90%86/" target="_blank" rel="external">Java Socket 聊天室原理</a><br><a href="https://xianxiaotao.github.io/1900/01/15/00JAVA/15%20Java%20Socket%20%E5%A6%82%E4%BD%95%E6%BC%94%E5%8C%96%E6%88%90%20Tomcat/" target="_blank" rel="external">Java Socket 如何演化成 Tomcat</a></p>
 <p>JAVA为基于TCP协议开发提供了相关API，具体代码如下。<br>客户端：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Socket client = new Socket(<span class="string">"localhost"</span>, 9876);	// 创建客户端，并指定服务器端地址和端口</div><div class="line">DataOutputStream dos = new DataOutputStream(client.getOutputStream());</div><div class="line">dos.writeUTF(<span class="string">"客户端向服务器端发送数据"</span>);           // 客户端向服务器发送数据</div><div class="line">		</div><div class="line">DataInputStream dis = new DataInputStream(client.getInputStream());</div><div class="line">String msg = dis.readUTF();                     // 客户端接受服务器端返回的数据</div><div class="line">System.out.println(msg);</div><div class="line">client.close();</div></pre></td></tr></table></figure></p>
 <p>服务端：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ServerSocket server = new ServerSocket(9876);   // 创建服务器并指定端口</div><div class="line">Socket socket = server.accept();                // 接受客户端连接（阻塞式）</div><div class="line"></div><div class="line">DataInputStream dis = new DataInputStream(socket.getInputStream());</div><div class="line">String msg = dis.readUTF();                     // 读取客户端请求数据</div><div class="line"></div><div class="line">DataOutputStream dos = new DataOutputStream(socket.getOutputStream());</div><div class="line">dos.writeUTF(<span class="string">"服务器接受的数据："</span> + msg);          // 服务器端返回客户端数据</div><div class="line">dos.flush();</div><div class="line">server.close();</div></pre></td></tr></table></figure></p>
 <blockquote>
@@ -689,7 +693,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共301.1k字</span>
+  <span class="post-count">博客全站共301.2k字</span>
 </div>
 
         
