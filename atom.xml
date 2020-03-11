@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-08T17:06:57.000Z</updated>
+  <updated>2020-03-11T14:00:23.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/9999/01/01/0%20ANDROID%20%E5%8D%9A%E5%AE%A2%E7%9B%AE%E5%BD%95/"/>
     <id>http://yoursite.com/9999/01/01/0 ANDROID 博客目录/</id>
     <published>9998-12-31T16:00:00.000Z</published>
-    <updated>2020-03-08T17:06:57.000Z</updated>
+    <updated>2020-03-11T14:00:23.000Z</updated>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><p>ANDROID 博客总目录<br>JAVA、DESIGN PATTERN、ANDROID、CUSTOM VIEW …</p><details><br><summary><strong>2 DESIGN PATTERN</strong></summary><br><br></details><hr><details><br><summary><strong>1 JAVA</strong></summary><br><a href="https://xianxiaotao.github.io/1900/01/01/JAVA/01%20泛型详解/" target="_blank" rel="external">01 泛型详解</a><br><a href="https://xianxiaotao.github.io/1900/01/02/JAVA/02%20反射一：基本类周边信息获取/" target="_blank" rel="external">02 反射一：基本类周边信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/03/JAVA/03%20反射二：泛型相关周边信息获取" target="_blank" rel="external">03 反射二：泛型相关周边信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/04/JAVA/04%20反射三：类内部信息获取" target="_blank" rel="external">04 反射三：类内部信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/04/JAVA/05%20JAVA注解" target="_blank" rel="external">05 JAVA注解</a><br><br></details>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><p>ANDROID 博客总目录<br>JAVA、DESIGN PATTERN、ANDROID、CUSTOM VIEW …</p><details><br><summary><strong>2 DESIGN PATTERN</strong></summary><br><br></details><hr><details><br><summary><strong>1 JAVA</strong></summary><br><a href="">01 Java File</a><br><a href="">02 Java FileUtils</a><br><a href="">03 Java IO Stream</a><br><a href="">04 Java IOUtils</a><br><a href="">05 Java Thread</a><br><a href="">06 Java Generic</a><br><a href="">07 Java Annotation</a><br><a href="">08 Java Relfect</a><br><a href="">09 Java RelfectUtils</a><br><a href="">10 反射一：基本类周边信息获取</a><br><a href="">11 反射二：泛型相关周边信息获取</a><br><a href="">12 反射三：类内部信息获取</a><br><a href="">13 Java Socket</a><br><a href="">14 Java Socket 聊天室原理</a><br><a href="">15 Java Socket 如何演化成 Tomcat</a><br><a href="">JAVA 8 Interface</a><br><a href="">JAVA 8 Lambda</a><br><a href="">JAVA 8 LocalDate</a><br><a href="">JAVA | 使用克隆防止破坏封装性</a><br><a href="">JAVA | equals 的正确姿势</a><br><a href="">JAVA | 多线程断点下载</a><br></details>]]></content>
     
     <summary type="html">
     
