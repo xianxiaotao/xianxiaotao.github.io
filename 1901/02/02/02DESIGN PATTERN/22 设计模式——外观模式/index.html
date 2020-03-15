@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="DESIGN PATTERN," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="返回设计模式博客目录
+
+介绍
+外观（Facade）模式：要求一个子系统的外部与其内部的通信必须通过一个统一的对象进行。外观模式提供一个高层次的接口，使得子系统更易于使用。
+在开发过程中的运用频率非常高，尤其是在现阶段各种第三方 SDK 充斥在我们的周边，而这些 SDK 很大概率会使用外观模式。通过一个外观类使得整个系统的接口只有一个统一的高层接口，这样能够降低用户的使用成本，也对用户屏蔽了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="22 设计模式——外观模式">
+<meta property="og:url" content="http://yoursite.com/1901/02/02/02DESIGN PATTERN/22 设计模式——外观模式/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="返回设计模式博客目录
+
+介绍
+外观（Facade）模式：要求一个子系统的外部与其内部的通信必须通过一个统一的对象进行。外观模式提供一个高层次的接口，使得子系统更易于使用。
+在开发过程中的运用频率非常高，尤其是在现阶段各种第三方 SDK 充斥在我们的周边，而这些 SDK 很大概率会使用外观模式。通过一个外观类使得整个系统的接口只有一个统一的高层接口，这样能够降低用户的使用成本，也对用户屏蔽了">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-d4dfee2cee8d8d6d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-5480c00b909b46a8.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-76e30b4caf60d679.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-e4cae7200a7c7d27.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-15T13:50:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="22 设计模式——外观模式">
+<meta name="twitter:description" content="返回设计模式博客目录
+
+介绍
+外观（Facade）模式：要求一个子系统的外部与其内部的通信必须通过一个统一的对象进行。外观模式提供一个高层次的接口，使得子系统更易于使用。
+在开发过程中的运用频率非常高，尤其是在现阶段各种第三方 SDK 充斥在我们的周边，而这些 SDK 很大概率会使用外观模式。通过一个外观类使得整个系统的接口只有一个统一的高层接口，这样能够降低用户的使用成本，也对用户屏蔽了">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-d4dfee2cee8d8d6d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/1901/02/02/02DESIGN PATTERN/22 设计模式——外观模式/"/>
+
+
+
+
+
+  <title>22 设计模式——外观模式 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1901/02/02/02DESIGN PATTERN/22 设计模式——外观模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">22 设计模式——外观模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="1901-02-02T00:00:00+08:00">
+                1901-02-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DESIGN-PATTERN/" itemprop="url" rel="index">
+                    <span itemprop="name">DESIGN PATTERN</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/1901/02/02/02DESIGN PATTERN/22 设计模式——外观模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/1901/02/02/02DESIGN PATTERN/22 设计模式——外观模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-d4dfee2cee8d8d6d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/1901/01/01/02DESIGN%20PATTERN/0%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%9A%E5%AE%A2%E7%9B%AE%E5%BD%95/" target="_blank" rel="external">返回设计模式博客目录</a></p>
+</blockquote>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><hr>
+<p>外观（Facade）模式：<strong>要求一个子系统的外部与其内部的通信必须通过一个统一的对象进行。外观模式提供一个高层次的接口，使得子系统更易于使用</strong>。</p>
+<p>在开发过程中的运用频率非常高，尤其是在现阶段各种第三方 SDK 充斥在我们的周边，而这些 SDK 很大概率会使用外观模式。通过一个外观类使得整个系统的接口只有一个统一的高层接口，这样能够降低用户的使用成本，也对用户屏蔽了很多实现细节。当然，在我们的开发过程中，外观模式也是我们封装 API 的常用手段，例如网络模块、ImageLoader模块等。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>外观模式是“迪米特法则”的典型应用，主要优点如下：</p>
+<ul>
+<li>降低了子系统与客户端之间的耦合度，使得子系统的变化不会影响调用它的客户类。</li>
+<li>对客户屏蔽了子系统组件，减少了客户处理的对象数目，并使得子系统使用起来更加容易。</li>
+<li>降低了大型软件系统中的编译依赖性，简化了系统在不同平台之间的移植过程，因为编译一个子系统不会影响其他的子系统，也不会影响外观对象。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>不能很好地限制客户使用子系统类。</li>
+<li>增加新的子系统可能需要修改外观类或客户端的源代码，违背了“开闭原则”。</li>
+</ul>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><ul>
+<li>为一个复杂的子系统提供一个简单接口，对外隐藏子系统的具体实现、隔离变化。</li>
+<li>使用外观模式可以将一个子系统和使用它的客户端以及其它的子系统分离开来，这就提高了子系统的独立性和可移植性。</li>
+<li>在构建一个层次化结构的时候，可以使用外观模式定义每一个层次对外交互的接口。这样，层与层之间只需要通过外观进行通信，从而简化层与层之间的依赖关系。</li>
+</ul>
+<h3 id="结构与实现"><a href="#结构与实现" class="headerlink" title="结构与实现"></a>结构与实现</h3><hr>
+<p>模式包含以下主要角色。</p>
+<ul>
+<li>Facade（外观角色）：对外的统一入口。</li>
+<li>Sub System（子系统）：一般由多个子系统构成，负责具体功能的实现。</li>
+</ul>
+<p>其结构图如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-5480c00b909b46a8.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class FacadePattern &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Facade f = new Facade();</div><div class="line">        f.method();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 外观角色</div><div class="line">class Facade &#123;</div><div class="line">    private SubSystem01 obj1 = new SubSystem01();</div><div class="line">    private SubSystem02 obj2 = new SubSystem02();</div><div class="line">    private SubSystem03 obj3 = new SubSystem03();</div><div class="line">    public void method() &#123;</div><div class="line">        obj1.method1();</div><div class="line">        obj2.method2();</div><div class="line">        obj3.method3();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 子系统角色</div><div class="line">class SubSystem01 &#123;</div><div class="line">    public  void method1() &#123;</div><div class="line">        System.out.println(&quot;子系统01的method1()被调用！&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 子系统角色</div><div class="line">class SubSystem02 &#123;</div><div class="line">    public  void method2() &#123;</div><div class="line">        System.out.println(&quot;子系统02的method2()被调用！&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 子系统角色</div><div class="line">class SubSystem03 &#123;</div><div class="line">    public  void method3() &#123;</div><div class="line">        System.out.println(&quot;子系统03的method3()被调用！&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><hr>
+<p>手机就是一个外观模式的例子，它集合了电话功能、短信功能、GPS、拍照等于一身，通过手机你就可以完成各种功能。如下图所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-76e30b4caf60d679.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>下面模拟手机的外观模式实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">public interface Camera &#123;</div><div class="line">    void open();</div><div class="line">    void takePic();</div><div class="line">    void close();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class SamsungCamera implements Camera &#123;</div><div class="line">    @Override</div><div class="line">    public void open() &#123;</div><div class="line">        System.out.println(&quot;打开相机&quot;);</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void takePic() &#123;</div><div class="line">        System.out.println(&quot;拍照&quot;);</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void close() &#123;</div><div class="line">        System.out.println(&quot;关闭相机&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public interface Phone &#123;</div><div class="line">    // 打电话</div><div class="line">    void dail();</div><div class="line">    // 挂断</div><div class="line">    void hangup();</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class PhoneImpl implements Phone&#123;</div><div class="line">    @Override</div><div class="line">    public void dail() &#123;</div><div class="line">        System.out.println(&quot;打电话&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void hangup() &#123;</div><div class="line">        System.out.println(&quot;挂断&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">// 外观类</div><div class="line">public class MobilePhone &#123;</div><div class="line">    private Phone mPhone = new PhoneImpl();</div><div class="line">    private Camera mCamera = new SamsungCamera();</div><div class="line"></div><div class="line">    public void dail()&#123;</div><div class="line">        mPhone.dail();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void videoChat()&#123;</div><div class="line">        System.out.println(&quot;--&gt;视频聊天接通中&quot;);</div><div class="line">        mCamera.open();</div><div class="line">        mPhone.dail();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void hangup()&#123;</div><div class="line">        mPhone.hangup();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void takePic()&#123;</div><div class="line">        mCamera.open();</div><div class="line">        mCamera.takePic();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void closeCamera()&#123;</div><div class="line">        mCamera.close();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>测试代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class Test &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        MobilePhone nexus6 = new MobilePhone();</div><div class="line">        // 拍照</div><div class="line">        nexus6.videoChat();</div><div class="line">        // 拍照</div><div class="line">        nexus6.takePic();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="ANDROID-源码中的实现"><a href="#ANDROID-源码中的实现" class="headerlink" title="ANDROID 源码中的实现"></a>ANDROID 源码中的实现</h3><hr>
+<p>在用 Android 开发过程中，Context 是最重要的一个类型。Context 只是一个抽象类，它的真正实现在 ContextImpl 类中，ContextImpl 就是今天我们要分析的外观类。</p>
+<p>在应用启动时，首先会 fork 一个子进程，并且调用 ActivityThread 的 main 方法启动该进程。ActivityThread 又会构建 Application 对象，然后和 Activity、ContextImpl 关联起来，最后会调用 Activity 的 onCreate、onStart、onResume 函数使 Activity 运行起来，此时应用的用户界面就呈现在我们面前。</p>
+<p>main 函数会间接地调用 ActivityThread 中的 handleLaunchActivity 函数启动默认的 Activity。handleLaunchActivity 方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public Activity handleLaunchActivity(ActivityClientRecord r, </div><div class="line">                                     PendingTransactionActions pendingActions, </div><div class="line">                                     Intent customIntent) &#123;</div><div class="line">    ...</div><div class="line">    </div><div class="line">    // 创建并且加载 Activity，调用它的 onCreate</div><div class="line">    final Activity a = performLaunchActivity(r, customIntent);</div><div class="line"></div><div class="line">    if (a != null) &#123;</div><div class="line">        r.createdConfig = new Configuration(mConfiguration);</div><div class="line">        reportSizeConfigurations(r);</div><div class="line">        if (!r.activity.mFinished &amp;&amp; pendingActions != null) &#123;</div><div class="line">            pendingActions.setOldState(r.state);</div><div class="line">            pendingActions.setRestoreInstanceState(true);</div><div class="line">            pendingActions.setCallOnPostCreate(true);</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">        // If there was an error, for any reason, tell the activity manager to stop us.</div><div class="line">        try &#123;</div><div class="line">            ActivityManager.getService()</div><div class="line">                    .finishActivity(r.token, Activity.RESULT_CANCELED, null,</div><div class="line">                            Activity.DONT_FINISH_TASK_WITH_ACTIVITY);</div><div class="line">        &#125; catch (RemoteException ex) &#123;</div><div class="line">            throw ex.rethrowFromSystemServer();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return a;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>performLaunchActivity 方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line">private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) &#123;</div><div class="line">    ...</div><div class="line">    </div><div class="line">    // 构建 ContextImpl</div><div class="line">    ContextImpl appContext = createBaseContextForActivity(r);</div><div class="line">    Activity activity = null;</div><div class="line">    try &#123;</div><div class="line">        java.lang.ClassLoader cl = appContext.getClassLoader();</div><div class="line">        // 创建 Activity</div><div class="line">        activity = mInstrumentation.newActivity(</div><div class="line">                cl, component.getClassName(), r.intent);</div><div class="line">        StrictMode.incrementExpectedActivityCount(activity.getClass());</div><div class="line">        r.intent.setExtrasClassLoader(cl);</div><div class="line">        r.intent.prepareToEnterProcess();</div><div class="line">        if (r.state != null) &#123;</div><div class="line">            r.state.setClassLoader(cl);</div><div class="line">        &#125;</div><div class="line">    &#125; catch (Exception e) &#123;</div><div class="line">        if (!mInstrumentation.onException(activity, e)) &#123;</div><div class="line">            throw new RuntimeException(</div><div class="line">                    &quot;Unable to instantiate activity &quot; + component</div><div class="line">                            + &quot;: &quot; + e.toString(), e);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    try &#123;</div><div class="line">        // 创建 Application</div><div class="line">        Application app = r.packageInfo.makeApplication(false, mInstrumentation);</div><div class="line"></div><div class="line">        if (localLOGV) Slog.v(TAG, &quot;Performing launch of &quot; + r);</div><div class="line">        if (localLOGV) Slog.v(</div><div class="line">                TAG, r + &quot;: app=&quot; + app</div><div class="line">                        + &quot;, appName=&quot; + app.getPackageName()</div><div class="line">                        + &quot;, pkg=&quot; + r.packageInfo.getPackageName()</div><div class="line">                        + &quot;, comp=&quot; + r.intent.getComponent().toShortString()</div><div class="line">                        + &quot;, dir=&quot; + r.packageInfo.getAppDir());</div><div class="line"></div><div class="line">        if (activity != null) &#123;</div><div class="line">            // 获取 Activity 的 title</div><div class="line">            CharSequence title = r.activityInfo.loadLabel(appContext.getPackageManager());</div><div class="line">            Configuration config = new Configuration(mCompatConfiguration);</div><div class="line">            if (r.overrideConfig != null) &#123;</div><div class="line">                config.updateFrom(r.overrideConfig);</div><div class="line">            &#125;</div><div class="line">            if (DEBUG_CONFIGURATION) Slog.v(TAG, &quot;Launching activity &quot;</div><div class="line">                    + r.activityInfo.name + &quot; with config &quot; + config);</div><div class="line">            Window window = null;</div><div class="line">            if (r.mPendingRemoveWindow != null &amp;&amp; r.mPreserveWindow) &#123;</div><div class="line">                window = r.mPendingRemoveWindow;</div><div class="line">                r.mPendingRemoveWindow = null;</div><div class="line">                r.mPendingRemoveWindowManager = null;</div><div class="line">            &#125;</div><div class="line">            appContext.setOuterContext(activity);</div><div class="line">            // Activity 与 Context、Application 关联起来</div><div class="line">            activity.attach(appContext, this, getInstrumentation(), r.token,</div><div class="line">                    r.ident, app, r.intent, r.activityInfo, title, r.parent,</div><div class="line">                    r.embeddedID, r.lastNonConfigurationInstances, config,</div><div class="line">                    r.referrer, r.voiceInteractor, window, r.configCallback);</div><div class="line"></div><div class="line">            if (customIntent != null) &#123;</div><div class="line">                activity.mIntent = customIntent;</div><div class="line">            &#125;</div><div class="line">            r.lastNonConfigurationInstances = null;</div><div class="line">            checkAndBlockForNetworkAccess();</div><div class="line">            activity.mStartedActivity = false;</div><div class="line">            int theme = r.activityInfo.getThemeResource();</div><div class="line">            if (theme != 0) &#123;</div><div class="line">                activity.setTheme(theme);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            activity.mCalled = false;</div><div class="line">            if (r.isPersistable()) &#123;</div><div class="line">                mInstrumentation.callActivityOnCreate(activity, r.state, r.persistentState);</div><div class="line">            &#125; else &#123;</div><div class="line">                // 回调 Activity 的 onCreate 方法</div><div class="line">                mInstrumentation.callActivityOnCreate(activity, r.state);</div><div class="line">            &#125;</div><div class="line">            if (!activity.mCalled) &#123;</div><div class="line">                throw new SuperNotCalledException(</div><div class="line">                        &quot;Activity &quot; + r.intent.getComponent().toShortString() +</div><div class="line">                                &quot; did not call through to super.onCreate()&quot;);</div><div class="line">            &#125;</div><div class="line">            r.activity = activity;</div><div class="line">        &#125;</div><div class="line">        r.setState(ON_CREATE);</div><div class="line"></div><div class="line">        mActivities.put(r.token, r);</div><div class="line"></div><div class="line">    &#125; catch (SuperNotCalledException e) &#123;</div><div class="line">        throw e;</div><div class="line"></div><div class="line">    &#125; catch (Exception e) &#123;</div><div class="line">        if (!mInstrumentation.onException(activity, e)) &#123;</div><div class="line">            throw new RuntimeException(</div><div class="line">                    &quot;Unable to start activity &quot; + component</div><div class="line">                            + &quot;: &quot; + e.toString(), e);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return activity;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在 handleLaunchActivity 中会调用 perfromLaunchActivity 执行 Applicaton、ContextImpl、Activity 的创建工作，并且通过 Activity 的 attach 将这 3 者关联起来。</p>
+<p>Activity 是 Context 的子类，因此，Activity 就具有了 Context 定义的所有方法。但 Activity 并不实现具体的功能，它只是继承了 Context 的接口，并且将相关的操作交给 ContextImpl。ContextImpl 存储在 Activity 的上两层父类 ContextWrapper 中，变量名为 mBase，具体代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public class ContextThemeWrapper extends ContextWrapper &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void attachBaseContext(Context newBase) &#123;</div><div class="line">        super.attachBaseContext(newBase);</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">public class ContextWrapper extends Context &#123;</div><div class="line">    Context mBase;</div><div class="line"></div><div class="line">    public ContextWrapper(Context base) &#123;</div><div class="line">        mBase = base;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Set the base context for this ContextWrapper.  All calls will then be</div><div class="line">     * delegated to the base context.  Throws</div><div class="line">     * IllegalStateException if a base context has already been set.</div><div class="line">     *</div><div class="line">     * @param base The new base context for this wrapper.</div><div class="line">     */</div><div class="line">    protected void attachBaseContext(Context base) &#123;</div><div class="line">        if (mBase != null) &#123;</div><div class="line">            throw new IllegalStateException(&quot;Base context already set&quot;);</div><div class="line">        &#125;</div><div class="line">        mBase = base;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在 ActivityThread 类的 perfromLaunchActivity 函数中会调用 Activity 的 attach 方法将 ContextImpl 等对象关联到 Activity 中，这个 ContextImpl 最终会被 ContentWrapper 类的 mBase 字段引用。Activity 的 attach 如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">final void attach(Context context, ActivityThread aThread,</div><div class="line">                  Instrumentation instr, IBinder token, int ident,</div><div class="line">                  Application application, Intent intent, ActivityInfo info,</div><div class="line">                  CharSequence title, Activity parent, String id,</div><div class="line">                  NonConfigurationInstances lastNonConfigurationInstances,</div><div class="line">                  Configuration config, String referrer, IVoiceInteractor voiceInteractor,</div><div class="line">                  Window window, ActivityConfigCallback activityConfigCallback) &#123;</div><div class="line">    // 调用自身的 attachBaseContext</div><div class="line">    attachBaseContext(context);</div><div class="line"></div><div class="line">    mFragments.attachHost(null /*parent*/);</div><div class="line"></div><div class="line">    mWindow = new PhoneWindow(this, window, activityConfigCallback);</div><div class="line">    mWindow.setWindowControllerCallback(this);</div><div class="line">    mWindow.setCallback(this);</div><div class="line">    mWindow.setOnWindowDismissedCallback(this);</div><div class="line">    mWindow.getLayoutInflater().setPrivateFactory(this);</div><div class="line">    if (info.softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED) &#123;</div><div class="line">        mWindow.setSoftInputMode(info.softInputMode);</div><div class="line">    &#125;</div><div class="line">    if (info.uiOptions != 0) &#123;</div><div class="line">        mWindow.setUiOptions(info.uiOptions);</div><div class="line">    &#125;</div><div class="line">    mUiThread = Thread.currentThread();</div><div class="line"></div><div class="line">    mMainThread = aThread;</div><div class="line">    mInstrumentation = instr;</div><div class="line">    mToken = token;</div><div class="line">    mIdent = ident;</div><div class="line">    mApplication = application;</div><div class="line">    mIntent = intent;</div><div class="line">    mReferrer = referrer;</div><div class="line">    mComponent = intent.getComponent();</div><div class="line">    mActivityInfo = info;</div><div class="line">    mTitle = title;</div><div class="line">    mParent = parent;</div><div class="line">    mEmbeddedID = id;</div><div class="line">    mLastNonConfigurationInstances = lastNonConfigurationInstances;</div><div class="line">    if (voiceInteractor != null) &#123;</div><div class="line">        if (lastNonConfigurationInstances != null) &#123;</div><div class="line">            mVoiceInteractor = lastNonConfigurationInstances.voiceInteractor;</div><div class="line">        &#125; else &#123;</div><div class="line">            mVoiceInteractor = new VoiceInteractor(voiceInteractor, this, this,</div><div class="line">                    Looper.myLooper());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    mWindow.setWindowManager(</div><div class="line">            (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),</div><div class="line">            mToken, mComponent.flattenToString(),</div><div class="line">            (info.flags &amp; ActivityInfo.FLAG_HARDWARE_ACCELERATED) != 0);</div><div class="line">    if (mParent != null) &#123;</div><div class="line">        mWindow.setContainer(mParent.getWindow());</div><div class="line">    &#125;</div><div class="line">    mWindowManager = mWindow.getWindowManager();</div><div class="line">    mCurrentConfig = config;</div><div class="line"></div><div class="line">    mWindow.setColorMode(info.colorMode);</div><div class="line"></div><div class="line">    setAutofillCompatibilityEnabled(application.isAutofillCompatibilityEnabled());</div><div class="line">    enableAutofillCompatibilityIfNeeded();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>attach 主要就是一些赋值操作。在 attach 中，调用了 attachBaseContext 函数。attachBaseContext 调用了父类 ContextWrapper 类，它就是简单地将 Context 参数传递给 mBase 字段。此时，我们的 Activity 内部就持有了 ContextImpl 的引用。</p>
+<p>Activity 的 attachBaseContext：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void attachBaseContext(Context newBase) &#123;</div><div class="line">    // 调用了 ContextThemeWrapper 的 attachBaseContext</div><div class="line">    super.attachBaseContext(newBase);</div><div class="line">    if (newBase != null) &#123;</div><div class="line">        newBase.setAutofillClient(this);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Activity 在开发过程中部分充当了代理的角色，例如，当我们通过 Activity 对象调用 sendBroadcast、getResource 等函数时，实际上 Activity 只是代理了 ContextImpl 的操作，也就是内部都调用了 mBase 对象的相应方法来处理，这些方法被封装在 Activity 的父类 ContextWrapper 中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class ContextWrapper extends Context &#123;</div><div class="line">    Context mBase;</div><div class="line">    ...</div><div class="line">    @Override</div><div class="line">    public void sendBroadcast(Intent intent) &#123;</div><div class="line">        mBase.sendBroadcast(intent);</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">    @Override</div><div class="line">    public Resources getResources() &#123;</div><div class="line">        return mBase.getResources();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public PackageManager getPackageManager() &#123;</div><div class="line">        return mBase.getPackageManager();</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ContextImpl 的实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">class ContextImpl extends Context &#123;</div><div class="line">    ...</div><div class="line">    @Override</div><div class="line">    public void sendBroadcast(Intent intent) &#123;</div><div class="line">        warnIfCallingFromSystemProcess();</div><div class="line">        String resolvedType = intent.resolveTypeIfNeeded(getContentResolver());</div><div class="line">        try &#123;</div><div class="line">            intent.prepareToLeaveProcess(this);</div><div class="line">            ActivityManager.getService().broadcastIntent(</div><div class="line">                    mMainThread.getApplicationThread(), intent, resolvedType, null,</div><div class="line">                    Activity.RESULT_OK, null, null, null, AppOpsManager.OP_NONE, null, false, false,</div><div class="line">                    getUserId());</div><div class="line">        &#125; catch (RemoteException e) &#123;</div><div class="line">            throw e.rethrowFromSystemServer();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">    @Override</div><div class="line">    public Resources getResources() &#123;</div><div class="line">        return mResources;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public PackageManager getPackageManager() &#123;</div><div class="line">        if (mPackageManager != null) &#123;</div><div class="line">            return mPackageManager;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        IPackageManager pm = ActivityThread.getPackageManager();</div><div class="line">        if (pm != null) &#123;</div><div class="line">            // Doesn&apos;t matter if we make more than one instance.</div><div class="line">            return (mPackageManager = new ApplicationPackageManager(this, pm));</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ContextImpl 内部封装了很多不同子系统的操作，例如，Activity 的跳转、发送广播、启动服务、设置壁纸等，这些工作并不是在 ContextImpl 中实现，而是转交给了具体的子系统进行处理。通过 Context 这个抽象类定义了一组接口，ContextImpl 实现 Context 定义的接口，使得用户可以通过 Context 这个接口统一与 Android 系统进行交互，这样用户通常情况下就不需要对每个子系统进行了解，例如启动 Activity 时用户不需要手动调用 mMainThread.getInstrumentation().execStartActivity 启动 Activity。用户与系统服务的交互都通过 Context 的高层接口。这样对用户屏蔽了具体实现的细节，降低了使用成本。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-e4cae7200a7c7d27.gif?imageMogr2/auto-orient/strip" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DESIGN-PATTERN/" rel="tag"><i class="fa fa-tag"></i> DESIGN PATTERN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/1901/02/01/02DESIGN PATTERN/21 设计模式——享元模式/" rel="next" title="21 设计模式——享元模式">
+                <i class="fa fa-chevron-left"></i> 21 设计模式——享元模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1901/02/03/02DESIGN PATTERN/23 设计模式——桥接模式/" rel="prev" title="23 设计模式——桥接模式">
+                23 设计模式——桥接模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">140</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景"><span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构与实现"><span class="nav-text">结构与实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANDROID-源码中的实现"><span class="nav-text">ANDROID 源码中的实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共303.8k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

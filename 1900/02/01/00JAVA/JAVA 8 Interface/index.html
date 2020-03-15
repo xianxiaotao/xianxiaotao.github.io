@@ -88,16 +88,19 @@
 
 
 
-<meta name="description" content="静态方法目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：1234interface MyComparable&amp;lt;T&amp;gt; &amp;#123;    public s">
+<meta name="description" content="静态方法
+目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：123456interface MyComparable&amp;lt;T&amp;gt; &amp;#123;    publi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA 8 Interface">
 <meta property="og:url" content="http://yoursite.com/1900/02/01/00JAVA/JAVA 8 Interface/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="静态方法目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：1234interface MyComparable&amp;lt;T&amp;gt; &amp;#123;    public s">
-<meta property="og:updated_time" content="2020-03-11T14:47:40.000Z">
+<meta property="og:description" content="静态方法
+目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：123456interface MyComparable&amp;lt;T&amp;gt; &amp;#123;    publi">
+<meta property="og:updated_time" content="2020-03-15T07:29:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA 8 Interface">
-<meta name="twitter:description" content="静态方法目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：1234interface MyComparable&amp;lt;T&amp;gt; &amp;#123;    public s">
+<meta name="twitter:description" content="静态方法
+目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：123456interface MyComparable&amp;lt;T&amp;gt; &amp;#123;    publi">
 
 
 
@@ -396,9 +399,12 @@
       
         <meta name="referrer" content="no-referrer">
 
-<h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p>目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">interface MyComparable&lt;T&gt; &#123;</div><div class="line">    public static &lt;T&gt; int compare(java.lang.Comparable&lt;T&gt; t1, T t2) &#123; <span class="built_in">return</span> t1.compareTo(t2); &#125;</div><div class="line">    int compareTo(T t);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="默认方法"><a href="#默认方法" class="headerlink" title="默认方法"></a>默认方法</h2><p>可以为接口方法提供一个默认实现。必须用default修饰符标记这样一个方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public interface Collection &#123;</div><div class="line">    int size();	// An abstract method</div><div class="line">    default boolean <span class="function"><span class="title">isEmpty</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> size() == 0;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="解决默认方法冲突"><a href="#解决默认方法冲突" class="headerlink" title="解决默认方法冲突"></a>解决默认方法冲突</h2><p>如果先在一个接口中将一个方法定义为默认方法，然后又在超类或另一个接口中定义了同样的方法，会发生什么情况？Java的相应规则如下：<br>1）超类优先。如果超类提供了一个具体方法，同名而且有相同参数类型的默认方法会被忽略。确保与Java SE 7兼容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">interface Named &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">class Person &#123;</div><div class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> getClass().getName(); &#125;</div><div class="line">&#125;</div><div class="line">class Student extends Person implements Named &#123; // super.getName() &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><hr>
+<p>目前为止，通常的做法都是将静态方法放在伴随类中。在标准库中，你会看到成对出现的接口和使用工具类，如Collection/Collections或Path/Paths。在Java SE 8中，允许在接口中增加静态方法，节省一个伴随类，只是这有违于将接口作为抽象规范的初衷。示例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">interface MyComparable&lt;T&gt; &#123;</div><div class="line">    public static &lt;T&gt; int compare(java.lang.Comparable&lt;T&gt; t1, T t2) &#123; </div><div class="line">        <span class="built_in">return</span> t1.compareTo(t2); </div><div class="line">    &#125;</div><div class="line">    int compareTo(T t);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="默认方法"><a href="#默认方法" class="headerlink" title="默认方法"></a>默认方法</h3><hr>
+<p>可以为接口方法提供一个默认实现。必须用default修饰符标记这样一个方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public interface Collection &#123;</div><div class="line">    int size();	// An abstract method</div><div class="line">    default boolean <span class="function"><span class="title">isEmpty</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> size() == 0;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="解决默认方法冲突"><a href="#解决默认方法冲突" class="headerlink" title="解决默认方法冲突"></a>解决默认方法冲突</h3><hr>
+<p>如果先在一个接口中将一个方法定义为默认方法，然后又在超类或另一个接口中定义了同样的方法，会发生什么情况？Java的相应规则如下：<br>1）超类优先。如果超类提供了一个具体方法，同名而且有相同参数类型的默认方法会被忽略。确保与Java SE 7兼容。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">interface Named &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; </div><div class="line">        <span class="built_in">return</span> getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">class Person &#123;</div><div class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123; </div><div class="line">        <span class="built_in">return</span> getClass().getName(); </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">class Student extends Person implements Named &#123; // super.getName() &#125;</div></pre></td></tr></table></figure></p>
 <p>2）接口冲突。如果两个接口都提供了同名同参的默认方法，实现类必须覆盖这个方法类解决冲突。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">interface Named &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> <span class="string">"Named:"</span> + getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">interface Called &#123;</div><div class="line">    default String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> <span class="string">"Called:"</span> + getClass().getName() + <span class="string">"_"</span> + <span class="built_in">hash</span>Code(); &#125;</div><div class="line">&#125;</div><div class="line">class Student implements Named, Called &#123; </div><div class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123; <span class="built_in">return</span> Named.super.getName(); &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
@@ -526,7 +532,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">150</span>
+                  <span class="site-state-item-count">140</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -628,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态方法"><span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认方法"><span class="nav-text">默认方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决默认方法冲突"><span class="nav-text">解决默认方法冲突</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态方法"><span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认方法"><span class="nav-text">默认方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决默认方法冲突"><span class="nav-text">解决默认方法冲突</span></a></li></ol></div>
             
 
           </div>
@@ -679,7 +685,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共308.1k字</span>
+  <span class="post-count">博客全站共303.8k字</span>
 </div>
 
         

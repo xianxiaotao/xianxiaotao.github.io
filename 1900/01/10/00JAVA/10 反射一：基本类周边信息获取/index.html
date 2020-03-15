@@ -88,16 +88,20 @@
 
 
 
-<meta name="description" content="原文链接：夯实JAVA基本之二 —— 反射（1）：基本类周边信息获取
-相关文章：Java RelfectJava RelfectUtils反射一：基本类周边信息获取反射二：泛型相关周边信息获取反射三：类内部信息获取
-JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道这个类的所有属性和方法；对于任何一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为">
+<meta name="description" content="相关文章：Java RelfectJava RelfectUtils反射一：基本类周边信息获取反射二：泛型相关周边信息获取反射三：类内部信息获取
+
+JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道这个类的所有属性和方法；对于任何一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为 JAVA 语言的反射机制。
+一、引入
+在开始反射之前，我们先看看">
 <meta property="og:type" content="article">
 <meta property="og:title" content="反射一：基本类周边信息获取">
 <meta property="og:url" content="http://yoursite.com/1900/01/10/00JAVA/10 反射一：基本类周边信息获取/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="原文链接：夯实JAVA基本之二 —— 反射（1）：基本类周边信息获取
-相关文章：Java RelfectJava RelfectUtils反射一：基本类周边信息获取反射二：泛型相关周边信息获取反射三：类内部信息获取
-JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道这个类的所有属性和方法；对于任何一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为">
+<meta property="og:description" content="相关文章：Java RelfectJava RelfectUtils反射一：基本类周边信息获取反射二：泛型相关周边信息获取反射三：类内部信息获取
+
+JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道这个类的所有属性和方法；对于任何一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为 JAVA 语言的反射机制。
+一、引入
+在开始反射之前，我们先看看">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-5b73896f01a266e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-628c16d96517e204.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b2be100acdc32679.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -106,12 +110,14 @@ JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-83d45c3fc9948663.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-5c279d59ebf4f79c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-0e02e34db86b305e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2020-03-11T14:33:03.000Z">
+<meta property="og:updated_time" content="2020-03-15T07:14:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反射一：基本类周边信息获取">
-<meta name="twitter:description" content="原文链接：夯实JAVA基本之二 —— 反射（1）：基本类周边信息获取
-相关文章：Java RelfectJava RelfectUtils反射一：基本类周边信息获取反射二：泛型相关周边信息获取反射三：类内部信息获取
-JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道这个类的所有属性和方法；对于任何一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为">
+<meta name="twitter:description" content="相关文章：Java RelfectJava RelfectUtils反射一：基本类周边信息获取反射二：泛型相关周边信息获取反射三：类内部信息获取
+
+JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道这个类的所有属性和方法；对于任何一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为 JAVA 语言的反射机制。
+一、引入
+在开始反射之前，我们先看看">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-5b73896f01a266e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -411,8 +417,9 @@ JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道
       
         <meta name="referrer" content="no-referrer">
 
-<p>原文链接：<br><a href="https://blog.csdn.net/harvic880925/article/details/50072739" target="_blank" rel="external">夯实JAVA基本之二 —— 反射（1）：基本类周边信息获取</a></p>
+<blockquote>
 <p>相关文章：<br><a href="https://xianxiaotao.github.io/1900/01/08/00JAVA/08%20Java%20Relfect/" target="_blank" rel="external">Java Relfect</a><br><a href="https://xianxiaotao.github.io/1900/01/09/00JAVA/09%20Java%20RelfectUtils/" target="_blank" rel="external">Java RelfectUtils</a><br><a href="https://xianxiaotao.github.io/1900/01/10/00JAVA/10%20%E5%8F%8D%E5%B0%84%E4%B8%80%EF%BC%9A%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%91%A8%E8%BE%B9%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">反射一：基本类周边信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/11/00JAVA/11%20%E5%8F%8D%E5%B0%84%E4%BA%8C%EF%BC%9A%E6%B3%9B%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%91%A8%E8%BE%B9%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">反射二：泛型相关周边信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/12/00JAVA/12%20%E5%8F%8D%E5%B0%84%E4%B8%89%EF%BC%9A%E7%B1%BB%E5%86%85%E9%83%A8%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">反射三：类内部信息获取</a></p>
+</blockquote>
 <p>JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道这个类的所有属性和方法；对于任何一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为 JAVA 语言的反射机制。</p>
 <h3 id="一、引入"><a href="#一、引入" class="headerlink" title="一、引入"></a>一、引入</h3><hr>
 <p>在开始反射之前，我们先看看 JVM 是如何将我们写的类对应的 java 文件加载到内存中的。</p>
@@ -512,6 +519,7 @@ JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道
 <p>原来，Driver 在 static 块中会注册自己到 java.sql.DriverManager。而 static 块就是在 Class 的初始化中被执行。所以这个地方就只能用Class.forName(className)。</p>
 <p>这篇文章所涉及到的几个函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// 获取类类型对象的几种方式：</div><div class="line">Person person = new Person();  </div><div class="line">Class a = person.getClass() // 方法一</div><div class="line">Class b = Persion.class; // 方法二</div><div class="line">Class c = Class.forName(String ClassName); // 方法三</div><div class="line">Class d = context.getClassLoader().loadClass(String ClassName); // 方法四（不建议使用）</div><div class="line"> </div><div class="line">// 获取包名类名</div><div class="line">public String getName(); // 获取完整的类名（包含包名）</div><div class="line">public String getSimpleName(); // 仅获取类名</div><div class="line">public Package getPackage(); // 获取类类型所对应的 package 对象</div><div class="line"> </div><div class="line">// 获取超类 Class 对象</div><div class="line">public Class&lt;?&gt; getSuperclass(); // 获取普通函数的父类 Class 对象</div><div class="line">public Type getGenericSuperclass(); // 针对泛型父类而设计（下篇讲解）</div><div class="line"> </div><div class="line">// 获取接口 Class 对象</div><div class="line">public Class&lt;?&gt;[] getInterfaces(); // 获取普通接口的方法</div><div class="line">public Type[] getGenericInterfaces(); // 获取泛型接口的方法</div><div class="line"> </div><div class="line">// 类访问修饰符</div><div class="line">int modifiers = clazz.getModifiers(); // 获取类访问修饰符对应的 int 变量</div><div class="line">String Modifier.toString(int modifiers); // 根据整型变量来生成对应的修饰符字符串</div><div class="line">boolean Modifier.isAbstract(int modifiers); // isXXX() 系列函数用以检查特定的修饰符是否存在</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-0e02e34db86b305e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>原文链接：<br><a href="https://blog.csdn.net/harvic880925/article/details/50072739" target="_blank" rel="external">夯实JAVA基本之二 —— 反射（1）：基本类周边信息获取</a></p>
 
       
     </div>
@@ -638,7 +646,7 @@ JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">150</span>
+                  <span class="site-state-item-count">140</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -791,7 +799,7 @@ JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共308.1k字</span>
+  <span class="post-count">博客全站共303.8k字</span>
 </div>
 
         

@@ -106,7 +106,7 @@ int getYear()
 int getMonthValue()
 int getDayOfMonth()得到当前日期的年、月和日。
 DayOfWee">
-<meta property="og:updated_time" content="2020-03-11T14:47:45.000Z">
+<meta property="og:updated_time" content="2020-03-15T07:27:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA 8 LocalDate">
 <meta name="twitter:description" content="java.time.LocalDate 8
@@ -414,7 +414,7 @@ DayOfWee">
       
         <meta name="referrer" content="no-referrer">
 
-<h2 id="java-time-LocalDate-8"><a href="#java-time-LocalDate-8" class="headerlink" title="java.time.LocalDate 8"></a>java.time.LocalDate 8</h2><ul>
+<h3 id="java-time-LocalDate-8"><a href="#java-time-LocalDate-8" class="headerlink" title="java.time.LocalDate 8"></a>java.time.LocalDate 8</h3><ul>
 <li>static LocalDate now()<br>构造一个表示当前日期的对象。</li>
 <li>static LocalDate of(int year, int month, int day)<br>构造一个表示给定日期的对象。</li>
 <li>int getYear()</li>
@@ -424,7 +424,7 @@ DayOfWee">
 <li>LocalDate plusDays(int n)</li>
 <li>LocalDate minusDays(int n)<br>生成当前日期之后或之前n天的日期。</li>
 </ul>
-<h2 id="使用LocalDate输出日历"><a href="#使用LocalDate输出日历" class="headerlink" title="使用LocalDate输出日历"></a>使用LocalDate输出日历</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">package com.xian.date18;</div><div class="line"></div><div class="line">import java.time.DayOfWeek;</div><div class="line">import java.time.LocalDate;</div><div class="line"></div><div class="line">public class LocalDateDemo &#123;</div><div class="line">    public static void <span class="built_in">print</span>Calendar(LocalDate date) &#123;</div><div class="line">        int month = date.getMonthValue();</div><div class="line">        int today = date.getDayOfMonth();</div><div class="line">		</div><div class="line">        date = date.minusDays(today - 1);        // <span class="built_in">set</span> to start of month</div><div class="line">        DayOfWeek weekday = date.getDayOfWeek();</div><div class="line">        int value = weekday.getValue();          // 1 = Monday, ... 7 = Sunday</div><div class="line">		</div><div class="line">        System.out.println(<span class="string">"Mon Tue Wed Thu Fri Sat Sun"</span>);</div><div class="line">        <span class="keyword">for</span> (int i = 1; i &lt; value; i++)</div><div class="line">            System.out.print(<span class="string">"    "</span>);</div><div class="line">        <span class="keyword">while</span> (date.getMonthValue() == month) &#123;</div><div class="line">            System.out.printf(<span class="string">"%3d"</span>, date.getDayOfMonth());</div><div class="line">            <span class="keyword">if</span> (date.getDayOfMonth() == today)</div><div class="line">                System.out.print(<span class="string">"*"</span>);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                System.out.print(<span class="string">" "</span>);</div><div class="line">            date = date.plusDays(1);</div><div class="line">            <span class="keyword">if</span> (date.getDayOfWeek().getValue() == 1)</div><div class="line">                System.out.println();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        <span class="built_in">print</span>Calendar(LocalDate.now());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="使用LocalDate输出日历"><a href="#使用LocalDate输出日历" class="headerlink" title="使用LocalDate输出日历"></a>使用LocalDate输出日历</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">package com.xian.date18;</div><div class="line"></div><div class="line">import java.time.DayOfWeek;</div><div class="line">import java.time.LocalDate;</div><div class="line"></div><div class="line">public class LocalDateDemo &#123;</div><div class="line">    public static void <span class="built_in">print</span>Calendar(LocalDate date) &#123;</div><div class="line">        int month = date.getMonthValue();</div><div class="line">        int today = date.getDayOfMonth();</div><div class="line">		</div><div class="line">        date = date.minusDays(today - 1);        // <span class="built_in">set</span> to start of month</div><div class="line">        DayOfWeek weekday = date.getDayOfWeek();</div><div class="line">        int value = weekday.getValue();          // 1 = Monday, ... 7 = Sunday</div><div class="line">		</div><div class="line">        System.out.println(<span class="string">"Mon Tue Wed Thu Fri Sat Sun"</span>);</div><div class="line">        <span class="keyword">for</span> (int i = 1; i &lt; value; i++)</div><div class="line">            System.out.print(<span class="string">"    "</span>);</div><div class="line">        <span class="keyword">while</span> (date.getMonthValue() == month) &#123;</div><div class="line">            System.out.printf(<span class="string">"%3d"</span>, date.getDayOfMonth());</div><div class="line">            <span class="keyword">if</span> (date.getDayOfMonth() == today)</div><div class="line">                System.out.print(<span class="string">"*"</span>);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                System.out.print(<span class="string">" "</span>);</div><div class="line">            date = date.plusDays(1);</div><div class="line">            <span class="keyword">if</span> (date.getDayOfWeek().getValue() == 1)</div><div class="line">                System.out.println();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        <span class="built_in">print</span>Calendar(LocalDate.now());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <pre>
 输出：
 Mon Tue Wed Thu Fri Sat Sun
@@ -559,7 +559,7 @@ Mon Tue Wed Thu Fri Sat Sun
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">150</span>
+                  <span class="site-state-item-count">140</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -661,7 +661,7 @@ Mon Tue Wed Thu Fri Sat Sun
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java-time-LocalDate-8"><span class="nav-text">java.time.LocalDate 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用LocalDate输出日历"><span class="nav-text">使用LocalDate输出日历</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#java-time-LocalDate-8"><span class="nav-text">java.time.LocalDate 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用LocalDate输出日历"><span class="nav-text">使用LocalDate输出日历</span></a></li></ol></div>
             
 
           </div>
@@ -712,7 +712,7 @@ Mon Tue Wed Thu Fri Sat Sun
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共308.1k字</span>
+  <span class="post-count">博客全站共303.8k字</span>
 </div>
 
         

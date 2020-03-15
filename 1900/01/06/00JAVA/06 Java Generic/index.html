@@ -88,27 +88,24 @@
 
 
 
-<meta name="description" content="参考链接：JAVA 泛型、夯实 JAVA 基础 —— 泛型详解
-What
+<meta name="description" content="What
 什么是泛型，看表面的意思，泛型就是指广泛的、普通的类型。在 Java 中是指把类型明确的工作推迟到创建对象或调用方法的时候才去明确的特殊的类型。
-ArrayList 就是使用泛型的典型案例，如下所示：123List&amp;lt;String&amp;gt; strList = new ArrayList&amp;lt;String&amp;gt;()">
+ArrayList 就是使用泛型的典型案例，如下所示：123List&amp;lt;String&amp;gt; strList = new ArrayList&amp;lt;String&amp;gt;();List&amp;lt;Integer&amp;gt; intList = n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Generic">
 <meta property="og:url" content="http://yoursite.com/1900/01/06/00JAVA/06 Java Generic/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="参考链接：JAVA 泛型、夯实 JAVA 基础 —— 泛型详解
-What
+<meta property="og:description" content="What
 什么是泛型，看表面的意思，泛型就是指广泛的、普通的类型。在 Java 中是指把类型明确的工作推迟到创建对象或调用方法的时候才去明确的特殊的类型。
-ArrayList 就是使用泛型的典型案例，如下所示：123List&amp;lt;String&amp;gt; strList = new ArrayList&amp;lt;String&amp;gt;()">
+ArrayList 就是使用泛型的典型案例，如下所示：123List&amp;lt;String&amp;gt; strList = new ArrayList&amp;lt;String&amp;gt;();List&amp;lt;Integer&amp;gt; intList = n">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-d4522b37fbb98029.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-317cba49d48c6f46?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2020-03-10T10:56:12.000Z">
+<meta property="og:updated_time" content="2020-03-15T07:12:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Generic">
-<meta name="twitter:description" content="参考链接：JAVA 泛型、夯实 JAVA 基础 —— 泛型详解
-What
+<meta name="twitter:description" content="What
 什么是泛型，看表面的意思，泛型就是指广泛的、普通的类型。在 Java 中是指把类型明确的工作推迟到创建对象或调用方法的时候才去明确的特殊的类型。
-ArrayList 就是使用泛型的典型案例，如下所示：123List&amp;lt;String&amp;gt; strList = new ArrayList&amp;lt;String&amp;gt;()">
+ArrayList 就是使用泛型的典型案例，如下所示：123List&amp;lt;String&amp;gt; strList = new ArrayList&amp;lt;String&amp;gt;();List&amp;lt;Integer&amp;gt; intList = n">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-d4522b37fbb98029.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -408,7 +405,6 @@ ArrayList 就是使用泛型的典型案例，如下所示：123List&amp;lt;Stri
       
         <meta name="referrer" content="no-referrer">
 
-<p>参考链接：<a href="https://segmentfault.com/a/1190000019606768" target="_blank" rel="external">JAVA 泛型</a>、<a href="https://blog.csdn.net/harvic880925/article/details/49872903" target="_blank" rel="external">夯实 JAVA 基础 —— 泛型详解</a></p>
 <h3 id="What"><a href="#What" class="headerlink" title="What"></a>What</h3><hr>
 <p>什么是泛型，看表面的意思，泛型就是指广泛的、普通的类型。在 Java 中是<strong>指把类型明确的工作推迟到创建对象或调用方法的时候才去明确的特殊的类型</strong>。</p>
 <p>ArrayList 就是使用泛型的典型案例，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; strList = new ArrayList&lt;String&gt;();</div><div class="line">List&lt;Integer&gt; intList = new ArrayList&lt;Integer&gt;();</div><div class="line">List&lt;Double&gt; doubleList = new ArrayList&lt;Double&gt;();</div></pre></td></tr></table></figure></p>
@@ -469,6 +465,7 @@ ArrayList 就是使用泛型的典型案例，如下所示：123List&amp;lt;Stri
 <p>泛型通配符 &lt; ? extends T &gt; 来接收返回的数据，此写法的泛型集合不能使用 add 方 法， 而 &lt; ? super T &gt; 不能使用 get 方法，做为接口调用赋值时易出错。</p>
 <p>当我们使用 extends 时，我们可以读元素，因为元素都是 T 类或子类，可以放心的用 T 类拿出。当使用 super 时，可以添加元素，因为都是 T 类或父类，那么就可以安全的插入 T 类。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-317cba49d48c6f46?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>参考链接：<a href="https://segmentfault.com/a/1190000019606768" target="_blank" rel="external">JAVA 泛型</a>、<a href="https://blog.csdn.net/harvic880925/article/details/49872903" target="_blank" rel="external">夯实 JAVA 基础 —— 泛型详解</a></p>
 
       
     </div>
@@ -595,7 +592,7 @@ ArrayList 就是使用泛型的典型案例，如下所示：123List&amp;lt;Stri
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">150</span>
+                  <span class="site-state-item-count">140</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -748,7 +745,7 @@ ArrayList 就是使用泛型的典型案例，如下所示：123List&amp;lt;Stri
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共308.1k字</span>
+  <span class="post-count">博客全站共303.8k字</span>
 </div>
 
         
