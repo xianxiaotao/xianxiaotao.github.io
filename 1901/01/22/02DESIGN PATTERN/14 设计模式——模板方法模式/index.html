@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-1d89e09424b40dce.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-0df76e430f09a758.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2274b201d2a52bbf.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2020-03-15T13:31:05.000Z">
+<meta property="og:updated_time" content="2020-03-16T00:34:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="14 设计模式——模板方法模式">
 <meta name="twitter:description" content="返回设计模式博客目录
@@ -434,7 +434,7 @@
 <li>父类中的抽象方法由子类实现，子类执行的结果会影响父类的结果，这导致一种反向的控制结构，它提高了代码阅读的难度。</li>
 </ul>
 <h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><ul>
-<li>多个子类有公有的方法，并且逻辑基本相同是。</li>
+<li>多个子类有公有的方法，并且逻辑基本相同时。</li>
 <li>重要、复杂的算法，可以把核心算法设计为模板方法，周边的相关细节功能由各个子类实现。</li>
 <li>重构时，模板方法模式是一个经常使用的模式，把相同的代码抽取到父类中，然后通过钩子函数约束其行为。</li>
 </ul>
@@ -467,7 +467,7 @@
 <p>在 ANDROID 中，使用模板方法模式的示例有很多。例如：Activity 的生命周期函数、View 的 draw 方法 和 AsyncTask 类。</p>
 <p>AsyncTask 的整个执行过程其实是一个框架，具体的实现都需要子类来完成，而且它执行的算法框架是固定的，调用 execute 后会依次执行 onPreExecute、doInBackground、onPostExecute，当然也可以通过 onProgressUpdate 来更新进度。</p>
 <p>AsyncTask 的 execute 方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">@MainThread</div><div class="line">public final AsyncTask&lt;Params, Progress, Result&gt; execute(Params... params) &#123;</div><div class="line">    return executeOnExecutor(sDefaultExecutor, params);</div><div class="line">&#125;</div><div class="line"></div><div class="line">@MainThread</div><div class="line">public final AsyncTask&lt;Params, Progress, Result&gt; executeOnExecutor(Executor exec,</div><div class="line">                                                                   Params... params) &#123;</div><div class="line">    if (mStatus != Status.PENDING) &#123;</div><div class="line">        switch (mStatus) &#123;</div><div class="line">            case RUNNING:</div><div class="line">                throw new IllegalStateException(&quot;Cannot execute task:&quot;</div><div class="line">                        + &quot; the task is already running.&quot;);</div><div class="line">            case FINISHED:</div><div class="line">                throw new IllegalStateException(&quot;Cannot execute task:&quot;</div><div class="line">                        + &quot; the task has already been executed &quot;</div><div class="line">                        + &quot;(a task can be executed only once)&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    mStatus = Status.RUNNING;</div><div class="line">    onPreExecute();</div><div class="line"></div><div class="line">    mWorker.mParams = params;</div><div class="line">    exec.execute(mFuture);</div><div class="line"></div><div class="line">    return this;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>可以看到 execute 方法是一个 final 方法，它调用了 executeOnExecutor 方法。如果不是 Pending 状态会抛出依次，这也解释了为什么 AsyncTask 只能被执行一次，因为 AsyncTask 的 Running 和 Finished 状态都会抛出异常，因此每次使用 AsyncTask 时都需要重新创建一个对象。</p>
+<p>可以看到 execute 方法是一个 final 方法，它调用了 executeOnExecutor 方法。如果不是 Pending 状态会抛出异常，这也解释了为什么 AsyncTask 只能被执行一次，因为 AsyncTask 的 Running 和 Finished 状态都会抛出异常，因此每次使用 AsyncTask 时都需要重新创建一个对象。</p>
 <p>继续往下看，在 executeOnExecutor 方法中首先执行了 onPreExecute 方法，因为 AsyncTask 的要求是需要在 UI 线程中调用 execute 方法。因此，onPreExecute 方法也在 UI 线程中执行，然后将 params 参数传递给 mWorker 对象的 mParams 字段，并且执行了 exec.execute(mFuture) 方法。而 mWorker 和 mFuture 这两个字段都是在构造函数中初始化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public AsyncTask(@Nullable Looper callbackLooper) &#123;</div><div class="line">    // 构建一个 Worker 对象</div><div class="line">    mWorker = new WorkerRunnable&lt;Params, Result&gt;() &#123;</div><div class="line">        public Result call() throws Exception &#123;</div><div class="line">            mTaskInvoked.set(true);</div><div class="line">            Result result = null;</div><div class="line">            try &#123;</div><div class="line">                Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);</div><div class="line">                // 调用 doInBackground</div><div class="line">                result = doInBackground(mParams);</div><div class="line">                Binder.flushPendingCommands();</div><div class="line">            &#125; catch (Throwable tr) &#123;</div><div class="line">                mCancelled.set(true);</div><div class="line">                throw tr;</div><div class="line">            &#125; finally &#123;</div><div class="line">                postResult(result);</div><div class="line">            &#125;</div><div class="line">            return result;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    mFuture = new FutureTask&lt;Result&gt;(mWorker) &#123;</div><div class="line">        @Override</div><div class="line">        protected void done() &#123;</div><div class="line">            try &#123;</div><div class="line">                postResultIfNotInvoked(get());</div><div class="line">            &#125; </div><div class="line">            // 代码省略</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>mWorker 的 call 方法会调用 doInBackground，并且在 finally 方法里面将 result 通过 postResult 方法传递出去。</p>
 <p>mFuture 包装了 mWorker 对象，在这个 mFuture 对象的 run 函数中又会调用 mWorker 对象的 call 方法，在 call 方法中调用了 doInBackground 函数。因为 mFuture 提交给了线程池来执行，所以使得 doInBackground 执行在非 UI 线程。得到 doInBackground 的结果后，通过 postResult 传递结果给 UI 线程。</p>
@@ -602,7 +602,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">140</span>
+                  <span class="site-state-item-count">143</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -613,7 +613,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -624,7 +624,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -755,7 +755,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共303.8k字</span>
+  <span class="post-count">博客全站共315.5k字</span>
 </div>
 
         

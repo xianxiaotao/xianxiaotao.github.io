@@ -106,9 +106,9 @@
 当然，这样的例子还有很多">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-079023a47c871682.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8298629-0ac6cb97b5dc1c6f.png?imageMogr2/auto-orient/strip|imageView2/2/w/893/format/webp">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8298629-19c2f003d0a0a3fd.png?imageMogr2/auto-orient/strip|imageView2/2/w/608/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-bfdcb127edb1c7ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8915cf69c38d7cc6.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2020-03-15T13:51:44.000Z">
+<meta property="og:updated_time" content="2020-03-15T15:36:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="23 设计模式——桥接模式">
 <meta name="twitter:description" content="返回设计模式博客目录
@@ -456,7 +456,7 @@
 <p>同样地，为了增加咖啡类口味的种类，我们也可以让 CoffeeAdditives 类变化起来，增加更多的子类表示，诸如加奶、加蜂蜜等。</p>
 <h3 id="ANDROID-源码中的实现"><a href="#ANDROID-源码中的实现" class="headerlink" title="ANDROID 源码中的实现"></a>ANDROID 源码中的实现</h3><hr>
 <p>比较典型的是 Window 与 WindowManager 之间的关系，它们就用到了桥接这种模式。它们的关系如下图所示：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8298629-19c2f003d0a0a3fd.png?imageMogr2/auto-orient/strip|imageView2/2/w/608/format/webp" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-bfdcb127edb1c7ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>在 framework 中 Window 和 PhoneWindow 构成窗口的抽象部分，其中 Window 类为该抽象部分的抽象接口，PhoneWindow 为抽象部分具体的实现及扩展。而 WindowManager 则为实现部分的基类，WindowManagerImpl 为实现部分具体的逻辑实现，其使用 WindowManagerGlobal 通过 IWindowManager 接口与 WindowManagerService 进行交互（简称 WMS），并由 WMS 完成具体的窗口管理工作. 如下是 Window 与 WindowManager 桥梁搭建的主要代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public abstract class Window &#123;</div><div class="line">    // 代码省略...</div><div class="line">    public void setWindowManager(WindowManager wm, IBinder appToken, String appName) &#123;</div><div class="line">        setWindowManager(wm, appToken, appName, false);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setWindowManager(WindowManager wm, IBinder appToken, String appName,</div><div class="line">            boolean hardwareAccelerated) &#123;</div><div class="line">        mAppToken = appToken;</div><div class="line">        mAppName = appName;</div><div class="line">        mHardwareAccelerated = hardwareAccelerated</div><div class="line">                || SystemProperties.getBoolean(PROPERTY_HARDWARE_UI, false);</div><div class="line">        if (wm == null) &#123;</div><div class="line">            wm = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">        &#125;</div><div class="line">        mWindowManager = ((WindowManagerImpl)wm).createLocalWindowManager(this);</div><div class="line">    &#125;</div><div class="line">    // 代码省略...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-8915cf69c38d7cc6.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
@@ -499,8 +499,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/1902/01/01/03IMAGE LOADER/01 ImageLoader 雏形/" rel="prev" title="01 ImageLoader 雏形">
-                01 ImageLoader 雏形 <i class="fa fa-chevron-right"></i>
+              <a href="/1902/01/01/03IMAGE LOADER/01 ImageLoader 基础框架/" rel="prev" title="01 ImageLoader 基础框架">
+                01 ImageLoader 基础框架 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -585,7 +585,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">140</span>
+                  <span class="site-state-item-count">143</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -596,7 +596,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -607,7 +607,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -738,7 +738,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共303.8k字</span>
+  <span class="post-count">博客全站共315.5k字</span>
 </div>
 
         
