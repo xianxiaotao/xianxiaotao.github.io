@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-12T18:02:59.000Z</updated>
+  <updated>2020-03-21T07:50:41.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/9999/01/01/0%20ANDROID%20%E5%8D%9A%E5%AE%A2%E7%9B%AE%E5%BD%95/"/>
     <id>http://yoursite.com/9999/01/01/0 ANDROID 博客目录/</id>
     <published>9998-12-31T16:00:00.000Z</published>
-    <updated>2020-03-12T18:02:59.000Z</updated>
+    <updated>2020-03-21T07:50:41.000Z</updated>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><p>ANDROID 博客总目录<br>JAVA、DESIGN PATTERN、ANDROID、CUSTOM VIEW …</p><details><br><summary><strong>2 DESIGN PATTERN</strong></summary><br><a href="http://product.dangdang.com/25102876.html" target="_blank" rel="external">《ANDROID 源码设计模式解析与实战 第2版》</a>，业界第 1 本 ANDROID 源码讲解设计模式的书，本书不仅分析了 ANDROID 源代码的设计模式，更结合实例演示了如何使用这些设计模式。有经济能力的请点击链接购买正版书，支持一下作者。<br><br>概述：<br><a href="https://xianxiaotao.github.io/1901/01/02/02DESIGN%20PATTERN/00%20设计模式概述/" target="_blank" rel="external">00 设计模式概述</a><br><br>原则：<br><a href="https://xianxiaotao.github.io/1901/01/03/02DESIGN%20PATTERN/00.1%20ANDROID%20面向对象的六大原则——单一职责原则/" target="_blank" rel="external">00.1 ANDROID 面向对象的六大原则——单一职责原则</a><br><a href="https://xianxiaotao.github.io/1901/01/04/02DESIGN%20PATTERN/00.2%20ANDROID%20面向对象的六大原则——开闭原则/" target="_blank" rel="external">00.2 ANDROID 面向对象的六大原则——开闭原则</a><br><a href="https://xianxiaotao.github.io/1901/01/05/02DESIGN%20PATTERN/00.3%20ANDROID%20面向对象的六大原则——里氏替换原则/" target="_blank" rel="external">00.3 ANDROID 面向对象的六大原则——里氏替换原则</a><br><a href="https://xianxiaotao.github.io/1901/01/06/02DESIGN%20PATTERN/00.4%20ANDROID%20面向对象的六大原则——依赖倒置原则/" target="_blank" rel="external">00.4 ANDROID 面向对象的六大原则——依赖倒置原则</a><br><a href="https://xianxiaotao.github.io/1901/01/07/02DESIGN%20PATTERN/00.5%20ANDROID%20面向对象的六大原则——接口隔离原则/" target="_blank" rel="external">00.5 ANDROID 面向对象的六大原则——接口隔离原则</a><br><a href="https://xianxiaotao.github.io/1901/01/08/02DESIGN%20PATTERN/00.6%20ANDROID%20面向对象的六大原则——迪米特原则/" target="_blank" rel="external">00.6 ANDROID 面向对象的六大原则——迪米特原则</a><br><br>目录：<br><a href="https://xianxiaotao.github.io/1901/01/09/02DESIGN%20PATTERN/01%20设计模式——单例模式/" target="_blank" rel="external">01 设计模式——单例模式</a><br><a href="https://xianxiaotao.github.io/1901/01/10/02DESIGN%20PATTERN/02%20设计模式——建造者模式/" target="_blank" rel="external">02 设计模式——建造者模式</a><br><a href="https://xianxiaotao.github.io/1901/01/11/02DESIGN%20PATTERN/03%20设计模式——原型模式" target="_blank" rel="external">03 设计模式——原型模式</a><br><a href="https://xianxiaotao.github.io/1901/01/12/02DESIGN%20PATTERN/04%20设计模式——工厂方法模式/" target="_blank" rel="external">04 设计模式——工厂方法模式</a><br><a href="https://xianxiaotao.github.io/1901/01/13/02DESIGN%20PATTERN/05%20设计模式——抽象工厂模式/" target="_blank" rel="external">05 设计模式——抽象工厂模式</a><br><a href="https://xianxiaotao.github.io/1901/01/14/02DESIGN%20PATTERN/06%20设计模式——策略模式/" target="_blank" rel="external">06 设计模式——策略模式</a><br><a href="https://xianxiaotao.github.io/1901/01/15/02DESIGN%20PATTERN/07%20设计模式——状态模式/" target="_blank" rel="external">07 设计模式——状态模式</a><br><a href="https://xianxiaotao.github.io/1901/01/16/02DESIGN%20PATTERN/08%20设计模式——责任链模式/" target="_blank" rel="external">08 设计模式——责任链模式</a><br><a href="https://xianxiaotao.github.io/1901/01/17/02DESIGN%20PATTERN/09%20设计模式——解释器模式/" target="_blank" rel="external">09 设计模式——解释器模式</a><br><a href="https://xianxiaotao.github.io/1901/01/18/02DESIGN%20PATTERN/10%20设计模式——命令模式/" target="_blank" rel="external">10 设计模式——命令模式</a><br><a href="https://xianxiaotao.github.io/1901/01/19/02DESIGN%20PATTERN/11%20设计模式——观察者模式/" target="_blank" rel="external">11 设计模式——观察者模式</a><br><a href="https://xianxiaotao.github.io/1901/01/20/02DESIGN%20PATTERN/12%20设计模式——备忘录模式/" target="_blank" rel="external">12 设计模式——备忘录模式</a><br><a href="https://xianxiaotao.github.io/1901/01/21/02DESIGN%20PATTERN/13%20设计模式——迭代器模式/" target="_blank" rel="external">13 设计模式——迭代器模式</a><br><a href="https://xianxiaotao.github.io/1901/01/22/02DESIGN%20PATTERN/14%20设计模式——模板方法模式/" target="_blank" rel="external">14 设计模式——模板方法模式</a><br><a href="https://xianxiaotao.github.io/1901/01/23/02DESIGN%20PATTERN/15%20设计模式——访问者模式/" target="_blank" rel="external">15 设计模式——访问者模式</a><br><a href="https://xianxiaotao.github.io/1901/01/24/02DESIGN%20PATTERN/16%20设计模式——中介者模式/" target="_blank" rel="external">16 设计模式——中介者模式</a><br><a href="https://xianxiaotao.github.io/1901/01/25/02DESIGN%20PATTERN/17%20设计模式——代理模式/" target="_blank" rel="external">17 设计模式——代理模式</a><br><a href="https://xianxiaotao.github.io/1901/01/26/02DESIGN%20PATTERN/18%20设计模式——组合模式/" target="_blank" rel="external">18 设计模式——组合模式</a><br><a href="https://xianxiaotao.github.io/1901/01/27/02DESIGN%20PATTERN/19%20设计模式——适配器模式/" target="_blank" rel="external">19 设计模式——适配器模式</a><br><a href="https://xianxiaotao.github.io/1901/01/28/02DESIGN%20PATTERN/20%20设计模式——装饰模式/" target="_blank" rel="external">20 设计模式——装饰模式</a><br><a href="https://xianxiaotao.github.io/1901/02/01/02DESIGN%20PATTERN/21%20设计模式——享元模式/" target="_blank" rel="external">21 设计模式——享元模式</a><br><a href="https://xianxiaotao.github.io/1901/02/02/02DESIGN%20PATTERN/22%20设计模式——外观模式/" target="_blank" rel="external">22 设计模式——外观模式</a><br><a href="https://xianxiaotao.github.io/1901/01/02/03/02DESIGN%20PATTERN/23%20设计模式——桥接模式/" target="_blank" rel="external">23 设计模式——桥接模式</a><br></details><details><br><summary><strong>1 JAVA</strong></summary><br>第 1 ~ 15 篇文章详细介绍了 Java 相关技术：文件、流、多线程、泛型、注解、反射和网络编程。夯实 Java 基础后，可大步奔向 ANDROID 端或 WEB 端开发。<br><br><a href="https://xianxiaotao.github.io/1900/01/01/00JAVA/01%20Java%20File/" target="_blank" rel="external">01 Java File</a><br><a href="https://xianxiaotao.github.io/1900/01/02/00JAVA/02%20Java%20FileUtils/" target="_blank" rel="external">02 Java FileUtils</a><br><a href="https://xianxiaotao.github.io/1900/01/03/00JAVA/03%20Java%20IO%20Stream/" target="_blank" rel="external">03 Java IO Stream</a><br><a href="https://xianxiaotao.github.io/1900/01/04/00JAVA/04%20Java%20IOUtils/" target="_blank" rel="external">04 Java IOUtils</a><br><a href="https://xianxiaotao.github.io/1900/01/05/00JAVA/05%20Java%20Thread/" target="_blank" rel="external">05 Java Thread</a><br><a href="https://xianxiaotao.github.io/1900/01/06/00JAVA/06%20Java%20Generic/" target="_blank" rel="external">06 Java Generic</a><br><a href="https://xianxiaotao.github.io/1900/01/07/00JAVA/07%20Java%20Annotation/" target="_blank" rel="external">07 Java Annotation</a><br><a href="https://xianxiaotao.github.io/1900/01/08/00JAVA/08%20Java%20Relfect/" target="_blank" rel="external">08 Java Relfect</a><br><a href="https://xianxiaotao.github.io/1900/01/09/00JAVA/09%20Java%20RelfectUtils/" target="_blank" rel="external">09 Java RelfectUtils</a><br><a href="https://xianxiaotao.github.io/1900/01/10/00JAVA/10%20%E5%8F%8D%E5%B0%84%E4%B8%80%EF%BC%9A%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%91%A8%E8%BE%B9%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">10 反射一：基本类周边信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/11/00JAVA/11%20%E5%8F%8D%E5%B0%84%E4%BA%8C%EF%BC%9A%E6%B3%9B%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%91%A8%E8%BE%B9%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">11 反射二：泛型相关周边信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/12/00JAVA/12%20%E5%8F%8D%E5%B0%84%E4%B8%89%EF%BC%9A%E7%B1%BB%E5%86%85%E9%83%A8%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">12 反射三：类内部信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/13/00JAVA/13%20Java%20Socket/" target="_blank" rel="external">13 Java Socket</a><br><a href="https://xianxiaotao.github.io/1900/01/14/00JAVA/14%20Java%20Socket%20%E8%81%8A%E5%A4%A9%E5%AE%A4%E5%8E%9F%E7%90%86/" target="_blank" rel="external">14 Java Socket 聊天室原理</a><br><a href="https://xianxiaotao.github.io/1900/01/15/00JAVA/15%20Java%20Socket%20%E5%A6%82%E4%BD%95%E6%BC%94%E5%8C%96%E6%88%90%20Tomcat/" target="_blank" rel="external">15 Java Socket 如何演化成 Tomcat</a><br><a href="https://xianxiaotao.github.io/1900/02/01/00JAVA/JAVA%208%20Interface/" target="_blank" rel="external">JAVA 8 Interface</a><br><a href="https://xianxiaotao.github.io/1900/02/02/00JAVA/JAVA%208%20LocalDate/" target="_blank" rel="external">JAVA 8 Lambda</a><br><a href="https://xianxiaotao.github.io/1900/02/03/00JAVA/JAVA%208%20Lambda/" target="_blank" rel="external">JAVA 8 LocalDate</a><br><a href="https://xianxiaotao.github.io/1900/03/01/00JAVA/JAVA%20%7C%20%E4%BD%BF%E7%94%A8%E5%85%8B%E9%9A%86%E9%98%B2%E6%AD%A2%E7%A0%B4%E5%9D%8F%E5%B0%81%E8%A3%85%E6%80%A7/" target="_blank" rel="external">JAVA | 使用克隆防止破坏封装性</a><br><a href="https://xianxiaotao.github.io/1900/03/02/00JAVA/JAVA%20%7C%20equals%20%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" target="_blank" rel="external">JAVA | equals 的正确姿势</a><br><a href="https://xianxiaotao.github.io/1900/03/03/00JAVA/JAVA%20%7C%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%96%AD%E7%82%B9%E4%B8%8B%E8%BD%BD/" target="_blank" rel="external">JAVA | 多线程断点下载</a><br></details>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><p>ANDROID 博客总目录<br>JAVA、DESIGN PATTERN、ANDROID、CUSTOM VIEW …</p><details><br><summary><strong>2 DESIGN PATTERN</strong></summary><br><a href="http://product.dangdang.com/25102876.html" target="_blank" rel="external">《ANDROID 源码设计模式解析与实战 第2版》</a>，业界第 1 本 ANDROID 源码讲解设计模式的书，本书不仅分析了 ANDROID 源代码的设计模式，更结合实例演示了如何使用这些设计模式。有经济能力的请点击链接购买正版书，支持一下作者。<br><br>概述：<br><a href="https://xianxiaotao.github.io/1901/01/02/02%20DESIGN%20PATTERN/00%20设计模式概述/" target="_blank" rel="external">00 设计模式概述</a><br><br>原则：<br><a href="https://xianxiaotao.github.io/1901/01/03/02%20DESIGN%20PATTERN/00.1%20ANDROID%20面向对象的六大原则——单一职责原则/" target="_blank" rel="external">00.1 ANDROID 面向对象的六大原则——单一职责原则</a><br><a href="https://xianxiaotao.github.io/1901/01/04/02%20DESIGN%20PATTERN/00.2%20ANDROID%20面向对象的六大原则——开闭原则/" target="_blank" rel="external">00.2 ANDROID 面向对象的六大原则——开闭原则</a><br><a href="https://xianxiaotao.github.io/1901/01/05/02%20DESIGN%20PATTERN/00.3%20ANDROID%20面向对象的六大原则——里氏替换原则/" target="_blank" rel="external">00.3 ANDROID 面向对象的六大原则——里氏替换原则</a><br><a href="https://xianxiaotao.github.io/1901/01/06/02%20DESIGN%20PATTERN/00.4%20ANDROID%20面向对象的六大原则——依赖倒置原则/" target="_blank" rel="external">00.4 ANDROID 面向对象的六大原则——依赖倒置原则</a><br><a href="https://xianxiaotao.github.io/1901/01/07/02%20DESIGN%20PATTERN/00.5%20ANDROID%20面向对象的六大原则——接口隔离原则/" target="_blank" rel="external">00.5 ANDROID 面向对象的六大原则——接口隔离原则</a><br><a href="https://xianxiaotao.github.io/1901/01/08/02%20DESIGN%20PATTERN/00.6%20ANDROID%20面向对象的六大原则——迪米特原则/" target="_blank" rel="external">00.6 ANDROID 面向对象的六大原则——迪米特原则</a><br><br>目录：<br><a href="https://xianxiaotao.github.io/1901/01/09/02%20DESIGN%20PATTERN/01%20设计模式——单例模式/" target="_blank" rel="external">01 设计模式——单例模式</a><br><a href="https://xianxiaotao.github.io/1901/01/10/02%20DESIGN%20PATTERN/02%20设计模式——建造者模式/" target="_blank" rel="external">02 设计模式——建造者模式</a><br><a href="https://xianxiaotao.github.io/1901/01/11/02%20DESIGN%20PATTERN/03%20设计模式——原型模式" target="_blank" rel="external">03 设计模式——原型模式</a><br><a href="https://xianxiaotao.github.io/1901/01/12/02%20DESIGN%20PATTERN/04%20设计模式——工厂方法模式/" target="_blank" rel="external">04 设计模式——工厂方法模式</a><br><a href="https://xianxiaotao.github.io/1901/01/13/02%20DESIGN%20PATTERN/05%20设计模式——抽象工厂模式/" target="_blank" rel="external">05 设计模式——抽象工厂模式</a><br><a href="https://xianxiaotao.github.io/1901/01/14/02%20DESIGN%20PATTERN/06%20设计模式——策略模式/" target="_blank" rel="external">06 设计模式——策略模式</a><br><a href="https://xianxiaotao.github.io/1901/01/15/02%20DESIGN%20PATTERN/07%20设计模式——状态模式/" target="_blank" rel="external">07 设计模式——状态模式</a><br><a href="https://xianxiaotao.github.io/1901/01/16/02%20DESIGN%20PATTERN/08%20设计模式——责任链模式/" target="_blank" rel="external">08 设计模式——责任链模式</a><br><a href="https://xianxiaotao.github.io/1901/01/17/02%20DESIGN%20PATTERN/09%20设计模式——解释器模式/" target="_blank" rel="external">09 设计模式——解释器模式</a><br><a href="https://xianxiaotao.github.io/1901/01/18/02%20DESIGN%20PATTERN/10%20设计模式——命令模式/" target="_blank" rel="external">10 设计模式——命令模式</a><br><a href="https://xianxiaotao.github.io/1901/01/19/02%20DESIGN%20PATTERN/11%20设计模式——观察者模式/" target="_blank" rel="external">11 设计模式——观察者模式</a><br><a href="https://xianxiaotao.github.io/1901/01/20/02%20DESIGN%20PATTERN/12%20设计模式——备忘录模式/" target="_blank" rel="external">12 设计模式——备忘录模式</a><br><a href="https://xianxiaotao.github.io/1901/01/21/02%20DESIGN%20PATTERN/13%20设计模式——迭代器模式/" target="_blank" rel="external">13 设计模式——迭代器模式</a><br><a href="https://xianxiaotao.github.io/1901/01/22/02%20DESIGN%20PATTERN/14%20设计模式——模板方法模式/" target="_blank" rel="external">14 设计模式——模板方法模式</a><br><a href="https://xianxiaotao.github.io/1901/01/23/02%20DESIGN%20PATTERN/15%20设计模式——访问者模式/" target="_blank" rel="external">15 设计模式——访问者模式</a><br><a href="https://xianxiaotao.github.io/1901/01/24/02%20DESIGN%20PATTERN/16%20设计模式——中介者模式/" target="_blank" rel="external">16 设计模式——中介者模式</a><br><a href="https://xianxiaotao.github.io/1901/01/25/02%20DESIGN%20PATTERN/17%20设计模式——代理模式/" target="_blank" rel="external">17 设计模式——代理模式</a><br><a href="https://xianxiaotao.github.io/1901/01/26/02%20DESIGN%20PATTERN/18%20设计模式——组合模式/" target="_blank" rel="external">18 设计模式——组合模式</a><br><a href="https://xianxiaotao.github.io/1901/01/27/02%20DESIGN%20PATTERN/19%20设计模式——适配器模式/" target="_blank" rel="external">19 设计模式——适配器模式</a><br><a href="https://xianxiaotao.github.io/1901/01/28/02%20DESIGN%20PATTERN/20%20设计模式——装饰模式/" target="_blank" rel="external">20 设计模式——装饰模式</a><br><a href="https://xianxiaotao.github.io/1901/02/01/02%20DESIGN%20PATTERN/21%20设计模式——享元模式/" target="_blank" rel="external">21 设计模式——享元模式</a><br><a href="https://xianxiaotao.github.io/1901/02/02/02%20DESIGN%20PATTERN/22%20设计模式——外观模式/" target="_blank" rel="external">22 设计模式——外观模式</a><br><a href="https://xianxiaotao.github.io/1901/01/02/03/02%20DESIGN%20PATTERN/23%20设计模式——桥接模式/" target="_blank" rel="external">23 设计模式——桥接模式</a><br><br>应用：<br><a href="https://xianxiaotao.github.io/1901/03/01/02%20DESIGN%20PATTERN/31%20设计模式实际应用一/" target="_blank" rel="external">31 设计模式实际应用一</a><br></details><details><br><summary><strong>1 JAVA</strong></summary><br>第 1 ~ 15 篇文章详细介绍了 Java 相关技术：文件、流、多线程、泛型、注解、反射和网络编程。夯实 Java 基础后，可大步奔向 ANDROID 端或 WEB 端开发。<br><br><a href="https://xianxiaotao.github.io/1900/01/01/01%20JAVA/01%20Java%20File/" target="_blank" rel="external">01 Java File</a><br><a href="https://xianxiaotao.github.io/1900/01/02/01%20JAVA/02%20Java%20FileUtils/" target="_blank" rel="external">02 Java FileUtils</a><br><a href="https://xianxiaotao.github.io/1900/01/03/01%20JAVA/03%20Java%20IO%20Stream/" target="_blank" rel="external">03 Java IO Stream</a><br><a href="https://xianxiaotao.github.io/1900/01/04/01%20JAVA/04%20Java%20IOUtils/" target="_blank" rel="external">04 Java IOUtils</a><br><a href="https://xianxiaotao.github.io/1900/01/05/01%20JAVA/05%20Java%20Thread/" target="_blank" rel="external">05 Java Thread</a><br><a href="https://xianxiaotao.github.io/1900/01/06/01%20JAVA/06%20Java%20Generic/" target="_blank" rel="external">06 Java Generic</a><br><a href="https://xianxiaotao.github.io/1900/01/07/01%20JAVA/07%20Java%20Annotation/" target="_blank" rel="external">07 Java Annotation</a><br><a href="https://xianxiaotao.github.io/1900/01/08/01%20JAVA/08%20Java%20Relfect/" target="_blank" rel="external">08 Java Relfect</a><br><a href="https://xianxiaotao.github.io/1900/01/09/01%20JAVA/09%20Java%20RelfectUtils/" target="_blank" rel="external">09 Java RelfectUtils</a><br><a href="https://xianxiaotao.github.io/1900/01/10/01%20JAVA/10%20%E5%8F%8D%E5%B0%84%E4%B8%80%EF%BC%9A%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%91%A8%E8%BE%B9%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">10 反射一：基本类周边信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/11/01%20JAVA/11%20%E5%8F%8D%E5%B0%84%E4%BA%8C%EF%BC%9A%E6%B3%9B%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%91%A8%E8%BE%B9%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">11 反射二：泛型相关周边信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/12/01%20JAVA/12%20%E5%8F%8D%E5%B0%84%E4%B8%89%EF%BC%9A%E7%B1%BB%E5%86%85%E9%83%A8%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">12 反射三：类内部信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/13/01%20JAVA/13%20Java%20Socket/" target="_blank" rel="external">13 Java Socket</a><br><a href="https://xianxiaotao.github.io/1900/01/14/01%20JAVA/14%20Java%20Socket%20%E8%81%8A%E5%A4%A9%E5%AE%A4%E5%8E%9F%E7%90%86/" target="_blank" rel="external">14 Java Socket 聊天室原理</a><br><a href="https://xianxiaotao.github.io/1900/01/15/01%20JAVA/15%20Java%20Socket%20%E5%A6%82%E4%BD%95%E6%BC%94%E5%8C%96%E6%88%90%20Tomcat/" target="_blank" rel="external">15 Java Socket 如何演化成 Tomcat</a><br><a href="https://xianxiaotao.github.io/1900/02/01/01%20JAVA/JAVA%208%20Interface/" target="_blank" rel="external">JAVA 8 Interface</a><br><a href="https://xianxiaotao.github.io/1900/02/02/01%20JAVA/JAVA%208%20LocalDate/" target="_blank" rel="external">JAVA 8 Lambda</a><br><a href="https://xianxiaotao.github.io/1900/02/03/01%20JAVA/JAVA%208%20Lambda/" target="_blank" rel="external">JAVA 8 LocalDate</a><br><a href="https://xianxiaotao.github.io/1900/03/01/01%20JAVA/JAVA%20%7C%20%E4%BD%BF%E7%94%A8%E5%85%8B%E9%9A%86%E9%98%B2%E6%AD%A2%E7%A0%B4%E5%9D%8F%E5%B0%81%E8%A3%85%E6%80%A7/" target="_blank" rel="external">JAVA | 使用克隆防止破坏封装性</a><br><a href="https://xianxiaotao.github.io/1900/03/02/01%20JAVA/JAVA%20%7C%20equals%20%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" target="_blank" rel="external">JAVA | equals 的正确姿势</a><br><a href="https://xianxiaotao.github.io/1900/03/03/01%20JAVA/JAVA%20%7C%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%96%AD%E7%82%B9%E4%B8%8B%E8%BD%BD/" target="_blank" rel="external">JAVA | 多线程断点下载</a><br></details>]]></content>
     
     <summary type="html">
     
@@ -45,8 +45,8 @@
   
   <entry>
     <title>精通 Android 自定义 View 目录</title>
-    <link href="http://yoursite.com/2200/01/01/Custom%20View/00%20Android%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E7%9B%AE%E5%BD%95/"/>
-    <id>http://yoursite.com/2200/01/01/Custom View/00 Android 自定义控件 目录/</id>
+    <link href="http://yoursite.com/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E7%9B%AE%E5%BD%95/"/>
+    <id>http://yoursite.com/2200/01/01/05 CUSTOM VIEW/00 Android 自定义控件 目录/</id>
     <published>2199-12-31T16:00:00.000Z</published>
     <updated>2019-11-05T00:49:35.000Z</updated>
     
@@ -72,8 +72,8 @@
   
   <entry>
     <title>X001 圆角圆形 ImageView</title>
-    <link href="http://yoursite.com/2019/09/01/Custom%20View/X001%20%E5%9C%86%E8%A7%92%E5%9C%86%E5%BD%A2%20ImageView/"/>
-    <id>http://yoursite.com/2019/09/01/Custom View/X001 圆角圆形 ImageView/</id>
+    <link href="http://yoursite.com/2019/09/01/05%20CUSTOM%20VIEW/X001%20%E5%9C%86%E8%A7%92%E5%9C%86%E5%BD%A2%20ImageView/"/>
+    <id>http://yoursite.com/2019/09/01/05 CUSTOM VIEW/X001 圆角圆形 ImageView/</id>
     <published>2019-08-31T16:00:00.000Z</published>
     <updated>2020-01-24T05:02:47.000Z</updated>
     
@@ -100,8 +100,8 @@
   
   <entry>
     <title>T007 自定义控件 图文弹跳加载中效果</title>
-    <link href="http://yoursite.com/2019/07/20/Custom%20View/T007%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E5%9B%BE%E6%96%87%E5%BC%B9%E8%B7%B3%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%95%88%E6%9E%9C/"/>
-    <id>http://yoursite.com/2019/07/20/Custom View/T007 自定义控件 图文弹跳加载中效果/</id>
+    <link href="http://yoursite.com/2019/07/20/05%20CUSTOM%20VIEW/T007%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E5%9B%BE%E6%96%87%E5%BC%B9%E8%B7%B3%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%95%88%E6%9E%9C/"/>
+    <id>http://yoursite.com/2019/07/20/05 CUSTOM VIEW/T007 自定义控件 图文弹跳加载中效果/</id>
     <published>2019-07-19T16:00:00.000Z</published>
     <updated>2020-01-26T10:54:47.000Z</updated>
     
@@ -128,8 +128,8 @@
   
   <entry>
     <title>T006 自定义控件 扫描雷达动画</title>
-    <link href="http://yoursite.com/2019/07/19/Custom%20View/T006%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E6%89%AB%E6%8F%8F%E9%9B%B7%E8%BE%BE%E5%8A%A8%E7%94%BB/"/>
-    <id>http://yoursite.com/2019/07/19/Custom View/T006 自定义控件 扫描雷达动画/</id>
+    <link href="http://yoursite.com/2019/07/19/05%20CUSTOM%20VIEW/T006%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E6%89%AB%E6%8F%8F%E9%9B%B7%E8%BE%BE%E5%8A%A8%E7%94%BB/"/>
+    <id>http://yoursite.com/2019/07/19/05 CUSTOM VIEW/T006 自定义控件 扫描雷达动画/</id>
     <published>2019-07-18T16:00:00.000Z</published>
     <updated>2020-01-24T14:37:54.000Z</updated>
     
@@ -156,8 +156,8 @@
   
   <entry>
     <title>T005 自定义控件 可配置加载 ImageView</title>
-    <link href="http://yoursite.com/2019/07/18/Custom%20View/T005%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E5%8F%AF%E9%85%8D%E7%BD%AE%E5%8A%A0%E8%BD%BD%20ImageView/"/>
-    <id>http://yoursite.com/2019/07/18/Custom View/T005 自定义控件 可配置加载 ImageView/</id>
+    <link href="http://yoursite.com/2019/07/18/05%20CUSTOM%20VIEW/T005%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E5%8F%AF%E9%85%8D%E7%BD%AE%E5%8A%A0%E8%BD%BD%20ImageView/"/>
+    <id>http://yoursite.com/2019/07/18/05 CUSTOM VIEW/T005 自定义控件 可配置加载 ImageView/</id>
     <published>2019-07-17T16:00:00.000Z</published>
     <updated>2020-01-24T11:38:50.000Z</updated>
     
@@ -184,8 +184,8 @@
   
   <entry>
     <title>T004 自定义控件 由远及近 ImageView</title>
-    <link href="http://yoursite.com/2019/07/17/Custom%20View/T004%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E7%94%B1%E8%BF%9C%E5%8F%8A%E8%BF%91%20ImageView/"/>
-    <id>http://yoursite.com/2019/07/17/Custom View/T004 自定义控件 由远及近 ImageView/</id>
+    <link href="http://yoursite.com/2019/07/17/05%20CUSTOM%20VIEW/T004%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E7%94%B1%E8%BF%9C%E5%8F%8A%E8%BF%91%20ImageView/"/>
+    <id>http://yoursite.com/2019/07/17/05 CUSTOM VIEW/T004 自定义控件 由远及近 ImageView/</id>
     <published>2019-07-16T16:00:00.000Z</published>
     <updated>2020-01-24T04:42:13.000Z</updated>
     
@@ -212,8 +212,8 @@
   
   <entry>
     <title>T003 自定义控件 裁剪动画</title>
-    <link href="http://yoursite.com/2019/07/16/Custom%20View/T003%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E8%A3%81%E5%89%AA%E5%8A%A8%E7%94%BB/"/>
-    <id>http://yoursite.com/2019/07/16/Custom View/T003 自定义控件 裁剪动画/</id>
+    <link href="http://yoursite.com/2019/07/16/05%20CUSTOM%20VIEW/T003%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E8%A3%81%E5%89%AA%E5%8A%A8%E7%94%BB/"/>
+    <id>http://yoursite.com/2019/07/16/05 CUSTOM VIEW/T003 自定义控件 裁剪动画/</id>
     <published>2019-07-15T16:00:00.000Z</published>
     <updated>2020-01-24T04:42:51.000Z</updated>
     
@@ -240,8 +240,8 @@
   
   <entry>
     <title>T002 自定义控件 裁剪圆形和圆角头像</title>
-    <link href="http://yoursite.com/2019/07/15/Custom%20View/T002%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E8%A3%81%E5%89%AA%E5%9C%86%E5%BD%A2%E5%92%8C%E5%9C%86%E8%A7%92%E5%A4%B4%E5%83%8F/"/>
-    <id>http://yoursite.com/2019/07/15/Custom View/T002 自定义控件 裁剪圆形和圆角头像/</id>
+    <link href="http://yoursite.com/2019/07/15/05%20CUSTOM%20VIEW/T002%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E8%A3%81%E5%89%AA%E5%9C%86%E5%BD%A2%E5%92%8C%E5%9C%86%E8%A7%92%E5%A4%B4%E5%83%8F/"/>
+    <id>http://yoursite.com/2019/07/15/05 CUSTOM VIEW/T002 自定义控件 裁剪圆形和圆角头像/</id>
     <published>2019-07-14T16:00:00.000Z</published>
     <updated>2020-01-24T04:35:52.000Z</updated>
     
@@ -268,8 +268,8 @@
   
   <entry>
     <title>T001 自定义控件 蜘蛛网状图</title>
-    <link href="http://yoursite.com/2019/07/14/Custom%20View/T001%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E8%9C%98%E8%9B%9B%E7%BD%91%E7%8A%B6%E5%9B%BE/"/>
-    <id>http://yoursite.com/2019/07/14/Custom View/T001 自定义控件 蜘蛛网状图/</id>
+    <link href="http://yoursite.com/2019/07/14/05%20CUSTOM%20VIEW/T001%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%20%E8%9C%98%E8%9B%9B%E7%BD%91%E7%8A%B6%E5%9B%BE/"/>
+    <id>http://yoursite.com/2019/07/14/05 CUSTOM VIEW/T001 自定义控件 蜘蛛网状图/</id>
     <published>2019-07-13T16:00:00.000Z</published>
     <updated>2020-01-16T09:01:32.000Z</updated>
     
@@ -296,8 +296,8 @@
   
   <entry>
     <title>13.2 精通自定义 View 之控件高级属性——Window 与 WindowManager</title>
-    <link href="http://yoursite.com/2019/07/13/Custom%20View/13.2%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%E6%8E%A7%E4%BB%B6%E9%AB%98%E7%BA%A7%E5%B1%9E%E6%80%A7%E2%80%94%E2%80%94Window%20%E4%B8%8E%20WindowManager/"/>
-    <id>http://yoursite.com/2019/07/13/Custom View/13.2 精通自定义 View 之控件高级属性——Window 与 WindowManager/</id>
+    <link href="http://yoursite.com/2019/07/13/05%20CUSTOM%20VIEW/13.2%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%E6%8E%A7%E4%BB%B6%E9%AB%98%E7%BA%A7%E5%B1%9E%E6%80%A7%E2%80%94%E2%80%94Window%20%E4%B8%8E%20WindowManager/"/>
+    <id>http://yoursite.com/2019/07/13/05 CUSTOM VIEW/13.2 精通自定义 View 之控件高级属性——Window 与 WindowManager/</id>
     <published>2019-07-12T18:00:00.000Z</published>
     <updated>2019-10-23T06:33:54.000Z</updated>
     
@@ -324,8 +324,8 @@
   
   <entry>
     <title>13.1 精通自定义 View 之控件高级属性——GestureDetector 手势检测</title>
-    <link href="http://yoursite.com/2019/07/13/Custom%20View/13.1%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%E6%8E%A7%E4%BB%B6%E9%AB%98%E7%BA%A7%E5%B1%9E%E6%80%A7%E2%80%94%E2%80%94GestureDetector%20%E6%89%8B%E5%8A%BF%E6%A3%80%E6%B5%8B/"/>
-    <id>http://yoursite.com/2019/07/13/Custom View/13.1 精通自定义 View 之控件高级属性——GestureDetector 手势检测/</id>
+    <link href="http://yoursite.com/2019/07/13/05%20CUSTOM%20VIEW/13.1%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%E6%8E%A7%E4%BB%B6%E9%AB%98%E7%BA%A7%E5%B1%9E%E6%80%A7%E2%80%94%E2%80%94GestureDetector%20%E6%89%8B%E5%8A%BF%E6%A3%80%E6%B5%8B/"/>
+    <id>http://yoursite.com/2019/07/13/05 CUSTOM VIEW/13.1 精通自定义 View 之控件高级属性——GestureDetector 手势检测/</id>
     <published>2019-07-12T17:00:00.000Z</published>
     <updated>2019-10-23T04:00:49.000Z</updated>
     
@@ -353,8 +353,8 @@
   
   <entry>
     <title>12.3 精通自定义 View 之封装控件——实现 FlowLayout 容器</title>
-    <link href="http://yoursite.com/2019/07/12/Custom%20View/12.3%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%E5%B0%81%E8%A3%85%E6%8E%A7%E4%BB%B6%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%20FlowLayout%20%E5%AE%B9%E5%99%A8/"/>
-    <id>http://yoursite.com/2019/07/12/Custom View/12.3 精通自定义 View 之封装控件——实现 FlowLayout 容器/</id>
+    <link href="http://yoursite.com/2019/07/12/05%20CUSTOM%20VIEW/12.3%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%E5%B0%81%E8%A3%85%E6%8E%A7%E4%BB%B6%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%20FlowLayout%20%E5%AE%B9%E5%99%A8/"/>
+    <id>http://yoursite.com/2019/07/12/05 CUSTOM VIEW/12.3 精通自定义 View 之封装控件——实现 FlowLayout 容器/</id>
     <published>2019-07-11T19:00:00.000Z</published>
     <updated>2019-11-01T06:52:29.000Z</updated>
     
@@ -381,8 +381,8 @@
   
   <entry>
     <title>12.2 精通自定义 View 之封装控件——测量和布局</title>
-    <link href="http://yoursite.com/2019/07/12/Custom%20View/12.2%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%E5%B0%81%E8%A3%85%E6%8E%A7%E4%BB%B6%E2%80%94%E2%80%94%E6%B5%8B%E9%87%8F%E5%92%8C%E5%B8%83%E5%B1%80/"/>
-    <id>http://yoursite.com/2019/07/12/Custom View/12.2 精通自定义 View 之封装控件——测量和布局/</id>
+    <link href="http://yoursite.com/2019/07/12/05%20CUSTOM%20VIEW/12.2%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%E5%B0%81%E8%A3%85%E6%8E%A7%E4%BB%B6%E2%80%94%E2%80%94%E6%B5%8B%E9%87%8F%E5%92%8C%E5%B8%83%E5%B1%80/"/>
+    <id>http://yoursite.com/2019/07/12/05 CUSTOM VIEW/12.2 精通自定义 View 之封装控件——测量和布局/</id>
     <published>2019-07-11T18:00:00.000Z</published>
     <updated>2019-11-01T08:40:12.000Z</updated>
     
@@ -410,8 +410,8 @@
   
   <entry>
     <title>12.1 精通自定义 View 之封装控件——自定义属性与自定义 Style</title>
-    <link href="http://yoursite.com/2019/07/12/Custom%20View/12.1%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%E5%B0%81%E8%A3%85%E6%8E%A7%E4%BB%B6%E2%80%94%E2%80%94%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%20Style/"/>
-    <id>http://yoursite.com/2019/07/12/Custom View/12.1 精通自定义 View 之封装控件——自定义属性与自定义 Style/</id>
+    <link href="http://yoursite.com/2019/07/12/05%20CUSTOM%20VIEW/12.1%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%E5%B0%81%E8%A3%85%E6%8E%A7%E4%BB%B6%E2%80%94%E2%80%94%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%20Style/"/>
+    <id>http://yoursite.com/2019/07/12/05 CUSTOM VIEW/12.1 精通自定义 View 之封装控件——自定义属性与自定义 Style/</id>
     <published>2019-07-11T17:00:00.000Z</published>
     <updated>2019-11-01T03:42:45.000Z</updated>
     
@@ -439,8 +439,8 @@
   
   <entry>
     <title>11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换</title>
-    <link href="http://yoursite.com/2019/07/11/Custom%20View/11.2%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%20Matrix%20%E4%B8%8E%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2%E2%80%94%E2%80%94ColorMatrix%20%E8%89%B2%E5%BD%A9%E5%8F%98%E6%8D%A2/"/>
-    <id>http://yoursite.com/2019/07/11/Custom View/11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换/</id>
+    <link href="http://yoursite.com/2019/07/11/05%20CUSTOM%20VIEW/11.2%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%20Matrix%20%E4%B8%8E%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2%E2%80%94%E2%80%94ColorMatrix%20%E8%89%B2%E5%BD%A9%E5%8F%98%E6%8D%A2/"/>
+    <id>http://yoursite.com/2019/07/11/05 CUSTOM VIEW/11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换/</id>
     <published>2019-07-10T18:00:00.000Z</published>
     <updated>2019-10-22T08:20:35.000Z</updated>
     
@@ -468,8 +468,8 @@
   
   <entry>
     <title>11.1 精通自定义 View 之 Matrix 与坐标变换——矩阵运算</title>
-    <link href="http://yoursite.com/2019/07/11/Custom%20View/11.1%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%20Matrix%20%E4%B8%8E%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2%E2%80%94%E2%80%94%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/"/>
-    <id>http://yoursite.com/2019/07/11/Custom View/11.1 精通自定义 View 之 Matrix 与坐标变换——矩阵运算/</id>
+    <link href="http://yoursite.com/2019/07/11/05%20CUSTOM%20VIEW/11.1%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%20Matrix%20%E4%B8%8E%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2%E2%80%94%E2%80%94%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/"/>
+    <id>http://yoursite.com/2019/07/11/05 CUSTOM VIEW/11.1 精通自定义 View 之 Matrix 与坐标变换——矩阵运算/</id>
     <published>2019-07-10T17:00:00.000Z</published>
     <updated>2019-10-22T08:19:31.000Z</updated>
     
@@ -497,8 +497,8 @@
   
   <entry>
     <title>10.3 精通自定义 View 之 Android 画布——SurfaceView</title>
-    <link href="http://yoursite.com/2019/07/10/Custom%20View/10.3%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%20Android%20%E7%94%BB%E5%B8%83%E2%80%94%E2%80%94SurfaceView/"/>
-    <id>http://yoursite.com/2019/07/10/Custom View/10.3 精通自定义 View 之 Android 画布——SurfaceView/</id>
+    <link href="http://yoursite.com/2019/07/10/05%20CUSTOM%20VIEW/10.3%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%20Android%20%E7%94%BB%E5%B8%83%E2%80%94%E2%80%94SurfaceView/"/>
+    <id>http://yoursite.com/2019/07/10/05 CUSTOM VIEW/10.3 精通自定义 View 之 Android 画布——SurfaceView/</id>
     <published>2019-07-09T19:00:00.000Z</published>
     <updated>2019-10-31T08:04:37.000Z</updated>
     
@@ -526,8 +526,8 @@
   
   <entry>
     <title>10.2 精通自定义 View 之 Android 画布——Bitmap</title>
-    <link href="http://yoursite.com/2019/07/10/Custom%20View/10.2%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%20Android%20%E7%94%BB%E5%B8%83%E2%80%94%E2%80%94Bitmap/"/>
-    <id>http://yoursite.com/2019/07/10/Custom View/10.2 精通自定义 View 之 Android 画布——Bitmap/</id>
+    <link href="http://yoursite.com/2019/07/10/05%20CUSTOM%20VIEW/10.2%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%20Android%20%E7%94%BB%E5%B8%83%E2%80%94%E2%80%94Bitmap/"/>
+    <id>http://yoursite.com/2019/07/10/05 CUSTOM VIEW/10.2 精通自定义 View 之 Android 画布——Bitmap/</id>
     <published>2019-07-09T18:00:00.000Z</published>
     <updated>2019-10-29T15:38:57.000Z</updated>
     
@@ -555,8 +555,8 @@
   
   <entry>
     <title>10.1 精通自定义 View 之 Android 画布——ShapeDrawable</title>
-    <link href="http://yoursite.com/2019/07/10/Custom%20View/10.1%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%20Android%20%E7%94%BB%E5%B8%83%E2%80%94%E2%80%94ShapeDrawable/"/>
-    <id>http://yoursite.com/2019/07/10/Custom View/10.1 精通自定义 View 之 Android 画布——ShapeDrawable/</id>
+    <link href="http://yoursite.com/2019/07/10/05%20CUSTOM%20VIEW/10.1%20%E7%B2%BE%E9%80%9A%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E4%B9%8B%20Android%20%E7%94%BB%E5%B8%83%E2%80%94%E2%80%94ShapeDrawable/"/>
+    <id>http://yoursite.com/2019/07/10/05 CUSTOM VIEW/10.1 精通自定义 View 之 Android 画布——ShapeDrawable/</id>
     <published>2019-07-09T17:00:00.000Z</published>
     <updated>2019-11-05T00:48:04.000Z</updated>
     

@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="DESIGN PATTERN," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="返回设计模式博客目录
+
+介绍
+访问者（Visitor）模式：封装某些作用于某种数据结构中各元素的操作，它可以在不改变数据结构的前提下定义作用于这些元素的新的操作。
+访问者模式是一种将数据操作与数据结构分离的设计模式，它是 23 种设计模式中最复杂的一个，但是它的使用频率并不高，正如《设计模式》的作者 GOF 对访问者模式的描述：大多数情况下，并不需要使用访问者模式，但是当你一旦需要使用它时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="15 设计模式——访问者模式">
+<meta property="og:url" content="http://yoursite.com/1901/01/23/02 DESIGN PATTERN/15 设计模式——访问者模式/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="返回设计模式博客目录
+
+介绍
+访问者（Visitor）模式：封装某些作用于某种数据结构中各元素的操作，它可以在不改变数据结构的前提下定义作用于这些元素的新的操作。
+访问者模式是一种将数据操作与数据结构分离的设计模式，它是 23 种设计模式中最复杂的一个，但是它的使用频率并不高，正如《设计模式》的作者 GOF 对访问者模式的描述：大多数情况下，并不需要使用访问者模式，但是当你一旦需要使用它时">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b81ac1f5833e5fef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-fbc56ff0dc65be02.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-62fa194db5869cc7.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-21T08:01:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="15 设计模式——访问者模式">
+<meta name="twitter:description" content="返回设计模式博客目录
+
+介绍
+访问者（Visitor）模式：封装某些作用于某种数据结构中各元素的操作，它可以在不改变数据结构的前提下定义作用于这些元素的新的操作。
+访问者模式是一种将数据操作与数据结构分离的设计模式，它是 23 种设计模式中最复杂的一个，但是它的使用频率并不高，正如《设计模式》的作者 GOF 对访问者模式的描述：大多数情况下，并不需要使用访问者模式，但是当你一旦需要使用它时">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-b81ac1f5833e5fef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/1901/01/23/02 DESIGN PATTERN/15 设计模式——访问者模式/"/>
+
+
+
+
+
+  <title>15 设计模式——访问者模式 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1901/01/23/02 DESIGN PATTERN/15 设计模式——访问者模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">15 设计模式——访问者模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="1901-01-23T00:00:00+08:00">
+                1901-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DESIGN-PATTERN/" itemprop="url" rel="index">
+                    <span itemprop="name">DESIGN PATTERN</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/1901/01/23/02 DESIGN PATTERN/15 设计模式——访问者模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/1901/01/23/02 DESIGN PATTERN/15 设计模式——访问者模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-b81ac1f5833e5fef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/1901/01/01/02%20DESIGN%20PATTERN/0%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8D%9A%E5%AE%A2%E7%9B%AE%E5%BD%95/" target="_blank" rel="external">返回设计模式博客目录</a></p>
+</blockquote>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><hr>
+<p>访问者（Visitor）模式：<strong>封装某些作用于某种数据结构中各元素的操作，它可以在不改变数据结构的前提下定义作用于这些元素的新的操作</strong>。</p>
+<p>访问者模式是一种将数据操作与数据结构分离的设计模式，它是 23 种设计模式中最复杂的一个，但是它的使用频率并不高，正如《设计模式》的作者 GOF 对访问者模式的描述：大多数情况下，并不需要使用访问者模式，但是当你一旦需要使用它时，那你就是真的需要它了。</p>
+<p>访问者模式的基本想法是，软件系统中拥有一个由许多对象构成的、比较稳定的对象结构，这些对象的类都拥有一个 accept 方法用来接受访问者对象的访问。访问者是一个接口，它拥有一个 visit 方法，这个方法对访问到的对象结构中不同类型的元素做出不同的处理。在对象结构的每一次访问过程中，我们遍历整个对象结构，对每一个元素都实施 accept 方法，在每一个元素的 accept 方法中会调用访问者的 visit 方法，从而使访问者得以处理对象结构的每一个元素，我们可以针对对象结构设计不同的访问者类来完成不同的操作，达到区别对待的效果。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>各角色职责分离，符合单一职责原则。</li>
+<li>具有优秀的扩展性。</li>
+<li>使得数据结构和作用于结构上的操作解耦，使得操作集合可以独立变化。</li>
+<li>灵活性。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>具体元素对访问者公布细节，违反了迪米特原则。</li>
+<li>违反了依赖倒置原则，为了达到“区别对待”而依赖了具体类，没有依赖抽象。</li>
+</ul>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><ul>
+<li>对象结构比较稳定，但经常需要在此对象结构上定义新的操作。</li>
+<li>需要对一个对象结构中的对象进行很多不同的并且不相关的操作，而需要避免这些操作“污染”这些对象的类，也不希望在增加新操作时修改这些类。</li>
+</ul>
+<h3 id="结构与实现"><a href="#结构与实现" class="headerlink" title="结构与实现"></a>结构与实现</h3><hr>
+<p>模式包含以下主要角色。</p>
+<ul>
+<li>Visitor（抽象访问者）：接口或者抽象类，为每一个元素（Element）声明一个访问的方法。</li>
+<li>ConcreteVisitor（具体访问者）：实现抽象访问者中的方法，即对每一个元素都有其具体的访问行为。</li>
+<li>Element（抽象元素）：接口或者抽象类，定义一个accept方法，能够接受访问者（Visitor）的访问。</li>
+<li>ConcreteElementA、ConcreteElementB（具体元素）：实现抽象元素中的accept方法，通常是调用访问者提供的访问该元素的方法。</li>
+<li>Object Structure（对象结构）：是一个包含元素角色的容器，提供让访问者对象遍历容器中的所有元素的方法，通常由 List、Set、Map 等聚合类实现。</li>
+<li>Client（客户端类）：即要使用访问者模式的地方。</li>
+</ul>
+<p>其结构图如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-fbc56ff0dc65be02.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>访问者模式的实现代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">public class VisitorPattern &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        ObjectStructure os = new ObjectStructure();</div><div class="line">        os.add(new ConcreteElementA());</div><div class="line">        os.add(new ConcreteElementB());</div><div class="line">        Visitor visitor = new ConcreteVisitorA();</div><div class="line">        os.accept(visitor);</div><div class="line">        System.out.println(&quot;------------------------&quot;);</div><div class="line">        visitor = new ConcreteVisitorB();</div><div class="line">        os.accept(visitor);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 抽象访问者</div><div class="line">interface Visitor &#123;</div><div class="line">    void visit(ConcreteElementA element);</div><div class="line">    void visit(ConcreteElementB element);</div><div class="line">&#125;</div><div class="line">// 具体访问者 A 类</div><div class="line">class ConcreteVisitorA implements Visitor &#123;</div><div class="line">    public void visit(ConcreteElementA element) &#123;</div><div class="line">        System.out.println(&quot;具体访问者A访问--&gt;&quot;+element.operationA());</div><div class="line">    &#125;</div><div class="line">    public void visit(ConcreteElementB element) &#123;</div><div class="line">        System.out.println(&quot;具体访问者A访问--&gt;&quot;+element.operationB());</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 具体访问者 B 类</div><div class="line">class ConcreteVisitorB implements Visitor &#123;</div><div class="line">    public void visit(ConcreteElementA element) &#123;</div><div class="line">        System.out.println(&quot;具体访问者B访问--&gt;&quot;+element.operationA());</div><div class="line">    &#125;</div><div class="line">    public void visit(ConcreteElementB element) &#123;</div><div class="line">        System.out.println(&quot;具体访问者B访问--&gt;&quot;+element.operationB());</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 抽象元素类</div><div class="line">interface Element &#123;</div><div class="line">    void accept(Visitor visitor);</div><div class="line">&#125;</div><div class="line">// 具体元素 A 类</div><div class="line">class ConcreteElementA implements Element &#123;</div><div class="line">    public void accept(Visitor visitor) &#123;</div><div class="line">        visitor.visit(this);</div><div class="line">    &#125;</div><div class="line">    public String operationA() &#123;</div><div class="line">        return &quot;具体元素A的操作。&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 具体元素 B 类</div><div class="line">class ConcreteElementB implements Element &#123;</div><div class="line">    public void accept(Visitor visitor) &#123;</div><div class="line">        visitor.visit(this);</div><div class="line">    &#125;</div><div class="line">    public String operationB() &#123;</div><div class="line">        return &quot;具体元素B的操作。&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 对象结构角色</div><div class="line">class ObjectStructure &#123;</div><div class="line">    private List&lt;Element&gt; list = new ArrayList&lt;Element&gt;();</div><div class="line">    public void accept(Visitor visitor) &#123;</div><div class="line">        Iterator&lt;Element&gt; i= list.iterator();</div><div class="line">        while (i.hasNext()) &#123;</div><div class="line">            ((Element) i.next()).accept(visitor);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    public void add(Element element) &#123;</div><div class="line">        list.add(element);</div><div class="line">    &#125;</div><div class="line">    public void remove(Element element) &#123;</div><div class="line">        list.remove(element);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>程序的运行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">具体访问者A访问--&gt;具体元素A的操作。</div><div class="line">具体访问者A访问--&gt;具体元素B的操作。</div><div class="line">------------------------</div><div class="line">具体访问者B访问--&gt;具体元素A的操作。</div><div class="line">具体访问者B访问--&gt;具体元素B的操作。</div></pre></td></tr></table></figure></p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><hr>
+<p>利用“访问者（Visitor）模式”模拟艺术公司与造币公司的功能。</p>
+<p>分析：艺术公司利用“铜”可以设计出铜像，利用“纸”可以画出图画；造币公司利用“铜”可以印出铜币，利用“纸”可以印出纸币。对“铜”和“纸”这两种元素，两个公司的处理方法不同，所以该实例用访问者模式来实现比较适合。</p>
+<p>首先，定义一个公司（Company）接口，它是抽象访问者，提供了两个根据纸（Paper）或铜（Cuprum）这两种元素创建作品的方法；再定义艺术公司（ArtCompany）类和造币公司（Mint）类，它们是具体访问者，实现了父接口的方法；然后，定义一个材料（Material）接口，它是抽象元素，提供了 accept（Company visitor）方法来接受访问者（Company）对象访问；再定义纸（Paper）类和铜（Cuprum）类，它们是具体元素类，实现了父接口中的方法；最后，定义一个材料集（SetMaterial）类，它是对象结构角色，拥有保存所有元素的容器 List，并提供让访问者对象遍历容器中的所有元素的 accept（Company visitor）方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">// 抽象访问者：公司</div><div class="line">interface Company &#123;</div><div class="line">    String create(Paper element);</div><div class="line">    String create(Cuprum element);</div><div class="line">&#125;</div><div class="line">// 具体访问者：艺术公司</div><div class="line">class ArtCompany implements Company &#123;</div><div class="line">    public String create(Paper element) &#123;</div><div class="line">        return &quot;讲学图&quot;;</div><div class="line">    &#125;</div><div class="line">    public String create(Cuprum element) &#123;</div><div class="line">        return &quot;朱熹铜像&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 具体访问者：造币公司</div><div class="line">class Mint implements Company &#123;</div><div class="line">    public String create(Paper element) &#123;</div><div class="line">        return &quot;纸币&quot;;</div><div class="line">    &#125;</div><div class="line">    public String create(Cuprum element) &#123;</div><div class="line">        return &quot;铜币&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 抽象元素：材料</div><div class="line">interface Material &#123;</div><div class="line">    String accept(Company visitor);</div><div class="line">&#125;</div><div class="line">// 具体元素：纸</div><div class="line">class Paper implements Material &#123;</div><div class="line">    public String accept(Company visitor) &#123;</div><div class="line">        return (visitor.create(this));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 具体元素：铜</div><div class="line">class Cuprum implements Material &#123;</div><div class="line">    public String accept(Company visitor) &#123;</div><div class="line">        return (visitor.create(this));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 对象结构角色:材料集</div><div class="line">class SetMaterial &#123;</div><div class="line">    private List&lt;Material&gt; list = new ArrayList&lt;&gt;();</div><div class="line">    public String accept(Company visitor) &#123;</div><div class="line">        Iterator&lt;Material&gt; iterator = list.iterator();</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        String temp;</div><div class="line">        while(iterator.hasNext()) &#123;</div><div class="line">            temp = iterator.next().accept(visitor);</div><div class="line">            sb.append(temp).append(&quot; &quot;);</div><div class="line">        &#125;</div><div class="line">        return sb.toString(); // 返回某公司的作品集</div><div class="line">    &#125;</div><div class="line">    public void add(Material element) &#123;</div><div class="line">        list.add(element);</div><div class="line">    &#125;</div><div class="line">    public void remove(Material element) &#123;</div><div class="line">        list.remove(element);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="ANDROID-源码中的实现"><a href="#ANDROID-源码中的实现" class="headerlink" title="ANDROID 源码中的实现"></a>ANDROID 源码中的实现</h3><hr>
+<p>Android 的编译时注解是一种访问者模式。编译时注解的核心原理依赖 APT （Annotation Processing Tools）实现。</p>
+<p>编译时注解解析的基本原理是，在某些代码元素上（如类型、函数、字段等）添加注解，在编译时编译器会检查 AbstractProcessor 的子类，并且调用该类型的 process 函数，然后将添加了注解的所有元素都传递到 process 函数中，使得开发人员可以在编译期进行相应的处理。</p>
+<p>编写注解处理器的核心是 AnnotationProcessorFactory 和 AnnotationProcessor 两个接口，后者表示的是注解处理器，而前者则是为某些注解类型创建注解处理器的工厂。</p>
+<p>对于编译器来说，代码中的元素结构是基本不变的，例如，组成代码的基本元素由包、类、函数、字段、类型参数、变量。JDK 中为这些元素定义了一个基类，也就是 Element 类，它有如下几个子类：</p>
+<ul>
+<li>PackageElement 包元素，包含了某个包下的信息，可以获取到包名等；</li>
+<li>TypeElement：类型元素，如某个字段属于某种类型；</li>
+<li>ExecutableElement：可执行元素，代表了函数类型的元素；</li>
+<li>VariableElement：变量元素；</li>
+<li>TypeParameterElement：类型参数元素。</li>
+</ul>
+<p>因为注解可以指定作用在哪些元素上，因此，通过上述的抽象来对应这些元素，例如下面这个注解，指定的是只能作用于方法上面，并且这个注解只能保留在 class 文件中（编译时注解）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Target(ElementType. METHOD)</div><div class="line">@Retention(RetentionPolicy.CLASS)</div><div class="line">public @interface Test &#123;</div><div class="line">    String value();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>该注解因为只能作用于函数类型，因此，它对应的元素类型就是 ExecutableElement，当我们想通过 APT 处理这个注解时就可以获取目标对象上的 Test 注解，并将所有这些元素转换为 ExecutableElement 元素，以便获取到它们对应的信息。</p>
+<p>我们看看元素基类的实现，完整的路径为 javax.lang.model.element.Element。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public interface Element extends AnnotatedConstruct &#123;</div><div class="line">    TypeMirror asType();</div><div class="line">    // 获取元素类型</div><div class="line">    ElementKind getKind();</div><div class="line">    // 获取元素修饰符，如 public、static、final 等</div><div class="line">    Set&lt;Modifier&gt; getModifiers();</div><div class="line"></div><div class="line">    // 代码省略</div><div class="line"></div><div class="line">    List&lt;? extends Element&gt; getEnclosedElements();</div><div class="line">    // 接受访问者的访问</div><div class="line">    &lt;R, P&gt; R accept(ElementVisitor&lt;R, P&gt; v, P p);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到 Element 定义了一个代码元素的一些通用接口，其中很显眼的就是 accept 函数，这个函数接收一个 ElementVisitor 和类型为 P 的参数，ElementVisitor 就是访问者类型，而 P 则用于传递一些额外的参数给 visitor。这是一个典型的访问者模式。</p>
+<p>ElementVisitor 定义如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 元素访问者</div><div class="line">public interface ElementVisitor&lt;R, P&gt; &#123;</div><div class="line">    // 访问元素</div><div class="line">    R visit(Element var1, P var2);</div><div class="line"></div><div class="line">    R visit(Element var1);</div><div class="line">    // 访问包元素</div><div class="line">    R visitPackage(PackageElement var1, P var2);</div><div class="line">    // 访问类型元素</div><div class="line">    R visitType(TypeElement var1, P var2);</div><div class="line">    // 访问变量元素</div><div class="line">    R visitVariable(VariableElement var1, P var2);</div><div class="line">    // 访问可执行元素</div><div class="line">    R visitExecutable(ExecutableElement var1, P var2);</div><div class="line">    // 访问参数元素</div><div class="line">    R visitTypeParameter(TypeParameterElement var1, P var2);</div><div class="line">    // 访问位置元素，为后续扩展预留的接口</div><div class="line">    R visitUnknown(Element var1, P var2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当 Visitor 对元素结构进行访问时，就可以针对不同的类型进行不同的处理。例如 SimpleElementVisitor6 就是其中一个访问者，它基本上没做什么操作，直接返回了元素的默认值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">@SupportedSourceVersion(SourceVersion.RELEASE_6)</div><div class="line">public class SimpleElementVisitor6&lt;R, P&gt; extends AbstractElementVisitor6&lt;R, P&gt; &#123;</div><div class="line">    protected final R DEFAULT_VALUE;</div><div class="line"></div><div class="line">    protected SimpleElementVisitor6() &#123;</div><div class="line">        this.DEFAULT_VALUE = null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected SimpleElementVisitor6(R var1) &#123;</div><div class="line">        this.DEFAULT_VALUE = var1;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected R defaultAction(Element var1, P var2) &#123;</div><div class="line">        return this.DEFAULT_VALUE;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public R visitPackage(PackageElement var1, P var2) &#123;</div><div class="line">        return this.defaultAction(var1, var2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public R visitType(TypeElement var1, P var2) &#123;</div><div class="line">        return this.defaultAction(var1, var2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public R visitVariable(VariableElement var1, P var2) &#123;</div><div class="line">        return var1.getKind() != ElementKind.RESOURCE_VARIABLE ? this.defaultAction(var1, var2) : this.visitUnknown(var1, var2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public R visitExecutable(ExecutableElement var1, P var2) &#123;</div><div class="line">        return this.defaultAction(var1, var2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public R visitTypeParameter(TypeParameterElement var1, P var2) &#123;</div><div class="line">        return this.defaultAction(var1, var2);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>另一个提取元素类型的访问者是 ElementKindVisitor6：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">@SupportedSourceVersion(SourceVersion.RELEASE_6)</div><div class="line">public class ElementKindVisitor6&lt;R, P&gt; extends SimpleElementVisitor6&lt;R, P&gt; &#123;</div><div class="line">    protected ElementKindVisitor6() &#123;</div><div class="line">        super((Object)null);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected ElementKindVisitor6(R var1) &#123;</div><div class="line">        super(var1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public R visitPackage(PackageElement var1, P var2) &#123;</div><div class="line">        assert var1.getKind() == ElementKind.PACKAGE : &quot;Bad kind on PackageElement&quot;;</div><div class="line"></div><div class="line">        return this.defaultAction(var1, var2);</div><div class="line">    &#125;</div><div class="line">    // 访问类型元素，比如类、注解、枚举、接口</div><div class="line">    public R visitType(TypeElement var1, P var2) &#123;</div><div class="line">        ElementKind var3 = var1.getKind();</div><div class="line">        switch(var3) &#123;</div><div class="line">        case ANNOTATION_TYPE:</div><div class="line">            return this.visitTypeAsAnnotationType(var1, var2);</div><div class="line">        case CLASS:</div><div class="line">            return this.visitTypeAsClass(var1, var2);</div><div class="line">        case ENUM:</div><div class="line">            return this.visitTypeAsEnum(var1, var2);</div><div class="line">        case INTERFACE:</div><div class="line">            return this.visitTypeAsInterface(var1, var2);</div><div class="line">        default:</div><div class="line">            throw new AssertionError(&quot;Bad kind &quot; + var3 + &quot; for TypeElement&quot; + var1);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public R visitTypeAsAnnotationType(TypeElement var1, P var2) &#123;</div><div class="line">        return this.defaultAction(var1, var2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public R visitTypeAsClass(TypeElement var1, P var2) &#123;</div><div class="line">        return this.defaultAction(var1, var2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public R visitTypeAsEnum(TypeElement var1, P var2) &#123;</div><div class="line">        return this.defaultAction(var1, var2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public R visitTypeAsInterface(TypeElement var1, P var2) &#123;</div><div class="line">        return this.defaultAction(var1, var2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ElementKindVisitor6 对于不同的类型进行不同的处理，提取各个元素的类型信息，例如，上述代码中对于 Type 类型的元素将分别进行处理，如类、枚举、接口、注解等。</p>
+<p>首先，编译器将代码抽象成一个代码元素的树，然后再编译时对整棵树进行遍历访问，每个元素都有一个 accept 函数接受访问者的访问，每个访问者中都有对应的 visit 函数，例如，visitType 函数就是对类型元素的访问，在每个 visit 函数中对不同的类型进行不同的处理，这样就达到了差异处理的效果，同时将数据结构和数据操作分离，使得每个类型的职责单一，易于升级维护。JDK 还特意预留了 visitUnknown 接口来应对 Java 语言后续发展可能添加元素类型的问题，灵活地将访问者模式的缺点优化。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-62fa194db5869cc7.gif?imageMogr2/auto-orient/strip" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DESIGN-PATTERN/" rel="tag"><i class="fa fa-tag"></i> DESIGN PATTERN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/1901/01/22/02 DESIGN PATTERN/14 设计模式——模板方法模式/" rel="next" title="14 设计模式——模板方法模式">
+                <i class="fa fa-chevron-left"></i> 14 设计模式——模板方法模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1901/01/24/02 DESIGN PATTERN/16 设计模式——中介者模式/" rel="prev" title="16 设计模式——中介者模式">
+                16 设计模式——中介者模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景"><span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构与实现"><span class="nav-text">结构与实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANDROID-源码中的实现"><span class="nav-text">ANDROID 源码中的实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共317.4k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

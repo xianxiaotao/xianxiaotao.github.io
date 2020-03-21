@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Custom View," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。
+
+8.3.1 Mode.SRC计算公式为：[Sa, Sc]。从公式中也可以看出，在处理源图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式">
+<meta property="og:url" content="http://yoursite.com/2019/07/08/05 CUSTOM VIEW/08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。
+
+8.3.1 Mode.SRC计算公式为：[Sa, Sc]。从公式中也可以看出，在处理源图">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-89f7351e119d5fb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-cf39995c77c03dbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a47ca08d9ba84b3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a9774a1637b816f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-6e57a4f4165ff0c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-39dc8d760b630613.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-0f4082ea19d4bf65.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-39e40bd1ea2aad4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-80d3e5f4969ba35e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a65e54a4d2ed9fd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-4d160056ab5c4a12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-09T13:14:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式">
+<meta name="twitter:description" content="除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。
+
+8.3.1 Mode.SRC计算公式为：[Sa, Sc]。从公式中也可以看出，在处理源图">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-89f7351e119d5fb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/08/05 CUSTOM VIEW/08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式/"/>
+
+
+
+
+
+  <title>08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/05 CUSTOM VIEW/08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-08T03:00:00+08:00">
+                2019-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Custom-View/" itemprop="url" rel="index">
+                    <span itemprop="name">Custom View</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/08/05 CUSTOM VIEW/08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/08/05 CUSTOM VIEW/08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<p>除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。</p>
+<p><div id="jump1"></div></p>
+<h3 id="8-3-1-Mode-SRC"><a href="#8-3-1-Mode-SRC" class="headerlink" title="8.3.1 Mode.SRC"></a>8.3.1 Mode.SRC</h3><p>计算公式为：[Sa, Sc]。<br>从公式中也可以看出，在处理源图像所在区域的相交问题时，全部以源图像显示。示例图像如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-89f7351e119d5fb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><div id="jump2"></div></p>
+<h3 id="8-3-2-Mode-SRC-IN"><a href="#8-3-2-Mode-SRC-IN" class="headerlink" title="8.3.2 Mode.SRC_IN"></a>8.3.2 Mode.SRC_IN</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>计算公式为：[Sa <em> Da, Sc </em> Da]。<br>在这个公式中结果值的透明度和颜色值都是由 Sa、Sc 分别乘以目标图像的 Da 来计算的。所以当目标图像为空白像素时，计算结果也将会为空白像素。示例图像如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-cf39995c77c03dbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>大家注意 SRC_IN 模式与 SRC 模式的区别。一般而言，是在相交区域时无论 SRC_IN 还是 SRC 模式都是显示源图像，而唯一不同的是，当目标图像是空白像素时，在 SRC_IN 所对应的区域也将会变成空白像素。</p>
+<p>其实更严格的来讲，SRC_IN 模式是在相交时利用目标图像的透明度来改变源图像的透明度和饱和度。当目标图像透明度为 0 时，源图像就完全不显示。</p>
+<p>利用这个特性，我们能完成很多功能，比如圆角效果和图片倒影。</p>
+<p>圆角效果的生成非常简单，依然使用两张图片合成，如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-a47ca08d9ba84b3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>小狗图像是源图像，目标图像是一张遮罩图，可以看到这张遮罩图的 4 个角都是圆形切角，而且是透明的。这里我们就需要使用 SRC_IN 模式的特性：当目标图像与源图像相交时，根据目标图像的透明度来决定显示源图像的哪部分。</p>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Bitmap bmpDST, bmpSRC;</div><div class="line">    private PorterDuffXfermode mMode;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        mPaint = new Paint();</div><div class="line">        bmpDST = BitmapFactory.decodeResource(getResources(),R.drawable.dog_shade,null);</div><div class="line">        bmpSRC = BitmapFactory.decodeResource(getResources(),R.drawable.dog,null);</div><div class="line">        mMode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        int layerId = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);</div><div class="line"></div><div class="line">        canvas.drawBitmap(bmpDST,0,0,mPaint);</div><div class="line">        mPaint.setXfermode(mMode);</div><div class="line">        canvas.drawBitmap(bmpSRC,0,0,mPaint);</div><div class="line"></div><div class="line">        mPaint.setXfermode(null);</div><div class="line">        canvas.restoreToCount(layerId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="2-图片倒影效果"><a href="#2-图片倒影效果" class="headerlink" title="2. 图片倒影效果"></a>2. 图片倒影效果</h4><p>SRC_IN 模式是在相交时利用目标图像的透明度来改变源图像的透明度和饱和度。所以当目标图像的透明度在 0~255 之间时，就会把源图像的透明度和颜色值都会变小。利用这个特性，可以做出倒影效果，如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-a9774a1637b816f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>很明显，由于 SRC_IN 模式的特性是根据目标图像的透明度来决定如何显示源图像，而我们要显示的是小狗图像，所以，源图像是小狗图像，目标图像是一张遮罩图，它是一个从上到下的白色填充渐变，白色的透明度从 49% 到 0。</p>
+<p>小效果图中，我们先画出小狗图像，然后将画布下移，最后将源图像与目标图像再次合成，画出倒影即可。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line">    private Paint mBitPaint;</div><div class="line">    private Bitmap bmpDST, bmpSRC, bmpRevert;</div><div class="line">    private PorterDuffXfermode mode;</div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        setLayerType(View.LAYER_TYPE_SOFTWARE, null);</div><div class="line">        mBitPaint = new Paint();</div><div class="line">        mode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);</div><div class="line">        bmpDST = BitmapFactory.decodeResource(getResources(),R.drawable.dog_invert_shade,null);</div><div class="line">        bmpSRC = BitmapFactory.decodeResource(getResources(),R.drawable.dog,null);</div><div class="line"></div><div class="line">        Matrix matrix = new Matrix();</div><div class="line">        matrix.setScale(1F, -1F);</div><div class="line">        // 生成倒影图</div><div class="line">        bmpRevert = Bitmap.createBitmap(bmpSRC, 0, 0, bmpSRC.getWidth(), bmpSRC.getHeight(), matrix, true);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        // 先画出小狗图片</div><div class="line">        canvas.drawBitmap(bmpSRC,0,0,mBitPaint);</div><div class="line"></div><div class="line">        // 再画出倒影</div><div class="line">        int layerId = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);</div><div class="line">        canvas.translate(0, bmpSRC.getHeight());</div><div class="line">        canvas.drawBitmap(bmpDST,0,0,mBitPaint);</div><div class="line">        mBitPaint.setXfermode(mode);</div><div class="line">        canvas.drawBitmap(bmpRevert,0,0,mBitPaint);</div><div class="line">        mBitPaint.setXfermode(null);</div><div class="line">        canvas.restoreToCount(layerId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><div id="jump3"></div></p>
+<h3 id="8-3-3-Mode-SRC-OUT"><a href="#8-3-3-Mode-SRC-OUT" class="headerlink" title="8.3.3 Mode.SRC_OUT"></a>8.3.3 Mode.SRC_OUT</h3><h4 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>计算公式为：[Sa <em> (1 - Da), Sc </em> (1 - Da)]。<br>示例图像如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-6e57a4f4165ff0c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>从公式中可以看出，计算结果的透明度为 Sa * (1 - Da)；也就是说当目标图像图像完全不透明时，计算结果将是透明的。</p>
+<p>从示例图中也可以看出，源图像与目标图像的相交部分由于目标图像的不透明度为 100%，所以相交部分的计算结果为空白像素。在目标图像为空白像素时，完全以源图像显示。</p>
+<p>所以这个模式的特性可以概括为：以目标图像的透明度的补值来调节源图像的透明度和色彩饱和度。即当目标图像为空白像素时，就完全显示源图像，当目标图像的不透明度为 100%时，交合区域为空像素。简单来说，当目标图像有图像时结果显示空白像素，当目标图像没有图像时，结果显示源图像。</p>
+<h4 id="2-橡皮擦效果"><a href="#2-橡皮擦效果" class="headerlink" title="2. 橡皮擦效果"></a>2. 橡皮擦效果</h4><p>利用 SRC_OUT 模式的特性，可以实现橡皮擦效果，如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-39dc8d760b630613.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>原理：对于 Mode.SRC_OUT 模式，当目标图像有图像时计算结果为空白像素；当目标图像没有图像时，显示源图像。所以我们把手指轨迹做为目标图像，在与源图像计算时，有手指轨迹的地方就变为空白像素了，看起来的效果就是被擦除了。</p>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Bitmap mDstBmp;</div><div class="line">    private Bitmap mSrcBmp;</div><div class="line">    private Path mPath;</div><div class="line">    private float mPreX, mPreY;</div><div class="line">    private PorterDuffXfermode mMode;</div><div class="line">    private Canvas mTempCanvas;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        setLayerType(View.LAYER_TYPE_SOFTWARE, null);</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setColor(Color.RED);</div><div class="line">        mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">        mPaint.setStrokeWidth(100);</div><div class="line">        mPaint.setStrokeCap(Paint.Cap.ROUND);</div><div class="line"></div><div class="line">        BitmapFactory.Options options = new BitmapFactory.Options();</div><div class="line">        options.inSampleSize = 2;</div><div class="line"></div><div class="line">        mSrcBmp = BitmapFactory.decodeResource(getResources(), R.drawable.meinv, options);</div><div class="line">        mDstBmp = Bitmap.createBitmap(mSrcBmp.getWidth(), mSrcBmp.getHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">        mPath = new Path();</div><div class="line">        mTempCanvas = new Canvas();</div><div class="line">        mMode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">        switch (event.getAction()) &#123;</div><div class="line">            case MotionEvent.ACTION_DOWN:</div><div class="line">                mPath.moveTo(event.getX(), event.getY());</div><div class="line">                mPreX = event.getX();</div><div class="line">                mPreY = event.getY();</div><div class="line">                return true;</div><div class="line">            case MotionEvent.ACTION_MOVE:</div><div class="line">                float endX = (mPreX + event.getX()) / 2;</div><div class="line">                float endY = (mPreY + event.getY()) / 2;</div><div class="line">                mPath.quadTo(mPreX, mPreY, endX, endY);</div><div class="line">                mPreX = event.getX();</div><div class="line">                mPreY = event.getY();</div><div class="line">                break;</div><div class="line">            case MotionEvent.ACTION_UP:</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">        postInvalidate();</div><div class="line">        return super.onTouchEvent(event);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line">        int layerId = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);</div><div class="line">        // 先把手势轨迹画到目标图像上</div><div class="line">        mTempCanvas.setBitmap(mDstBmp);</div><div class="line">        mTempCanvas.drawPath(mPath, mPaint);</div><div class="line">        // 然后把目标图像画到画布上</div><div class="line">        canvas.drawBitmap(mDstBmp, 0 , 0, mPaint);</div><div class="line">        // 计算源图像区域</div><div class="line">        mPaint.setXfermode(mMode);</div><div class="line">        canvas.drawBitmap(mSrcBmp, 0, 0, mPaint);</div><div class="line">        mPaint.setXfermode(null);</div><div class="line">        canvas.restoreToCount(layerId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="3-刮刮卡效果"><a href="#3-刮刮卡效果" class="headerlink" title="3. 刮刮卡效果"></a>3. 刮刮卡效果</h4><p><img src="https://upload-images.jianshu.io/upload_images/14186083-0f4082ea19d4bf65.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>需要准备两张图片，一张是刮奖遮罩层图片（scratch_over.png），一张是中奖图片图片（scratch.png），如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-39e40bd1ea2aad4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="scratch_over.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-80d3e5f4969ba35e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="scratch.png"></p>
+<p>示例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Bitmap mDstBmp;</div><div class="line">    private Bitmap mSrcBmp;</div><div class="line">    private Bitmap mTextBmp;</div><div class="line">    private Path mPath;</div><div class="line">    private float mPreX, mPreY;</div><div class="line">    private PorterDuffXfermode mMode;</div><div class="line">    private Canvas mTempCanvas;</div><div class="line">    private RectF mRect;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        setLayerType(View.LAYER_TYPE_SOFTWARE, null);</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setColor(Color.RED);</div><div class="line">        mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">        mPaint.setStrokeWidth(100);</div><div class="line">        mPaint.setStrokeCap(Paint.Cap.ROUND);</div><div class="line"></div><div class="line">        mTextBmp = BitmapFactory.decodeResource(getResources(), R.drawable.scratch);</div><div class="line">        mSrcBmp = BitmapFactory.decodeResource(getResources(), R.drawable.scratch_over);</div><div class="line">        mDstBmp = Bitmap.createBitmap(mSrcBmp.getWidth(), mSrcBmp.getHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">        mPath = new Path();</div><div class="line">        mTempCanvas = new Canvas();</div><div class="line">        mMode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);</div><div class="line">        mRect = new RectF();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">        switch (event.getAction()) &#123;</div><div class="line">            case MotionEvent.ACTION_DOWN:</div><div class="line">                mPath.moveTo(event.getX(), event.getY());</div><div class="line">                mPreX = event.getX();</div><div class="line">                mPreY = event.getY();</div><div class="line">                return true;</div><div class="line">            case MotionEvent.ACTION_MOVE:</div><div class="line">                float endX = (mPreX + event.getX()) / 2;</div><div class="line">                float endY = (mPreY + event.getY()) / 2;</div><div class="line">                mPath.quadTo(mPreX, mPreY, endX, endY);</div><div class="line">                mPreX = event.getX();</div><div class="line">                mPreY = event.getY();</div><div class="line">                break;</div><div class="line">            case MotionEvent.ACTION_UP:</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">        postInvalidate();</div><div class="line">        return super.onTouchEvent(event);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        float width = mTextBmp.getWidth();</div><div class="line">        float height = mTextBmp.getHeight();</div><div class="line">        float screenWidth = getWidth();</div><div class="line">        if (width &gt; screenWidth) &#123;</div><div class="line">            height = height * screenWidth / width;</div><div class="line">            width = screenWidth;</div><div class="line">        &#125;</div><div class="line">        mRect.set(0, 0, width, height);</div><div class="line"></div><div class="line">        // 先画底层奖励文案图片</div><div class="line">        canvas.drawBitmap(mTextBmp, null, mRect, mPaint);</div><div class="line">        int layerId = canvas.saveLayer(140, 70, width - 140, height - 70,</div><div class="line">                null, Canvas.ALL_SAVE_FLAG);</div><div class="line">        // 把手势轨迹画到目标图像上</div><div class="line">        mTempCanvas.setBitmap(mDstBmp);</div><div class="line">        mTempCanvas.drawPath(mPath, mPaint);</div><div class="line">        // 然后把目标图像画到画布上</div><div class="line">        canvas.drawBitmap(mDstBmp, 0, 0, mPaint);</div><div class="line">        // 计算源图像区域</div><div class="line">        mPaint.setXfermode(mMode);</div><div class="line">        mRect.set(140, 70, width-140, height-70);</div><div class="line">        canvas.drawBitmap(mSrcBmp, null, mRect, mPaint);</div><div class="line">        mPaint.setXfermode(null);</div><div class="line">        canvas.restoreToCount(layerId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><div id="jump4"></div></p>
+<h3 id="8-3-4-Mode-SRC-OVER"><a href="#8-3-4-Mode-SRC-OVER" class="headerlink" title="8.3.4 Mode.SRC_OVER"></a>8.3.4 Mode.SRC_OVER</h3><p>计算公式为：[Sa + (1 - Sa) <em> Da, Rc = Sc + (1 - Sa) </em> Dc]。<br>示例图像为：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-a65e54a4d2ed9fd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在计算结果中，源图像没有改变。它的意思就是，在目标图像的顶部绘制源图像。从公式中也可以看出，目标图像的透明度为 Sa + (1 - Sa) * Da；即在源图像的透明度基础上增加一部分目标图像的透明度。增加的透明度是源图像透明度的补量；目标图像的色彩值的计算方式同理，所以当源图像透明度为 100% 时，就原样显示源图像。</p>
+<p><div id="jump5"></div></p>
+<h3 id="8-3-5-Mode-SRC-ATOP"><a href="#8-3-5-Mode-SRC-ATOP" class="headerlink" title="8.3.5 Mode.SRC_ATOP"></a>8.3.5 Mode.SRC_ATOP</h3><p>计算公式为：[Da, Sc <em> Da + (1 - Sa) </em> Dc]。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-4d160056ab5c4a12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>很奇怪，它的效果图竟然与 SRC_IN 模式是相同的，我们来对比一下它们的公式：</p>
+<p>SRC_IN：[Sa <em> Da, Sc </em> Da]<br>SRC_ATOP：[Da, Sc <em> Da + (1 - Sa) </em> Dc]</p>
+<p>先看透明度：在 SRC_IN 中是 Sa * Da,在 SRC_ATOP 是 Da。<br>SRC_IN 是源图像透明度乘以目标图像的透明度做为结果透明度，而SRC_ATOP 是直接使用目标图像的透明度做为结果透明度。</p>
+<p>再看颜色值：SRC_IN 的颜色值为 Sc <em> Da，SRC_ATOP 的颜色值为Sc </em> Da + (1 - Sa) <em> Dc，SRC_ATOP 在 SRC_IN 的基础上还增加了(1 - Sa) </em> Dc。</p>
+<p>所以，结论为：<br>1）当透明度是 100% 和 0 时，SRC_ATOP 和 SRC_IN 模式是通用的。<br>2）当透明度不是 100% 和 0 时，SRC_ATOP 相比 SRC_IN 源图像的饱和度会增加，即会显得更亮。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Custom-View/" rel="tag"><i class="fa fa-tag"></i> Custom View</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/08/05 CUSTOM VIEW/08.2 精通自定义 View 之 混合模式——PorterDuffXfermode/" rel="next" title="08.2 精通自定义 View 之 混合模式——PorterDuffXfermode">
+                <i class="fa fa-chevron-left"></i> 08.2 精通自定义 View 之 混合模式——PorterDuffXfermode
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/08/05 CUSTOM VIEW/08.4 精通自定义 View 之 混合模式——目标图像模式与其他模式/" rel="prev" title="08.4 精通自定义 View 之 混合模式——目标图像模式与其他模式">
+                08.4 精通自定义 View 之 混合模式——目标图像模式与其他模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-1-Mode-SRC"><span class="nav-text">8.3.1 Mode.SRC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-2-Mode-SRC-IN"><span class="nav-text">8.3.2 Mode.SRC_IN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-概述"><span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-图片倒影效果"><span class="nav-text">2. 图片倒影效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-3-Mode-SRC-OUT"><span class="nav-text">8.3.3 Mode.SRC_OUT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-概述-1"><span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-橡皮擦效果"><span class="nav-text">2. 橡皮擦效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-刮刮卡效果"><span class="nav-text">3. 刮刮卡效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-4-Mode-SRC-OVER"><span class="nav-text">8.3.4 Mode.SRC_OVER</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-5-Mode-SRC-ATOP"><span class="nav-text">8.3.5 Mode.SRC_ATOP</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共317.4k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

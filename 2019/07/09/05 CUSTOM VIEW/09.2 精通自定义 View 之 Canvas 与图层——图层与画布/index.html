@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Custom View," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="前面讲过 Canvas 的 save() 和 restore() 函数，除这两个函数以外，还有其他一些函数来保存和恢复画布状态。
+
+9.2.1 saveLayer() 函数saveLayer 有两个构造函数，如下：123456/** * 保存指定矩形区域的canvas内容 */public int saveLayer(RectF bounds, Paint paint, int saveFla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="09.2 精通自定义 View 之 Canvas 与图层——图层与画布">
+<meta property="og:url" content="http://yoursite.com/2019/07/09/05 CUSTOM VIEW/09.2 精通自定义 View 之 Canvas 与图层——图层与画布/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="前面讲过 Canvas 的 save() 和 restore() 函数，除这两个函数以外，还有其他一些函数来保存和恢复画布状态。
+
+9.2.1 saveLayer() 函数saveLayer 有两个构造函数，如下：123456/** * 保存指定矩形区域的canvas内容 */public int saveLayer(RectF bounds, Paint paint, int saveFla">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-7c8c4acbacc0ce72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2d5f53498b9e95ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-89741e0db7478124?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-44689d53676ffb76?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-3c785d4027271de4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-d2d2bbfed7459587.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-dd481599deaa6cdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-11T01:48:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="09.2 精通自定义 View 之 Canvas 与图层——图层与画布">
+<meta name="twitter:description" content="前面讲过 Canvas 的 save() 和 restore() 函数，除这两个函数以外，还有其他一些函数来保存和恢复画布状态。
+
+9.2.1 saveLayer() 函数saveLayer 有两个构造函数，如下：123456/** * 保存指定矩形区域的canvas内容 */public int saveLayer(RectF bounds, Paint paint, int saveFla">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-7c8c4acbacc0ce72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/09/05 CUSTOM VIEW/09.2 精通自定义 View 之 Canvas 与图层——图层与画布/"/>
+
+
+
+
+
+  <title>09.2 精通自定义 View 之 Canvas 与图层——图层与画布 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/05 CUSTOM VIEW/09.2 精通自定义 View 之 Canvas 与图层——图层与画布/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">09.2 精通自定义 View 之 Canvas 与图层——图层与画布</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-09T02:00:00+08:00">
+                2019-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Custom-View/" itemprop="url" rel="index">
+                    <span itemprop="name">Custom View</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/09/05 CUSTOM VIEW/09.2 精通自定义 View 之 Canvas 与图层——图层与画布/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/09/05 CUSTOM VIEW/09.2 精通自定义 View 之 Canvas 与图层——图层与画布/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<p>前面讲过 Canvas 的 save() 和 restore() 函数，除这两个函数以外，还有其他一些函数来保存和恢复画布状态。</p>
+<p><div id="jump1"></div></p>
+<h3 id="9-2-1-saveLayer-函数"><a href="#9-2-1-saveLayer-函数" class="headerlink" title="9.2.1 saveLayer() 函数"></a>9.2.1 saveLayer() 函数</h3><p>saveLayer 有两个构造函数，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 保存指定矩形区域的canvas内容</div><div class="line"> */</div><div class="line">public int saveLayer(RectF bounds, Paint paint, int saveFlags)</div><div class="line">public int saveLayer(float left, float top, float right, float bottom,</div><div class="line">                     Paint paint, int saveFlags)</div></pre></td></tr></table></figure></p>
+<p>参数：</p>
+<ul>
+<li>RectF bounds：要保存的区域所对应的矩形对象。</li>
+<li>int saveFlags：取值有 ALL_SAVE_FLAG、MATRIX_SAVE_FLAG、CLIP_SAVE_FLAG、HAS_ALPHA_LAYER_SAVE_FLAG、FULL_COLOR_LAYER_SAVE_FLAG、 和<br>CLIP_TO_LAYER_SAVE_FLAG，其中 ALL_SAVE_FLAG 表示保存全部内容，这些标识的具体意义我们后面会具体讲。</li>
+</ul>
+<p>第二个构造函数实际与第一个是一样的，只不过它是根据 4 个点来构造一个矩形。下面以 Xfermode 为例，来看看 saveLayer() 函数都做了什么。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Bitmap dstBmp;</div><div class="line">    private Bitmap srcBmp;</div><div class="line">    private int width = 400;</div><div class="line">    private int height = 400;</div><div class="line">    private PorterDuffXfermode mMode;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        setLayerType(View.LAYER_TYPE_SOFTWARE, null);</div><div class="line">        mPaint = new Paint();</div><div class="line">        dstBmp = makeBitmap(width, height, 0xFFFFCC44, &quot;oval&quot;);</div><div class="line">        srcBmp = makeBitmap(width, height, 0xFF66AAFF, &quot;rect&quot;);</div><div class="line">        mMode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private Bitmap makeBitmap(int w, int h, int color, String type) &#123;</div><div class="line">        Bitmap bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);</div><div class="line">        Canvas canvas = new Canvas(bmp);</div><div class="line">        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);</div><div class="line">        paint.setColor(color);</div><div class="line">        if (&quot;oval&quot;.equals(type)) &#123;</div><div class="line">            canvas.drawOval(new RectF(0, 0, w, h), paint);</div><div class="line">        &#125; else &#123;</div><div class="line">            canvas.drawRect(0, 0, w, h, paint);</div><div class="line">        &#125;</div><div class="line">        return bmp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line">        canvas.drawColor(Color.GREEN);</div><div class="line"></div><div class="line">        int layerId = canvas.saveLayer(0, 0, width * 2, height * 2,</div><div class="line">                null, Canvas.ALL_SAVE_FLAG);</div><div class="line">        canvas.drawBitmap(dstBmp, 0, 0, mPaint);</div><div class="line">        mPaint.setXfermode(mMode);</div><div class="line">        canvas.drawBitmap(srcBmp, width / 2f, height / 2f, mPaint);</div><div class="line">        mPaint.setXfermode(null);</div><div class="line">        canvas.restoreToCount(layerId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码我们应该很熟悉，这是在讲解 setXfermode() 函数时的示例代码，但在调用 saveLayer() 函数前把整个屏幕画成了绿色，效果图如下。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-7c8c4acbacc0ce72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>那么问题来了，如果我们把 saveLayer() 函数去掉，则会怎样？代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line">    canvas.drawColor(Color.GREEN);</div><div class="line">    canvas.drawBitmap(dstBmp, 0, 0, mPaint);</div><div class="line">    mPaint.setXfermode(mMode);</div><div class="line">    canvas.drawBitmap(srcBmp, width / 2f, height / 2f, mPaint);</div><div class="line">    mPaint.setXfermode(null);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-2d5f53498b9e95ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>可以看到，效果居然不一样。先来回顾下 Mode.SRC_IN 模式的效果：在处理源图像时，以显示源图像为主，在相交时利用目标图像的透明度来改变源图像的透明度和饱和度；当目标图像透明度为 0 时，源图像就完全不显示。</p>
+<p>再回过来看结果，第一个结果是对的，因为除与圆相交以外的区域透明度都是 0，而第二个结果怎么变成了这样，源图像为什么全部都显示出来了？</p>
+<h4 id="1-调用-saveLayer-函数时的绘图流程"><a href="#1-调用-saveLayer-函数时的绘图流程" class="headerlink" title="1. 调用 saveLayer() 函数时的绘图流程"></a>1. 调用 saveLayer() 函数时的绘图流程</h4><p>在调用 saveLayer() 函数时，会生成一个全新的画布（Bitmap），这块画布的大小就是我们指定的所要保存区域的大小。新生成的画布是全透明的，在调用 saveLayer() 函数后所有的绘图操作都是在这个画布上进行的。</p>
+<p>我们讲过，在利用 Xfermode 画源图像时，会把之前画布上所有的内容都做为目标图像，而在调用 saveLayer() 函数新生成的画布上，只有 dstBmp 对应的圆形。所以，除与圆形相交之外的位置都是空白像素。</p>
+<p>对于 Xfermode 而言，在绘图完成之后，会把调用 saveLayer() 函数所生成的透明画布覆盖在原来的画布上面，以形成最终的显示结果。</p>
+<p>此时的 Xfermode 的合成过程如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-89741e0db7478124?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>中间的透明画布就是调用 saveLayer() 函数自动生成的，最上方的透明图层是调用 drawBitmap() 函数生成的。我们知道，每次调用 canvas.drawXXX 系列函数，都会生成一个透明层来专门绘制这个图形，而每次生成的图层都会叠加到最近的画布上。因为我们在这里对源图像应用了 Xfermode 算法，所以在叠加到就近的调用 saveLayer() 函数生成的画布上时，会进行计算。在新建的画布上绘制完成以后，整体覆盖在原始画布上显示出来。</p>
+<p>正是因为在使用 Xfermode 计算时，目标图像是绘制在新建的透明画布上的，所以除圆形以外的区域全部是透明像素，最终的显示结果是正确的。</p>
+<h4 id="2-没有-saveLayer-函数时的绘图流程"><a href="#2-没有-saveLayer-函数时的绘图流程" class="headerlink" title="2. 没有 saveLayer() 函数时的绘图流程"></a>2. 没有 saveLayer() 函数时的绘图流程</h4><p>在第二个示例中，唯一不同的就是把 saveLayer() 函数去掉了。</p>
+<p>在去掉 saveLayer() 函数后，就不会新建画布了。当然，所有的绘图操作都会在原始画布上进行。</p>
+<p>由于先把整块画布染成了绿色，再画上一个圆形，所有在应用 Xfermode 来画源图像的时候，在目标画布上是没有透明像素的。这也就不难解释结果为什么是这样的。</p>
+<p>此时的 Xfermode 合成过程如下图所示。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-44689d53676ffb76?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>由于没有调用 saveLayer() 函数，所以圆形是直接画在原始画布上的，而当矩形与其相交时，就是直接与原始画布上的所有图像做计算的。</p>
+<blockquote>
+<p>结论：调用 saveLayer() 函数会创建一个全新的透明画布，大小与指定保存的区域大小一致，其后的绘图操作都放在这块画布上进行。在绘制结束后，会直接盖在原始画布上显示。</p>
+</blockquote>
+<p><div id="jump2"></div></p>
+<h3 id="9-2-2-画布与图层"><a href="#9-2-2-画布与图层" class="headerlink" title="9.2.2 画布与图层"></a>9.2.2 画布与图层</h3><p>上面讲到了画布（Bitmap）、图层（Layer）和 Canvas 的概念，下面具体讲解下它们之间的关系。</p>
+<ul>
+<li>图层（Layer）：每一次调用 canvas.drawXXX 系列函数时，都会生成一个透明图层来专门来绘制这个图形，比如前面在绘制矩形时的透明图层就是这个概念。</li>
+<li>画布（Bitmap）：每块画布都是一个 Bitmap，所有的图像都是画在 Bitmap上的。我们知道，每次调用 canvas.drawXXX 函数时，都会生成一个专用的透明图层来绘制这个图形，绘制完成以后，就覆盖在画布上。所以，如果我们连续调用 5 个 draw 函数，就会生成 5 个透明图层，画完之后依次覆盖在画布上显示。画布有两种：第一种是 View 的原始画布，是通过 onDraw(Canvas canvas) 函数传入的，参数中的 canvas 就对应的是 View 的原始画布，控件的背景就是画在这块画布上的；另一种是人造画布，通过 saveLayer()、new Canvas(bitmap) 等函数来人为地新建一块画布。尤其是saveLayer() 函数，一旦调用 saveLayer() 函数新建一块画布，以后的所有 draw 函数所画的图像都是画在这块画布上的，只有在调用 restore()、resoreToCount() 函数以后，才会返回到原始画布上进行绘制。</li>
+<li>Canvas：Canvas 是画布的表现形式，我们所要绘制的任何东西都是利用 Canvas 来实现的。在代码中，Canvas 的生成方式只有一种——new Canvas(bitmap)，即只能通过 Bitmap 生成，无论是原始画布还是人造画布，所有的画布最后都是通过 Canvas 画到 Bitmap 上的。可以把 Canvas 理解成绘图工具，利用它所封装的绘图函数来绘图，而所要绘制的内容最后是画在 Bitmap 上的。所以，如果我们利用 Canvas.clipXXX 系列函数将画布进行裁剪，其实就是把它对应的 Bitmap 进行裁剪，与之对应的结果就是再利用 Canvas 绘图的区域会减小。</li>
+</ul>
+<p><div id="jump3"></div></p>
+<h3 id="9-2-3-saveLayer-和-saveLayerAlpha-函数的用法"><a href="#9-2-3-saveLayer-和-saveLayerAlpha-函数的用法" class="headerlink" title="9.2.3 saveLayer() 和 saveLayerAlpha() 函数的用法"></a>9.2.3 saveLayer() 和 saveLayerAlpha() 函数的用法</h3><h4 id="1-saveLayer-函数的用法"><a href="#1-saveLayer-函数的用法" class="headerlink" title="1. saveLayer() 函数的用法"></a>1. saveLayer() 函数的用法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public int saveLayer(RectF bounds, Paint paint, int saveFlags)</div><div class="line">public int saveLayer(float left, float top, float right, float bottom, </div><div class="line">                     Paint paint, int saveFlags)</div></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li>RectF bounds：新建画布的尺寸。</li>
+<li>Paint paint：画笔实例。</li>
+<li>int saveFlags：新建画布的标识（详见 9.3 节）。</li>
+</ul>
+<p>saveLayer() 函数会新建一块画布（Bitmap），后续的所有操作都是在这块画布上进行的。下面我们来看一下 saveLayer() 函数使用中的注意事项。</p>
+<h5 id="1）saveLayer-函数后的所有动作都只对新建画布有小。"><a href="#1）saveLayer-函数后的所有动作都只对新建画布有小。" class="headerlink" title="1）saveLayer() 函数后的所有动作都只对新建画布有小。"></a>1）saveLayer() 函数后的所有动作都只对新建画布有小。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Bitmap mBitmap;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setColor(Color.RED);</div><div class="line">        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.dog);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line">        canvas.drawBitmap(mBitmap, 0, 0, mPaint);</div><div class="line"></div><div class="line">        int layerId = canvas.saveLayer(0, 0, getWidth(), getHeight(), mPaint, Canvas.ALL_SAVE_FLAG);</div><div class="line">        canvas.skew(1.732f, 0);</div><div class="line">        canvas.drawRect(0, 0, 100, 100, mPaint);</div><div class="line">        canvas.restoreToCount(layerId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-3c785d4027271de4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在 onDraw() 函数中，我们先在 View 的原始画布上画上了小狗的图像，然后利用 saveLayer() 函数新建了一个图层，然后利用 canvas.skew() 函数将新建的图层水平斜切 45°，所以之后画的矩形(0,0,100,100) 就是斜切的。</p>
+<p>而正是由于在新建画布后的各种操作都是针对新建画布进行的，所以不会对以前的画布产生影响。从效果图中也可以明显看出，将画布水平斜切 45° 也只影响了 saveLayer() 函数的新建画布，并没有对之前的原始画布产生影响。</p>
+<h5 id="2）通过-Rect-指定的矩形大小就是新建的画布大小。"><a href="#2）通过-Rect-指定的矩形大小就是新建的画布大小。" class="headerlink" title="2）通过 Rect 指定的矩形大小就是新建的画布大小。"></a>2）通过 Rect 指定的矩形大小就是新建的画布大小。</h5><p>在 saveLayer() 函数的参数中，可以通过指定 Rect 对象或者指定 4 个点来指定一个矩形，这个矩形的大小就是新建画布的大小。我们举例来看一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line">    canvas.drawBitmap(mBitmap, 0, 0, mPaint);</div><div class="line"></div><div class="line">    int layerId = canvas.saveLayer(0, 0, 200, 200, mPaint, </div><div class="line">                                   Canvas.ALL_SAVE_FLAG);</div><div class="line">    canvas.drawColor(Color.GRAY);</div><div class="line">    canvas.restoreToCount(layerId);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-d2d2bbfed7459587.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在绘图时，我们先把小狗图片绘制在原始画布上的，然后新建一个大小为 (0,0,200,200) 的透明画布，并将画布填充为灰色。由于画布大小只有 (0,0,200,200)，所以从效果图中可以看出，也只有这一小部分区域被填充为灰色。</p>
+<p>有些读者可能会想，为了避免画布太小而出现问题，每次都新建一块屏幕大小的画布多好。这样虽然是不会出现问题，但屏幕大小的画布需要多少存储空间呢？按一个像素需要 8bit 存储空间算，分辨率为 1024 像素 x 768 像素的机器，所占用的存储空间就是1024 <em> 768 </em> 8=6.2MB。所以我们在使用 saveLayer() 函数新建画布时，一定要选择适当的大小，否则你的 APP 很可能 OOM。</p>
+<blockquote>
+<p>注意：在前面示例中都是直接新建全屏画布的，这只是为了方便展示，在现实使用中一定要创建适当的画布大小。</p>
+</blockquote>
+<h4 id="2-saveLayerAlpha-函数的用法"><a href="#2-saveLayerAlpha-函数的用法" class="headerlink" title="2. saveLayerAlpha() 函数的用法"></a>2. saveLayerAlpha() 函数的用法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public int saveLayerAlpha(RectF bounds, int alpha, int saveFlags)</div><div class="line">public int saveLayerAlpha(float left, float top, float right, float bottom,</div><div class="line">                          int alpha, int saveFlags)</div></pre></td></tr></table></figure>
+<p>相比 saveLayer() 函数，多了一个 alpha 参数，用于指定新建画布的透明度，取值范围为 0~255，可以用十六进制的 0xAA 表示，取 0 时表示全透明。</p>
+<p>这个函数的意义也是在调用的时候会新建一块画布，以后的各种绘图操作都作用在这个画布上，但这个画布是有透明度的，透明度就是通过 alpha 参数指定的。</p>
+<p>将上述示例中的 saveLayer() 函数改为 saveLayerAlpha() 函数来重新作图。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line">    canvas.drawBitmap(mBitmap, 0, 0, mPaint);</div><div class="line"></div><div class="line">    int layerId = canvas.saveLayerAlpha(0, 0, 200, 200, 100, </div><div class="line">                                        Canvas.ALL_SAVE_FLAG);</div><div class="line">    canvas.drawColor(Color.WHITE);</div><div class="line">    canvas.restoreToCount(layerId);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-dd481599deaa6cdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在调用 saveLayerAlpha() 函数时，将新建画布的透明度设置为 100%，然后将画布同样填充为白色。从效果图中可以看出，在新建图像与上层画布合成以后，是具有透明度的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Custom-View/" rel="tag"><i class="fa fa-tag"></i> Custom View</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/09/05 CUSTOM VIEW/09.1 精通自定义 View 之 Canvas 与图层——获取 Canvas 对象的方法/" rel="next" title="09.1 精通自定义 View 之 Canvas 与图层——获取 Canvas 对象的方法">
+                <i class="fa fa-chevron-left"></i> 09.1 精通自定义 View 之 Canvas 与图层——获取 Canvas 对象的方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/09/05 CUSTOM VIEW/09.3 精通自定义 View 之 Canvas 与图层——Flag 的具体含义/" rel="prev" title="09.3 精通自定义 View 之 Canvas 与图层——Flag 的具体含义">
+                09.3 精通自定义 View 之 Canvas 与图层——Flag 的具体含义 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-1-saveLayer-函数"><span class="nav-text">9.2.1 saveLayer() 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-调用-saveLayer-函数时的绘图流程"><span class="nav-text">1. 调用 saveLayer() 函数时的绘图流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-没有-saveLayer-函数时的绘图流程"><span class="nav-text">2. 没有 saveLayer() 函数时的绘图流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-2-画布与图层"><span class="nav-text">9.2.2 画布与图层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-3-saveLayer-和-saveLayerAlpha-函数的用法"><span class="nav-text">9.2.3 saveLayer() 和 saveLayerAlpha() 函数的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-saveLayer-函数的用法"><span class="nav-text">1. saveLayer() 函数的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）saveLayer-函数后的所有动作都只对新建画布有小。"><span class="nav-text">1）saveLayer() 函数后的所有动作都只对新建画布有小。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2）通过-Rect-指定的矩形大小就是新建的画布大小。"><span class="nav-text">2）通过 Rect 指定的矩形大小就是新建的画布大小。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-saveLayerAlpha-函数的用法"><span class="nav-text">2. saveLayerAlpha() 函数的用法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共317.4k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

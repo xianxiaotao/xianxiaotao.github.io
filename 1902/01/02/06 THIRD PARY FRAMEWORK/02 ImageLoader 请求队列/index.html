@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="DESIGN PATTERN," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="01 基础框架02 请求队列03 三级缓存04 图片加载05 常见问题06 项目源码
+
+一、请求参数为了追求单一职责原则，上篇博客将 ImageLoader 类拆出 3 个类，这种情况往往导致方法调用层次加深，参数传递多次。比如：12345Client ——&amp;gt; ImageLoader.displayImage(url, imageView) ——&amp;gt; RequestThreadP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02 ImageLoader 请求队列">
+<meta property="og:url" content="http://yoursite.com/1902/01/02/06 THIRD PARY FRAMEWORK/02 ImageLoader 请求队列/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="01 基础框架02 请求队列03 三级缓存04 图片加载05 常见问题06 项目源码
+
+一、请求参数为了追求单一职责原则，上篇博客将 ImageLoader 类拆出 3 个类，这种情况往往导致方法调用层次加深，参数传递多次。比如：12345Client ——&amp;gt; ImageLoader.displayImage(url, imageView) ——&amp;gt; RequestThreadP">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-dd8c2e552e45d22e.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1929233-da4e2b0025084839.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/960/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-5bdf560f5cd8197b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-631b2a4e4de2e2b7.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-20T11:29:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="02 ImageLoader 请求队列">
+<meta name="twitter:description" content="01 基础框架02 请求队列03 三级缓存04 图片加载05 常见问题06 项目源码
+
+一、请求参数为了追求单一职责原则，上篇博客将 ImageLoader 类拆出 3 个类，这种情况往往导致方法调用层次加深，参数传递多次。比如：12345Client ——&amp;gt; ImageLoader.displayImage(url, imageView) ——&amp;gt; RequestThreadP">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-dd8c2e552e45d22e.gif?imageMogr2/auto-orient/strip">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/1902/01/02/06 THIRD PARY FRAMEWORK/02 ImageLoader 请求队列/"/>
+
+
+
+
+
+  <title>02 ImageLoader 请求队列 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1902/01/02/06 THIRD PARY FRAMEWORK/02 ImageLoader 请求队列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">02 ImageLoader 请求队列</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="1902-01-02T00:00:00+08:00">
+                1902-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DESIGN-PATTERN/" itemprop="url" rel="index">
+                    <span itemprop="name">DESIGN PATTERN</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/1902/01/02/06 THIRD PARY FRAMEWORK/02 ImageLoader 请求队列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/1902/01/02/06 THIRD PARY FRAMEWORK/02 ImageLoader 请求队列/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-dd8c2e552e45d22e.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/1902/01/01/03IMAGE%20LOADER/01%20ImageLoader%20基础框架/" target="_blank" rel="external">01 基础框架</a><br><a href="https://xianxiaotao.github.io/1902/01/02/03IMAGE%20LOADER/02%20ImageLoader%20请求队列/" target="_blank" rel="external">02 请求队列</a><br><a href="https://xianxiaotao.github.io/1902/01/03/03IMAGE%20LOADER/03%20ImageLoader%20三级缓存/" target="_blank" rel="external">03 三级缓存</a><br><a href="https://xianxiaotao.github.io/1902/01/04/03IMAGE%20LOADER/04%20ImageLoader%20图片加载/" target="_blank" rel="external">04 图片加载</a><br><a href="https://xianxiaotao.github.io/1902/01/05/03IMAGE%20LOADER/05%20ImageLoader%20常见问题/" target="_blank" rel="external">05 常见问题</a><br><a href="https://xianxiaotao.github.io/1902/01/06/03IMAGE%20LOADER/06%20ImageLoader%20项目源码/" target="_blank" rel="external">06 项目源码</a></p>
+</blockquote>
+<h3 id="一、请求参数"><a href="#一、请求参数" class="headerlink" title="一、请求参数"></a>一、请求参数</h3><p>为了追求单一职责原则，上篇博客将 ImageLoader 类拆出 3 个类，这种情况往往导致方法调用层次加深，参数传递多次。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Client </div><div class="line">——&gt; ImageLoader.displayImage(url, imageView) </div><div class="line">——&gt; RequestThreadPool.addRequest(url, imageView) </div><div class="line">——&gt; Loader.load(url, imageView) </div><div class="line">——&gt; Loader.downloadImage(url)</div></pre></td></tr></table></figure></p>
+<p>其中，参数 url 和 imageView 就传递了多次。如果后期需求变更，要新增参数，比如新增一个回调监听器 listener，那么整个方法调用链上的代码都要大幅修改。这时，我们一般将多个参数封装在一个对象里，这样就可以减少很多修改操作。此处。我们将参数 url 和 imageView 封装在请求参数 BitmapRequest 类中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class BitmapRequest &#123;</div><div class="line">    public ImageView imageView;</div><div class="line">    public String imageUri;</div><div class="line"></div><div class="line">    public BitmapRequest(ImageView imageView, String uri) &#123;</div><div class="line">        this.imageView = imageView;</div><div class="line">        this.imageUri = uri;</div><div class="line">        imageView.setTag(uri);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // image view 的 tag 与 uri 是否相等</div><div class="line">    public boolean isImageViewTagValid() &#123;</div><div class="line">        return imageView != null &amp;&amp; imageView.getTag().equals(imageUri);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对应的方法调用链的参数也需要替换成 BitmapRequest，如 ImageLoader 的 displayImage 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public void displayImage(String uri, ImageView imageView) &#123;</div><div class="line">    BitmapRequest request = new BitmapRequest(imageView, uri);</div><div class="line">    mThreadPool.addRequest(request);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ImageLoader 将用户传递的各种参数封装为 BitmapRequest 对象并沿着方法调用依次传递。为了保证程序的一致性，BitmapRequest 也作为缓存的 key。ImageCache 代码更改如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class ImageCache &#123;</div><div class="line">    private LruCache&lt;BitmapRequest, Bitmap&gt; mImageCache;</div><div class="line"></div><div class="line">    // 代码省略...</div><div class="line"></div><div class="line">    public void put(BitmapRequest key, Bitmap value) &#123;</div><div class="line">        mImageCache.put(key, value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Bitmap get(BitmapRequest key) &#123;</div><div class="line">        return mImageCache.get(key);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void remove(BitmapRequest key) &#123;</div><div class="line">        mImageCache.remove(key);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>避免啰嗦，就不再给出其他参数修改代码。</p>
+<h3 id="二、请求队列"><a href="#二、请求队列" class="headerlink" title="二、请求队列"></a>二、请求队列</h3><p>在 RequestThreadPool 类中，我们使用了 ExecutorService.submit(new Runnable(){}) 方法。虽然使用了线程池，支持多个异步加载任务，但是我们无法控制它。比如取消加载任务，修改加载顺序等，而且我们这样的异步加载代码显得非常“丑陋”，阅读性差。具体代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class RequestThreadPool &#123;</div><div class="line">    // 线程池，线程数量为 CPU 的数量</div><div class="line">    private ExecutorService mExecutorService = Executors.newFixedThreadPool(</div><div class="line">            Runtime.getRuntime().availableProcessors());</div><div class="line"></div><div class="line">    public void addRequest(final BitmapRequest request) &#123;</div><div class="line">        mExecutorService.submit(new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                Loader.getInstance().load(request);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>有没有更好的实现方式呢？当然有，而且 ANDROID 本身就提供了一个很棒的设计案例，那就是 Handler。那 Handler 的机制是什么样的呢？先来看下图。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1929233-da4e2b0025084839.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/960/format/webp" alt=""></p>
+<p>在使用 Handler 的时候，在 Handler 所创建的线程需要维护一个唯一的 Looper 对象，每个线程对应一个 Looper，每个线程的 Looper 通过 ThreadLocal 来保证；Looper 对象的内部又维护有唯一的一个 MessageQueue，所以一个线程可以有多个 Handler，但是只能有一个 Looper 和一个 MessageQueue。</p>
+<p>Message 在 MessageQueue 不是通过一个列表来存储的，而是将传入的 Message 存入到了上一个 Message 的 next 中，在取出的时候通过顶部的 Message 就能按放入的顺序依次取出 Message。</p>
+<p>Looper 对象通过 loop() 方法开启了一个死循环，不断地从 looper 内的 MessageQueue 中取出 Message，然后通过 handler 将消息分发传回 handler 所在的线程。</p>
+<p>阐述完 Handler 消息机制，接下来就是模仿它实现请求队列。如下图所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-5bdf560f5cd8197b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li>首先将 RequestThreadPool 改名为 RequestQueue，相当于 Looper，其内部维护一个存储图片加载请求（BitmapRequest）的队列（LinkedBlockingQueue），向外部提供一个添加图片加载请求的接口（addRequest）;</li>
+<li>RequestQueue 再维护一个线程池（RequestDispatcher[]），数量默认为：CPU 核心数 + 1个分发线程数，其中每个线程 RequestDispatcher 相当于 Handler，不断地从请求队列中获取 BitmapRequest，并执行加载任务。</li>
+<li>实现 RequestDispatcher 类，在相应的条件下无限轮询请求队列（LinkedBlockingQueue），拿到具体图片加载请求（BitmapRequest）后去执行网络加载任务。</li>
+</ul>
+<p>实现代码如下：</p>
+<p>RequestDispatcher.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class RequestDispatcher extends Thread &#123;</div><div class="line"></div><div class="line">    // 网络请求队列</div><div class="line">    private BlockingQueue&lt;BitmapRequest&gt; mBitmapRequestQueue;</div><div class="line"></div><div class="line">    public RequestDispatcher(BlockingQueue&lt;BitmapRequest&gt; queue) &#123;</div><div class="line">        mBitmapRequestQueue = queue;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        try &#123;</div><div class="line">            while (!this.isInterrupted()) &#123;</div><div class="line">                final BitmapRequest request = mBitmapRequestQueue.take();</div><div class="line">                if (request.isCancel) &#123;</div><div class="line">                    continue;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                Loader.getInstance().load(request);</div><div class="line">            &#125;</div><div class="line">        &#125; catch (InterruptedException e) &#123;</div><div class="line">            Log.i(&quot;&quot;, &quot;### 请求分发器退出&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>RequestDispatcher 是一个线程实现类，主要负责轮询请求队列，获取到实际请求后，调用 Loader 实例去加载网络图片。</p>
+<p>RequestQueue.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">public class RequestQueue &#123;</div><div class="line"></div><div class="line">    private BlockingQueue&lt;BitmapRequest&gt; mBitmapRequestQueue =</div><div class="line">            new LinkedBlockingQueue&lt;&gt;();</div><div class="line"></div><div class="line">    // 默认的核心数：CPU 核心数 + 1个分发线程数</div><div class="line">    public static int DEFAULT_CORE_NUM =</div><div class="line">            Runtime.getRuntime().availableProcessors() + 1;</div><div class="line">    private int mDispatcherNum;</div><div class="line">    private RequestDispatcher[] mDispatchers = null;</div><div class="line"></div><div class="line">    protected RequestQueue() &#123;</div><div class="line">        this(DEFAULT_CORE_NUM);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected RequestQueue(int coreNum) &#123;</div><div class="line">        mDispatcherNum = coreNum;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 维护线程池</div><div class="line">    private final void startDispatchers() &#123;</div><div class="line">        mDispatchers = new RequestDispatcher[mDispatcherNum];</div><div class="line">        for (int i = 0; i &lt; mDispatcherNum; i++) &#123;</div><div class="line">            mDispatchers[i] = new RequestDispatcher(mBitmapRequestQueue);</div><div class="line">            mDispatchers[i].start();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void start() &#123;</div><div class="line">        stop();</div><div class="line">        startDispatchers();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void stop() &#123;</div><div class="line">        if (mDispatchers != null &amp;&amp; mDispatchers.length &gt; 0) &#123;</div><div class="line">            for (int i = 0; i &lt; mDispatchers.length; i++) &#123;</div><div class="line">                mDispatchers[i].interrupt();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void addRequest(BitmapRequest request) &#123;</div><div class="line">        if (!mBitmapRequestQueue.contains(request)) &#123;</div><div class="line">            mBitmapRequestQueue.add(request);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>RequestQueue 维护一个请求队列和线程池，在添加加载请求之前必须调用 start 方法来初始化线程池并启动各个线程。</p>
+<p>ImageLoader.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">public class ImageLoader &#123;</div><div class="line">    // ImageLoader 实例</div><div class="line">    private static ImageLoader sInstance;</div><div class="line">    // 图片内存缓存</div><div class="line">    private ImageCache mImageCache = new ImageCache();</div><div class="line">    // 网络请求队列</div><div class="line">    private RequestQueue mImageQueue;</div><div class="line"></div><div class="line">    private ImageLoader() &#123;&#125;</div><div class="line">    </div><div class="line">    public static ImageLoader getInstance() &#123;</div><div class="line">        if (sInstance == null) &#123;</div><div class="line">            synchronized (ImageLoader.class) &#123;</div><div class="line">                if (sInstance == null) &#123;</div><div class="line">                    sInstance = new ImageLoader();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return sInstance;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public ImageLoader init() &#123;</div><div class="line">        mImageQueue = new RequestQueue();</div><div class="line">        mImageQueue.start();</div><div class="line">        return this;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public ImageCache getCache() &#123;</div><div class="line">        return mImageCache;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void displayImage(String uri, ImageView imageView) &#123;</div><div class="line">        BitmapRequest request = new BitmapRequest(imageView, uri);</div><div class="line">        mImageQueue.addRequest(request);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>测试代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">String url1 = &quot;https://mtl.gzhuibei.com/images/img/19816/1.jpg&quot;;</div><div class="line">String url2 = &quot;https://mtl.gzhuibei.com/images/img/19816/5.jpg&quot;;</div><div class="line">ImageLoader loader = ImageLoader.getInstance();</div><div class="line">loader.init().displayImage(url1, imageView1);</div><div class="line">loader.displayImage(url2, imageView2);</div></pre></td></tr></table></figure></p>
+<h3 id="三、请求策略"><a href="#三、请求策略" class="headerlink" title="三、请求策略"></a>三、请求策略</h3><p>在上面实现的代码中，加载请求会被封装成一个 Request 对象添加到请求队列中，默认情况下 ImageLoader 会按照先后顺序加载图片。但是现实中，我们可能需要最后添加到队列的请求先被执行。例如，在滚动 ListView 时，最后一项肯定是最晚被加载的，此时它却显示在屏幕上的，而其它优先被加载的请求却不在屏幕显示范围。当需求是在屏幕上显示的 Item View 的图片优先被加载，我们就需要 ImageLoader 支持从请求队列的尾部开始加载。也就是，这里至少需要两种策略。</p>
+<p>依照策略模式，代码实现如下所示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 加载策略接口</div><div class="line"> */</div><div class="line">public interface LoadPolicy &#123;</div><div class="line">    int compare(BitmapRequest request1, BitmapRequest request2);</div><div class="line">&#125;</div><div class="line">/**</div><div class="line"> * 顺序加载策略</div><div class="line"> */</div><div class="line">public class SerialPolicy implements LoadPolicy &#123;</div><div class="line">    @Override</div><div class="line">    public int compare(BitmapRequest request1, BitmapRequest request2) &#123;</div><div class="line">        return request1.serialNum - request2.serialNum;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">/**</div><div class="line"> * 逆序加载策略</div><div class="line"> */</div><div class="line">public class ReversePolicy implements LoadPolicy &#123;</div><div class="line">    @Override</div><div class="line">    public int compare(BitmapRequest request1, BitmapRequest request2) &#123;</div><div class="line">        return request2.serialNum - request1.serialNum;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>首先定义了一个 LoadPolicy 接口，在这个接口中有一个 compare 方法，用来对比两个请求。我们默认实现了顺序加载、逆序加载两个策略，因为每个请求都要有一个序列号，这个序列号以递增的形式增长，越晚加入队列的请求序列号越大，而我们的请求队列也必须是优先级队列；为实现对这些请求的排序处理，我们需要在图片加载请求类中实现 Comparable 接口。</p>
+<p>使用 AtomicInteger 类给每一个请求分配一个序列号，再使用优先级队列（PriorityBlockingQueue）来维持图片加载队列，PriorityBlockingQueue 会根据 BitmapRequest 的 compare 策略来决定 BitmapRequest 的顺序。RequestQueue 内部会启动用户指定数量的线程来从请求队列中读取请求，分发线程不断地从队列中读取请求，然后进行图片加载处理。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class RequestQueue &#123;</div><div class="line">    // 请求队列 [ Thread-safe ]</div><div class="line">    private BlockingQueue&lt;BitmapRequest&gt; mBitmapRequestQueue =</div><div class="line">            new PriorityBlockingQueue&lt;&gt;();</div><div class="line">    // 请求的序列化生成器</div><div class="line">    private AtomicInteger mSerialNumGenerator = new AtomicInteger(0);</div><div class="line"></div><div class="line">    // 代码省略...</div><div class="line"></div><div class="line">    public void addRequest(BitmapRequest request) &#123;</div><div class="line">        if (!mBitmapRequestQueue.contains(request)) &#123;</div><div class="line">            request.serialNum = this.generateSerialNumber();</div><div class="line">            mBitmapRequestQueue.add(request);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 为每个请求生成一个系列号</div><div class="line">    private int generateSerialNumber() &#123;</div><div class="line">        return mSerialNumGenerator.incrementAndGet();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>BitmapRequest 增加请求序列号（serialNum）和加载策略（mLoadPolicy），并实现 Comparable 接口中的 compareTo 方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">public class BitmapRequest implements Comparable&lt;BitmapRequest&gt; &#123;</div><div class="line"></div><div class="line">    // 代码省略...</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 请求序列号</div><div class="line">     */</div><div class="line">    public int serialNum = 0;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 加载策略</div><div class="line">     */</div><div class="line">    public LoadPolicy mLoadPolicy = new SerialPolicy();</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int compareTo(BitmapRequest another) &#123;</div><div class="line">        return mLoadPolicy.compare(this, another);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int hashCode() &#123;</div><div class="line">        final int prime = 31;</div><div class="line">        int result = 1;</div><div class="line">        result = prime * result + ((imageUri == null) ? 0 : imageUri.hashCode());</div><div class="line">        result = prime * result + ((imageView == null) ? 0 : imageView.hashCode());</div><div class="line">        result = prime * result + serialNum;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean equals(Object obj) &#123;</div><div class="line">        if (this == obj)</div><div class="line">            return true;</div><div class="line">        if (obj == null)</div><div class="line">            return false;</div><div class="line">        if (getClass() != obj.getClass())</div><div class="line">            return false;</div><div class="line">        BitmapRequest other = (BitmapRequest) obj;</div><div class="line">        if (imageUri == null) &#123;</div><div class="line">            if (other.imageUri != null)</div><div class="line">                return false;</div><div class="line">        &#125; else if (!imageUri.equals(other.imageUri))</div><div class="line">            return false;</div><div class="line">        if (imageView == null) &#123;</div><div class="line">            if (other.imageView != null)</div><div class="line">                return false;</div><div class="line">        &#125; else if (!imageView.equals(other.imageView))</div><div class="line">            return false;</div><div class="line">        if (serialNum != other.serialNum)</div><div class="line">            return false;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>向外部提供设置请求加载接口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class ImageLoader &#123;</div><div class="line"></div><div class="line">    // 代码省略...</div><div class="line"></div><div class="line">    // 请求加载策略</div><div class="line">    private LoadPolicy mLoadPolicy;</div><div class="line"></div><div class="line">    public ImageLoader init() &#123;</div><div class="line">        init(new SerialPolicy());</div><div class="line">        return this;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public ImageLoader init(LoadPolicy policy) &#123;</div><div class="line">        mLoadPolicy = policy;</div><div class="line">        mImageQueue = new RequestQueue();</div><div class="line">        mImageQueue.start();</div><div class="line">        return this;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void displayImage(String uri, ImageView imageView) &#123;</div><div class="line">        BitmapRequest request = new BitmapRequest(imageView, uri);</div><div class="line">        request.mLoadPolicy = mLoadPolicy;</div><div class="line">        mImageQueue.addRequest(request);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们在 init 方法中初始化了加载策略配置信息，后续我们额外提供配置参数，如加载中的图片、加载失败的图片、缓存策略等等，那么要重载多少个 init 方法？如果提供 setter 和 getter 方法，那么这些方法是不是都在 displayImage 方法调用之前调用？</p>
+<h3 id="四、配置参数"><a href="#四、配置参数" class="headerlink" title="四、配置参数"></a>四、配置参数</h3><hr>
+<p>前文提到 ImageLoader 初始化配置参数是，无论是重载 init 方法还是使用多个 setter 方法，都会使得用户的使用成本很高。暴露过多函数，会让用户在每次调用函数时都要仔细选择，还要把握函数调用时机。比如在已经初始化了一个指定线程数量的线程池的情况下，用户再调用 setThreadCount 时应该如何处理呢？为此我们需要对程序做一些限制，让用户只能在初始化时配置这些参数。</p>
+<p>要封装参数，还要考虑初始化顺序等问题，只像 BitmapRequest 那样简单的封装参数是不行的。我们可以使用 Builder 模式来构建一个不可变的配置对象，并且将这个对象注入到 ImageLoader 中，也就是说它只能在构建时设置各个参数，一旦你调用 build() 或者类似方法构建对象后，它的属性就不可再修改，因为它没有 setter 方法，字段也都是隐藏的，用户只能在初始化时一次性构建这个配置对象，然后注入给 ImageLoader，ImageLoader 根据配置对象进行初始化。这样，像 setThreadCount、setLoadPolicy 等方法就不需要出现在 ImageLoader 中了，用户可见的函数就会少很多，ImageLoader 的使用成本也随之降低了。</p>
+<p>修改后的 ImageLoader，其代码如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class ImageLoader &#123;</div><div class="line"></div><div class="line">    // ...</div><div class="line"></div><div class="line">    // 图片加载配置对象</div><div class="line">    private ImageLoaderConfig mConfig;</div><div class="line"></div><div class="line">    public void init(ImageLoaderConfig config) &#123;</div><div class="line">        mConfig = config;</div><div class="line">        mCache = mConfig.imageCache;</div><div class="line">        checkConfig();</div><div class="line">        mImageQueue = new RequestQueue(mConfig.threadCount);</div><div class="line">        mImageQueue.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void checkConfig() &#123;</div><div class="line">        if (mConfig == null) &#123;</div><div class="line">            throw new RuntimeException(&quot;The config of SimpleImageLoader &quot; +</div><div class="line">                    &quot;is Null, please call the init(ImageLoaderConfig &quot; +</div><div class="line">                    &quot;config) method to initialize&quot;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (mConfig.loadPolicy == null) &#123;</div><div class="line">            mConfig.loadPolicy = new SerialPolicy();</div><div class="line">        &#125;</div><div class="line">        if (mCache == null) &#123;</div><div class="line">            mCache = new ImageCache();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其中的参数设置代码都封装到了 ImageLoaderConfig 和 Builder 对象中，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">public class ImageLoaderConfig &#123;</div><div class="line">    // 图片缓存配置对象</div><div class="line">    ImageCache imageCache = new ImageCache();</div><div class="line">    // 图片加载中显示的图片 id</div><div class="line">    int loadingImageId;</div><div class="line">    // 加载失败时显示的图片 id</div><div class="line">    int loadFailedImageId;</div><div class="line">    // 图片加载策略</div><div class="line">    LoadPolicy loadPolicy;</div><div class="line">    // 线程数量，默认为 CPU 数量 + 1</div><div class="line">    int threadCount = Runtime.getRuntime().availableProcessors() + 1;</div><div class="line"></div><div class="line">    private ImageLoaderConfig() &#123;&#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 配置类的 Builder</div><div class="line">     */</div><div class="line">    public static class Builder &#123;</div><div class="line">        // 图片缓存配置对象</div><div class="line">        ImageCache imageCache = new ImageCache();</div><div class="line">        // 图片加载中显示的图片 id</div><div class="line">        int loadingImageId;</div><div class="line">        // 加载失败时显示的图片 id</div><div class="line">        int loadFailedImageId;</div><div class="line">        // 图片加载策略</div><div class="line">        LoadPolicy loadPolicy;</div><div class="line">        // 线程数量，默认为 CPU 数量 + 1</div><div class="line">        int threadCount = Runtime.getRuntime().availableProcessors() + 1;</div><div class="line"></div><div class="line">        // 设置缓存</div><div class="line">        public Builder setCache(ImageCache imageCache) &#123;</div><div class="line">            this.imageCache = imageCache;</div><div class="line">            return this;</div><div class="line">        &#125;</div><div class="line">        // 设置正在加载中显示的图片</div><div class="line">        public Builder setLoadingImageId(int loadingImageId) &#123;</div><div class="line">            this.loadingImageId = loadingImageId;</div><div class="line">            return this;</div><div class="line">        &#125;</div><div class="line">        // 设置要加载的图片失败时显示的图片</div><div class="line">        public Builder setLoadFailedImageId(int loadingFailedImageId) &#123;</div><div class="line">            this.loadFailedImageId = loadingFailedImageId;</div><div class="line">            return this;</div><div class="line">        &#125;</div><div class="line">        // 设置加载策略</div><div class="line">        public Builder setLoadPolicy(LoadPolicy loadPolicy) &#123;</div><div class="line">            this.loadPolicy = loadPolicy;</div><div class="line">            return this;</div><div class="line">        &#125;</div><div class="line">        // 设置线程数量</div><div class="line">        public Builder setThreadCount(int threadCount) &#123;</div><div class="line">            this.threadCount = threadCount;</div><div class="line">            return this;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        void applyConfig(ImageLoaderConfig config) &#123;</div><div class="line">            config.imageCache = this.imageCache;</div><div class="line">            config.loadingImageId = this.loadingImageId;</div><div class="line">            config.loadFailedImageId = this.loadFailedImageId;</div><div class="line">            config.loadPolicy = this.loadPolicy;</div><div class="line">            config.threadCount = this.threadCount;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        public ImageLoaderConfig create() &#123;</div><div class="line">            ImageLoaderConfig config = new ImageLoaderConfig();</div><div class="line">            applyConfig(config);</div><div class="line">            return config;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>通过 ImageLoaderConfig 的构造函数、字段包级私有化，使得外部不能访问内部属性，用户唯一能够设置属性的地方就是通过 Builder 对象了，也就是说用户只能通过 Builder 对象构造 ImageLoaderConfig 对象，这就是构建和表示相分离。</p>
+<p>用户的使用代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">String url1 = &quot;https://mtl.gzhuibei.com/images/img/19816/1.jpg&quot;;</div><div class="line">String url2 = &quot;https://mtl.gzhuibei.com/images/img/19816/5.jpg&quot;;</div><div class="line">ImageLoader loader = ImageLoader.getInstance();</div><div class="line">ImageLoaderConfig config = new ImageLoaderConfig.Builder()</div><div class="line">        .setThreadCount(4)</div><div class="line">        .setCache(new ImageCache())</div><div class="line">        .setLoadPolicy(new ReversePolicy())</div><div class="line">        .setLoadingImageId(R.drawable.loading)</div><div class="line">        .setLoadFailedImageId(R.drawable.not_found)</div><div class="line">        .create();</div><div class="line">loader.init(config);</div><div class="line">loader.displayImage(url1, imageView1);</div><div class="line">loader.displayImage(url2, imageView2);</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-631b2a4e4de2e2b7.gif?imageMogr2/auto-orient/strip" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DESIGN-PATTERN/" rel="tag"><i class="fa fa-tag"></i> DESIGN PATTERN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/1902/01/01/06 THIRD PARY FRAMEWORK/01 ImageLoader 基础框架/" rel="next" title="01 ImageLoader 基础框架">
+                <i class="fa fa-chevron-left"></i> 01 ImageLoader 基础框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1902/01/03/06 THIRD PARY FRAMEWORK/03 ImageLoader 三级缓存/" rel="prev" title="03 ImageLoader 三级缓存">
+                03 ImageLoader 三级缓存 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、请求参数"><span class="nav-text">一、请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、请求队列"><span class="nav-text">二、请求队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、请求策略"><span class="nav-text">三、请求策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、配置参数"><span class="nav-text">四、配置参数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共317.4k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

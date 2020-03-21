@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JAVA," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="相关文章：Java RelfectJava RelfectUtils反射一：基本类周边信息获取反射二：泛型相关周边信息获取反射三：类内部信息获取
+
+上两篇文章中，给大家讲了，有关类周边信息的获取方法，这篇文章中我们将深入到类的内部，看看类的构造函数，内部变量，函数等信息的获取方法。相比而言，这篇更重要。
+一、构造函数相关获取
+1、获取构造函数要获取类的构造函数，有下面几种方法：1234567">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反射三：类内部信息获取">
+<meta property="og:url" content="http://yoursite.com/1900/01/12/01 JAVA/12 反射三：类内部信息获取/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="相关文章：Java RelfectJava RelfectUtils反射一：基本类周边信息获取反射二：泛型相关周边信息获取反射三：类内部信息获取
+
+上两篇文章中，给大家讲了，有关类周边信息的获取方法，这篇文章中我们将深入到类的内部，看看类的构造函数，内部变量，函数等信息的获取方法。相比而言，这篇更重要。
+一、构造函数相关获取
+1、获取构造函数要获取类的构造函数，有下面几种方法：1234567">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-1f36c6e1ec4d2caf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-c7d521dd461b4486.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-e22432ff534e6eeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-6d42232b6291fb6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-01b2ef049fd7b9d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-f2eae265fe738192.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-7cc697ce6f2ec479?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-03-21T07:54:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="反射三：类内部信息获取">
+<meta name="twitter:description" content="相关文章：Java RelfectJava RelfectUtils反射一：基本类周边信息获取反射二：泛型相关周边信息获取反射三：类内部信息获取
+
+上两篇文章中，给大家讲了，有关类周边信息的获取方法，这篇文章中我们将深入到类的内部，看看类的构造函数，内部变量，函数等信息的获取方法。相比而言，这篇更重要。
+一、构造函数相关获取
+1、获取构造函数要获取类的构造函数，有下面几种方法：1234567">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-1f36c6e1ec4d2caf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/1900/01/12/01 JAVA/12 反射三：类内部信息获取/"/>
+
+
+
+
+
+  <title>反射三：类内部信息获取 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1900/01/12/01 JAVA/12 反射三：类内部信息获取/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">反射三：类内部信息获取</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="1900-01-12T00:00:00+08:00">
+                1900-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/1900/01/12/01 JAVA/12 反射三：类内部信息获取/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/1900/01/12/01 JAVA/12 反射三：类内部信息获取/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<blockquote>
+<p>相关文章：<br><a href="https://xianxiaotao.github.io/1900/01/08/01%20JAVA/08%20Java%20Relfect/" target="_blank" rel="external">Java Relfect</a><br><a href="https://xianxiaotao.github.io/1900/01/09/01%20JAVA/09%20Java%20RelfectUtils/" target="_blank" rel="external">Java RelfectUtils</a><br><a href="https://xianxiaotao.github.io/1900/01/10/01%20JAVA/10%20%E5%8F%8D%E5%B0%84%E4%B8%80%EF%BC%9A%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%91%A8%E8%BE%B9%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">反射一：基本类周边信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/11/01%20JAVA/11%20%E5%8F%8D%E5%B0%84%E4%BA%8C%EF%BC%9A%E6%B3%9B%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%91%A8%E8%BE%B9%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">反射二：泛型相关周边信息获取</a><br><a href="https://xianxiaotao.github.io/1900/01/12/01%20JAVA/12%20%E5%8F%8D%E5%B0%84%E4%B8%89%EF%BC%9A%E7%B1%BB%E5%86%85%E9%83%A8%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" target="_blank" rel="external">反射三：类内部信息获取</a></p>
+</blockquote>
+<p>上两篇文章中，给大家讲了，有关类周边信息的获取方法，这篇文章中我们将深入到类的内部，看看类的构造函数，内部变量，函数等信息的获取方法。相比而言，这篇更重要。</p>
+<h3 id="一、构造函数相关获取"><a href="#一、构造函数相关获取" class="headerlink" title="一、构造函数相关获取"></a>一、构造函数相关获取</h3><hr>
+<h4 id="1、获取构造函数"><a href="#1、获取构造函数" class="headerlink" title="1、获取构造函数"></a>1、获取构造函数</h4><p>要获取类的构造函数，有下面几种方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 获取 public 类型的构造函数</div><div class="line">Constructor&lt;?&gt;[] getConstructors();</div><div class="line">Constructor&lt;T&gt; getConstructor(Class&lt;?&gt;... parameterTypes);</div><div class="line"> </div><div class="line">// 获取所有类型的构造函数</div><div class="line">Constructor&lt;?&gt;[] getDeclaredConstructors();</div><div class="line">Constructor&lt;T&gt; getDeclaredConstructor(Class&lt;?&gt;... parameterTypes)</div></pre></td></tr></table></figure></p>
+<p>这四种方法中，getConstructors 与 getConstructor 获取的是声明为 public 的构造函数。无法得到声明为 protected、private 的构造函数。而加有 Declared（声明）的两个函数 getDeclaredConstructors、getDeclaredConstructor 能获取所有声明的构造函数，无论它是 public、protected 还是 private 类型，都能获取到。所以这两个函数较为常用。</p>
+<p>下面我们举个例子来看下 getDeclaredConstructors 和 getDeclaredConstructor 的用法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Constructor&lt;?&gt;[] getDeclaredConstructors();</div></pre></td></tr></table></figure></p>
+<p>首先，构造一个类 Person：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Person &#123;</div><div class="line">    private int age;</div><div class="line">    private String name;</div><div class="line">    public Person() &#123;</div><div class="line">    &#125;</div><div class="line">    private Person(int age, String name) &#123;</div><div class="line">        this.age = age;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line">    private Person(Integer age, String name) &#123;</div><div class="line">        this.age = age;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line">    public int getAge() &#123;</div><div class="line">        return age;</div><div class="line">    &#125;</div><div class="line">    public void setAge(int age) &#123;</div><div class="line">        this.age = age;</div><div class="line">    &#125;</div><div class="line">    public String getName() &#123;</div><div class="line">        return name;</div><div class="line">    &#125;</div><div class="line">    public void setName(String name) &#123;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在 Person 类中，目前我们只关心构造函数，所以我们声明了三个构造函数，有一个无参数的构造函数，和两个有参数的构造函数。我们把无参的构造函数声明为 public，另外两个都声明为 private。在上面我们说过，在四个获取构造函数的方法中，只有具有 Declared 的两个 getDeclaredXXX() 的函数才能获取类中所有的函数。而另外两个只能获取声明为 public 的函数。下面我们就利用一个例子来获取Person类的构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 1、枚举</div><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Constructor&lt;?&gt;[] constructors = clazz.getDeclaredConstructors();</div><div class="line">for (Constructor item:constructors)&#123;</div><div class="line">    Log.d(TAG,&quot;枚举到的构造函数：&quot;+item.toString());</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 2、根据类型，获取指定的构造的构造函数</div><div class="line">Constructor&lt;?&gt; constructor = clazz.getDeclaredConstructor(Integer.class, String.class);</div><div class="line">Log.d(TAG, &quot;指定参数得到的构造函数：&quot;+constructor.toString());</div></pre></td></tr></table></figure></p>
+<p>结果如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-1f36c6e1ec4d2caf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>使用根据类型获取指定的构造的构造函数时，有两点要非常注意：</p>
+<ul>
+<li>parameterTypes 是数据类型的 Class 对象，如果是原始类型，那么应该对应的是 int.class、double.class（原始类型也是有 class 对象的）。</li>
+<li>parameterTypes 一定要与要得到的构造函数中的参数声明顺序、类型及个数要完全匹配，如果多一个、少一个或类型不匹配也是找不到的。这一点是极其要注意的，getDeclaredConstructor 不是模糊匹配而是精确匹配。</li>
+</ul>
+<p>例如上述两个私有构造函数，第一个构造函数的 age 类型是原始类型 int，第二个构造函数的 age 参数类型是 Integer。那下列语句要匹配哪个构造函数呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clazz.getDeclaredConstructor(Integer.class, String.class);</div></pre></td></tr></table></figure></p>
+<p>由于这里是严格匹配，所以这里必然匹配的是 private Person(Integer age, String name) 函数，如果我们要匹配 private Person(int age, String name) 要怎么办呢？那获取构造函数的方法就要这么写了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clazz.getDeclaredConstructor(int.class, String.class);</div></pre></td></tr></table></figure></p>
+<p>这里要非常提醒大家的是，不光派生自 Object 的类具有 Class 对象，原始的数据类型也是具有 Class 对象的。</p>
+<h4 id="2、Constructor-构造实例"><a href="#2、Constructor-构造实例" class="headerlink" title="2、Constructor 构造实例"></a>2、Constructor 构造实例</h4><p>利用 Constructor 的对象来构造实例时，主要是使用的是 newInstance 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public T newInstance(Object... args);</div></pre></td></tr></table></figure></p>
+<p>可以看到 newInstance 有可以传入可变长参数，值得非常注意的是，传入的参数类型、顺序及个数都必须与当前的 Constructor 对象一一对应，不然就会报下面的错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java.lang.IllegalArgumentException: Wrong number of arguments; expected 2, got 0</div></pre></td></tr></table></figure></p>
+<p>继续使用上述 Person 类，下面来看看，如何使用 newInstance 来构造 Person 的实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Constructor&lt;?&gt; constructor = clazz.getDeclaredConstructor(Integer.class, String.class);</div><div class="line">constructor.setAccessible(true);</div><div class="line"></div><div class="line">// 构造实例一</div><div class="line">Person person1 = (Person) constructor.newInstance(new Integer(30), new String(&quot;xian&quot;));</div><div class="line">Log.d(TAG, &quot;构造的参数为：&quot; + person1.getName() + &quot;  &quot; + person1.getAge());</div><div class="line"></div><div class="line">// 构造实例二</div><div class="line">Person person2 = (Person) constructor.newInstance(50,&quot;xiao&quot;);</div><div class="line">Log.d(TAG,&quot;构造的参数为：&quot;+person2.getName() + &quot;  &quot;+ person2.getAge());</div><div class="line"></div><div class="line">// 构造实例三</div><div class="line">Person person3 = (Person) constructor.newInstance();</div><div class="line">person3.setAge(30);</div><div class="line">person3.setName(&quot;xian&quot;);</div><div class="line">Log.d(TAG,&quot;构造的参数为：&quot;+person3.getName() + &quot;  &quot;+ person3.getAge());</div></pre></td></tr></table></figure></p>
+<p>结果如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-c7d521dd461b4486.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这段代码总共分为四部分：<br><strong><em>第一部分：获取 Constructor 对象</em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Constructor&lt;?&gt; constructor = clazz.getDeclaredConstructor(Integer.class, String.class);</div><div class="line">constructor.setAccessible(true);</div></pre></td></tr></table></figure></p>
+<p>首先，通过 getDeclaredConstructor(Integer.class, String.class) 获取指定的构造函数，要得到的这个构造函数，第一个参数是 Integer 类型，第二个参数是 String 类型。所以匹配的是下面这个构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private Person(Integer age, String name) &#123;</div><div class="line">    this.age = age;</div><div class="line">    this.name = name;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最后一句利用的是 Constructor 的函数 setAccessible，它完整的声明是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void setAccessible(boolean flag)</div></pre></td></tr></table></figure></p>
+<p>它代表的含义是，是否将任何函数或字段设置为可访问的。如果设置为 true，就不管这个函数或者字段是声明为 private 还是 public，都是可以访问的，默认情况下是 false，即只有 public 类型是可访问的。如果没有设置 setAccessible(true) 的话，在使用 protected 或者 private 构造函数创建实例时，会提示访问拒绝，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">java.lang.IllegalAccessException: Class java.lang.Class&lt;com.xxt.xtest.TestActivity&gt; </div><div class="line">        cannot access private method void </div><div class="line">        com.xxt.xtest.Person.&lt;init&gt;(java.lang.Integer, java.lang.String) </div><div class="line">        of class java.lang.Class&lt;com.xxt.xtest.Person&gt;</div></pre></td></tr></table></figure></p>
+<p>在反射中，总共有三种类型具有 setAccessible(boolean flag) 函数：Constructor、Field、Method；分别对应构造函数，成员变量和成员函数。我们知道在一个类中，也就只有构造函数，成员变量和成员函数这三部分，而且这三部分都可能会被设置为 private 和 protected，所以它们三个都会具有设置是否可访问的 setAccessible(boolean flag) 函数。</p>
+<p><strong><em>第二部分：使用标准的 Integer, String 构造实例</em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 构造实例一</div><div class="line">Person person1 = (Person) constructor.newInstance(new Integer(30), new String(&quot;xian&quot;));</div><div class="line">Log.d(TAG, &quot;构造的参数为：&quot; + person1.getName() + &quot;  &quot; + person1.getAge());</div></pre></td></tr></table></figure></p>
+<p>在这个利用中，我们向 newInstance() 函数中传递的两个参数是严格遵守 constructor 所对应的构造函数的，即第一个参数是 Integer 类型，第二个参数是 String 类型。然后将 constructor.newInstance 的返回值强转成 Person 的实例。最后通过 person 的函数 person1.getName() 和 person1.getAge() 获取它的内容。</p>
+<p><strong><em>第三部分：使非标准，但可转换的参数来构造实例</em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 构造实例二</div><div class="line">Person person2 = (Person) constructor.newInstance(50,&quot;xiao&quot;);</div><div class="line">Log.d(TAG,&quot;构造的参数为：&quot;+person2.getName() + &quot;  &quot;+ person2.getAge());</div></pre></td></tr></table></figure></p>
+<p>在这个构造方法中，我们传递的两个参数都不是标准的 Integer 和 String 类型。但第一个参数 50 是可以强转成 Integer 类型的，而第二个字符串，也是可以强转为 String 类型的。所以对于可以强转成为参数类型的数值，也是可以成功接受的。所以从结果也可以看出，我们可以成功得到 person2 中的值。</p>
+<p><strong><em>第四部分：如果不按规则传递参数会怎样</em></strong><br>我们知道，我们得到的 constructor 对应的构造函数是：private Person(Integer age, String name)，所在我们在 newInstance 的时候，必须声明这个 Constructor 时的参数类型，顺序及个数一个个传进去参数的对应值，如果我们不传、少传或者多传，结果会怎样呢？我们来看看第三个构造实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 构造实例三</div><div class="line">Person person3 = (Person) constructor.newInstance();</div><div class="line">person3.setAge(30);</div><div class="line">person3.setName(&quot;xian&quot;);</div><div class="line">Log.d(TAG,&quot;构造的参数为：&quot;+person3.getName() + &quot;  &quot;+ person3.getAge());</div></pre></td></tr></table></figure></p>
+<p>在这个实例中，我们没有按照 constructor 的参数顺序去填对应的值，而是压根没有填任何的值。如果我们 constructor 对应的构造函数是下面这个没有参数的构造函数的话，这么做是允许的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public Person() &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>而我们这里的 constructor 对应的构造函数却是：private Person(Integer age, String name)，即便我们后面利用 set 方法重新设置进了各种参数，但这是没用的，因为在程序执行到 constructor.newInstance(); 的时候就已经报错了。错误信息为：参数个数不对。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java.lang.IllegalArgumentException: Wrong number of arguments; expected 2, got 0</div></pre></td></tr></table></figure></p>
+<h4 id="3、Constructor-获取参数类型"><a href="#3、Constructor-获取参数类型" class="headerlink" title="3、Constructor 获取参数类型"></a>3、Constructor 获取参数类型</h4><p>Constructor 中获取参数类型的主要有两个方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 用于解析一般函数</div><div class="line">Class&lt;?&gt;[] getParameterTypes();</div><div class="line">// 用于解析泛型对象</div><div class="line">Type[] getGenericParameterTypes();</div></pre></td></tr></table></figure></p>
+<p>此处举例说明 getParameterTypes() 。下面的程序将实现，分别打印出 Person.class 中所有构造函数的参数类型列表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Constructor&lt;?&gt;[] constructors = clazz.getDeclaredConstructors();</div><div class="line">for (Constructor&lt;?&gt; c : constructors)&#123;</div><div class="line">    c.setAccessible(true);</div><div class="line">    Class&lt;?&gt;[] types = c.getParameterTypes();</div><div class="line"></div><div class="line">    StringBuilder builder = new StringBuilder(&quot;获取参数类型为：&quot;);</div><div class="line">    for(Class t : types)&#123;</div><div class="line">        builder.append(t.getName());</div><div class="line">        builder.append(&quot;   &quot;);</div><div class="line">    &#125;</div><div class="line">    Log.d(TAG,builder.toString());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>执行结果如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-e22432ff534e6eeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="4、Constructor-获取构造函数的访问修饰符"><a href="#4、Constructor-获取构造函数的访问修饰符" class="headerlink" title="4、Constructor 获取构造函数的访问修饰符"></a>4、Constructor 获取构造函数的访问修饰符</h4><p>示例函数：打印出每个构造函数的访问修饰符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Constructor&lt;?&gt;[] constructors = clazz.getDeclaredConstructors();</div><div class="line">for (Constructor&lt;?&gt; c:constructors) &#123;</div><div class="line">    c.setAccessible(true);</div><div class="line">    int modifier = c.getModifiers();</div><div class="line">    Log.d(TAG,&quot;一个访问修饰符为：&quot; + Modifier.toString(modifier));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-6d42232b6291fb6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="5、Constructor-getDeclaringClass"><a href="#5、Constructor-getDeclaringClass" class="headerlink" title="5、Constructor getDeclaringClass()"></a>5、Constructor getDeclaringClass()</h4><p>方法声明如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class&lt;T&gt; getDeclaringClass();</div></pre></td></tr></table></figure></p>
+<p>该函数用于得到声明 Constructor 的类的 Class 对象。用个例子来说明下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Constructor&lt;?&gt; constructor = clazz.getDeclaredConstructor();</div><div class="line">Class&lt;?&gt; declareClassClazz = constructor.getDeclaringClass();</div><div class="line">Log.d(TAG,declareClassClazz.getName());</div></pre></td></tr></table></figure></p>
+<p>结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2020-03-08 18:48:00.432 10977-10977/com.xxt.xtest D/xian: com.xxt.xtest.Person</div></pre></td></tr></table></figure></p>
+<h3 id="二、成员变量的获取与设置"><a href="#二、成员变量的获取与设置" class="headerlink" title="二、成员变量的获取与设置"></a>二、成员变量的获取与设置</h3><hr>
+<h4 id="1、获取-Field-对象"><a href="#1、获取-Field-对象" class="headerlink" title="1、获取 Field 对象"></a>1、获取 Field 对象</h4><p>类中的信息，无外乎有三种：构造函数、成员变量和成员函数。类中成员变量相关的信息都保存在 Filed 类型的对象里。Class 中对 Field 对象的获取有下面四个函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 仅能获取声明类型为 public 的成员变量</div><div class="line">Field[] getFields();</div><div class="line">Field getField(String name);</div><div class="line">// 可以获取全部的成员变量</div><div class="line">Field[] getDeclaredFields();</div><div class="line">Field getDeclaredField(String name)</div></pre></td></tr></table></figure></p>
+<h5 id="1-1、getDeclaredFields"><a href="#1-1、getDeclaredFields" class="headerlink" title="1.1、getDeclaredFields()"></a>1.1、getDeclaredFields()</h5><p>使用上面的 Person.class 进行测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class Person &#123;</div><div class="line">    private int age;</div><div class="line">    private String name;</div><div class="line">    public Person() &#123;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在 Person 类中，我们有两个成员变量，一个是 int age，另一个是 String name，非常注意的是这两个变量全部都被声明为 private。一方面，我们只有利用 getDeclaredXXX() 系列函数才能得到他们的Field；另一方面，如果要访问每个成员变量所对应 Field 对象的信息，就必须设置 field.setAccessible(true); 。</p>
+<p>在 Constructor 中，我们已经提到在类中的三部分：构造函数、成员变量、成员函数，他们都可能会被设置为 private 或 protected 类型，所以为了能让用户访问 private 或 protected 类型的对象，在它们三个所对应的类型 Constructor、Field、Method 中都有实现 setAccessible(boolean flag) 函数。意义与都完全一样：表示是否将当前对象设置成为可访问的。默认是 false，即如果当前对象的声明类型为 private 或 protected 就无法访问。</p>
+<p>示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Field[] fields = clazz.getDeclaredFields();</div><div class="line">for (Field field : fields) &#123;</div><div class="line">    field.setAccessible(true);</div><div class="line">    Class&lt;?&gt; type = field.getType();</div><div class="line">    Log.d(TAG,&quot;枚举到的 field: &quot; + type.getName() + &quot;  &quot; + field.getName());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.../com.xxt.xtest D/xian: 枚举到的 field: int  age</div><div class="line">.../com.xxt.xtest D/xian: 枚举到的 field: java.lang.String  name</div><div class="line">.../com.xxt.xtest D/xian: 枚举到的 field: com.android.tools.ir.runtime.IncrementalChange $change</div><div class="line">.../com.xxt.xtest D/xian: 枚举到的 field: long  serialVersionUID</div></pre></td></tr></table></figure></p>
+<h5 id="1-2、getDeclaredField-String-name"><a href="#1-2、getDeclaredField-String-name" class="headerlink" title="1.2、getDeclaredField(String name)"></a>1.2、getDeclaredField(String name)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Field field = clazz.getDeclaredField(&quot;age&quot;);</div><div class="line">field.setAccessible(true);</div><div class="line">Class&lt;?&gt; type = field.getType();</div><div class="line">Log.d(TAG,&quot;age field: &quot; + type.getName() + &quot;  &quot; + field.getName());</div></pre></td></tr></table></figure>
+<p>结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.../com.xxt.xtest D/xian: age field: int  age</div></pre></td></tr></table></figure></p>
+<h4 id="2、Field：get-amp-set"><a href="#2、Field：get-amp-set" class="headerlink" title="2、Field：get &amp; set"></a>2、Field：get &amp; set</h4><h5 id="2-1、get-amp-set"><a href="#2-1、get-amp-set" class="headerlink" title="2.1、get() &amp; set()"></a>2.1、get() &amp; set()</h5><p>当获取或设置指定类对象中某变量的值时，可以使用 Field 中的 get、set 方法，声明如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">void set(Object object, Object value)</div><div class="line">Object get(Object object)</div></pre></td></tr></table></figure></p>
+<p>示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Constructor&lt;?&gt; constructor = clazz.getConstructor();</div><div class="line">Person person = (Person)constructor.newInstance();</div><div class="line"></div><div class="line">Field fName = clazz.getDeclaredField(&quot;name&quot;);</div><div class="line">fName.setAccessible(true);</div><div class="line">fName.set(person, &quot;xian&quot;);</div><div class="line">String val = (String)fName.get(person);</div><div class="line">Log.d(TAG, &quot;fieldName: &quot; + val + &quot;, personName: &quot; + person.getName());</div></pre></td></tr></table></figure></p>
+<p>结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.../com.xxt.xtest D/xian: fieldName: xian, personName: xian</div></pre></td></tr></table></figure></p>
+<p>大家注意，在 set 时，第一个参数是要设置的 Person 的实例，第二个参数是这个 Field 所对应的值。在 get 时，传递的参数是当前要获取的 Person 实例，得到的是当前实例中对应成员变量的值。</p>
+<h5 id="2-2、get-系列函数与-set-系列函数"><a href="#2-2、get-系列函数与-set-系列函数" class="headerlink" title="2.2、get 系列函数与 set 系列函数"></a>2.2、get 系列函数与 set 系列函数</h5><p>再回过头来看上面的 get 与 set 函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">void set(Object object, Object value)</div><div class="line">Object get(Object object)</div></pre></td></tr></table></figure></p>
+<p>在 set 中，要传入所 Field 的值必须是派生自 Object 类型的，也就规定这个 Field 的所对应的成员变量类型就必须是派生自 Object 的的类型，比如 Integer、String 等。</p>
+<p>那么问题就来了，那我们的成员变量的类型，并不一定是派生自 Object 的类型啊，也可能是原始的数据类型，比如 int、double、char、byte 等，那这些类型的成员变量的值要怎么设置与获取呢？<br>为了解决这个问题，Java 的开发者们额外开发了几对 get 与 set 函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// 设置与获取 int 类型的值</div><div class="line">void setInt(Object object, int value)</div><div class="line">int getInt(Object object)</div><div class="line">// 设置与获取 double 类型的值</div><div class="line">void setDouble(Object object, double value)</div><div class="line">double getDouble(Object object)</div><div class="line">// 设置与获取 float 类型的值</div><div class="line">void setFloat(Object object, float value)</div><div class="line">float getFloat(Object object)</div><div class="line">// 设置与获取 bool 类型的值</div><div class="line">void setBoolean(Object object, boolean value)</div><div class="line">boolean getBoolean(Object object)</div><div class="line">// 设置与获取 short 类型的值</div><div class="line">void setShort(Object object, short value)</div><div class="line">short getShort(Object object)</div><div class="line">// 设置与获取 long 类型的值</div><div class="line">void setLong(Object object, long value)</div><div class="line">long getLong(Object object)</div><div class="line">// 设置与获取 byte 类型的值</div><div class="line">void setByte(Object object, byte value)</div><div class="line">byte getByte(Object object)</div><div class="line">// 设置与获取 char 类型的值</div><div class="line">void setChar(Object object, char value)</div><div class="line">char getChar(Object object)</div></pre></td></tr></table></figure></p>
+<p>示例代码：<br>···<br>Class&lt;?&gt; clazz = Person.class;<br>Constructor&lt;?&gt; constructor = clazz.getConstructor();<br>Person person = (Person)constructor.newInstance();</p>
+<p>Field fAge = clazz.getDeclaredField(“age”);<br>fAge.setAccessible(true);<br>fAge.setInt(person, 20);<br>Log.d(TAG, “fieldAge: “ + fAge.getInt(person) + “, personAge:” + person.getAge());<br>···<br>结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.../com.xxt.xtest D/xian: fieldAge: 20, personAge:20</div></pre></td></tr></table></figure></p>
+<h4 id="3、Field-之-isEnumConstant"><a href="#3、Field-之-isEnumConstant" class="headerlink" title="3、Field 之 isEnumConstant()"></a>3、Field 之 isEnumConstant()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">boolean isEnumConstant()</div></pre></td></tr></table></figure>
+<p>这个函数用于判断当前 Field 是否为枚举常量。举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Person &#123;</div><div class="line">    public static enum COLOR&#123;WHITE,BLACK,YELLOW&#125;</div><div class="line">    private int age;</div><div class="line">    private String name;</div><div class="line">    private COLOR color;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>测试代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz2 = Person.COLOR.class;</div><div class="line">Field field = clazz2.getDeclaredField(&quot;WHITE&quot;);</div><div class="line">Log.d(TAG,&quot;COLOR.WHITE 是否是枚举常量：&quot; + field.isEnumConstant());</div><div class="line"></div><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Field fColor = clazz.getDeclaredField(&quot;color&quot;);</div><div class="line">fColor.setAccessible(true);</div><div class="line">boolean isEnum = fColor.isEnumConstant();</div><div class="line">Log.d(TAG,&quot;color 是否是枚举常量：&quot; + isEnum);</div></pre></td></tr></table></figure></p>
+<p>结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2020-03-08 19:30:42.298 15040-15040/com.xxt.xtest D/xian: COLOR.WHITE 是否是枚举常量：true</div><div class="line">2020-03-08 19:30:42.298 15040-15040/com.xxt.xtest D/xian: color 是否是枚举常量：false</div></pre></td></tr></table></figure></p>
+<p>我们从结果中可以看到，首先 COLOR 枚举类中的 WHITE 是一个枚举常量，而利用 COLOR 定义的 color 变量不是枚举常量。</p>
+<h4 id="4、Field-Modifiers-getDeclaringClass"><a href="#4、Field-Modifiers-getDeclaringClass" class="headerlink" title="4、Field Modifiers getDeclaringClass()"></a>4、Field Modifiers getDeclaringClass()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 获取该成员变量所对应的访问修饰符组所对应的 Int 数字</div><div class="line">int getModifiers()</div><div class="line">// 获取声明该变量的类</div><div class="line">Class&lt;?&gt; getDeclaringClass()</div></pre></td></tr></table></figure>
+<p>getModifiers()：获取该 Field 所对应的成员变量的访问修饰符。<br>getDeclaringClass()：获取声明该成员变量的类的 Class 对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Field fAge = clazz.getDeclaredField(&quot;age&quot;);</div><div class="line">Class&lt;?&gt; declareClazz = fAge.getDeclaringClass();</div><div class="line">Log.d(TAG, declareClazz.toString());</div></pre></td></tr></table></figure></p>
+<p>结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.../com.xxt.xtest D/xian: class com.xxt.xtest.Person</div></pre></td></tr></table></figure></p>
+<h3 id="三、成员函数的获取与设置"><a href="#三、成员函数的获取与设置" class="headerlink" title="三、成员函数的获取与设置"></a>三、成员函数的获取与设置</h3><hr>
+<h4 id="1、获取-Method-对象"><a href="#1、获取-Method-对象" class="headerlink" title="1、获取 Method 对象"></a>1、获取 Method 对象</h4><p>与成员变量对应的类型为 Field 类似，类中的方法对应的类型是 Method。获取指定类中的成员函数的方法有下面四种方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Method[] getMethods()</div><div class="line">Method getMethod(String name, Class&lt;?&gt;... parameterTypes)</div><div class="line"></div><div class="line">Method[] getDeclaredMethods()</div><div class="line">Method getDeclaredMethod(String name, Class&lt;?&gt;... parameterTypes)</div></pre></td></tr></table></figure></p>
+<p>与上面所有的有 Declared 系列的函数组一样，getMethods() 和 getMethod() 只能获取声明为 public 的函数。而 getDeclaredMethods()、getDeclaredMethod() 可以得到所有的函数，无论声明为 public、protected 还是 private。</p>
+<h5 id="1-1、getDeclaredMethods"><a href="#1-1、getDeclaredMethods" class="headerlink" title="1.1、getDeclaredMethods()"></a>1.1、getDeclaredMethods()</h5><p>该函数能够获取类中所有声明的函数（不包括构造函数），举个例子来看他使用方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Method[] methods = clazz.getDeclaredMethods();</div><div class="line">for (Method m : methods) &#123;</div><div class="line">    Log.d(TAG, &quot;枚举到的方法：&quot; + m.toString());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果为：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-01b2ef049fd7b9d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h5 id="1-2、getDeclaredMethod-String-Class-lt-gt-…"><a href="#1-2、getDeclaredMethod-String-Class-lt-gt-…" class="headerlink" title="1.2、getDeclaredMethod(String, Class&lt;?&gt;…)"></a>1.2、getDeclaredMethod(String, Class&lt;?&gt;…)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Method getDeclaredMethod(String name, Class&lt;?&gt;... parameterTypes)</div></pre></td></tr></table></figure>
+<ul>
+<li>name：表示要获取 Method 对象的成员函数名。</li>
+<li>parameterTypes：需要匹配的成员函数需要传入的参数的类型，这里需要非常注意，这里的 getDeclaredMethod 是精确匹配的，如果我们传入的函数名以及参数类型、顺序、个数与该函数声明不一致的话，就会报错。</li>
+</ul>
+<p>值得非常注意的是，当我们要找的方法所对应的参数类型是原始数据类型，比如 Int、double 等，它们所对应的 Class 对象为 int.class、double.class 即可；所以原始类型也是有 Class对象的。</p>
+<p>示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Method method = clazz.getDeclaredMethod(&quot;setName&quot;, String.class);</div><div class="line">Log.d(TAG, &quot;方法：&quot; + method.toString());</div></pre></td></tr></table></figure></p>
+<p>结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.../com.xxt.xtest D/xian: 方法：public void com.xxt.xtest.Person.setName(java.lang.String)</div></pre></td></tr></table></figure></p>
+<h4 id="2、Method-Invoke"><a href="#2、Method-Invoke" class="headerlink" title="2、Method Invoke"></a>2、Method Invoke</h4><p>Invoke 函数无疑是 Method 类中最重要的方法，它的功能是用于执行 Method 对象所对应的函数。完整的声明如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Object invoke(Object receiver, Object... args)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>Object receiver：指要执行该函数的类对象，比如我们的 Person 类的某一实例。</li>
+<li>Object… args：可变长参数，用于传入该函数声明中的参数所对应的值的列表。</li>
+<li>返回值：Object，将函数的结果返回，Object 对象就是执行此函数后返回的结果。</li>
+</ul>
+<p>我们在 Person 中单独再加一个函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Person &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    public Boolean testInvoke(Integer age, String name) &#123;</div><div class="line">        Log.d(&quot;xian&quot;,&quot;得到参数 age: &quot; + age + &quot;, name: &quot;+name);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Person person = new Person();</div><div class="line">Method method = clazz.getDeclaredMethod(&quot;testInvoke&quot;, Integer.class, String.class);</div><div class="line">method.setAccessible(true);</div><div class="line">Boolean result = (Boolean)method.invoke(person, 25, &quot;I m xian&quot;);</div><div class="line">Log.d(TAG,&quot;执行结果: &quot;+result);</div></pre></td></tr></table></figure></p>
+<p>结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2020-03-08 19:53:51.572 16600-16600/com.xxt.xtest D/xian: 得到参数 age: 25, name: I m xian</div><div class="line">2020-03-08 19:53:51.573 16600-16600/com.xxt.xtest D/xian: 执行结果: true</div></pre></td></tr></table></figure></p>
+<p>这里总结一下，从 Field、Method 中都可以看出，Field、Method 的对象对应的不是哪个类实例中变量，而是类中变量的对象。也就是说，Field、Method 对象只有一个，是在编译时，保存在 Class 中的。而 Person 的实例却可以有很多个，如果要改变哪个 Person 实例中成员变量的值，就必须将该 Person 实例传入 Field 对象的参数中，让 Field 对象设置。</p>
+<h4 id="3、Method-获取参数类型"><a href="#3、Method-获取参数类型" class="headerlink" title="3、Method 获取参数类型"></a>3、Method 获取参数类型</h4><p>与其它类的获取参数类型一样，这里同样针对普通变量和泛型有两种获取参数类型的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 用于获取普通的参数类型</div><div class="line">Class&lt;?&gt;[] getParameterTypes()</div><div class="line">// 用于获取带有泛型参数的类型</div><div class="line">Type[] getGenericParameterTypes()</div></pre></td></tr></table></figure></p>
+<p>示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz  = Person.class;</div><div class="line">Method method = clazz.getDeclaredMethod(&quot;testInvoke&quot;, Integer.class, String.class);</div><div class="line">Class&lt;?&gt;[] params = method.getParameterTypes();</div><div class="line">for (Class c : params)&#123;</div><div class="line">    Log.d(TAG,&quot;枚举到参数类型：&quot;+c.getName());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2020-03-08 19:58:29.982 16600-16600/com.xxt.xtest D/xian: 枚举到参数类型：java.lang.Integer</div><div class="line">2020-03-08 19:58:29.982 16600-16600/com.xxt.xtest D/xian: 枚举到参数类型：java.lang.String</div></pre></td></tr></table></figure></p>
+<h4 id="4、Method-获取返回值类型"><a href="#4、Method-获取返回值类型" class="headerlink" title="4、Method 获取返回值类型"></a>4、Method 获取返回值类型</h4><p>获取指定成员函数返回值类型的方法，同样根据返回值是否是泛型，同样有两种方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; getReturnType()</div><div class="line">Type getGenericReturnType()</div></pre></td></tr></table></figure></p>
+<p>示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = Person.class;</div><div class="line">Method method = clazz.getDeclaredMethod(&quot;testInvoke&quot;, Integer.class, String.class);</div><div class="line">Class type = method.getReturnType();</div><div class="line">Log.d(TAG, &quot;返回值类型为：&quot; + type.getName());</div></pre></td></tr></table></figure></p>
+<p>结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2020-03-08 20:01:26.430 16600-16600/com.xxt.xtest D/xian: 返回值类型为：java.lang.Boolean</div></pre></td></tr></table></figure></p>
+<h3 id="四、实战实例讲解"><a href="#四、实战实例讲解" class="headerlink" title="四、实战实例讲解"></a>四、实战实例讲解</h3><hr>
+<h4 id="1、Fragment-instantiate"><a href="#1、Fragment-instantiate" class="headerlink" title="1、Fragment.instantiate()"></a>1、Fragment.instantiate()</h4><p>在 V4 包中，Fragment 有一个函数，可以根据指定 Fragment 的路径名来得到对应 Fragment 的实例。它的完整声明如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static Fragment instantiate(Context context, String fname, Bundle args)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>context：Context 类型对象;</li>
+<li>fname：对应 Fragment 类的完整的路径名，可以利用 Class.getName() 得到。</li>
+<li>args：是在构造 Fragment 实例时需要的 Bundle参数。</li>
+</ul>
+<p><strong>使用方法</strong><br>新建一个Fragment：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import androidx.fragment.app.Fragment;</div><div class="line"></div><div class="line">public class DemoFragment extends Fragment &#123;</div><div class="line">    public void printFragment(String name)&#123;</div><div class="line">        Log.d(&quot;xian&quot;, name + &quot;知道你是个逗逼&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后我利用 Fragment.instantiate 来获取它的实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; clazz = DemoFragment.class;</div><div class="line">DemoFragment fragment = (DemoFragment) Fragment.instantiate(this, clazz.getName(), null);</div><div class="line">fragment.printFragment(&quot;先小涛&quot;);</div></pre></td></tr></table></figure></p>
+<p>结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2020-03-08 20:10:23.552 17684-17684/com.xxt.xtest D/xian: 先小涛知道你是个逗逼</div></pre></td></tr></table></figure></p>
+<p><strong>原理</strong><br>这个函数内部是如何实现的吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public static Fragment instantiate(Context context, String fname, @Nullable Bundle args) &#123;</div><div class="line">    try &#123;</div><div class="line">        // 根据 fname 得到对应 Fragment 的 Class 对象</div><div class="line">        Class&lt;?&gt; clazz = sClassMap.get(fname);</div><div class="line">        // 首先通过一个 sClassMap 中查找一下。如果没有，则通过</div><div class="line">        // ClassLoader 将其加载到内存中，并将其保存到 sClassMap中。</div><div class="line">        if (clazz == null) &#123;</div><div class="line">            // Class not found in the cache, see if it&apos;s real, and try to add it</div><div class="line">            clazz = context.getClassLoader().loadClass(fname);</div><div class="line">            sClassMap.put(fname, clazz);</div><div class="line">        &#125;</div><div class="line">        // 得到对应 Fragment 的实例</div><div class="line">        Fragment f = (Fragment) clazz.getConstructor().newInstance();</div><div class="line">        if (args != null) &#123;</div><div class="line">            // 将传入的 Bundle 参数 args 加入到 Fragment 的 mArguments参数对象中</div><div class="line">            args.setClassLoader(f.getClass().getClassLoader());</div><div class="line">            f.setArguments(args);</div><div class="line">        &#125;</div><div class="line">        // 将 Fragment 的实例 f 返回</div><div class="line">        return f;</div><div class="line">    &#125; catch (ClassNotFoundException e) &#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="2、PopupWindow-setTouchModal"><a href="#2、PopupWindow-setTouchModal" class="headerlink" title="2、PopupWindow.setTouchModal()"></a>2、PopupWindow.setTouchModal()</h4><p>如果我想要一个效果：点击 PopupWindow 外部区域，弹窗不消失，但是点击事件会向下面的 activity 传递，这时候就需要用到 PopupWindow 的 setTouchModal(boolean touchModal) 函数。该函数完整声明为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Set whether this window is touch modal or if outside touches will be sent to</div><div class="line"> * other windows behind it.</div><div class="line"> * @hide</div><div class="line"> */</div><div class="line">public void setTouchModal(boolean touchModal) &#123;</div><div class="line">    mNotTouchModal = !touchModal;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在注解中，利用 @hide 将此函数隐藏了，我们通过 PopupWindow对象是没有办法得到调用它的。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-f2eae265fe738192.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>所以我们只有通过反射来做。下面我们来举个例子来调用这个函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public static void setPopupWindowTouchModal (PopupWindow popupWindow, </div><div class="line">                                             boolean touchModal) &#123;</div><div class="line">    if (null == popupWindow) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    try &#123;</div><div class="line">        Method method = PopupWindow.class.getDeclaredMethod(</div><div class="line">                &quot;setTouchModal&quot;, boolean.class);</div><div class="line">        method.setAccessible(true);</div><div class="line">        method.invoke(popupWindow, touchModal);</div><div class="line">    &#125; catch (Exception e) &#123;</div><div class="line">        System.out.println(e);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-7cc697ce6f2ec479?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>原文链接：<br><a href="https://blog.csdn.net/harvic880925/article/details/50107951" target="_blank" rel="external">夯实JAVA基本之二 —— 反射（3）：类内部信息获取</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag"><i class="fa fa-tag"></i> JAVA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/1900/01/11/01 JAVA/11 反射二：泛型相关周边信息获取/" rel="next" title="反射二：泛型相关周边信息获取">
+                <i class="fa fa-chevron-left"></i> 反射二：泛型相关周边信息获取
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1900/01/13/01 JAVA/13 Java Socket/" rel="prev" title="Java Socket">
+                Java Socket <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、构造函数相关获取"><span class="nav-text">一、构造函数相关获取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、获取构造函数"><span class="nav-text">1、获取构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、Constructor-构造实例"><span class="nav-text">2、Constructor 构造实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Constructor-获取参数类型"><span class="nav-text">3、Constructor 获取参数类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、Constructor-获取构造函数的访问修饰符"><span class="nav-text">4、Constructor 获取构造函数的访问修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、Constructor-getDeclaringClass"><span class="nav-text">5、Constructor getDeclaringClass()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、成员变量的获取与设置"><span class="nav-text">二、成员变量的获取与设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、获取-Field-对象"><span class="nav-text">1、获取 Field 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1、getDeclaredFields"><span class="nav-text">1.1、getDeclaredFields()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2、getDeclaredField-String-name"><span class="nav-text">1.2、getDeclaredField(String name)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、Field：get-amp-set"><span class="nav-text">2、Field：get & set</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1、get-amp-set"><span class="nav-text">2.1、get() & set()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2、get-系列函数与-set-系列函数"><span class="nav-text">2.2、get 系列函数与 set 系列函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Field-之-isEnumConstant"><span class="nav-text">3、Field 之 isEnumConstant()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、Field-Modifiers-getDeclaringClass"><span class="nav-text">4、Field Modifiers getDeclaringClass()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、成员函数的获取与设置"><span class="nav-text">三、成员函数的获取与设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、获取-Method-对象"><span class="nav-text">1、获取 Method 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1、getDeclaredMethods"><span class="nav-text">1.1、getDeclaredMethods()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2、getDeclaredMethod-String-Class-lt-gt-…"><span class="nav-text">1.2、getDeclaredMethod(String, Class<?>…)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、Method-Invoke"><span class="nav-text">2、Method Invoke</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Method-获取参数类型"><span class="nav-text">3、Method 获取参数类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、Method-获取返回值类型"><span class="nav-text">4、Method 获取返回值类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、实战实例讲解"><span class="nav-text">四、实战实例讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、Fragment-instantiate"><span class="nav-text">1、Fragment.instantiate()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、PopupWindow-setTouchModal"><span class="nav-text">2、PopupWindow.setTouchModal()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共317.4k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
