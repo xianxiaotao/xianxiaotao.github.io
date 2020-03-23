@@ -88,18 +88,35 @@
 
 
 
-<meta name="description" content="12.3.1 XML 布局先定义一个 style 标签，这是为 FlowLayout 中的 TextView 定义的。12345678910&amp;lt;resources&amp;gt;    ...    &amp;lt;style name=&amp;quot;text_flag&amp;quot;&amp;gt;        &amp;lt;item name=&amp;quot;android:layout_width&amp;quot;&amp;gt;">
+<meta name="description" content="返回自定义 View 目录
+
+FlowLayout 容器效果图如下所示：
+
+
+12.3.1 XML 布局先定义一个 style 标签，这是为 FlowLayout 中的 TextView 定义的。12345678910&amp;lt;resources&amp;gt;    ...    &amp;lt;style name=&amp;quot;text_flag&amp;quot;&amp;gt;        &amp;lt;item na">
 <meta property="og:type" content="article">
 <meta property="og:title" content="12.3 精通自定义 View 之封装控件——实现 FlowLayout 容器">
 <meta property="og:url" content="http://yoursite.com/2019/07/12/05 CUSTOM VIEW/12.3 精通自定义 View 之封装控件——实现 FlowLayout 容器/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="12.3.1 XML 布局先定义一个 style 标签，这是为 FlowLayout 中的 TextView 定义的。12345678910&amp;lt;resources&amp;gt;    ...    &amp;lt;style name=&amp;quot;text_flag&amp;quot;&amp;gt;        &amp;lt;item name=&amp;quot;android:layout_width&amp;quot;&amp;gt;">
+<meta property="og:description" content="返回自定义 View 目录
+
+FlowLayout 容器效果图如下所示：
+
+
+12.3.1 XML 布局先定义一个 style 标签，这是为 FlowLayout 中的 TextView 定义的。12345678910&amp;lt;resources&amp;gt;    ...    &amp;lt;style name=&amp;quot;text_flag&amp;quot;&amp;gt;        &amp;lt;item na">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8635a9758921431d.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-3322140af46dbd6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-11-01T06:52:29.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-f2691969eacfe1e4.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:49:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="12.3 精通自定义 View 之封装控件——实现 FlowLayout 容器">
-<meta name="twitter:description" content="12.3.1 XML 布局先定义一个 style 标签，这是为 FlowLayout 中的 TextView 定义的。12345678910&amp;lt;resources&amp;gt;    ...    &amp;lt;style name=&amp;quot;text_flag&amp;quot;&amp;gt;        &amp;lt;item name=&amp;quot;android:layout_width&amp;quot;&amp;gt;">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-3322140af46dbd6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="返回自定义 View 目录
+
+FlowLayout 容器效果图如下所示：
+
+
+12.3.1 XML 布局先定义一个 style 标签，这是为 FlowLayout 中的 TextView 定义的。12345678910&amp;lt;resources&amp;gt;    ...    &amp;lt;style name=&amp;quot;text_flag&amp;quot;&amp;gt;        &amp;lt;item na">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-8635a9758921431d.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -398,6 +415,11 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-8635a9758921431d.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
+<p>FlowLayout 容器效果图如下所示：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-3322140af46dbd6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="FlowLayout 容器效果图"></p>
 <p><div id="jump1"></div></p>
 <h3 id="12-3-1-XML-布局"><a href="#12-3-1-XML-布局" class="headerlink" title="12.3.1 XML 布局"></a>12.3.1 XML 布局</h3><p>先定义一个 style 标签，这是为 FlowLayout 中的 TextView 定义的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;resources&gt;</div><div class="line">    ...</div><div class="line">    &lt;style name=&quot;text_flag&quot;&gt;</div><div class="line">        &lt;item name=&quot;android:layout_width&quot;&gt;wrap_content&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;android:layout_height&quot;&gt;wrap_content&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;android:layout_margin&quot;&gt;4dp&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;android:background&quot;&gt;@drawable/flag&lt;/item&gt;</div><div class="line">        &lt;item name=&quot;android:textColor&quot;&gt;#FFFFFF&lt;/item&gt;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure></p>
@@ -409,6 +431,8 @@
 <h4 id="3-重写-onLayout-函数——布局所有子控件"><a href="#3-重写-onLayout-函数——布局所有子控件" class="headerlink" title="3. 重写 onLayout() 函数——布局所有子控件"></a>3. 重写 onLayout() 函数——布局所有子控件</h4><p>在 onLayout() 函数中需要一个个布局子控件。由于控件要后移和换行，所以我们要标记当前控件的 top 坐标和 left 坐标。然后计算每个控件的 top 坐标和 left 坐标，再调用 layout(int left, int top, int right, int bottom)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onLayout(boolean changed, int l, int t, int r, int b) &#123;</div><div class="line">    int count = getChildCount();</div><div class="line">    int lineWidth = 0;      // 累加当前行的行宽</div><div class="line">    int lineHeight = 0;     // 当前行的行高</div><div class="line">    int top = 0, left = 0;  // 当前控件的 top 坐标和 left 坐标</div><div class="line"></div><div class="line">    for (int i = 0; i &lt; count; i++) &#123;</div><div class="line">        View child = getChildAt(i);</div><div class="line">        MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();</div><div class="line">        int childWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;</div><div class="line">        int childHeight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;</div><div class="line">        if (childWidth + lineWidth &gt; getMeasuredWidth()) &#123;</div><div class="line">            // 如果换行，则当前控件将放到下一行，从最左边开始，所以 left 就是 0；</div><div class="line">            // 而 top 则需要加上上一行的行高，才是这个控件的 top 坐标</div><div class="line">            top += lineHeight;</div><div class="line">            left = 0;</div><div class="line">            lineHeight = childHeight;</div><div class="line">            lineWidth = childWidth;</div><div class="line">        &#125; else &#123;</div><div class="line">            lineHeight = Math.max(lineHeight, childHeight);</div><div class="line">            lineWidth += childWidth;</div><div class="line">        &#125;</div><div class="line">        // 计算 childView 的 left、top、right、bottom</div><div class="line">        int lc = left + lp.leftMargin;</div><div class="line">        int tc = top + lp.topMargin;</div><div class="line">        int rc = lc + child.getMeasuredWidth();</div><div class="line">        int bc = tc + child.getMeasuredHeight();</div><div class="line">        child.layout(lc, tc, rc, bc);</div><div class="line">        // 将 left 置为下一个子控件的起始点</div><div class="line">        left += childWidth;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><div id="jump3"></div></p>
 <h3 id="12-3-3-完整代码"><a href="#12-3-3-完整代码" class="headerlink" title="12.3.3 完整代码"></a>12.3.3 完整代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div></pre></td><td class="code"><pre><div class="line">public class FlowLayout extends ViewGroup &#123;</div><div class="line"></div><div class="line">    public FlowLayout(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</div><div class="line">        super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line"></div><div class="line">        int measureWidth = MeasureSpec.getSize(widthMeasureSpec);</div><div class="line">        int measureHeight = MeasureSpec.getSize(heightMeasureSpec);</div><div class="line">        int measureWidthMode = MeasureSpec.getMode(widthMeasureSpec);</div><div class="line">        int measureHeightMode = MeasureSpec.getMode(heightMeasureSpec);</div><div class="line"></div><div class="line">        int lineWidth = 0;      // 记录每一行的宽度</div><div class="line">        int lineHeight = 0;     // 记录每一行的高度</div><div class="line">        int width = 0;          // 记录整个 FlowLayout 的宽度</div><div class="line">        int height = 0;         // 记录整个 FlowLayout 的高度</div><div class="line"></div><div class="line">        int count = getChildCount();</div><div class="line">        for (int i = 0; i &lt; count; i++) &#123;</div><div class="line">            View child = getChildAt(i);</div><div class="line">            measureChild(child, widthMeasureSpec, heightMeasureSpec);</div><div class="line"></div><div class="line">            // 计算控件的宽高时，要加上上下左右的 margin 值</div><div class="line">            MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();</div><div class="line">            int childWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;</div><div class="line">            int childHeight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;</div><div class="line"></div><div class="line">            if (lineWidth + childWidth &gt; measureWidth) &#123;</div><div class="line">                // 需要换行</div><div class="line">                width = Math.max(lineWidth, childWidth);</div><div class="line">                height += lineHeight;</div><div class="line">                // 当前行放不下当前控件，而将此控件调到下一行</div><div class="line">                // 所以将此控件的高度和宽度初始化给 lineWidth、lineHeight</div><div class="line">                lineWidth = childWidth;</div><div class="line">                lineHeight = childHeight;</div><div class="line">            &#125; else &#123;</div><div class="line">                // 否则累加值 lineWidth，lineHeight 并取最大高度</div><div class="line">                lineWidth += childWidth;</div><div class="line">                lineHeight = Math.max(lineHeight, childHeight);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            // 因为最后一行是不会超出 width 范围的，所以需要单独处理</div><div class="line">            if (i == count - 1) &#123;</div><div class="line">                width = Math.max(width, lineWidth);</div><div class="line">                height += lineHeight;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        setMeasuredDimension((measureWidthMode == MeasureSpec.EXACTLY) ? measureWidth : width,</div><div class="line">                (measureHeightMode == MeasureSpec.EXACTLY) ? measureHeight : height);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onLayout(boolean changed, int l, int t, int r, int b) &#123;</div><div class="line">        int count = getChildCount();</div><div class="line">        int lineWidth = 0;      // 累加当前行的行宽</div><div class="line">        int lineHeight = 0;     // 当前行的行高</div><div class="line">        int top = 0, left = 0;  // 当前控件的 top 坐标和 left 坐标</div><div class="line"></div><div class="line">        for (int i = 0; i &lt; count; i++) &#123;</div><div class="line">            View child = getChildAt(i);</div><div class="line">            MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();</div><div class="line">            int childWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;</div><div class="line">            int childHeight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;</div><div class="line">            if (childWidth + lineWidth &gt; getMeasuredWidth()) &#123;</div><div class="line">                // 如果换行，则当前控件将放到下一行，从最左边开始，所以 left 就是 0；</div><div class="line">                // 而 top 则需要加上上一行的行高，才是这个控件的 top 坐标</div><div class="line">                top += lineHeight;</div><div class="line">                left = 0;</div><div class="line">                lineHeight = childHeight;</div><div class="line">                lineWidth = childWidth;</div><div class="line">            &#125; else &#123;</div><div class="line">                lineHeight = Math.max(lineHeight, childHeight);</div><div class="line">                lineWidth += childWidth;</div><div class="line">            &#125;</div><div class="line">            // 计算 childView 的 left、top、right、bottom</div><div class="line">            int lc = left + lp.leftMargin;</div><div class="line">            int tc = top + lp.topMargin;</div><div class="line">            int rc = lc + child.getMeasuredWidth();</div><div class="line">            int bc = tc + child.getMeasuredHeight();</div><div class="line">            child.layout(lc, tc, rc, bc);</div><div class="line">            // 将 left 置为下一个子控件的起始点</div><div class="line">            left += childWidth;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected LayoutParams generateLayoutParams(LayoutParams p) &#123;</div><div class="line">        return new MarginLayoutParams(p);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public LayoutParams generateLayoutParams(AttributeSet attrs) &#123;</div><div class="line">        return new MarginLayoutParams(getContext(), attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected LayoutParams generateDefaultLayoutParams() &#123;</div><div class="line">        return new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-f2691969eacfe1e4.gif?imageMogr2/auto-orient/strip" alt=""></p>
+
       
     </div>
     
@@ -687,7 +711,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1186,6 +1210,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -88,34 +88,48 @@
 
 
 
-<meta name="description" content="3.1.1 概述Animation：
+<meta name="description" content="返回自定义 View 目录
 
-View Animation（视图动画，API Level 1）|—- Tween Animation（补间动画）|—- Frame Animation（逐帧动画）
-Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- ObjectAnimator
 
-视图动画仅能对指定的控件做动画，而属性动">
+3.1.1 概述
+Animation：
+    · View Animation（视图动画，API Level 1）
+        · Tween Animation（补间动画）
+        · Frame Animation（逐帧动画）
+    · Property Animation（属性动画，API Level 11）
+        · Val">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03.1 精通自定义 View 之属性动画——ValueAnimator 的基本使用">
 <meta property="og:url" content="http://yoursite.com/2019/07/03/05 CUSTOM VIEW/03.1 精通自定义 View 之属性动画——ValueAnimator 的基本使用/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="3.1.1 概述Animation：
+<meta property="og:description" content="返回自定义 View 目录
 
-View Animation（视图动画，API Level 1）|—- Tween Animation（补间动画）|—- Frame Animation（逐帧动画）
-Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- ObjectAnimator
 
-视图动画仅能对指定的控件做动画，而属性动">
+3.1.1 概述
+Animation：
+    · View Animation（视图动画，API Level 1）
+        · Tween Animation（补间动画）
+        · Frame Animation（逐帧动画）
+    · Property Animation（属性动画，API Level 11）
+        · Val">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-c9f76de4d1fc67a2.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-17e5c9ef09ea60ec.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b02f17acf6a8f20a.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2019-10-09T02:08:28.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-dfda5df6e6971006.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:52:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03.1 精通自定义 View 之属性动画——ValueAnimator 的基本使用">
-<meta name="twitter:description" content="3.1.1 概述Animation：
+<meta name="twitter:description" content="返回自定义 View 目录
 
-View Animation（视图动画，API Level 1）|—- Tween Animation（补间动画）|—- Frame Animation（逐帧动画）
-Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- ObjectAnimator
 
-视图动画仅能对指定的控件做动画，而属性动">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-17e5c9ef09ea60ec.gif?imageMogr2/auto-orient/strip">
+3.1.1 概述
+Animation：
+    · View Animation（视图动画，API Level 1）
+        · Tween Animation（补间动画）
+        · Frame Animation（逐帧动画）
+    · Property Animation（属性动画，API Level 11）
+        · Val">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-c9f76de4d1fc67a2.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -414,12 +428,21 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-c9f76de4d1fc67a2.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><div id="jump1"></div></p>
-<h3 id="3-1-1-概述"><a href="#3-1-1-概述" class="headerlink" title="3.1.1 概述"></a>3.1.1 概述</h3><p>Animation：</p>
-<ul>
-<li>View Animation（视图动画，API Level 1）<br>|—- Tween Animation（补间动画）<br>|—- Frame Animation（逐帧动画）</li>
-<li>Property Animation（属性动画，API Level 11）<br>|—- ValueAnimator<br>|—- ObjectAnimator</li>
-</ul>
+<h3 id="3-1-1-概述"><a href="#3-1-1-概述" class="headerlink" title="3.1.1 概述"></a>3.1.1 概述</h3><pre>
+Animation：
+    · View Animation（视图动画，API Level 1）
+        · Tween Animation（补间动画）
+        · Frame Animation（逐帧动画）
+    · Property Animation（属性动画，API Level 11）
+        · ValueAnimator
+        · ObjectAnimator
+</pre>
+
 <p>视图动画仅能对指定的控件做动画，而属性动画是通过改变控件的某一属性值来做动画的。视图动画还有一个缺陷，就是只能点击原始区域才能响应事件。</p>
 <p><div id="jump2"></div></p>
 <h3 id="3-1-2-ValueAnimator-的简单使用"><a href="#3-1-2-ValueAnimator-的简单使用" class="headerlink" title="3.1.2 ValueAnimator 的简单使用"></a>3.1.2 ValueAnimator 的简单使用</h3><p>ValueAnimator 不会对控件执行任何操作，我们可以给它设定从哪个值运动到哪个值，通过监听这些值的渐变过程来使自己操作控件。</p>
@@ -432,7 +455,8 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 <h3 id="3-1-3-常用函数"><a href="#3-1-3-常用函数" class="headerlink" title="3.1.3 常用函数"></a>3.1.3 常用函数</h3><h4 id="1-ofInt-与-ofFloat"><a href="#1-ofInt-与-ofFloat" class="headerlink" title="1. ofInt 与 ofFloat"></a>1. ofInt 与 ofFloat</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public static ValueAnimator ofInt(int... values)</div><div class="line">public static ValueAnimator ofFloat(float... values)</div></pre></td></tr></table></figure>
 <p>参数类型都是可变长参数，如上例中的 ofInt(0, 400, 200) 就表示从数字 0 变化到数字 400 再变化到 200。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public Object getAnimatedValue()</div></pre></td></tr></table></figure></p>
 <p>上例中可以强转为 Integer 是因为使用的是 ofInt 方法设定动画初始值。当使用 ofFloat 函数设定初始值后，则需要强转为 Float 类型。后面介绍的 ofObject 函数也是如此。</p>
-<h4 id="2-常用函数"><a href="#2-常用函数" class="headerlink" title="2. 常用函数"></a>2. 常用函数</h4><table>
+<h4 id="2-常用函数"><a href="#2-常用函数" class="headerlink" title="2. 常用函数"></a>2. 常用函数</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:left">方法</th>
@@ -474,12 +498,14 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 </tr>
 </tbody>
 </table>
+</div>
 <h4 id="3-监听器"><a href="#3-监听器" class="headerlink" title="3. 监听器"></a>3. 监听器</h4><p>1）添加监听器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 监听器一：监听动画过程中值的实时变化</div><div class="line">animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">    @Override</div><div class="line">    public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">        // doSomething</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 监听器二：监听动画变化时的 4 个状态</div><div class="line">animator.addListener(new Animator.AnimatorListener() &#123;</div><div class="line">    @Override</div><div class="line">    public void onAnimationStart(Animator animation) &#123;&#125;</div><div class="line">    @Override</div><div class="line">    public void onAnimationEnd(Animator animation) &#123;&#125;</div><div class="line">    @Override</div><div class="line">    public void onAnimationCancel(Animator animation) &#123;&#125;</div><div class="line">    @Override</div><div class="line">    public void onAnimationRepeat(Animator animation) &#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>2）移除监听器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 移除 AnimatorUpdateListener</div><div class="line">void removeUpdateListener(AnimatorUpdateListener listener);</div><div class="line">void removeAllUpdateListeners();</div><div class="line"></div><div class="line">// 移除 AnimatorListener</div><div class="line">void removeListener(AnimatorListener listener);</div><div class="line">void removeAllListeners();</div></pre></td></tr></table></figure></p>
 <p><div id="jump4"></div></p>
 <h3 id="3-1-4-示例：弹跳加载中效果"><a href="#3-1-4-示例：弹跳加载中效果" class="headerlink" title="3.1.4 示例：弹跳加载中效果"></a>3.1.4 示例：弹跳加载中效果</h3><p><img src="https://upload-images.jianshu.io/upload_images/14186083-b02f17acf6a8f20a.gif?imageMogr2/auto-orient/strip" alt=""></p>
-<p>自定义 LoadingImageView.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">public class LoadingImageView extends AppCompatImageView &#123;</div><div class="line"></div><div class="line">    private int mTop;</div><div class="line">    // 当前动画图片索引</div><div class="line">    private int mCurImgIndex = 0;</div><div class="line">    // 动画图片总张数</div><div class="line">    private static int mImgCount = 3;</div><div class="line"></div><div class="line">    public LoadingImageView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void init() &#123;</div><div class="line">        ValueAnimator animator = ValueAnimator.ofInt(0, 200, 0);</div><div class="line">        animator.setRepeatCount(ValueAnimator.INFINITE);</div><div class="line">        animator.setRepeatMode(ValueAnimator.RESTART);</div><div class="line">        animator.setDuration(2000);</div><div class="line">        animator.setInterpolator(new AccelerateDecelerateInterpolator());</div><div class="line">        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">                int dx = (Integer) animation.getAnimatedValue();</div><div class="line">                setTop(mTop - dx);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        animator.addListener(new Animator.AnimatorListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onAnimationStart(Animator animation) &#123;</div><div class="line">                setImageDrawable(getResources().getDrawable(R.drawable.pic_1));</div><div class="line">            &#125;</div><div class="line">            @Override</div><div class="line">            public void onAnimationEnd(Animator animation) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onAnimationCancel(Animator animation) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onAnimationRepeat(Animator animation) &#123;</div><div class="line">                mCurImgIndex++;</div><div class="line">                                switch (mCurImgIndex % mImgCount) &#123;</div><div class="line">                    case 0:</div><div class="line">                        // setImageDrawable(getResources().getDrawable(R.drawable.pic_1));</div><div class="line">                        setImageDrawable(ResourcesCompat.getDrawable(</div><div class="line">                                getResources(), R.drawable.pic_1, null));</div><div class="line">                        break;</div><div class="line">                    case 1:</div><div class="line">                        setImageDrawable(ResourcesCompat.getDrawable(</div><div class="line">                                getResources(), R.drawable.pic_2, null));</div><div class="line">                        break;</div><div class="line">                    case 2:</div><div class="line">                        setImageDrawable(ResourcesCompat.getDrawable(</div><div class="line">                                getResources(), R.drawable.pic_3, null));</div><div class="line">                        break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        animator.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onLayout(boolean changed, int left, int top, int right, int bottom) &#123;</div><div class="line">        super.onLayout(changed, left, top, right, bottom);</div><div class="line">        mTop = top;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>自定义 LoadingImageView.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">public class LoadingImageView extends AppCompatImageView &#123;</div><div class="line"></div><div class="line">    private int mTop;</div><div class="line">    // 当前动画图片索引</div><div class="line">    private int mCurImgIndex = 0;</div><div class="line">    // 动画图片总张数</div><div class="line">    private static int mImgCount = 3;</div><div class="line"></div><div class="line">    public LoadingImageView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void init() &#123;</div><div class="line">        ValueAnimator animator = ValueAnimator.ofInt(0, 200, 0);</div><div class="line">        animator.setRepeatCount(ValueAnimator.INFINITE);</div><div class="line">        animator.setRepeatMode(ValueAnimator.RESTART);</div><div class="line">        animator.setDuration(2000);</div><div class="line">        animator.setInterpolator(new AccelerateDecelerateInterpolator());</div><div class="line">        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">                int dx = (Integer) animation.getAnimatedValue();</div><div class="line">                setTop(mTop - dx);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        animator.addListener(new Animator.AnimatorListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onAnimationStart(Animator animation) &#123;</div><div class="line">                setImageDrawable(getResources().getDrawable(R.drawable.pic_1));</div><div class="line">            &#125;</div><div class="line">            @Override</div><div class="line">            public void onAnimationEnd(Animator animation) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onAnimationCancel(Animator animation) &#123;&#125;</div><div class="line">            @Override</div><div class="line">            public void onAnimationRepeat(Animator animation) &#123;</div><div class="line">                mCurImgIndex++;</div><div class="line">                switch (mCurImgIndex % mImgCount) &#123;</div><div class="line">                    case 0:</div><div class="line">                        setImageDrawable(ResourcesCompat.getDrawable(</div><div class="line">                                getResources(), R.drawable.pic_1, null));</div><div class="line">                        break;</div><div class="line">                    case 1:</div><div class="line">                        setImageDrawable(ResourcesCompat.getDrawable(</div><div class="line">                                getResources(), R.drawable.pic_2, null));</div><div class="line">                        break;</div><div class="line">                    case 2:</div><div class="line">                        setImageDrawable(ResourcesCompat.getDrawable(</div><div class="line">                                getResources(), R.drawable.pic_3, null));</div><div class="line">                        break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        animator.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onLayout(boolean changed, int left,int top,int right,int bottom) &#123;</div><div class="line">        super.onLayout(changed, left, top, right, bottom);</div><div class="line">        mTop = top;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>act_main.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:layout_gravity=&quot;center_horizontal&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line">    &lt;com.xxt.xtest.LoadingImageView</div><div class="line">        android:layout_width=&quot;50dp&quot;</div><div class="line">        android:layout_height=&quot;50dp&quot;</div><div class="line">        android:layout_marginTop=&quot;100dp&quot;</div><div class="line">        android:layout_gravity=&quot;center_horizontal&quot;</div><div class="line">        android:src=&quot;@drawable/pic_1&quot;/&gt;</div><div class="line">    &lt;TextView</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:layout_gravity=&quot;center_horizontal&quot;</div><div class="line">        android:layout_marginTop=&quot;10dp&quot;</div><div class="line">        android:gravity=&quot;center&quot;</div><div class="line">        android:text=&quot;加载中...&quot;/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-dfda5df6e6971006.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -759,7 +785,7 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1258,6 +1284,28 @@ Property Animation（属性动画，API Level 11）|—- ValueAnimator|—- Obje
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

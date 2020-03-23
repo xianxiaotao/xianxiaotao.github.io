@@ -88,29 +88,37 @@
 
 
 
-<meta name="description" content="参考文档：硬件加速
+<meta name="description" content="返回自定义 View 目录
+
+参考文档：硬件加速
 
 6.1.1 本质和原理1. 概念所谓硬件加速，指的是把某些计算工作交给专门的硬件来做，而不是和普通的计算工作一样交给 CPU 来处理。这样不仅减轻了 CPU 的压力，而且由于有了「专人」的处理，这份计算工作的速度也被加快了。这就是「硬件加速」。
-而对于 Android 来说，硬件加速有它专属的意思：在 Android 里，硬件加速专指把 View 中绘制的计算工作交给 G">
+而对于 Android 来说，硬件加速有它专属的意思：在 Android 里，硬件加速专指把">
 <meta property="og:type" content="article">
 <meta property="og:title" content="06.1 精通自定义 View 之 Paint 基本使用——硬件加速">
 <meta property="og:url" content="http://yoursite.com/2019/07/06/05 CUSTOM VIEW/06.1 精通自定义 View 之 Paint 基本使用——硬件加速/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="参考文档：硬件加速
+<meta property="og:description" content="返回自定义 View 目录
+
+参考文档：硬件加速
 
 6.1.1 本质和原理1. 概念所谓硬件加速，指的是把某些计算工作交给专门的硬件来做，而不是和普通的计算工作一样交给 CPU 来处理。这样不仅减轻了 CPU 的压力，而且由于有了「专人」的处理，这份计算工作的速度也被加快了。这就是「硬件加速」。
-而对于 Android 来说，硬件加速有它专属的意思：在 Android 里，硬件加速专指把 View 中绘制的计算工作交给 G">
+而对于 Android 来说，硬件加速有它专属的意思：在 Android 里，硬件加速专指把">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-fc664ea4562be547.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2789715-2e12c05c18113d57.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/839/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2789715-38ff7dae4e1cdd37.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/839/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2789715-ea809b43011e9e11.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/783/format/webp">
-<meta property="og:updated_time" content="2019-10-09T02:28:20.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-7dad129a07bc73a2.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:51:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="06.1 精通自定义 View 之 Paint 基本使用——硬件加速">
-<meta name="twitter:description" content="参考文档：硬件加速
+<meta name="twitter:description" content="返回自定义 View 目录
+
+参考文档：硬件加速
 
 6.1.1 本质和原理1. 概念所谓硬件加速，指的是把某些计算工作交给专门的硬件来做，而不是和普通的计算工作一样交给 CPU 来处理。这样不仅减轻了 CPU 的压力，而且由于有了「专人」的处理，这份计算工作的速度也被加快了。这就是「硬件加速」。
-而对于 Android 来说，硬件加速有它专属的意思：在 Android 里，硬件加速专指把 View 中绘制的计算工作交给 G">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2789715-2e12c05c18113d57.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/839/format/webp">
+而对于 Android 来说，硬件加速有它专属的意思：在 Android 里，硬件加速专指把">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-fc664ea4562be547.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -409,6 +417,10 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-fc664ea4562be547.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><a href="https://www.jianshu.com/p/7a832e074b69" target="_blank" rel="external">参考文档：硬件加速</a></p>
 <p><div id="jump1"></div></p>
 <h3 id="6-1-1-本质和原理"><a href="#6-1-1-本质和原理" class="headerlink" title="6.1.1 本质和原理"></a>6.1.1 本质和原理</h3><h4 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h4><p>所谓硬件加速，指的是把某些计算工作交给专门的硬件来做，而不是和普通的计算工作一样交给 CPU 来处理。这样不仅减轻了 CPU 的压力，而且由于有了「专人」的处理，这份计算工作的速度也被加快了。这就是「硬件加速」。</p>
@@ -419,13 +431,13 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/2789715-38ff7dae4e1cdd37.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/839/format/webp" alt=""></p>
 <p>从上图可以看出，开启硬件加速后，绘制的计算工作有 CPU 交给 GPU，不过这怎么就能起到加速作用，让绘制变快了呢？</p>
 <ul>
-<li>本来CPU的工作，分摊一部分给GPU，自然可以提高效率；</li>
-<li>相对于CPU来说，GPU自身的设计本来就对于很多常见类型内容的计算(例如简单的圆形、方形)具有优势；</li>
+<li>本来 CPU 的工作，分摊一部分给 GPU，自然可以提高效率；</li>
+<li>相对于 CPU 来说，GPU 自身的设计本来就对于很多常见类型内容的计算 (例如简单的圆形、方形) 具有优势；</li>
 <li>由于绘制流程的不同；硬件加速在界面内容发生重绘的时候绘制流程可以得到优化，避免一些重复操作，从而大幅提升绘制效率。</li>
 </ul>
 <p>关于第三点，它的原理大致说一下：</p>
-<p>关闭硬件加速时，绘制内容会被 CPU 转为实际的像素，然后直接渲染到屏幕，具体来说，这个 [实际的像素]，是由 bitmap 承载的，在界面的某个 View 由于内容发生改变而调用 invalidat() 方法时，如果没有开启硬件加速，为了正确计算 bitmap 的像素，这个 View 的父 View、父 View 的父 View 乃至一直向上知道最顶级的 View，以及所有和它相交的 View，都需要被调用 invalidate() 来重绘，一个View的改变使得大半个界面甚至整个界面重绘一遍，这个工作量是非常大的。</p>
-<p>而在开启硬件加速时，绘制的内容会被转换成 GPU 的操作保存下来(承载的形式成为 displaylist，对应的类也叫作 DisplayList)，再转交给 GPU。由于所有绘制的内容都没有变成最终的像素，所以它们之间是相互独立的，那么在界面内容发生改变时，只需把发生了改变的 View 调用 invalidate() 方法以更新它所对应的 GPU 就好，至于它的父 View 和兄弟 View，只需要保持原样，那么这个工作量就很小了。</p>
+<p>关闭硬件加速时，绘制内容会被 CPU 转为实际的像素，然后直接渲染到屏幕，具体来说，这个「实际的像素」，是由 bitmap 承载的，在界面的某个 View 由于内容发生改变而调用 invalidat() 方法时，如果没有开启硬件加速，为了正确计算 bitmap 的像素，这个 View 的父 View、父 View 的父 View 乃至一直向上知道最顶级的 View，以及所有和它相交的 View，都需要被调用 invalidate() 来重绘，一个 View 的改变使得大半个界面甚至整个界面重绘一遍，这个工作量是非常大的。</p>
+<p>而在开启硬件加速时，绘制的内容会被转换成 GPU 的操作保存下来 (承载的形式成为 displaylist，对应的类也叫作 DisplayList)，再转交给 GPU。由于所有绘制的内容都没有变成最终的像素，所以它们之间是相互独立的，那么在界面内容发生改变时，只需把发生了改变的 View 调用 invalidate() 方法以更新它所对应的 GPU 就好，至于它的父 View 和兄弟 View，只需要保持原样，那么这个工作量就很小了。</p>
 <p>正是由于上面的原因，硬件加速不仅是由于 GPU 的引入提高效率，而且因为绘制机制的改变，而极大的提高了界面内容改变时的刷新效率。</p>
 <p>总结：<strong>用了 GPU，绘制更快；绘制机制的改变，导致界面内容改变时的刷新效率极大提高。</strong></p>
 <p><div id="jump2"></div></p>
@@ -435,7 +447,7 @@
 <p><div id="jump3"></div></p>
 <h3 id="6-1-3-禁用-GPU-硬件加速的方法"><a href="#6-1-3-禁用-GPU-硬件加速的方法" class="headerlink" title="6.1.3 禁用 GPU 硬件加速的方法"></a>6.1.3 禁用 GPU 硬件加速的方法</h3><p>1）在 AndroidManifest.xml 文件中为 application 标签添加如下属性，即可为整个应用程序开启/关闭硬件加速。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;application android:hardwareAccelerated=&quot;true&quot; ...&gt;</div></pre></td></tr></table></figure></p>
 <p>2）在 AndroidManifest.xml 文件中为 activity 标签下使用 hardwareAccelerated 属性开启/关闭硬件加速。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:hardwareAccelerated=&quot;false&quot; ...&gt;</div></pre></td></tr></table></figure></p>
-<p>3）在 Window 层级上使用如下代码开启硬件加速（Window 层级不支持关闭硬件加速）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);</div></pre></td></tr></table></figure></p>
+<p>3）在 Window 层级上使用如下代码开启硬件加速（Window 层级不支持关闭硬件加速）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, </div><div class="line">		     WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);</div></pre></td></tr></table></figure></p>
 <p>4）在 View 层级上使用如下代码关闭硬件加速(在 View 层级上不支持开启硬件加速)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setLayerType(LAYER_TYPE_SOFTWARE,null);</div></pre></td></tr></table></figure></p>
 <p>或者在layout xml中使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:layerType=&quot;software&quot; &gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
 <p>事实上，view.setLayerType(LAYER_TYPE_SOFTWARE, null) 这个方法的作用并不是关闭硬件加速，只是当它的参数为 LAYER_TYPE_SOFTWARE 的时候，可以顺便把硬件加速关掉而已；并且除了这个方法外，Android 并没有提供专门的 View 级别的硬件加速开关，所以它就顺便成了一个开关硬件加速的方法。</p>
@@ -444,6 +456,7 @@
 <li>参数为 LAYER_TYPE_HARDWARE 时，使用 GPU 来绘制 View Layer，绘制到一个 OpenGL texture (如果硬件加速关闭，那么行为和 LAYER_TYPE_SOFTWARE 一致)；</li>
 <li>参数为 LAYER_TYPE_NONE 时，关闭 View Layer。</li>
 </ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-7dad129a07bc73a2.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -723,7 +736,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1222,6 +1235,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -88,12 +88,19 @@
 
 
 
-<meta name="description" content="7.4.1 Shader 概述Shader 在三维软件中称之为着色器，是用来给空白图形上色用的。在 PhotoShop 中有一个印章工具，能够指定印章的样式来填充图形。印章的样式可以是图像、颜色、渐变色等。这里的 Shader 实现的效果与印章类似。我们也是通过给 Shader 指定对应的图像、渐变色等来填充图形的。Paint 中有一个函数专门用于设置 Shader，其声明如下：1publi">
+<meta name="description" content="返回自定义 View 目录
+
+
+7.4.1 Shader 概述Shader 在三维软件中称之为着色器，是用来给空白图形上色用的。在 PhotoShop 中有一个印章工具，能够指定印章的样式来填充图形。印章的样式可以是图像、颜色、渐变色等。这里的 Shader 实现的效果与印章类似。我们也是通过给 Shader 指定对应的图像、渐变色等来填充图形的。Paint 中有一个函数专门用于设置 Sh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="07.4 精通自定义 View 之 绘图进阶——Shader 与 BitmapShader">
 <meta property="og:url" content="http://yoursite.com/2019/07/07/05 CUSTOM VIEW/07.4 精通自定义 View 之 绘图进阶——Shader 与 BitmapShader/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="7.4.1 Shader 概述Shader 在三维软件中称之为着色器，是用来给空白图形上色用的。在 PhotoShop 中有一个印章工具，能够指定印章的样式来填充图形。印章的样式可以是图像、颜色、渐变色等。这里的 Shader 实现的效果与印章类似。我们也是通过给 Shader 指定对应的图像、渐变色等来填充图形的。Paint 中有一个函数专门用于设置 Shader，其声明如下：1publi">
+<meta property="og:description" content="返回自定义 View 目录
+
+
+7.4.1 Shader 概述Shader 在三维软件中称之为着色器，是用来给空白图形上色用的。在 PhotoShop 中有一个印章工具，能够指定印章的样式来填充图形。印章的样式可以是图像、颜色、渐变色等。这里的 Shader 实现的效果与印章类似。我们也是通过给 Shader 指定对应的图像、渐变色等来填充图形的。Paint 中有一个函数专门用于设置 Sh">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-f8a7b8e535ad26c0.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-f0612d7804eb21c1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-06b392e88addc2f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-3148e2d732cb7ba9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -105,11 +112,15 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-bebdbf0c243f7d16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-d4a84ed28fe1ee93.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-817a7e05511f03bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-09T02:32:54.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-e201f8934937ad76.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:50:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="07.4 精通自定义 View 之 绘图进阶——Shader 与 BitmapShader">
-<meta name="twitter:description" content="7.4.1 Shader 概述Shader 在三维软件中称之为着色器，是用来给空白图形上色用的。在 PhotoShop 中有一个印章工具，能够指定印章的样式来填充图形。印章的样式可以是图像、颜色、渐变色等。这里的 Shader 实现的效果与印章类似。我们也是通过给 Shader 指定对应的图像、渐变色等来填充图形的。Paint 中有一个函数专门用于设置 Shader，其声明如下：1publi">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-f0612d7804eb21c1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="返回自定义 View 目录
+
+
+7.4.1 Shader 概述Shader 在三维软件中称之为着色器，是用来给空白图形上色用的。在 PhotoShop 中有一个印章工具，能够指定印章的样式来填充图形。印章的样式可以是图像、颜色、渐变色等。这里的 Shader 实现的效果与印章类似。我们也是通过给 Shader 指定对应的图像、渐变色等来填充图形的。Paint 中有一个函数专门用于设置 Sh">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-f8a7b8e535ad26c0.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -408,6 +419,10 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-f8a7b8e535ad26c0.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><div id="jump1"></div></p>
 <h3 id="7-4-1-Shader-概述"><a href="#7-4-1-Shader-概述" class="headerlink" title="7.4.1 Shader 概述"></a>7.4.1 Shader 概述</h3><p>Shader 在三维软件中称之为着色器，是用来给空白图形上色用的。在 PhotoShop 中有一个印章工具，能够指定印章的样式来填充图形。印章的样式可以是图像、颜色、渐变色等。这里的 Shader 实现的效果与印章类似。我们也是通过给 Shader 指定对应的图像、渐变色等来填充图形的。Paint 中有一个函数专门用于设置 Shader，其声明如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public Shader setShader(Shader shader)</div></pre></td></tr></table></figure></p>
 <p>Shader 类只是一个基类，其中只有两个函数 setLocalMatrix(Matrix localM) 和 getLocalMatrix(Matrix localM)，用来设置坐标变换矩阵的。</p>
@@ -435,12 +450,12 @@
 <li>在 X 轴和 Y 轴都使用 REPEAT 模式下，在超出单个图像的区域后，就会重复绘制这个图像。</li>
 <li>绘制是从控件的左上角开始的，而不是从屏幕原点开始的。这点很好理解，因为我们只会在自定义控件上绘图，不会在全屏幕上绘图。</li>
 </ul>
-<h4 id="2-TileMode-模式解析"><a href="#2-TileMode-模式解析" class="headerlink" title="2. TileMode 模式解析"></a>2. TileMode 模式解析</h4><p>上面初步看到了 REPEAT 模式的用法，现在我们分别来看在各个模式下的不同表现。<br><strong>1）TileMode.REPEAT 模式：重复原图像来填充多余空间</strong><br>在更改模式时，只需要更新setShader里的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mPaint.setShader(new BitmapShader(mBmp, TileMode.REPEAT, TileMode.REPEAT));</div></pre></td></tr></table></figure></p>
+<h4 id="2-TileMode-模式解析"><a href="#2-TileMode-模式解析" class="headerlink" title="2. TileMode 模式解析"></a>2. TileMode 模式解析</h4><p>上面初步看到了 REPEAT 模式的用法，现在我们分别来看在各个模式下的不同表现。<br><strong>1）TileMode.REPEAT 模式：重复原图像来填充多余空间</strong><br>在更改模式时，只需要更新 setShader 里的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mPaint.setShader(new BitmapShader(mBmp, TileMode.REPEAT, TileMode.REPEAT));</div></pre></td></tr></table></figure></p>
 <p>在这里，X 轴、Y 轴全部设置成 REPEAT 模式，所以当控件的显示范围超出了单个图的显示范围时，在 X 轴上将使用 REPEAT 模式；同样，在 Y 轴上也将使用 REPEAT 模式。</p>
 <p><strong>2）TileMode.MIRROR 模式：重复使用镜像模式的图像来填充多余空间</strong><br>同样，将 X 轴、Y 轴全部改为 MIRROR 模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mPaint.setShader(new BitmapShader(mBmp, TileMode.MIRROR, TileMode.MIRROR));</div></pre></td></tr></table></figure></p>
 <p>效果如下图所示。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-1acfebf405a0e336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>在 X 轴上每两张图片的显示都像镜子一样翻转一下。同样，在 Y 轴上每两张图片的显示也都像镜子一样翻转一下。所以这就是镜相效果的作用，镜相效果其实就是在显示下一图片的时候，就相当于两张图片中间放了一个镜子一样。</p>
+<p>在 X 轴上每两张图片的显示都像镜子一样翻转一下。同样，在 Y 轴上每两张图片的显示也都像镜子一样翻转一下。所以这就是镜相效果的作用，镜像效果其实就是在显示下一图片的时候，就相当于两张图片中间放了一个镜子一样。</p>
 <p><strong>3）TileMode.CLAMP：用边缘色彩填充多余空间</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mPaint.setShader(new BitmapShader(mBmp, TileMode.CLAMP, TileMode.CLAMP));</div></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-a3d0c5b36c613db1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>CLAMP 模式的意思就是当控件区域超过当前单个图片的大小时，空白位置的颜色填充就用图片的边缘颜色来填充。</p>
@@ -467,6 +482,7 @@
 <p>res/values/attrs.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">    &lt;declare-styleable name=&quot;TestView&quot;&gt;</div><div class="line">        &lt;attr name=&quot;src&quot; format=&quot;reference&quot; /&gt;</div><div class="line">        &lt;attr name=&quot;format&quot; format=&quot;enum&quot;&gt;</div><div class="line">            &lt;enum name=&quot;circle&quot; value=&quot;0&quot;/&gt;</div><div class="line">            &lt;enum name=&quot;rectTangle&quot; value=&quot;1&quot;/&gt;</div><div class="line">        &lt;/attr&gt;</div><div class="line">        &lt;attr name=&quot;radius&quot; format=&quot;integer&quot; /&gt;</div><div class="line">    &lt;/declare-styleable&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure></p>
 <p>自定义控件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Bitmap mBitmap;</div><div class="line">    private BitmapShader mBitmapShader;</div><div class="line">    private int mEnumFormat = 0;</div><div class="line">    private int mRadius = 5;</div><div class="line">    private RectF mRectF;</div><div class="line">    private Matrix mMatrix;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) throws Exception&#123;</div><div class="line">        super(context, attrs);</div><div class="line">        init(context,attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs, int defStyle) throws Exception&#123;</div><div class="line">        super(context, attrs, defStyle);</div><div class="line">        init(context,attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void init(Context context,AttributeSet attrs) throws Exception&#123;</div><div class="line">        // 提取属性定义</div><div class="line">        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.TestView);</div><div class="line">        int BitmapID = typedArray.getResourceId(R.styleable.TestView_src,-1);</div><div class="line">        if (BitmapID == -1)&#123;</div><div class="line">            throw new Exception(&quot;TestView 需要定义 Src 属性，而且必须是图像&quot;);</div><div class="line">        &#125;</div><div class="line">        mBitmap = BitmapFactory.decodeResource(getResources(),BitmapID);</div><div class="line">        mEnumFormat = typedArray.getInt(R.styleable.TestView_format,0);</div><div class="line">        if (mEnumFormat == 1)&#123;</div><div class="line">            mRadius = typedArray.getInt(R.styleable.TestView_radius,5);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        typedArray.recycle();</div><div class="line"></div><div class="line">        mPaint = new Paint();</div><div class="line">        mBitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);</div><div class="line">        mRectF = new RectF();</div><div class="line">        mMatrix = new Matrix();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</div><div class="line">        super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line"></div><div class="line">        int measureWidth = MeasureSpec.getSize(widthMeasureSpec);</div><div class="line">        int measureHeight = MeasureSpec.getSize(heightMeasureSpec);</div><div class="line">        int measureWidthMode = MeasureSpec.getMode(widthMeasureSpec);</div><div class="line">        int measureHeightMode = MeasureSpec.getMode(heightMeasureSpec);</div><div class="line"></div><div class="line">        int width = mBitmap.getWidth();</div><div class="line">        int height = mBitmap.getHeight();</div><div class="line">        width = (measureWidthMode == MeasureSpec.EXACTLY) ? measureWidth: width;</div><div class="line">        height = (measureHeightMode == MeasureSpec.EXACTLY) ? measureHeight: height;</div><div class="line">        setMeasuredDimension(width, height);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        float scale = (float) getWidth()/mBitmap.getWidth();</div><div class="line">        mMatrix.reset();</div><div class="line">        mMatrix.setScale(scale, scale);</div><div class="line">        mBitmapShader.setLocalMatrix(mMatrix);</div><div class="line">        mPaint.setShader(mBitmapShader);</div><div class="line"></div><div class="line">        float half = getWidth() / 2f;</div><div class="line"></div><div class="line">        if (mEnumFormat == 0)&#123;</div><div class="line">            canvas.drawCircle(half, half, getWidth() / 2f, mPaint);</div><div class="line">        &#125; else if(mEnumFormat == 1)&#123;</div><div class="line">            mRectF.set(0, 0, getWidth(), getHeight());</div><div class="line">            canvas.drawRoundRect(mRectF, mRadius, mRadius, mPaint);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>在 XML 中使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:padding=&quot;20dp&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line">    &lt;com.xxt.xtest.TestView</div><div class="line">        android:layout_width=&quot;50dp&quot;</div><div class="line">        android:layout_height=&quot;50dp&quot;</div><div class="line">        app:src=&quot;@drawable/meinv&quot;</div><div class="line">        app:format=&quot;circle&quot;/&gt;</div><div class="line">    &lt;com.xxt.xtest.TestView</div><div class="line">        android:layout_width=&quot;100dp&quot;</div><div class="line">        android:layout_height=&quot;100dp&quot;</div><div class="line">        app:src=&quot;@drawable/head&quot;</div><div class="line">        app:format=&quot;circle&quot;/&gt;</div><div class="line">    &lt;com.xxt.xtest.TestView</div><div class="line">        android:layout_width=&quot;100dp&quot;</div><div class="line">        android:layout_height=&quot;100dp&quot;</div><div class="line">        android:layout_marginTop=&quot;10dp&quot;</div><div class="line">        app:src=&quot;@drawable/meinv&quot;</div><div class="line">        app:format=&quot;rectTangle&quot;</div><div class="line">        app:radius=&quot;10&quot;/&gt;</div><div class="line">    &lt;com.xxt.xtest.TestView</div><div class="line">        android:layout_width=&quot;130dp&quot;</div><div class="line">        android:layout_height=&quot;130dp&quot;</div><div class="line">        android:layout_marginTop=&quot;10dp&quot;</div><div class="line">        app:src=&quot;@drawable/head&quot;</div><div class="line">        app:format=&quot;rectTangle&quot;</div><div class="line">        app:radius=&quot;30&quot;/&gt;</div><div class="line">    &lt;com.xxt.xtest.TestView</div><div class="line">        android:layout_width=&quot;150dp&quot;</div><div class="line">        android:layout_height=&quot;150dp&quot;</div><div class="line">        android:layout_marginTop=&quot;10dp&quot;</div><div class="line">        app:src=&quot;@drawable/meinv&quot;</div><div class="line">        app:format=&quot;rectTangle&quot;</div><div class="line">        app:radius=&quot;70&quot;/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-e201f8934937ad76.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -746,7 +762,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1245,6 +1261,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

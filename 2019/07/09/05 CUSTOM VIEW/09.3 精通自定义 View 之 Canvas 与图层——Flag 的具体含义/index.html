@@ -88,16 +88,22 @@
 
 
 
-<meta name="description" content="在 Canvas 中有如下几个 save 系列函数：123456public int save()public int save(int saveFlags)public int saveLayer(RectF bounds, Paint paint, int saveFlags)public int saveLayer(float left, float top, float right,">
+<meta name="description" content="返回自定义 View 目录
+
+在 Canvas 中有如下几个 save 系列函数：123456public int save()public int save(int saveFlags)public int saveLayer(RectF bounds, Paint paint, int saveFlags)public int saveLayer(float left, float to">
 <meta property="og:type" content="article">
 <meta property="og:title" content="09.3 精通自定义 View 之 Canvas 与图层——Flag 的具体含义">
 <meta property="og:url" content="http://yoursite.com/2019/07/09/05 CUSTOM VIEW/09.3 精通自定义 View 之 Canvas 与图层——Flag 的具体含义/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="在 Canvas 中有如下几个 save 系列函数：123456public int save()public int save(int saveFlags)public int saveLayer(RectF bounds, Paint paint, int saveFlags)public int saveLayer(float left, float top, float right,">
-<meta property="og:updated_time" content="2019-10-11T01:48:19.000Z">
+<meta property="og:description" content="返回自定义 View 目录
+
+在 Canvas 中有如下几个 save 系列函数：123456public int save()public int save(int saveFlags)public int saveLayer(RectF bounds, Paint paint, int saveFlags)public int saveLayer(float left, float to">
+<meta property="og:updated_time" content="2020-03-23T15:50:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="09.3 精通自定义 View 之 Canvas 与图层——Flag 的具体含义">
-<meta name="twitter:description" content="在 Canvas 中有如下几个 save 系列函数：123456public int save()public int save(int saveFlags)public int saveLayer(RectF bounds, Paint paint, int saveFlags)public int saveLayer(float left, float top, float right,">
+<meta name="twitter:description" content="返回自定义 View 目录
+
+在 Canvas 中有如下几个 save 系列函数：123456public int save()public int save(int saveFlags)public int saveLayer(RectF bounds, Paint paint, int saveFlags)public int saveLayer(float left, float to">
 
 
 
@@ -396,8 +402,12 @@
       
         <meta name="referrer" content="no-referrer">
 
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p>在 Canvas 中有如下几个 save 系列函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public int save()</div><div class="line">public int save(int saveFlags)</div><div class="line">public int saveLayer(RectF bounds, Paint paint, int saveFlags)</div><div class="line">public int saveLayer(float left, float top, float right, float bottom,Paint paint, int saveFlags)</div><div class="line">public int saveLayerAlpha(RectF bounds, int alpha, int saveFlags)</div><div class="line">public int saveLayerAlpha(float left, float top, float right, float bottom,int alpha, int saveFlags)</div></pre></td></tr></table></figure></p>
 <p>可以看到，flag 参数在诸多函数中都有使用，这里我们先关注 save 的两个构造函数和 saveLayer 的两个构造函数。我们知道，二者的不同之处在于，saveLayer() 函数会新建一块画布，而 save() 函数则不会新建画布。它们都具有 Flag（标识），这些 Flag（标识）的含义和适用范围如下表所示。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -439,10 +449,11 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>从上面的表格中可以看到，ALL_SAVE_FLAG、MATRIX_SAVE_FLAG、CLIP_SAVE_FLAG 是 save()、saveLayer() 函数共用的。而另外三个 Flag 是 saveLayer() 函数专用的。</p>
 <p>我们逐个解析下它们的不同之处。在讲解之前，先考虑一下：如果让我们保存一块画布的状态，以便恢复，则需要保存哪些内容呢？</p>
 <p>第一个是位置信息，第二个是大小信息，好像除此之外也没什么了。位置信息对应的是 MATRIX_SAVE_FLAG，大小信息对应的是 CLIP_SAVE_FLAG，这是 save() 和 saveLayer() 函数所共用的标识。而 saveLayer() 函数专用的三个标识用于指定 saveLayer() 函数新建的画布具有哪种特性，而不是保存画布的范畴。</p>
-<h4 id="注意：以上内容已过时，这些标志已在-API-28-中删除。带有-Flag-的构造函数在-API-26-被标为已过时，不建议使用。且新的不带-Flag-参数的构造函数默认指定标识为-ALL-SAVE-FLAG。详情请参见此处。"><a href="#注意：以上内容已过时，这些标志已在-API-28-中删除。带有-Flag-的构造函数在-API-26-被标为已过时，不建议使用。且新的不带-Flag-参数的构造函数默认指定标识为-ALL-SAVE-FLAG。详情请参见此处。" class="headerlink" title="注意：以上内容已过时，这些标志已在 API 28 中删除。带有 Flag 的构造函数在 API 26 被标为已过时，不建议使用。且新的不带 Flag 参数的构造函数默认指定标识为 ALL_SAVE_FLAG。详情请参见此处。"></a>注意：以上内容已过时，这些标志已在 API 28 中删除。带有 Flag 的构造函数在 API 26 被标为已过时，不建议使用。且新的不带 Flag 参数的构造函数默认指定标识为 ALL_SAVE_FLAG。<a href="https://developer.android.google.cn/reference/android/graphics/Canvas" target="_blank" rel="external">详情请参见此处。</a></h4>
+<h4 id="注意：以上内容已过时，这些标志已在-API-28-中删除。带有-Flag-的构造函数在-API-26-被标为已过时，不建议使用。且新的不带-Flag-参数的构造函数默认指定标识为-ALL-SAVE-FLAG。详情请参见此处。"><a href="#注意：以上内容已过时，这些标志已在-API-28-中删除。带有-Flag-的构造函数在-API-26-被标为已过时，不建议使用。且新的不带-Flag-参数的构造函数默认指定标识为-ALL-SAVE-FLAG。详情请参见此处。" class="headerlink" title="注意：以上内容已过时，这些标志已在 API 28 中删除。带有 Flag 的构造函数在 API 26 被标为已过时，不建议使用。且新的不带 Flag 参数的构造函数默认指定标识为 ALL_SAVE_FLAG。详情请参见此处。"></a>注意：以上内容已过时，这些标志已在 API 28 中删除。带有 Flag 的构造函数在 API 26 被标为已过时，不建议使用。且新的不带 Flag 参数的构造函数默认指定标识为 ALL_SAVE_FLAG。<a href="https://developer.android.google.cn/reference/android/graphics/Canvas" target="_blank" rel="external">详情请参见此处</a>。</h4>
       
     </div>
     
@@ -721,7 +732,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1220,6 +1231,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

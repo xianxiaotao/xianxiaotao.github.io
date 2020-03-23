@@ -430,7 +430,7 @@ JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道
 <li>编译</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javac Test.java</div></pre></td></tr></table></figure>
-<p>在执行后在同一目录下生成 Test.class 和 Animal 类对应的文件Test\$Animal.class（由于我们的 Animal 类是 Main 中的内部类，所以用 $ 表示）。</p>
+<p>在执行后在同一目录下生成 Test.class 和 Animal 类对应的文件Test$Animal.class（由于我们的 Animal 类是 Main 中的内部类，所以用 $ 表示）。</p>
 <ul>
 <li>运行</li>
 </ul>
@@ -799,7 +799,7 @@ JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1298,6 +1298,28 @@ JAVA 反射机制是在运行状态中，对于任何一个类，都能够知道
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

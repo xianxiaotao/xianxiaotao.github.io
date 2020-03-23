@@ -422,6 +422,7 @@ Jav">
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@Retention(RetentionPolicy.CLASS)</div><div class="line">public @interface TestAnnotation &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h4 id="2、-Documented"><a href="#2、-Documented" class="headerlink" title="2、@Documented"></a>2、@Documented</h4><p>用于描述其它类型的 annotation 应该被作为被标注的程序成员的公共 API，因此可以被例如 javadoc 此类的工具文档化。Documented 是一个标记注解，没有成员。ANDROID 提供了的 NonNull 注解的源码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Documented</div><div class="line">@Retention(CLASS)</div><div class="line">@Target(&#123;METHOD, PARAMETER, FIELD, LOCAL_VARIABLE, ANNOTATION_TYPE, PACKAGE&#125;)</div><div class="line">public @interface NonNull &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h4 id="3、-Target"><a href="#3、-Target" class="headerlink" title="3、@Target"></a>3、@Target</h4><p>指定注解应用的地方，用来限定注解的应用场景（类，方法，参数等等）。不使用 @Target 注解则默认不限制。其取值如下：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -464,6 +465,7 @@ Jav">
 </tr>
 </tbody>
 </table>
+</div>
 <p>示例：ANDROID 中的 @LayoutRes 注解，限定为布局资源。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public void setContentView(@LayoutRes int layoutResID) &#123;</div><div class="line">    getDelegate().setContentView(layoutResID);</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Documented</div><div class="line">@Retention(CLASS)</div><div class="line">@Target(&#123;METHOD, PARAMETER, FIELD, LOCAL_VARIABLE&#125;)</div><div class="line">public @interface LayoutRes &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h4 id="4、-Inherited"><a href="#4、-Inherited" class="headerlink" title="4、@Inherited"></a>4、@Inherited</h4><p>标记这个注解是继承于哪个注解类。只能被用来标注 “Annotation 类型”，它所标注的 Annotation 具有继承性。当一个超类被 @Inherited 注解的注解（A 注解）进行过注解的话，如果它的子类没有被如何其他注解进行注解，那么这个子类就继承了超类的注解（A 注解）。示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Retention(RetentionPolicy.CLASS)</div><div class="line">@Inherited</div><div class="line">public @interface TestAnnotation &#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@TestAnnotation</div><div class="line">public class TestA &#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class TestB extends TestA&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>TestAnnotation 被 @Retention 注解，类 TestA 被 @TestAnnotation 注解，类 TestB 继承类 TestA，那么类 TestB 也拥有 TestAnnotation注解。</p>
@@ -486,6 +488,7 @@ Jav">
 <p>如果注解没有属性，括号也可以省略：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public @interface TestAnnotation &#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@TestAnnotation</div><div class="line">public class Test &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="四、JDK-内置注解"><a href="#四、JDK-内置注解" class="headerlink" title="四、JDK 内置注解"></a>四、JDK 内置注解</h3><hr>
 <p>Java 定义了一套注解，共有 7 个，3 个在 java.lang 中，剩下 4 个在 java.lang.annotation 中，外加 JDK 7 以后新增 3个，共 10 个。分别是：@Override、@Deprecated、@SuppressWarnings；@Retention、@Documented、@Target、@Inherited；@SafeVarargs、@FunctionalInterface、@Repeatable。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -548,6 +551,7 @@ Jav">
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="五、注解的提取与应用"><a href="#五、注解的提取与应用" class="headerlink" title="五、注解的提取与应用"></a>五、注解的提取与应用</h3><hr>
 <p>注解通过反射获取，通过 Class 对象的方法获取注解。常用的三个方法：<br><strong>isAnnotationPresent</strong><br>方法判断是否应用了某个注解。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public boolean isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass) &#123;...&#125;</div></pre></td></tr></table></figure></p>
 <p><strong>getAnnotation</strong><br>方法获取指定类型的注解。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public &lt;A extends Annotation&gt; A getAnnotation(Class&lt;A&gt; annotationClass) &#123;...&#125;</div></pre></td></tr></table></figure></p>
@@ -849,7 +853,7 @@ Jav">
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1348,6 +1352,28 @@ Jav">
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

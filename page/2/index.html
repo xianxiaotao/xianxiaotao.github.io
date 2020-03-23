@@ -400,7 +400,11 @@
           
           
 
-Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁屏上显示一些类似悬浮窗的效果，就需要用到 Window。Android 中所有的视图都是通过 Window 来呈现的，不管是 Activity、Dialog 还是 Toast，它们的视图实际上都是附加在 Window 上的。而 Win
+
+
+返回自定义 View 目录
+
+Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁屏上显示一些类似悬浮窗的效果，就需要用到 Window。Android 中所有的视图都是通过 Window 来呈现的，不管是 Activity、Dialog 还是 Toast，它们的视图实际上都是附加
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -561,8 +565,12 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
           
 
 
+
+返回自定义 View 目录
+
+
 13.1.1 概述GestureDetector，手势检测类，通过这个类可以识别很多手势。在识别出手势之后，具体的事物处理则交由程序员自己来实现。
-此类提供了两个接口（OnGestureListener、OnDoubleTapListener）和一个外部类（SimpleOnGestureLis
+此类提供了两个接口（OnGestureListener、OnDoubleTapListener）和一个外部类（S
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -724,7 +732,12 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
 
 
 
-12.3.1 XML 布局先定义一个 style 标签，这是为 FlowLayout 中的 TextView 定义的。12345678910&lt;resources&gt;    ...    &lt;style name=&quot;text_flag&quot;&gt;        
+返回自定义 View 目录
+
+FlowLayout 容器效果图如下所示：
+
+
+12.3.1 XML 布局先定义一个 style 标签，这是为 FlowLayout 中的 TextView 定义的。12345678910&lt;resources&gt;    ...    &lt;style
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -885,8 +898,12 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
           
 
 
+
+返回自定义 View 目录
+
+
 12.2.1 ViewGroup 绘制流程View 和 ViewGroup 的绘制流程基本相同，只是在 ViewGroup 中不仅要绘制自己，还要绘制其中的子控件，而 View 只需要绘制自己就可以了。
-绘制流程分为三步：测量、布局、绘制，分别对应 onMeasure()、onLayout()
+绘制流程分为三步：测量、布局、绘制，分别对应 onMea
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1047,7 +1064,11 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
           
 
 
-12.1.1 示例1. 自定义 Style 和属性1）自定义一个类 MyTextView12345678910111213public class MyTextView extends AppCompatTextView &#123;    public MyTextView(Context 
+
+返回自定义 View 目录
+
+
+12.1.1 示例1. 自定义 Style 和属性1）自定义一个类 MyTextView12345678910111213public class MyTextView extends AppCompatTextView &#123;    public My
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1208,8 +1229,12 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
           
 
 
+
+返回自定义 View 目录
+
+
 11.2.1 色彩变换矩阵对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。
-1. 色彩信息的矩阵表示由于一个色彩信息包含 R、G、B、Alpha 信息,
+1. 色彩信息的矩阵表示由于一个色彩信息包
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1370,7 +1395,11 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
           
 
 
-11.1.1 矩阵的加法和减法1. 运算规则$$设矩阵 A=\left[ \begin{matrix} a~11~ &amp; a~12~ &amp; \cdots &amp; a~1n~ \ a~21~ &amp; a~22~ &amp; \cdots &amp; a~2n~ \ \vdot
+
+返回自定义 View 目录
+
+
+11.1.1 矩阵的加法和减法1. 运算规则设矩阵 A=\left[ \begin{matrix} a~11~ & a~12~ & \cdots & a~1n~ \\ a~21~ & a~22~ & \cdots & a~2n~ \\ \vdots & \vd
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1531,7 +1560,11 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
           
 
 
-10.3.1 概述Android 屏幕刷新的时间间隔是 16ms，如果 View 能够在 16ms 内完成所需执行的绘图操作，那么在视觉上，界面就是流畅的；否则就会出现卡顿。很多时候，在自定义 View 的日志中，经常会看到如下警告：1Skipped 60 frames! The applic
+
+返回自定义 View 目录
+
+
+10.3.1 概述Android 屏幕刷新的时间间隔是 16ms，如果 View 能够在 16ms 内完成所需执行的绘图操作，那么在视觉上，界面就是流畅的；否则就会出现卡顿。很多时候，在自定义 View 的日志中，经常会看到如下警告：1Skipped 60 f
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1692,8 +1725,12 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
           
 
 
+
+返回自定义 View 目录
+
+
 10.2.1 概述1. Bitmap 在绘图中的使用Bitmap 在绘图中相关的使用主要有两种：转换为 BitmapDrawable 对象使用；当做画布使用。
-1）转换为 BitmapDrawable 对象使用就是直接将 Bitmap 转换为 BitmapDrawable 对象，然后转换为 D
+1）转换为 BitmapDrawable 对象使用就是直接将 Bitmap 转换为 BitmapDr
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1853,12 +1890,14 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
           
           
 
+
+
+返回自定义 View 目录
+
 前面，我们提到了获取画布的几种方法。除了重写系统的 onDraw()、dispatchDraw() 函数，还可以通过以下方法获得画布：
 
 通过 Bitmap 创建。
-通过 SurfaceView 的 SurfaceHolder.lockCanvas() 函数获取。
-
-另外，我们也提到过通过创建 
+通过 SurfaceView 的 SurfaceHolder.lockCanvas() 函数获取
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2091,7 +2130,7 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -2586,6 +2625,28 @@ Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁�
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

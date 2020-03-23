@@ -88,20 +88,31 @@
 
 
 
-<meta name="description" content="2.4.1 镜头由远及近效果12345678910111213141516public class MainActivity extends AppCompatActivity &amp;#123;    @Override    protected void onCreate(Bundle savedInstanceState) &amp;#123;        super.onCreate(saved">
+<meta name="description" content="返回自定义 View 目录
+
+
+2.4.1 镜头由远及近效果12345678910111213141516public class MainActivity extends AppCompatActivity &amp;#123;    @Override    protected void onCreate(Bundle savedInstanceState) &amp;#123;        sup">
 <meta property="og:type" content="article">
 <meta property="og:title" content="02.4 精通自定义 View 之视图动画——动画示例">
 <meta property="og:url" content="http://yoursite.com/2019/07/02/05 CUSTOM VIEW/02.4 精通自定义 View 之视图动画——动画示例/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="2.4.1 镜头由远及近效果12345678910111213141516public class MainActivity extends AppCompatActivity &amp;#123;    @Override    protected void onCreate(Bundle savedInstanceState) &amp;#123;        super.onCreate(saved">
+<meta property="og:description" content="返回自定义 View 目录
+
+
+2.4.1 镜头由远及近效果12345678910111213141516public class MainActivity extends AppCompatActivity &amp;#123;    @Override    protected void onCreate(Bundle savedInstanceState) &amp;#123;        sup">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-fc83dc54a4de316d.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b65cc033055b387b.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-97840b9e023e724a.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-dda8bf5509252728.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2019-10-09T02:06:52.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-691593b1a494f2a8.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:52:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.4 精通自定义 View 之视图动画——动画示例">
-<meta name="twitter:description" content="2.4.1 镜头由远及近效果12345678910111213141516public class MainActivity extends AppCompatActivity &amp;#123;    @Override    protected void onCreate(Bundle savedInstanceState) &amp;#123;        super.onCreate(saved">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-b65cc033055b387b.gif?imageMogr2/auto-orient/strip">
+<meta name="twitter:description" content="返回自定义 View 目录
+
+
+2.4.1 镜头由远及近效果12345678910111213141516public class MainActivity extends AppCompatActivity &amp;#123;    @Override    protected void onCreate(Bundle savedInstanceState) &amp;#123;        sup">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-fc83dc54a4de316d.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -400,6 +411,10 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-fc83dc54a4de316d.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><div id="jump1"></div></p>
 <h3 id="2-4-1-镜头由远及近效果"><a href="#2-4-1-镜头由远及近效果" class="headerlink" title="2.4.1 镜头由远及近效果"></a>2.4.1 镜头由远及近效果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.act_main);</div><div class="line"></div><div class="line">        ScaleAnimation scaleAnim = new ScaleAnimation(1.0f, 3f, 1.0f, 3f,</div><div class="line">                Animation.RELATIVE_TO_SELF, 0.4f,</div><div class="line">                Animation.RELATIVE_TO_PARENT, 0.8f);</div><div class="line">        scaleAnim.setDuration(6000);</div><div class="line">        scaleAnim.setFillAfter(true);</div><div class="line">        scaleAnim.setInterpolator(new BounceInterpolator());</div><div class="line">        findViewById(R.id.image).startAnimation(scaleAnim);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>act_main.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line">    &lt;ImageView</div><div class="line">        android:id=&quot;@+id/image&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;match_parent&quot;</div><div class="line">        android:scaleType=&quot;fitXY&quot;</div><div class="line">        android:src=&quot;@drawable/meinv&quot;/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
@@ -416,6 +431,7 @@
 <p>act_main.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;RelativeLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">    &lt;View</div><div class="line">        android:id=&quot;@+id/circle1&quot;</div><div class="line">        android:layout_width=&quot;130dp&quot;</div><div class="line">        android:layout_height=&quot;130dp&quot;</div><div class="line">        android:layout_centerHorizontal=&quot;true&quot;</div><div class="line">        android:layout_marginTop=&quot;70dp&quot;</div><div class="line">        android:background=&quot;@drawable/scan_circle&quot;/&gt;</div><div class="line">    &lt;View</div><div class="line">        android:id=&quot;@+id/circle2&quot;</div><div class="line">        android:layout_width=&quot;130dp&quot;</div><div class="line">        android:layout_height=&quot;130dp&quot;</div><div class="line">        android:layout_centerHorizontal=&quot;true&quot;</div><div class="line">        android:layout_marginTop=&quot;70dp&quot;</div><div class="line">        android:background=&quot;@drawable/scan_circle&quot;/&gt;</div><div class="line">    &lt;View</div><div class="line">        android:id=&quot;@+id/circle3&quot;</div><div class="line">        android:layout_width=&quot;130dp&quot;</div><div class="line">        android:layout_height=&quot;130dp&quot;</div><div class="line">        android:layout_centerHorizontal=&quot;true&quot;</div><div class="line">        android:layout_marginTop=&quot;70dp&quot;</div><div class="line">        android:background=&quot;@drawable/scan_circle&quot;/&gt;</div><div class="line">    &lt;View</div><div class="line">        android:id=&quot;@+id/circle4&quot;</div><div class="line">        android:layout_width=&quot;130dp&quot;</div><div class="line">        android:layout_height=&quot;130dp&quot;</div><div class="line">        android:layout_centerHorizontal=&quot;true&quot;</div><div class="line">        android:layout_marginTop=&quot;70dp&quot;</div><div class="line">        android:background=&quot;@drawable/scan_circle&quot;/&gt;</div><div class="line">    &lt;ImageView</div><div class="line">        android:id=&quot;@+id/start_can&quot;</div><div class="line">        android:layout_width=&quot;130dp&quot;</div><div class="line">        android:layout_height=&quot;130dp&quot;</div><div class="line">        android:layout_centerHorizontal=&quot;true&quot;</div><div class="line">        android:layout_marginTop=&quot;70dp&quot;</div><div class="line">        android:src=&quot;@drawable/music&quot;/&gt;</div><div class="line">&lt;/RelativeLayout&gt;</div></pre></td></tr></table></figure></p>
 <p>scan_circle.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:shape=&quot;oval&quot;&gt;</div><div class="line">    &lt;solid android:color=&quot;#FF6C2F&quot;/&gt;</div><div class="line">&lt;/shape&gt;</div></pre></td></tr></table></figure></p>
 <p>scale_alpha_anim.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:duration=&quot;2000&quot;&gt;</div><div class="line">    &lt;alpha</div><div class="line">        android:repeatCount=&quot;infinite&quot;</div><div class="line">        android:fromAlpha=&quot;0.4&quot;</div><div class="line">        android:toAlpha=&quot;0&quot;/&gt;</div><div class="line">    &lt;scale</div><div class="line">        android:repeatCount=&quot;infinite&quot;</div><div class="line">        android:fromXScale=&quot;1.0&quot;</div><div class="line">        android:fromYScale=&quot;1.0&quot;</div><div class="line">        android:toXScale=&quot;3&quot;</div><div class="line">        android:toYScale=&quot;3&quot;</div><div class="line">        android:pivotX=&quot;50%&quot;</div><div class="line">        android:pivotY=&quot;50%&quot; /&gt;</div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-691593b1a494f2a8.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -695,7 +711,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1194,6 +1210,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

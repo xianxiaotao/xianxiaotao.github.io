@@ -88,18 +88,29 @@
 
 
 
-<meta name="description" content="12.1.1 示例1. 自定义 Style 和属性1）自定义一个类 MyTextView12345678910111213public class MyTextView extends AppCompatTextView &amp;#123;    public MyTextView(Context context) &amp;#123;        super(context);    &amp;#125;">
+<meta name="description" content="返回自定义 View 目录
+
+
+12.1.1 示例1. 自定义 Style 和属性1）自定义一个类 MyTextView12345678910111213public class MyTextView extends AppCompatTextView &amp;#123;    public MyTextView(Context context) &amp;#123;        super(cont">
 <meta property="og:type" content="article">
 <meta property="og:title" content="12.1 精通自定义 View 之封装控件——自定义属性与自定义 Style">
 <meta property="og:url" content="http://yoursite.com/2019/07/12/05 CUSTOM VIEW/12.1 精通自定义 View 之封装控件——自定义属性与自定义 Style/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="12.1.1 示例1. 自定义 Style 和属性1）自定义一个类 MyTextView12345678910111213public class MyTextView extends AppCompatTextView &amp;#123;    public MyTextView(Context context) &amp;#123;        super(context);    &amp;#125;">
+<meta property="og:description" content="返回自定义 View 目录
+
+
+12.1.1 示例1. 自定义 Style 和属性1）自定义一个类 MyTextView12345678910111213public class MyTextView extends AppCompatTextView &amp;#123;    public MyTextView(Context context) &amp;#123;        super(cont">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a4ee41c12c4c9f6b.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-0460193d30e7a4eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-11-01T03:42:45.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ac03f85b4cdb8dbd.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:49:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="12.1 精通自定义 View 之封装控件——自定义属性与自定义 Style">
-<meta name="twitter:description" content="12.1.1 示例1. 自定义 Style 和属性1）自定义一个类 MyTextView12345678910111213public class MyTextView extends AppCompatTextView &amp;#123;    public MyTextView(Context context) &amp;#123;        super(context);    &amp;#125;">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-0460193d30e7a4eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="返回自定义 View 目录
+
+
+12.1.1 示例1. 自定义 Style 和属性1）自定义一个类 MyTextView12345678910111213public class MyTextView extends AppCompatTextView &amp;#123;    public MyTextView(Context context) &amp;#123;        super(cont">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-a4ee41c12c4c9f6b.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -398,6 +409,10 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-a4ee41c12c4c9f6b.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><div id="jump1"></div></p>
 <h3 id="12-1-1-示例"><a href="#12-1-1-示例" class="headerlink" title="12.1.1 示例"></a>12.1.1 示例</h3><h4 id="1-自定义-Style-和属性"><a href="#1-自定义-Style-和属性" class="headerlink" title="1. 自定义 Style 和属性"></a>1. 自定义 Style 和属性</h4><p>1）自定义一个类 MyTextView<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class MyTextView extends AppCompatTextView &#123;</div><div class="line">    public MyTextView(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public MyTextView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public MyTextView(Context context, AttributeSet attrs, int defStyleAttr) &#123;</div><div class="line">        super(context, attrs, defStyleAttr);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>2）新建 res/values/attrs.xml 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">    &lt;declare-styleable name=&quot;MyTextView&quot;&gt;</div><div class="line">        &lt;attr name=&quot;header&quot; format=&quot;reference&quot;/&gt;</div><div class="line">        &lt;attr name=&quot;headerHeight&quot; format=&quot;dimension&quot;/&gt;</div><div class="line">        &lt;attr name=&quot;headerVisibleHeight&quot; format=&quot;dimension&quot;/&gt;</div><div class="line">        &lt;attr name=&quot;age&quot;&gt;</div><div class="line">            &lt;flag name=&quot;child&quot; value=&quot;10&quot;/&gt;</div><div class="line">            &lt;flag name=&quot;young&quot; value=&quot;18&quot;/&gt;</div><div class="line">            &lt;flag name=&quot;old&quot; value=&quot;60&quot;/&gt;</div><div class="line">        &lt;/attr&gt;</div><div class="line">    &lt;/declare-styleable&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure></p>
@@ -407,7 +422,7 @@
 <li>dimension 指的是从 dimensions.xml 文件中引用过来的值。注意，这里如果是 dp，就会进行像素转换。</li>
 </ul>
 <blockquote>
-<p>注意：declare-styleable 的 name 值对应所定义的类名。自定义属性值可以组合使用。比如 <attr name="border_color" format="color | reference"> 表示既可以自定义 color 值 (比如 #ff00ff)，也可以利用 @color/xxx 来引用 colors.xml 中已有的值。</attr></p>
+<p>注意：declare-styleable 的 name 值对应所定义的类名。自定义属性值可以组合使用。比如 &lt;attr name=”border_color” format=”color | reference”/&gt; 表示既可以自定义 color 值 (比如 #ff00ff)，也可以利用 @color/xxx 来引用 colors.xml 中已有的值。</p>
 </blockquote>
 <p><div id="jump2"></div></p>
 <h3 id="12-1-2-在-XML-中使用自定义的属性"><a href="#12-1-2-在-XML-中使用自定义的属性" class="headerlink" title="12.1.2 在 XML 中使用自定义的属性"></a>12.1.2 在 XML 中使用自定义的属性</h3><p>res/layout/act_main.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:attrstest=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">    &lt;com.xxt.xtest.MyTextView</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;match_parent&quot;</div><div class="line">        attrstest:header=&quot;@drawable/head&quot;</div><div class="line">        attrstest:headerHeight=&quot;300dp&quot;</div><div class="line">        attrstest:headerVisibleHeight=&quot;100dp&quot;</div><div class="line">        attrstest:age=&quot;young&quot;/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
@@ -442,6 +457,8 @@
 <p>特别注意：属性在定义时可以指定多种类型的值。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;declare-styleable name=&quot;名称&quot;&gt;</div><div class="line">    &lt;attr name=&quot;background&quot; format=&quot;reference|color&quot;/&gt;</div><div class="line">&lt;/declare-styleable&gt;</div></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-ac03f85b4cdb8dbd.gif?imageMogr2/auto-orient/strip" alt=""></p>
+
       
     </div>
     
@@ -720,7 +737,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1219,6 +1236,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

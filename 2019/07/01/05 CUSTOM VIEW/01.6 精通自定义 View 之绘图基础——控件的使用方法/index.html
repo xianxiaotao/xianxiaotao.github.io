@@ -88,16 +88,28 @@
 
 
 
-<meta name="description" content="1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        super(context);    &amp;">
+<meta name="description" content="返回自定义 View 目录
+
+
+1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        sup">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01.6 精通自定义 View 之绘图基础——控件的使用方法">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/05 CUSTOM VIEW/01.6 精通自定义 View 之绘图基础——控件的使用方法/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        super(context);    &amp;">
-<meta property="og:updated_time" content="2019-10-09T02:01:18.000Z">
+<meta property="og:description" content="返回自定义 View 目录
+
+
+1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        sup">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-090024ac6b0ad281.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a3c09f1b30310d08.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:52:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.6 精通自定义 View 之绘图基础——控件的使用方法">
-<meta name="twitter:description" content="1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        super(context);    &amp;">
+<meta name="twitter:description" content="返回自定义 View 目录
+
+
+1.6.1 控件概述在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。 1234567891011public class CustomView extends View &amp;#123;    public CustomView(Context context) &amp;#123;        sup">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-090024ac6b0ad281.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -396,15 +408,19 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-090024ac6b0ad281.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><div id="jump1"></div></p>
 <h3 id="1-6-1-控件概述"><a href="#1-6-1-控件概述" class="headerlink" title="1.6.1 控件概述"></a>1.6.1 控件概述</h3><p>在自定义一个派生自 View 或 ViewGroup 类的控件时，必须实现一个构造函数。有三个构造函数供我们选择。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class CustomView extends View &#123;</div><div class="line">    public CustomView(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line">    public CustomView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">    &#125;</div><div class="line">    public CustomView(Context context, AttributeSet attrs, int defStyle) &#123; </div><div class="line">        super(context, attrs, defStyle);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>其实每种构造函数都是在特定的使用情景下所必须实现的，否则将会报 inflate 错误。</p>
 <p><div id="jump2"></div></p>
-<h3 id="1-6-2-通过XML引入控件"><a href="#1-6-2-通过XML引入控件" class="headerlink" title="1.6.2 通过XML引入控件"></a>1.6.2 通过XML引入控件</h3><p>使用以下方式引入控件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout ...&gt;</div><div class="line">    &lt;com.xxt.xtest.CustomView ... /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="1-6-2-通过-XML-引入控件"><a href="#1-6-2-通过-XML-引入控件" class="headerlink" title="1.6.2 通过 XML 引入控件"></a>1.6.2 通过 XML 引入控件</h3><p>使用以下方式引入控件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout ...&gt;</div><div class="line">    &lt;com.xxt.xtest.CustomView ... /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
 <p>就必须实现第二个构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public CustomView(Context context, AttributeSet attrs) &#123;</div><div class="line">    super(context, attrs);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><div id="jump3"></div></p>
 <h3 id="1-6-3-动态添加控件"><a href="#1-6-3-动态添加控件" class="headerlink" title="1.6.3 动态添加控件"></a>1.6.3 动态添加控件</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">LinearLayout rootView = (LinearLayout)findViewById(R.id.root);</div><div class="line">CustomView customView = new CustomView(this);</div><div class="line">LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams (</div><div class="line">                LinearLayout.LayoutParams.MATCH_PARENT, </div><div class="line">                LinearLayout.LayoutParams.MATCH_PARENT);</div><div class="line">rootView.addView(customView,layoutParams);</div></pre></td></tr></table></figure></p>
-<h4 id="2-LayoutParams"><a href="#2-LayoutParams" class="headerlink" title="2. LayoutParams"></a>2. LayoutParams</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 第一个构造函数常用</div><div class="line">public LayoutParams(int width, int height)</div><div class="line">// 用于从 AttributeSet 中􏰑取出 layout_width、 layout_height 等各属性的值</div><div class="line">public LayoutParams(Context c, AttributeSet attrs)</div><div class="line">public LayoutParams(LayoutParams source)</div></pre></td></tr></table></figure>
+<h4 id="2-LayoutParams"><a href="#2-LayoutParams" class="headerlink" title="2. LayoutParams"></a>2. LayoutParams</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 第一个构造函数常用</div><div class="line">public LayoutParams(int width, int height)</div><div class="line">// 用于从 AttributeSet 中取出 layout_width、 layout_height 等各属性的值</div><div class="line">public LayoutParams(Context c, AttributeSet attrs)</div><div class="line">public LayoutParams(LayoutParams source)</div></pre></td></tr></table></figure>
 <p>每个容器类控件都会实现一套 LayoutParams 类，而子类则用的是父容器的 LayoutParams 类。比如上述中父容器是 LinearLayout，所以使用 LinearLayout.LayoutParams。之所以不能共用，是因为各个容器所对应的布局属性是不一样的。</p>
 <p>在 RelativeLayout 中，实现添加到 TextView 控件的右侧：addRule()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">RelativeLayout rootView = (RelativeLayout) findViewById(R.id.root); </div><div class="line">CustomView customView = new CustomView(this);</div><div class="line">RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(</div><div class="line">                RelativeLayout.LayoutParams.MATCH_PARENT, </div><div class="line">                RelativeLayout.LayoutParams.MATCH_ PARENT);</div><div class="line">layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.text); </div><div class="line">rootView.addView(customView, layoutParams);</div></pre></td></tr></table></figure></p>
 <p>1）设置 margin<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(</div><div class="line">                LinearLayout. LayoutParams.WRAP_CONTENT, </div><div class="line">                LinearLayout.LayoutParams.WRAP_CONTENT);</div><div class="line">lp.setMargins(10, 20, 30, 40);</div><div class="line">imageView.setLayoutParams(lp);</div></pre></td></tr></table></figure></p>
@@ -413,6 +429,7 @@
 <p>4）设置 layout_gravity<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(</div><div class="line">                LinearLayout.LayoutParams.MATCH_PARENT,</div><div class="line">                LinearLayout.LayoutParams.MATCH_ PARENT);</div><div class="line">params.gravity = Gravity.TOP;</div><div class="line">Button button = new Button(this);</div><div class="line">rootView.addView(button, layoutParams);</div></pre></td></tr></table></figure></p>
 <p>5）设置 android:gravity<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">RelativeLayout rootView = (RelativeLayout) findViewById(R.id.root);</div><div class="line">RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(</div><div class="line">                RelativeLayout.LayoutParams.WRAP_CONTENT,</div><div class="line">                200);</div><div class="line">layoutParams.addRule(RelativeLayout.RIGHT_OF, R.id.text);</div><div class="line"></div><div class="line">Button button = new Button(this); </div><div class="line">button.setGravity(Gravity.TOP);</div><div class="line">button.setText(&quot;btn&quot;);</div><div class="line">rootView.addView(button, layoutParams); </div><div class="line">rootView.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);</div></pre></td></tr></table></figure></p>
 <h4 id="3-addView"><a href="#3-addView" class="headerlink" title="3. addView"></a>3. addView</h4><p>动态添加控件都是通过 addView 来实现的，addView 是 ViewGroup 类中的一个函数，它有 5 个构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 在节点末尾添加一个 View 控件，布局使用默认布局</div><div class="line">// layout_width = wrap_content、layout_height = wrap_content</div><div class="line">public void addView(View child)</div><div class="line"></div><div class="line">// 在指定位置添加一个 View 控件，index 的取值有-1、0 和正数。</div><div class="line">// -1：表示在末尾添加一个 View 控件</div><div class="line">// 0：表示在容器顶端添加一个 View 控件</div><div class="line">// 正数：表示在对应的索引位置插入一个 View 控件</div><div class="line">public void addView(View child, int index)</div><div class="line"></div><div class="line">// 使用自定义自定义布局参数，在节点末尾添加一个 View 控件</div><div class="line">public void addView(View child, LayoutParams params)</div><div class="line"></div><div class="line">// 使用自定义自定义布局参数，在指定位置添加一个 View 控件</div><div class="line">public void addView(View child, int index, LayoutParams params)</div><div class="line"></div><div class="line">// 只指定宽和高</div><div class="line">public void addView(View child, int width, int height)</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-a3c09f1b30310d08.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -641,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-1-控件概述"><span class="nav-text">1.6.1 控件概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-2-通过XML引入控件"><span class="nav-text">1.6.2 通过XML引入控件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-3-动态添加控件"><span class="nav-text">1.6.3 动态添加控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-概述"><span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-LayoutParams"><span class="nav-text">2. LayoutParams</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-addView"><span class="nav-text">3. addView</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-1-控件概述"><span class="nav-text">1.6.1 控件概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-2-通过-XML-引入控件"><span class="nav-text">1.6.2 通过 XML 引入控件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-3-动态添加控件"><span class="nav-text">1.6.3 动态添加控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-概述"><span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-LayoutParams"><span class="nav-text">2. LayoutParams</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-addView"><span class="nav-text">3. addView</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -692,7 +709,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1191,6 +1208,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

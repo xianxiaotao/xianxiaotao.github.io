@@ -400,9 +400,11 @@
           
           
 
-恢复画布有两个函数：restore() 和 restoreToCount(int count)。其中，restore() 函数的作用就是把回退栈中的最上层画布状态出栈，恢复画布状态。在 1.5.2 节中已经详细地说明了 restore() 函数的用法，这里就不再赘述了。
 
-9.4.1 resto
+
+返回自定义 View 目录
+
+恢复画布有两个函数：restore() 和 restoreToCount(int count)。其中，restore() 函数的作用就是把回退栈中的最上层画布状态出栈，恢复画布状态。在 1.5.2 节中已经详细地说明了 restore() 函数的用法，这里就不再
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -562,7 +564,10 @@
           
           
 
-在 Canvas 中有如下几个 save 系列函数：123456public int save()public int save(int saveFlags)public int saveLayer(RectF bounds, Paint paint, int saveFlags)public 
+
+返回自定义 View 目录
+
+在 Canvas 中有如下几个 save 系列函数：123456public int save()public int save(int saveFlags)public int saveLayer(RectF bounds, Paint paint, int s
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -722,9 +727,13 @@
           
           
 
+
+
+返回自定义 View 目录
+
 前面讲过 Canvas 的 save() 和 restore() 函数，除这两个函数以外，还有其他一些函数来保存和恢复画布状态。
 
-9.2.1 saveLayer() 函数saveLayer 有两个构造函数，如下：123456/** * 保存指定矩形区域的canvas内容 */public in
+9.2.1 saveLayer() 函数saveLayer 有两个构造函数，如下：123456/** * 保存指定矩形区域的can
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -885,7 +894,11 @@
           
 
 
-9.1.1 方法一：重写 onDraw()、dispatchDraw() 函数一般在自定义 View 时，我们都会重写 onDraw()、dispatchDraw() 函数。先来看一下 onDraw()、dispatchDraw() 函数的定义，如下：1234567protected void
+
+返回自定义 View 目录
+
+
+9.1.1 方法一：重写 onDraw()、dispatchDraw() 函数一般在自定义 View 时，我们都会重写 onDraw()、dispatchDraw() 函数。先来看一下 onDraw()、dispatchDraw() 函数的定义，如下：1234
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1046,7 +1059,11 @@
           
 
 
-8.4.1 目标图像模式我们知道，在与 SRC 相关的模式中，在处理相交区域时，优先以源图像显示为主；而在与 DST 相关的模式中，在处理相交区域时，优先以目标图像显示为主。这部分所涉及的模式有 Mode.DST、Mode.DST_IN、Mode.DST_OUT、Mode.DST_OVER、M
+
+返回自定义 View 目录
+
+
+8.4.1 目标图像模式我们知道，在与 SRC 相关的模式中，在处理相交区域时，优先以源图像显示为主；而在与 DST 相关的模式中，在处理相交区域时，优先以目标图像显示为主。这部分所涉及的模式有 Mode.DST、Mode.DST_IN、Mode.DST_OU
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1206,7 +1223,11 @@
           
           
 
-除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_A
+
+
+返回自定义 View 目录
+
+除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SR
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1367,8 +1388,12 @@
           
 
 
+
+返回自定义 View 目录
+
+
 8.2.1 PorterDuffXfermode 概述官方文档链接PorterDuffXfermode 的构造函数如下：1public PorterDuffXfermode(PorterDuff.Mode mode)
-它只有一个参数 PorterDuff.Mode，表示混合模式，枚举值有18个
+它只有一个参数 PorterDuff.Mo
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1529,8 +1554,11 @@
           
 
 
+返回自定义 View 目录
+
+
 8.1.1 混合模式概述混合模式能够将两张图片无缝结合，实现类似 Photoshop 中的两张图片融合效果。
-混合模式是通过 Paint 类中的 Xfermode setXfermode(Xfermode xfermode) 函数实现的，它的参数 Xfermode 是一个空类，主要靠它的子类来
+混合模式是通过 Paint 类中的 Xfermode setXfermode(Xfermode xfermode) 函数实现的，它的参数 Xfermod
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1690,9 +1718,13 @@
           
           
 
+
+
+返回自定义 View 目录
+
 RadialGradient 是 Shader 的另一种实现，它的含义是放射渐变，即它会像一个放射源一样，从一个点开始向外扩散，从一种颜色变成另一种颜色。
 
-7.6.1 双色渐变RadialGradient 有两个构造函数，分别能完成双色渐变和多色渐变。双色渐变的构造函数如下：12RadialG
+7.6.1 双色渐变RadialGradient 有两个构造函数，分别能完成双色渐变和多色渐变。双色渐变
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1853,9 +1885,12 @@ RadialGradient 是 Shader 的另一种实现，它的含义是放射渐变，即
           
 
 
+
+返回自定义 View 目录
+
 通过 LinearGradient 可以实现线性渐变效果。
 
-7.5.1 概述1. 构造函数第一个构造函数：12public LinearGradient(float x0, float y0, float x1, float y1,        int color0, int color1
+7.5.1 概述1. 构造函数第一个构造函数：12public LinearGradient(float x0, float y0, float x1, float y1,        int co
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2088,7 +2123,7 @@ RadialGradient 是 Shader 的另一种实现，它的含义是放射渐变，即
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -2583,6 +2618,28 @@ RadialGradient 是 Shader 的另一种实现，它的含义是放射渐变，即
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

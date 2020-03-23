@@ -88,18 +88,29 @@
 
 
 
-<meta name="description" content="9.1.1 方法一：重写 onDraw()、dispatchDraw() 函数一般在自定义 View 时，我们都会重写 onDraw()、dispatchDraw() 函数。先来看一下 onDraw()、dispatchDraw() 函数的定义，如下：1234567protected void onDraw(Canvas canvas) &amp;#123;    super.onDraw(canv">
+<meta name="description" content="返回自定义 View 目录
+
+
+9.1.1 方法一：重写 onDraw()、dispatchDraw() 函数一般在自定义 View 时，我们都会重写 onDraw()、dispatchDraw() 函数。先来看一下 onDraw()、dispatchDraw() 函数的定义，如下：1234567protected void onDraw(Canvas canvas) &amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="09.1 精通自定义 View 之 Canvas 与图层——获取 Canvas 对象的方法">
 <meta property="og:url" content="http://yoursite.com/2019/07/09/05 CUSTOM VIEW/09.1 精通自定义 View 之 Canvas 与图层——获取 Canvas 对象的方法/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="9.1.1 方法一：重写 onDraw()、dispatchDraw() 函数一般在自定义 View 时，我们都会重写 onDraw()、dispatchDraw() 函数。先来看一下 onDraw()、dispatchDraw() 函数的定义，如下：1234567protected void onDraw(Canvas canvas) &amp;#123;    super.onDraw(canv">
+<meta property="og:description" content="返回自定义 View 目录
+
+
+9.1.1 方法一：重写 onDraw()、dispatchDraw() 函数一般在自定义 View 时，我们都会重写 onDraw()、dispatchDraw() 函数。先来看一下 onDraw()、dispatchDraw() 函数的定义，如下：1234567protected void onDraw(Canvas canvas) &amp;#123;">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-171b3366544ced47.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-f1dd4d89fab911cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-11T01:48:40.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-f640700a6ccd2b59.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:50:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="09.1 精通自定义 View 之 Canvas 与图层——获取 Canvas 对象的方法">
-<meta name="twitter:description" content="9.1.1 方法一：重写 onDraw()、dispatchDraw() 函数一般在自定义 View 时，我们都会重写 onDraw()、dispatchDraw() 函数。先来看一下 onDraw()、dispatchDraw() 函数的定义，如下：1234567protected void onDraw(Canvas canvas) &amp;#123;    super.onDraw(canv">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-f1dd4d89fab911cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="返回自定义 View 目录
+
+
+9.1.1 方法一：重写 onDraw()、dispatchDraw() 函数一般在自定义 View 时，我们都会重写 onDraw()、dispatchDraw() 函数。先来看一下 onDraw()、dispatchDraw() 函数的定义，如下：1234567protected void onDraw(Canvas canvas) &amp;#123;">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-171b3366544ced47.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -398,6 +409,10 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-171b3366544ced47.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><div id="jump1"></div></p>
 <h3 id="9-1-1-方法一：重写-onDraw-、dispatchDraw-函数"><a href="#9-1-1-方法一：重写-onDraw-、dispatchDraw-函数" class="headerlink" title="9.1.1 方法一：重写 onDraw()、dispatchDraw() 函数"></a>9.1.1 方法一：重写 onDraw()、dispatchDraw() 函数</h3><p>一般在自定义 View 时，我们都会重写 onDraw()、dispatchDraw() 函数。先来看一下 onDraw()、dispatchDraw() 函数的定义，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">protected void dispatchDraw(Canvas canvas) &#123;</div><div class="line">    super.dispatchDraw(canvas);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>可以看到，onDraw()、dispatchDraw() 函数在传入的参数中都有一个 Canvas 对象。这个 Canvas 对象是 View 中的 Canvas 对象，利用这个 Canvas 对象绘图，效果会直接反映在 View 中。</p>
@@ -423,6 +438,7 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-f1dd4d89fab911cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p><div id="jump3"></div></p>
 <h3 id="9-1-3-方法三：调动-SurfaceHolder-lockCanvas-函数"><a href="#9-1-3-方法三：调动-SurfaceHolder-lockCanvas-函数" class="headerlink" title="9.1.3 方法三：调动 SurfaceHolder.lockCanvas() 函数"></a>9.1.3 方法三：调动 SurfaceHolder.lockCanvas() 函数</h3><p>在使用 SurfaceView 时，当调用 SurfaceHolder.lockCanvas() 函数时，也会创建 Canvas 对象，有关 SurfaceView 的知识可以参考第 10 章。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-f640700a6ccd2b59.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -702,7 +718,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1201,6 +1217,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

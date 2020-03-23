@@ -88,14 +88,21 @@
 
 
 
-<meta name="description" content="11.2.1 色彩变换矩阵对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。
-1. 色彩信息的矩阵表示由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值。$$ \left[ \begin">
+<meta name="description" content="返回自定义 View 目录
+
+
+11.2.1 色彩变换矩阵对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。
+1. 色彩信息的矩阵表示由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换">
 <meta property="og:url" content="http://yoursite.com/2019/07/11/05 CUSTOM VIEW/11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="11.2.1 色彩变换矩阵对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。
-1. 色彩信息的矩阵表示由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值。$$ \left[ \begin">
+<meta property="og:description" content="返回自定义 View 目录
+
+
+11.2.1 色彩变换矩阵对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。
+1. 色彩信息的矩阵表示由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8421b40cde3f0a33.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-65968173a9ff1c69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-53ad1961066a0714.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-40bfc3d34d47dc8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -119,12 +126,16 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-c05e54e35dba0905.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-94625175286b6f21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8c23292396f0f991.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2019-10-22T08:20:35.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2fe244460ff92503.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:49:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="11.2 精通自定义 View 之 Matrix 与坐标变换——ColorMatrix 色彩变换">
-<meta name="twitter:description" content="11.2.1 色彩变换矩阵对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。
-1. 色彩信息的矩阵表示由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值。$$ \left[ \begin">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-65968173a9ff1c69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="返回自定义 View 目录
+
+
+11.2.1 色彩变换矩阵对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。
+1. 色彩信息的矩阵表示由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-8421b40cde3f0a33.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -423,10 +434,14 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-8421b40cde3f0a33.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><div id="jump1"></div></p>
 <h3 id="11-2-1-色彩变换矩阵"><a href="#11-2-1-色彩变换矩阵" class="headerlink" title="11.2.1 色彩变换矩阵"></a>11.2.1 色彩变换矩阵</h3><p>对于色彩的存储，Bitmap 类使用一个 32 位的数值来保存，红、绿、蓝及透明度各占 8 位，每个色彩分量的取值范围是 0~255。透明度为 0 表示完全透明，为 255 时色彩完全可见。</p>
-<h4 id="1-色彩信息的矩阵表示"><a href="#1-色彩信息的矩阵表示" class="headerlink" title="1. 色彩信息的矩阵表示"></a>1. 色彩信息的矩阵表示</h4><p>由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值。<br>$$ \left[ \begin{matrix} Red &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; Green &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; Blue &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; Alpha \end{matrix} \right]$$</p>
-<blockquote>
+<h4 id="1-色彩信息的矩阵表示"><a href="#1-色彩信息的矩阵表示" class="headerlink" title="1. 色彩信息的矩阵表示"></a>1. 色彩信息的矩阵表示</h4><p>由于一个色彩信息包含 R、G、B、Alpha 信息,所以,我们必然要使用一个四阶色彩变 换矩阵来修改色彩的每一个分量值。</p>
+<script type="math/tex; mode=display">\left[ \begin{matrix} Red & 0 & 0 & 0 \\ 0 & Green & 0 & 0 \\ 0 & 0 & Blue & 0 \\ 0 & 0 & 0 & Alpha \end{matrix} \right]</script><blockquote>
 <p>注意:对于色彩变换矩阵，这里的色彩顺序是 R、G、B、A，而不是 A、R、G、B。</p>
 </blockquote>
 <p>如果想将色彩 (0,255,0,255) 更改为半透明，则可以使用下面的矩阵运算来表示：</p>
@@ -437,8 +452,8 @@
 <p>这个变换使用四阶矩阵的乘法无法实现。所以，应该在四阶色彩变换矩阵上增加一个“哑元坐标”，来实现所列的矩阵运算。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-53ad1961066a0714.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>在这个矩阵中，分量值用的是 100。</p>
-<h4 id="2-Android-中的色彩变换矩阵"><a href="#2-Android-中的色彩变换矩阵" class="headerlink" title="2. Android 中的色彩变换矩阵"></a>2. Android 中的色彩变换矩阵</h4><p>在 Android 中，色彩变换矩阵的表示形式也是五阶的。所以，在默认情况下，色彩变换矩阵的形式如下:<br>$$ \left[ \begin{matrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\end{matrix} \right]$$</p>
-<p>Android 中的色彩变换矩阵是用 ColorMatrix 类来表示的。使用 ColorMatrix 类的方法如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">       1, 0, 0, 0, 0,</div><div class="line">       0, 1, 0, 0, 0,</div><div class="line">       0, 0, 1, 0, 0,</div><div class="line">       0, 0, 0, 0.5, 0,</div><div class="line">&#125;);</div><div class="line">mPaint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));</div></pre></td></tr></table></figure></p>
+<h4 id="2-Android-中的色彩变换矩阵"><a href="#2-Android-中的色彩变换矩阵" class="headerlink" title="2. Android 中的色彩变换矩阵"></a>2. Android 中的色彩变换矩阵</h4><p>在 Android 中，色彩变换矩阵的表示形式也是五阶的。所以，在默认情况下，色彩变换矩阵的形式如下:</p>
+<script type="math/tex; mode=display">\left[ \begin{matrix} 1 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 & 0\end{matrix} \right]</script><p>Android 中的色彩变换矩阵是用 ColorMatrix 类来表示的。使用 ColorMatrix 类的方法如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">       1, 0, 0, 0, 0,</div><div class="line">       0, 1, 0, 0, 0,</div><div class="line">       0, 0, 1, 0, 0,</div><div class="line">       0, 0, 0, 0.5, 0,</div><div class="line">&#125;);</div><div class="line">mPaint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));</div></pre></td></tr></table></figure></p>
 <p>有关 setColorFilter() 函数的其他用法，将在本节末尾详细讲解。</p>
 <h4 id="3-示例：彩色图片的蓝色通道输出"><a href="#3-示例：彩色图片的蓝色通道输出" class="headerlink" title="3. 示例：彩色图片的蓝色通道输出"></a>3. 示例：彩色图片的蓝色通道输出</h4><p>下面以为 Bitmap 应用 ColorMatrix 类为例,代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line">    private Paint mPaint = new Paint();</div><div class="line">    private Bitmap bitmap;  // 位图</div><div class="line">    private Rect rect;</div><div class="line">    private ColorMatrixColorFilter colorMatrixColorFilter;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        mPaint.setAntiAlias(true);</div><div class="line">        // 获取位图</div><div class="line">        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.dog);</div><div class="line">        rect = new Rect();</div><div class="line">        // 生成色彩变换矩阵</div><div class="line">        ColorMatrix colorMatrix = new ColorMatrix(new float[]&#123;</div><div class="line">                0, 0, 0, 0, 0,</div><div class="line">                0, 0, 0, 0, 0,</div><div class="line">                0, 0, 1, 0, 0,</div><div class="line">                0, 0, 0, 1, 0,</div><div class="line">        &#125;);</div><div class="line">        colorMatrixColorFilter = new ColorMatrixColorFilter(colorMatrix);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        rect.set(0, 0, 500, 500 * bitmap.getHeight() / bitmap.getWidth());</div><div class="line">        // 绘制原始位图</div><div class="line">        canvas.drawBitmap(bitmap, null, rect, mPaint);</div><div class="line">        canvas.translate(510, 0);</div><div class="line"></div><div class="line">        mPaint.setColorFilter(colorMatrixColorFilter);</div><div class="line">        canvas.drawBitmap(bitmap, null, rect, mPaint);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这里分两次绘制了一个 Bitmap，先绘制了一个原始图像,然后利用 ColorMatrix 类生成了 一个仅包含蓝色的图像。用过 Photoshop 的读者应该很清楚,这跟 Photoshop 中蓝色通道的效 果是一致的。效果如下图所示。</p>
@@ -467,14 +482,14 @@
 <p>可以看到，在旋转后，原 R 在 R 轴上的分量变为原 Rxcosa，原 G 在 R 轴上也有了分量，但分量落在了负轴上，所以要减去这部分分量，最终的结果是最终的 R=原 R×cosa-原 G×sina。 下面来看一下几种旋转计算及结果矩阵(注意：这几张图只标记了原 X 轴色彩分量的旋转，没有把 Y 轴色彩分量的旋转标记出来)。</p>
 <p>1）绕蓝色轴旋转 θ 度</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-16150536456eb83f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>对应的色彩变换矩阵如下：<br>$$ \left[ \begin{matrix} cosθ &amp; sinθ &amp; 0 &amp; 0 &amp; 0\ -sinθ &amp; cosθ &amp; 0 &amp; 0 &amp; 0\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{matrix} \right]$$</p>
-<p>2）绕红色轴旋转 θ 度</p>
+<p>对应的色彩变换矩阵如下：</p>
+<script type="math/tex; mode=display">\left[ \begin{matrix} cosθ & sinθ & 0 & 0 & 0\\ -sinθ & cosθ & 0 & 0 & 0\\ 0 & 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 1\end{matrix} \right]</script><p>2）绕红色轴旋转 θ 度</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-ff2dadf5ca618b87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>对应的色彩变换矩阵如下：<br>$$ \left[ \begin{matrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\ 0 &amp; cosθ &amp; sinθ &amp; 0 &amp; 0\ 0 &amp; -sinθ &amp; cosθ &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{matrix} \right]$$</p>
-<p>3）绕绿色轴旋转 θ 度</p>
+<p>对应的色彩变换矩阵如下：</p>
+<script type="math/tex; mode=display">\left[ \begin{matrix} 1 & 0 & 0 & 0 & 0\\ 0 & cosθ & sinθ & 0 & 0\\ 0 & -sinθ & cosθ & 0 & 0 \\ 0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 1\end{matrix} \right]</script><p>3）绕绿色轴旋转 θ 度</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-7dc283195247047d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>对应的色彩变换矩阵如下：<br>$$ \left[ \begin{matrix} cosθ &amp; 0 &amp; -sinθ &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\ sinθ &amp; 0 &amp; cosθ &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{matrix} \right]$$</p>
-<p>当围绕红色轴进行色彩旋转时，由于当前红色轴的色彩是不变的,而仅利用三角函数来动态变更绿色和蓝色的颜色值，这种改变就叫作色相调节。当围绕红色轴旋转时，是对图片进行红色色相的调节；当围绕蓝色轴旋转时，是对图片进行蓝色色相的调节；当围绕绿色轴旋转时，是对图片进行绿色色相的调节。</p>
+<p>对应的色彩变换矩阵如下：</p>
+<script type="math/tex; mode=display">\left[ \begin{matrix} cosθ & 0 & -sinθ & 0 & 0 \\ 0 & 1 & 0 & 0 & 0\\ sinθ & 0 & cosθ & 0 & 0 \\ 0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 1\end{matrix} \right]</script><p>当围绕红色轴进行色彩旋转时，由于当前红色轴的色彩是不变的,而仅利用三角函数来动态变更绿色和蓝色的颜色值，这种改变就叫作色相调节。当围绕红色轴旋转时，是对图片进行红色色相的调节；当围绕蓝色轴旋转时，是对图片进行蓝色色相的调节；当围绕绿色轴旋转时，是对图片进行绿色色相的调节。</p>
 <p>下面我们会再次讲到 ColorMatrix 的色彩旋转函数，这里先理解原理，代码和效果后面会给出。</p>
 <h4 id="4-色彩的投射运算"><a href="#4-色彩的投射运算" class="headerlink" title="4. 色彩的投射运算"></a>4. 色彩的投射运算</h4><p>我们再回过头来看看色彩变换矩阵运算的公式，如下：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-06dc50244970cb7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
@@ -531,6 +546,7 @@
 <p>假设当前矩阵为 A，那么 preConcat() 函数的含义就是将当前的矩阵 A 乘以 preMatrix。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void postConcat(ColorMatrix postMatrix)</div></pre></td></tr></table></figure></p>
 <p>postConcat() 函数的含义就是 postMatrix 乘以当前矩阵 A。</p>
 <p>由于这部分内容基本用不到，有关这几个函数的具体应用这里就不再详细讲述，有兴趣的读者可以参考 <a href="http://blog.csdn.net/harvic880925/article/details/51187277" target="_blank" rel="external">Paint 之 ColorMatrix 与滤镜效果</a>。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-2fe244460ff92503.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -810,7 +826,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1309,6 +1325,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

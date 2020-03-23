@@ -88,32 +88,40 @@
 
 
 
-<meta name="description" content="在这张效果图中涉及三个发光效果：文字、图形和位图。
+<meta name="description" content="返回自定义 View 目录
+
+
+在这张效果图中涉及三个发光效果：文字、图形和位图。
 从最后一张美女位图所形成的发光效果中可以看到，与 setShadowLayer() 函数一样，发光效果也只会影响边缘部分图像，内部图像是不受影响的。
-从第三幅图像（红绿各一半的位图）中可以看到：发光效果是无法指定发光颜色的，采用边缘部分的颜色取样来进行模糊发光。所以边缘是什么颜色，发出的光也就是什么颜色的。
-所以初步我们对发光效果有如下结">
+从第三幅图像（红绿各一半的位图）中可以看到：发光效果是无法指定发光颜色的，采用边缘部分的颜色取样来进行模糊发光。所以边缘是什么颜色，发出的光也就是什么颜色的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="07.3 精通自定义 View 之 绘图进阶——BlurMaskFilter 发光效果与图片阴影">
 <meta property="og:url" content="http://yoursite.com/2019/07/07/05 CUSTOM VIEW/07.3 精通自定义 View 之 绘图进阶——BlurMaskFilter 发光效果与图片阴影/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="在这张效果图中涉及三个发光效果：文字、图形和位图。
+<meta property="og:description" content="返回自定义 View 目录
+
+
+在这张效果图中涉及三个发光效果：文字、图形和位图。
 从最后一张美女位图所形成的发光效果中可以看到，与 setShadowLayer() 函数一样，发光效果也只会影响边缘部分图像，内部图像是不受影响的。
-从第三幅图像（红绿各一半的位图）中可以看到：发光效果是无法指定发光颜色的，采用边缘部分的颜色取样来进行模糊发光。所以边缘是什么颜色，发出的光也就是什么颜色的。
-所以初步我们对发光效果有如下结">
+从第三幅图像（红绿各一半的位图）中可以看到：发光效果是无法指定发光颜色的，采用边缘部分的颜色取样来进行模糊发光。所以边缘是什么颜色，发出的光也就是什么颜色的。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-275d667f1ad0f93f.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2c82cb72b3789dbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a54f96eedd8b3cf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-0fa63d9969df5489.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-ca07885ef1838c7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-64d6af67e125a769.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-7a5cfd013c874038.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-09T02:32:05.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-c8583fd4b069d137.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:50:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="07.3 精通自定义 View 之 绘图进阶——BlurMaskFilter 发光效果与图片阴影">
-<meta name="twitter:description" content="在这张效果图中涉及三个发光效果：文字、图形和位图。
+<meta name="twitter:description" content="返回自定义 View 目录
+
+
+在这张效果图中涉及三个发光效果：文字、图形和位图。
 从最后一张美女位图所形成的发光效果中可以看到，与 setShadowLayer() 函数一样，发光效果也只会影响边缘部分图像，内部图像是不受影响的。
-从第三幅图像（红绿各一半的位图）中可以看到：发光效果是无法指定发光颜色的，采用边缘部分的颜色取样来进行模糊发光。所以边缘是什么颜色，发出的光也就是什么颜色的。
-所以初步我们对发光效果有如下结">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-2c82cb72b3789dbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+从第三幅图像（红绿各一半的位图）中可以看到：发光效果是无法指定发光颜色的，采用边缘部分的颜色取样来进行模糊发光。所以边缘是什么颜色，发出的光也就是什么颜色的。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-275d667f1ad0f93f.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -412,7 +420,10 @@
       
         <meta name="referrer" content="no-referrer">
 
-
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-275d667f1ad0f93f.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-2c82cb72b3789dbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>在这张效果图中涉及三个发光效果：文字、图形和位图。</p>
 <p>从最后一张美女位图所形成的发光效果中可以看到，与 setShadowLayer() 函数一样，发光效果也只会影响边缘部分图像，内部图像是不受影响的。</p>
@@ -447,7 +458,7 @@
 <li>对灰色图像应用 BlurMaskFilter 使其内外发光。</li>
 <li>偏移原图形一段距离绘制阴影。</li>
 </ul>
-<h4 id="1-抽取灰色图像"><a href="#1-抽取灰色图像" class="headerlink" title="1. 抽取灰色图像"></a>1. 抽取灰色图像</h4><p>首先来看怎么能绘出一个指定位图所对应的灰色图像。我们知道 canvas.drawBitmap(Bitmap bitmap, Rect src, Rect dst, Paint paint) 中的画笔颜色对画出来的位图是没有任何影响的，所以，如果我们需要画一张对应的灰色图像，就需要新建一张一样大小的空白图，而且新图片的透明度要与原图片保持一致。这样一来，如何从原图片中抽出 Alpha 值成为关键。即我们只需要创建一个与原图片一样大小且Alpha相同的图片即可。</p>
+<h4 id="1-抽取灰色图像"><a href="#1-抽取灰色图像" class="headerlink" title="1. 抽取灰色图像"></a>1. 抽取灰色图像</h4><p>首先来看怎么能绘出一个指定位图所对应的灰色图像。我们知道 canvas.drawBitmap(Bitmap bitmap, Rect src, Rect dst, Paint paint) 中的画笔颜色对画出来的位图是没有任何影响的，所以，如果我们需要画一张对应的灰色图像，就需要新建一张一样大小的空白图，而且新图片的透明度要与原图片保持一致。这样一来，如何从原图片中抽出 Alpha 值成为关键。即我们只需要创建一个与原图片一样大小且 Alpha 相同的图片即可。</p>
 <p>其实，Bitmap 中已经存在抽取出只具有 Alpha 值图片的函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public Bitmap extractAlpha();</div></pre></td></tr></table></figure></p>
 <p>这个函数的功能是：新建一张空白图片，该图片具有与原图片一样的 Alpha 值，把这个新建的 Bitmap 作为结果返回。这个空白图片中每个像素都具有与原图片一样的 Alpha 值，而且具体的颜色是在使用canvas.drawBitmap() 函数绘制时由传入的画笔颜色指定的。</p>
 <p><strong>总结：extractAlpha() 会新建一幅仅具有 Alpha 值的空白图像，而且这张图像的颜色是在使用 canvas.drawBitmap() 函数绘制时传入的画笔颜色指定的。</strong></p>
@@ -465,7 +476,7 @@
 <li>让用户定义图片内容。</li>
 <li>让用户定义偏移距离。</li>
 <li>让用户定义阴影颜色和阴影模糊程度。</li>
-<li>可以使用wrap_content属性自适应大小。</li>
+<li>可以使用 wrap_content 属性自适应大小。</li>
 </ul>
 <blockquote>
 <p>下面程序经过多次测试，效果并不完美，待完善。</p>
@@ -474,6 +485,7 @@
 <p>res/values/xshadow.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">    &lt;declare-styleable name=&quot;XShadowImageView&quot;&gt;</div><div class="line">        &lt;attr name=&quot;src&quot; format=&quot;reference&quot;/&gt;</div><div class="line">        &lt;attr name=&quot;shadowDx&quot; format=&quot;integer&quot; /&gt;</div><div class="line">        &lt;attr name=&quot;shadowDy&quot; format=&quot;integer&quot; /&gt;</div><div class="line">        &lt;attr name=&quot;shadowColor&quot; format=&quot;color&quot;/&gt;</div><div class="line">        &lt;attr name=&quot;shadowRadius&quot; format=&quot;float&quot;/&gt;</div><div class="line">    &lt;/declare-styleable&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure></p>
 <p>src/…/XShadowImageView.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">public class XShadowImageView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Bitmap mBitmap, mShadowBitmap;</div><div class="line">    private int mDx, mDy;</div><div class="line">    private float mRadius;</div><div class="line">    private int mShadowColor;</div><div class="line">    private BlurMaskFilter mBlurMaskFilter;</div><div class="line">    private Rect mRect;</div><div class="line"></div><div class="line">    public XShadowImageView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        init(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public XShadowImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) &#123;</div><div class="line">        super(context, attrs, defStyleAttr);</div><div class="line">        init(context, attrs);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void init(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">        // 禁用硬件加速</div><div class="line">        setLayerType(LAYER_TYPE_SOFTWARE, null);</div><div class="line"></div><div class="line">        // 提取属性</div><div class="line">        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XShadowImageView);</div><div class="line">        mDx = ta.getInt(R.styleable.XShadowImageView_shadowDx, 0);</div><div class="line">        mDy = ta.getInt(R.styleable.XShadowImageView_shadowDy, 0);</div><div class="line">        mRadius = ta.getFloat(R.styleable.XShadowImageView_shadowRadius, 0);</div><div class="line">        mShadowColor = ta.getInt(R.styleable.XShadowImageView_shadowColor, Color.BLACK);</div><div class="line">        int bitmapId = ta.getResourceId(R.styleable.XShadowImageView_src, -1);</div><div class="line">        if (bitmapId != -1) &#123;</div><div class="line">            mBitmap = BitmapFactory.decodeResource(getResources(), bitmapId);</div><div class="line">        &#125;</div><div class="line">        ta.recycle();</div><div class="line"></div><div class="line">        // 其他初始化</div><div class="line">        mRect = new Rect();</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setColor(mShadowColor);</div><div class="line">        mBlurMaskFilter = new BlurMaskFilter(mRadius, BlurMaskFilter.Blur.NORMAL);</div><div class="line">        if (mBitmap != null) &#123;</div><div class="line">            mShadowBitmap = mBitmap.extractAlpha();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</div><div class="line">        super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line"></div><div class="line">        int measureWidth = MeasureSpec.getSize(widthMeasureSpec);</div><div class="line">        int measureHeight = MeasureSpec.getSize(heightMeasureSpec);</div><div class="line">        int measureWidthMode = MeasureSpec.getMode(widthMeasureSpec);</div><div class="line">        int measureHeightMode = MeasureSpec.getMode(heightMeasureSpec);</div><div class="line"></div><div class="line">        int width = mBitmap.getWidth();</div><div class="line">        int height = mBitmap.getHeight();</div><div class="line">        width = (measureWidthMode == MeasureSpec.EXACTLY) ? measureWidth: width;</div><div class="line">        height = (measureHeightMode == MeasureSpec.EXACTLY) ? measureHeight: height;</div><div class="line">        setMeasuredDimension(width, height);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        if (mBitmap != null) &#123;</div><div class="line">            int width = getWidth() - mDx;</div><div class="line">            int height = getHeight() - mDy;</div><div class="line"></div><div class="line">            // 绘制阴影</div><div class="line">            mPaint.setMaskFilter(mBlurMaskFilter);</div><div class="line">            mRect.set(mDx, mDy, width, height);</div><div class="line">            canvas.drawBitmap(mShadowBitmap, null, mRect, mPaint);</div><div class="line"></div><div class="line">            // 绘制原图像</div><div class="line">            mPaint.setMaskFilter(null);</div><div class="line">            mRect.set(0, 0, width, height);</div><div class="line">            canvas.drawBitmap(mBitmap, null, mRect, mPaint);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">    &lt;com.xxt.xtest.XShadowImageView</div><div class="line">        android:layout_width=&quot;100dp&quot;</div><div class="line">        android:layout_height=&quot;100dp&quot;</div><div class="line">        android:layout_gravity=&quot;center_horizontal&quot;</div><div class="line">        app:src=&quot;@drawable/head&quot;</div><div class="line">        app:shadowDx=&quot;30&quot;</div><div class="line">        app:shadowDy=&quot;30&quot;</div><div class="line">        app:shadowRadius=&quot;30.0&quot;</div><div class="line">        app:shadowColor=&quot;@android:color/black&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;com.xxt.xtest.XShadowImageView</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:layout_gravity=&quot;center_horizontal&quot;</div><div class="line">        app:src=&quot;@drawable/head&quot;</div><div class="line">        app:shadowDx=&quot;30&quot;</div><div class="line">        app:shadowDy=&quot;30&quot;</div><div class="line">        app:shadowRadius=&quot;30.0&quot;</div><div class="line">        app:shadowColor=&quot;@android:color/holo_red_dark&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;com.xxt.xtest.XShadowImageView</div><div class="line">        android:layout_width=&quot;260dp&quot;</div><div class="line">        android:layout_height=&quot;360dp&quot;</div><div class="line">        android:layout_gravity=&quot;center_horizontal&quot;</div><div class="line">        app:src=&quot;@drawable/meinv&quot;</div><div class="line">        app:shadowDx=&quot;40&quot;</div><div class="line">        app:shadowDy=&quot;40&quot;</div><div class="line">        app:shadowRadius=&quot;40.0&quot;</div><div class="line">        app:shadowColor=&quot;@android:color/holo_red_dark&quot;/&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-c8583fd4b069d137.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -753,7 +765,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1252,6 +1264,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

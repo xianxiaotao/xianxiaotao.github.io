@@ -88,26 +88,35 @@
 
 
 
-<meta name="description" content="8.1.1 混合模式概述混合模式能够将两张图片无缝结合，实现类似 Photoshop 中的两张图片融合效果。
+<meta name="description" content="返回自定义 View 目录
+
+
+8.1.1 混合模式概述混合模式能够将两张图片无缝结合，实现类似 Photoshop 中的两张图片融合效果。
 混合模式是通过 Paint 类中的 Xfermode setXfermode(Xfermode xfermode) 函数实现的，它的参数 Xfermode 是一个空类，主要靠它的子类来实现不同的功能，如下图所示。
 
-在启舰的书里派生自 Xfermode 的子类有 AvoidXferm">
+在启舰的书里派生自 Xfermode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="08.1 精通自定义 View 之 混合模式——AvoidXfermode">
 <meta property="og:url" content="http://yoursite.com/2019/07/08/05 CUSTOM VIEW/08.1 精通自定义 View 之 混合模式——AvoidXfermode/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="8.1.1 混合模式概述混合模式能够将两张图片无缝结合，实现类似 Photoshop 中的两张图片融合效果。
+<meta property="og:description" content="返回自定义 View 目录
+
+
+8.1.1 混合模式概述混合模式能够将两张图片无缝结合，实现类似 Photoshop 中的两张图片融合效果。
 混合模式是通过 Paint 类中的 Xfermode setXfermode(Xfermode xfermode) 函数实现的，它的参数 Xfermode 是一个空类，主要靠它的子类来实现不同的功能，如下图所示。
 
-在启舰的书里派生自 Xfermode 的子类有 AvoidXferm">
+在启舰的书里派生自 Xfermode">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2b8b059439df3bc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-09T13:11:38.000Z">
+<meta property="og:updated_time" content="2020-03-23T15:50:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="08.1 精通自定义 View 之 混合模式——AvoidXfermode">
-<meta name="twitter:description" content="8.1.1 混合模式概述混合模式能够将两张图片无缝结合，实现类似 Photoshop 中的两张图片融合效果。
+<meta name="twitter:description" content="返回自定义 View 目录
+
+
+8.1.1 混合模式概述混合模式能够将两张图片无缝结合，实现类似 Photoshop 中的两张图片融合效果。
 混合模式是通过 Paint 类中的 Xfermode setXfermode(Xfermode xfermode) 函数实现的，它的参数 Xfermode 是一个空类，主要靠它的子类来实现不同的功能，如下图所示。
 
-在启舰的书里派生自 Xfermode 的子类有 AvoidXferm">
+在启舰的书里派生自 Xfermode">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-2b8b059439df3bc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -407,13 +416,16 @@
       
         <meta name="referrer" content="no-referrer">
 
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><div id="jump1"></div></p>
 <h3 id="8-1-1-混合模式概述"><a href="#8-1-1-混合模式概述" class="headerlink" title="8.1.1 混合模式概述"></a>8.1.1 混合模式概述</h3><p>混合模式能够将两张图片无缝结合，实现类似 Photoshop 中的两张图片融合效果。</p>
 <p>混合模式是通过 Paint 类中的 Xfermode setXfermode(Xfermode xfermode) 函数实现的，它的参数 Xfermode 是一个空类，主要靠它的子类来实现不同的功能，如下图所示。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-2b8b059439df3bc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>在启舰的书里派生自 Xfermode 的子类有 AvoidXfermode、PixelXorXfermode 和 PorterDuffXfermode，并且讲解了相关的知识。但笔者在 2019 年最新的官方文档中，已经找不到 AvoidXfermode 和 PixelXorXfermode 这两个类的相关文档，且在 AndroidX 系列中不支持相关 API。<a href="https://blog.csdn.net/harvic880925/article/details/51264653" target="_blank" rel="external">若想了解详情，请点击前往启舰的博客</a>。</p>
 <p>在使用 Xfermode 时，需要做两件事。<br>1）禁用硬件加速<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setLayerType(View.LAYER_TYPE_SOFTWARE, null);</div></pre></td></tr></table></figure></p>
-<p>2）使用离屏绘制（详见第九章）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 新建图层</div><div class="line">int layerId = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);</div><div class="line"></div><div class="line">// 核心绘制代码</div><div class="line">...</div><div class="line"></div><div class="line">// 还原图层</div><div class="line">canvas.restoreToCount(layerId);</div></pre></td></tr></table></figure></p>
+<p>2）使用离屏绘制（详见第九章）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 新建图层</div><div class="line">int layerId = canvas.saveLayer(0,0,getWidth(),getHeight(),null, Canvas.ALL_SAVE_FLAG);</div><div class="line"></div><div class="line">// 核心绘制代码</div><div class="line">...</div><div class="line"></div><div class="line">// 还原图层</div><div class="line">canvas.restoreToCount(layerId);</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -693,7 +705,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1192,6 +1204,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

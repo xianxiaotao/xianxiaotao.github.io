@@ -401,7 +401,11 @@
           
 
 
-4.3.0 概述为 ViewGroup 内的组件添加动画，Android 共提供了 4 种方法。1. layoutAnimation 标签与 LayoutAnimationController第一：定义一个 layoutAnimation 的 animation 文件，如：(anim/layo
+
+返回自定义 View 目录
+
+
+4.3.0 概述为 ViewGroup 内的组件添加动画，Android 共提供了 4 种方法。1. layoutAnimation 标签与 LayoutAnimationController第一：定义一个 layoutAnimation 的 animatio
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -562,8 +566,12 @@
           
 
 
+
+返回自定义 View 目录
+
+
 4.2.1 概述使用 ObjectAnimator：12ObjectAnimator animator = ObjectAnimator.ofFloat(mView, &quot;alpha&quot;, 0f);animator.start();
-使用 ViewPropertyAnimato
+使用 Vi
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -723,7 +731,11 @@
           
           
 
-ValueAnimator、ObjectAnimator 除了 ofInt()、ofFloat()、ofObject() 函数创建 Animator 实例的方法以外，都还有一个方法：123456// valueAnimator 的public static ValueAnimator ofPro
+
+
+返回自定义 View 目录
+
+ValueAnimator、ObjectAnimator 除了 ofInt()、ofFloat()、ofObject() 函数创建 Animator 实例的方法以外，都还有一个方法：123456// valueAnimator 的public static Va
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -883,9 +895,11 @@ ValueAnimator、ObjectAnimator 除了 ofInt()、ofFloat()、ofObject() 函数创
           
           
 
-在 xml 中对应 animator 总共有三个标签，分别是：123&lt;animator /&gt;: 对应ValueAnimator&lt;objectAnimator /&gt;: 对应ObjectAnimator&lt;set /&gt;: 对应AnimatorSet
 
-3.6.1 a
+
+返回自定义 View 目录
+
+在 xml 中对应 animator 总共有三个标签，分别是：123&lt;animator/&gt;: 对应 ValueAnimator&lt;objectAnimator/&gt;: 对应 ObjectAnimator&lt;set/&gt;: 对应 Ani
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1045,8 +1059,12 @@ ValueAnimator、ObjectAnimator 除了 ofInt()、ofFloat()、ofObject() 函数创
           
           
 
+
+
+返回自定义 View 目录
+
 ValueAnimator 和 ObjectAnimator 都只能单单实现一个动画，那如果我们想要使用一个组合动画，就需要用到 AnimatorSet。
-AnimatorSet 针对 ValueAnimator 和 ObjectAnimator 都是适用的，但一般而言，我们不会用到 Value
+AnimatorSet 针对 ValueAnimator 和 ObjectAnimator 都是适用的，但
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1207,8 +1225,12 @@ AnimatorSet 针对 ValueAnimator 和 ObjectAnimator 都是适用的，但一般�
           
 
 
+
+返回自定义 View 目录
+
+
 3.4.1 概述1. 引入ObjectAnimator 派生自 ValueAnimator，所以 ValueAnimator 能用的方法，ObjectAnimator 都能用，ObjectAnimator 是 ValueAnimator 的子类。
-ObjectAnimator 重载了几个方法，
+Object
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1369,10 +1391,13 @@ ObjectAnimator 重载了几个方法，
           
 
 
+
+返回自定义 View 目录
+
 1public static ValueAnimator ofObject(TypeEvaluator evaluator, Object... values)
 
 3.3.1 示例：字母从 A 变化到 Z
-123456789101112131415161718192021222324priva
+1234567891011121314151617181
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1532,10 +1557,14 @@ ObjectAnimator 重载了几个方法，
           
           
 
+
+
+返回自定义 View 目录
+
 视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。
 
 3.2.1 自定义插值器插值器就是用来控制动画的区间值如何被计算出来的。
-1、系统自带插值器12345678910111213141516171819public class Acc
+1、系统自带插值器1234567891011121314151617181
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1696,10 +1725,16 @@ ObjectAnimator 重载了几个方法，
           
 
 
-3.1.1 概述Animation：
 
-View Animation（视图动画，API Level 1）|—- Tween Animation（补间动画）|—- Frame Animation（逐帧动画）
-Property Animation（属性动画，API Level 11）|—- Val
+返回自定义 View 目录
+
+
+3.1.1 概述
+Animation：
+    · View Animation（视图动画，API Level 1）
+        · Tween Animation（补间动画）
+        · Frame Animation（逐帧动画）
+    · P
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1860,8 +1895,12 @@ Property Animation（属性动画，API Level 11）|—- Val
           
 
 
-2.5.1 XML 实现新建一个动画 XML 文件，在文件中使用  标签来定义动画帧序列，使用  标签来定义动画的每一帧，并在其中指定帧的持续时间等属性。
-1）定义 XML 动画文件res/drawable/playing_anim.xml 或 res/anim/playing_anim.xm
+
+返回自定义 View 目录
+
+
+2.5.1 XML 实现新建一个动画 XML 文件，在文件中使用 &lt;animation-list&gt; 标签来定义动画帧序列，使用 &lt;item&gt; 标签来定义动画的每一帧，并在其中指定帧的持续时间等属性。
+1）定义 XML 动画文件res/d
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2094,7 +2133,7 @@ Property Animation（属性动画，API Level 11）|—- Val
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -2589,6 +2628,28 @@ Property Animation（属性动画，API Level 11）|—- Val
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -88,16 +88,21 @@
 
 
 
-<meta name="description" content="除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。
+<meta name="description" content="返回自定义 View 目录
 
-8.3.1 Mode.SRC计算公式为：[Sa, Sc]。从公式中也可以看出，在处理源图">
+除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。
+
+8.3.1 Mode.SRC计算公式为：[Sa, Sc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式">
 <meta property="og:url" content="http://yoursite.com/2019/07/08/05 CUSTOM VIEW/08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。
+<meta property="og:description" content="返回自定义 View 目录
 
-8.3.1 Mode.SRC计算公式为：[Sa, Sc]。从公式中也可以看出，在处理源图">
+除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。
+
+8.3.1 Mode.SRC计算公式为：[Sa, Sc">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-8e6c1ded6638e46e.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-89f7351e119d5fb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-cf39995c77c03dbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a47ca08d9ba84b3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -109,13 +114,16 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-80d3e5f4969ba35e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a65e54a4d2ed9fd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-4d160056ab5c4a12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-09T13:14:15.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-60dbee53950e2be4.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:50:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="08.3 精通自定义 View 之 混合模式——PorterDuffXfermode 之源图像模式">
-<meta name="twitter:description" content="除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。
+<meta name="twitter:description" content="返回自定义 View 目录
 
-8.3.1 Mode.SRC计算公式为：[Sa, Sc]。从公式中也可以看出，在处理源图">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-89f7351e119d5fb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。
+
+8.3.1 Mode.SRC计算公式为：[Sa, Sc">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-8e6c1ded6638e46e.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -414,12 +422,16 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-8e6c1ded6638e46e.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p>除 Photoshop 中存在的几个模式以外，还有几种是在处理结果时以源图像显示为主的几个模式，所以大家在遇到图像相交，需要显示源图像的情况时，就需要从这几种模式中考虑了，主要有 Mode.SRC、Mode.SRC_IN、Mode.SRC_OUT、Mode.SRC_OVER、Mode.SRC_ATOP。</p>
 <p><div id="jump1"></div></p>
 <h3 id="8-3-1-Mode-SRC"><a href="#8-3-1-Mode-SRC" class="headerlink" title="8.3.1 Mode.SRC"></a>8.3.1 Mode.SRC</h3><p>计算公式为：[Sa, Sc]。<br>从公式中也可以看出，在处理源图像所在区域的相交问题时，全部以源图像显示。示例图像如下图所示。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-89f7351e119d5fb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p><div id="jump2"></div></p>
-<h3 id="8-3-2-Mode-SRC-IN"><a href="#8-3-2-Mode-SRC-IN" class="headerlink" title="8.3.2 Mode.SRC_IN"></a>8.3.2 Mode.SRC_IN</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>计算公式为：[Sa <em> Da, Sc </em> Da]。<br>在这个公式中结果值的透明度和颜色值都是由 Sa、Sc 分别乘以目标图像的 Da 来计算的。所以当目标图像为空白像素时，计算结果也将会为空白像素。示例图像如下图所示。</p>
+<h3 id="8-3-2-Mode-SRC-IN"><a href="#8-3-2-Mode-SRC-IN" class="headerlink" title="8.3.2 Mode.SRC_IN"></a>8.3.2 Mode.SRC_IN</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>计算公式为：[Sa * Da, Sc * Da]。<br>在这个公式中结果值的透明度和颜色值都是由 Sa、Sc 分别乘以目标图像的 Da 来计算的。所以当目标图像为空白像素时，计算结果也将会为空白像素。示例图像如下图所示。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-cf39995c77c03dbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>大家注意 SRC_IN 模式与 SRC 模式的区别。一般而言，是在相交区域时无论 SRC_IN 还是 SRC 模式都是显示源图像，而唯一不同的是，当目标图像是空白像素时，在 SRC_IN 所对应的区域也将会变成空白像素。</p>
 <p>其实更严格的来讲，SRC_IN 模式是在相交时利用目标图像的透明度来改变源图像的透明度和饱和度。当目标图像透明度为 0 时，源图像就完全不显示。</p>
@@ -433,7 +445,7 @@
 <p>很明显，由于 SRC_IN 模式的特性是根据目标图像的透明度来决定如何显示源图像，而我们要显示的是小狗图像，所以，源图像是小狗图像，目标图像是一张遮罩图，它是一个从上到下的白色填充渐变，白色的透明度从 49% 到 0。</p>
 <p>小效果图中，我们先画出小狗图像，然后将画布下移，最后将源图像与目标图像再次合成，画出倒影即可。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line">    private Paint mBitPaint;</div><div class="line">    private Bitmap bmpDST, bmpSRC, bmpRevert;</div><div class="line">    private PorterDuffXfermode mode;</div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        setLayerType(View.LAYER_TYPE_SOFTWARE, null);</div><div class="line">        mBitPaint = new Paint();</div><div class="line">        mode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);</div><div class="line">        bmpDST = BitmapFactory.decodeResource(getResources(),R.drawable.dog_invert_shade,null);</div><div class="line">        bmpSRC = BitmapFactory.decodeResource(getResources(),R.drawable.dog,null);</div><div class="line"></div><div class="line">        Matrix matrix = new Matrix();</div><div class="line">        matrix.setScale(1F, -1F);</div><div class="line">        // 生成倒影图</div><div class="line">        bmpRevert = Bitmap.createBitmap(bmpSRC, 0, 0, bmpSRC.getWidth(), bmpSRC.getHeight(), matrix, true);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        // 先画出小狗图片</div><div class="line">        canvas.drawBitmap(bmpSRC,0,0,mBitPaint);</div><div class="line"></div><div class="line">        // 再画出倒影</div><div class="line">        int layerId = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);</div><div class="line">        canvas.translate(0, bmpSRC.getHeight());</div><div class="line">        canvas.drawBitmap(bmpDST,0,0,mBitPaint);</div><div class="line">        mBitPaint.setXfermode(mode);</div><div class="line">        canvas.drawBitmap(bmpRevert,0,0,mBitPaint);</div><div class="line">        mBitPaint.setXfermode(null);</div><div class="line">        canvas.restoreToCount(layerId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><div id="jump3"></div></p>
-<h3 id="8-3-3-Mode-SRC-OUT"><a href="#8-3-3-Mode-SRC-OUT" class="headerlink" title="8.3.3 Mode.SRC_OUT"></a>8.3.3 Mode.SRC_OUT</h3><h4 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>计算公式为：[Sa <em> (1 - Da), Sc </em> (1 - Da)]。<br>示例图像如下图所示。</p>
+<h3 id="8-3-3-Mode-SRC-OUT"><a href="#8-3-3-Mode-SRC-OUT" class="headerlink" title="8.3.3 Mode.SRC_OUT"></a>8.3.3 Mode.SRC_OUT</h3><h4 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>计算公式为：[Sa * (1 - Da), Sc * (1 - Da)]。<br>示例图像如下图所示。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-6e57a4f4165ff0c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>从公式中可以看出，计算结果的透明度为 Sa * (1 - Da)；也就是说当目标图像图像完全不透明时，计算结果将是透明的。</p>
 <p>从示例图中也可以看出，源图像与目标图像的相交部分由于目标图像的不透明度为 100%，所以相交部分的计算结果为空白像素。在目标图像为空白像素时，完全以源图像显示。</p>
@@ -448,17 +460,18 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-80d3e5f4969ba35e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="scratch.png"></p>
 <p>示例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">public class TestView extends View &#123;</div><div class="line"></div><div class="line">    private Paint mPaint;</div><div class="line">    private Bitmap mDstBmp;</div><div class="line">    private Bitmap mSrcBmp;</div><div class="line">    private Bitmap mTextBmp;</div><div class="line">    private Path mPath;</div><div class="line">    private float mPreX, mPreY;</div><div class="line">    private PorterDuffXfermode mMode;</div><div class="line">    private Canvas mTempCanvas;</div><div class="line">    private RectF mRect;</div><div class="line"></div><div class="line">    public TestView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line">        setLayerType(View.LAYER_TYPE_SOFTWARE, null);</div><div class="line">        mPaint = new Paint();</div><div class="line">        mPaint.setColor(Color.RED);</div><div class="line">        mPaint.setStyle(Paint.Style.STROKE);</div><div class="line">        mPaint.setStrokeWidth(100);</div><div class="line">        mPaint.setStrokeCap(Paint.Cap.ROUND);</div><div class="line"></div><div class="line">        mTextBmp = BitmapFactory.decodeResource(getResources(), R.drawable.scratch);</div><div class="line">        mSrcBmp = BitmapFactory.decodeResource(getResources(), R.drawable.scratch_over);</div><div class="line">        mDstBmp = Bitmap.createBitmap(mSrcBmp.getWidth(), mSrcBmp.getHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">        mPath = new Path();</div><div class="line">        mTempCanvas = new Canvas();</div><div class="line">        mMode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);</div><div class="line">        mRect = new RectF();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">        switch (event.getAction()) &#123;</div><div class="line">            case MotionEvent.ACTION_DOWN:</div><div class="line">                mPath.moveTo(event.getX(), event.getY());</div><div class="line">                mPreX = event.getX();</div><div class="line">                mPreY = event.getY();</div><div class="line">                return true;</div><div class="line">            case MotionEvent.ACTION_MOVE:</div><div class="line">                float endX = (mPreX + event.getX()) / 2;</div><div class="line">                float endY = (mPreY + event.getY()) / 2;</div><div class="line">                mPath.quadTo(mPreX, mPreY, endX, endY);</div><div class="line">                mPreX = event.getX();</div><div class="line">                mPreY = event.getY();</div><div class="line">                break;</div><div class="line">            case MotionEvent.ACTION_UP:</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">        postInvalidate();</div><div class="line">        return super.onTouchEvent(event);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        float width = mTextBmp.getWidth();</div><div class="line">        float height = mTextBmp.getHeight();</div><div class="line">        float screenWidth = getWidth();</div><div class="line">        if (width &gt; screenWidth) &#123;</div><div class="line">            height = height * screenWidth / width;</div><div class="line">            width = screenWidth;</div><div class="line">        &#125;</div><div class="line">        mRect.set(0, 0, width, height);</div><div class="line"></div><div class="line">        // 先画底层奖励文案图片</div><div class="line">        canvas.drawBitmap(mTextBmp, null, mRect, mPaint);</div><div class="line">        int layerId = canvas.saveLayer(140, 70, width - 140, height - 70,</div><div class="line">                null, Canvas.ALL_SAVE_FLAG);</div><div class="line">        // 把手势轨迹画到目标图像上</div><div class="line">        mTempCanvas.setBitmap(mDstBmp);</div><div class="line">        mTempCanvas.drawPath(mPath, mPaint);</div><div class="line">        // 然后把目标图像画到画布上</div><div class="line">        canvas.drawBitmap(mDstBmp, 0, 0, mPaint);</div><div class="line">        // 计算源图像区域</div><div class="line">        mPaint.setXfermode(mMode);</div><div class="line">        mRect.set(140, 70, width-140, height-70);</div><div class="line">        canvas.drawBitmap(mSrcBmp, null, mRect, mPaint);</div><div class="line">        mPaint.setXfermode(null);</div><div class="line">        canvas.restoreToCount(layerId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><div id="jump4"></div></p>
-<h3 id="8-3-4-Mode-SRC-OVER"><a href="#8-3-4-Mode-SRC-OVER" class="headerlink" title="8.3.4 Mode.SRC_OVER"></a>8.3.4 Mode.SRC_OVER</h3><p>计算公式为：[Sa + (1 - Sa) <em> Da, Rc = Sc + (1 - Sa) </em> Dc]。<br>示例图像为：</p>
+<h3 id="8-3-4-Mode-SRC-OVER"><a href="#8-3-4-Mode-SRC-OVER" class="headerlink" title="8.3.4 Mode.SRC_OVER"></a>8.3.4 Mode.SRC_OVER</h3><p>计算公式为：[Sa + (1 - Sa) * Da, Rc = Sc + (1 - Sa) * Dc]。<br>示例图像为：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-a65e54a4d2ed9fd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>在计算结果中，源图像没有改变。它的意思就是，在目标图像的顶部绘制源图像。从公式中也可以看出，目标图像的透明度为 Sa + (1 - Sa) * Da；即在源图像的透明度基础上增加一部分目标图像的透明度。增加的透明度是源图像透明度的补量；目标图像的色彩值的计算方式同理，所以当源图像透明度为 100% 时，就原样显示源图像。</p>
 <p><div id="jump5"></div></p>
-<h3 id="8-3-5-Mode-SRC-ATOP"><a href="#8-3-5-Mode-SRC-ATOP" class="headerlink" title="8.3.5 Mode.SRC_ATOP"></a>8.3.5 Mode.SRC_ATOP</h3><p>计算公式为：[Da, Sc <em> Da + (1 - Sa) </em> Dc]。</p>
+<h3 id="8-3-5-Mode-SRC-ATOP"><a href="#8-3-5-Mode-SRC-ATOP" class="headerlink" title="8.3.5 Mode.SRC_ATOP"></a>8.3.5 Mode.SRC_ATOP</h3><p>计算公式为：[Da, Sc * Da + (1 - Sa) * Dc]。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-4d160056ab5c4a12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>很奇怪，它的效果图竟然与 SRC_IN 模式是相同的，我们来对比一下它们的公式：</p>
-<p>SRC_IN：[Sa <em> Da, Sc </em> Da]<br>SRC_ATOP：[Da, Sc <em> Da + (1 - Sa) </em> Dc]</p>
+<p>SRC_IN：[Sa * Da, Sc * Da]<br>SRC_ATOP：[Da, Sc * Da + (1 - Sa) * Dc]</p>
 <p>先看透明度：在 SRC_IN 中是 Sa * Da,在 SRC_ATOP 是 Da。<br>SRC_IN 是源图像透明度乘以目标图像的透明度做为结果透明度，而SRC_ATOP 是直接使用目标图像的透明度做为结果透明度。</p>
-<p>再看颜色值：SRC_IN 的颜色值为 Sc <em> Da，SRC_ATOP 的颜色值为Sc </em> Da + (1 - Sa) <em> Dc，SRC_ATOP 在 SRC_IN 的基础上还增加了(1 - Sa) </em> Dc。</p>
+<p>再看颜色值：SRC_IN 的颜色值为 Sc * Da，SRC_ATOP 的颜色值为Sc * Da + (1 - Sa) * Dc，SRC_ATOP 在 SRC_IN 的基础上还增加了(1 - Sa) * Dc。</p>
 <p>所以，结论为：<br>1）当透明度是 100% 和 0 时，SRC_ATOP 和 SRC_IN 模式是通用的。<br>2）当透明度不是 100% 和 0 时，SRC_ATOP 相比 SRC_IN 源图像的饱和度会增加，即会显得更亮。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-60dbee53950e2be4.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -738,7 +751,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1237,6 +1250,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

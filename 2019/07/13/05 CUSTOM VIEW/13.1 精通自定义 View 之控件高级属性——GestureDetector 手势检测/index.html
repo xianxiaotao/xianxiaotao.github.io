@@ -88,22 +88,33 @@
 
 
 
-<meta name="description" content="13.1.1 概述GestureDetector，手势检测类，通过这个类可以识别很多手势。在识别出手势之后，具体的事物处理则交由程序员自己来实现。
-此类提供了两个接口（OnGestureListener、OnDoubleTapListener）和一个外部类（SimpleOnGestureListener）。这个外部类其实是两个接口中所有函数的集成，它包含了这两个接口里所有必须实现的函数，而且">
+<meta name="description" content="返回自定义 View 目录
+
+
+13.1.1 概述GestureDetector，手势检测类，通过这个类可以识别很多手势。在识别出手势之后，具体的事物处理则交由程序员自己来实现。
+此类提供了两个接口（OnGestureListener、OnDoubleTapListener）和一个外部类（SimpleOnGestureListener）。这个外部类其实是两个接口中所有函数的集成，它包含了这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="13.1 精通自定义 View 之控件高级属性——GestureDetector 手势检测">
 <meta property="og:url" content="http://yoursite.com/2019/07/13/05 CUSTOM VIEW/13.1 精通自定义 View 之控件高级属性——GestureDetector 手势检测/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="13.1.1 概述GestureDetector，手势检测类，通过这个类可以识别很多手势。在识别出手势之后，具体的事物处理则交由程序员自己来实现。
-此类提供了两个接口（OnGestureListener、OnDoubleTapListener）和一个外部类（SimpleOnGestureListener）。这个外部类其实是两个接口中所有函数的集成，它包含了这两个接口里所有必须实现的函数，而且">
+<meta property="og:description" content="返回自定义 View 目录
+
+
+13.1.1 概述GestureDetector，手势检测类，通过这个类可以识别很多手势。在识别出手势之后，具体的事物处理则交由程序员自己来实现。
+此类提供了两个接口（OnGestureListener、OnDoubleTapListener）和一个外部类（SimpleOnGestureListener）。这个外部类其实是两个接口中所有函数的集成，它包含了这">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-fe74915388b1db8c.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-d8ed3d75951e7a32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-6662fcd81e5a2fa5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-23T04:00:49.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a39b0276684018e4.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:49:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="13.1 精通自定义 View 之控件高级属性——GestureDetector 手势检测">
-<meta name="twitter:description" content="13.1.1 概述GestureDetector，手势检测类，通过这个类可以识别很多手势。在识别出手势之后，具体的事物处理则交由程序员自己来实现。
-此类提供了两个接口（OnGestureListener、OnDoubleTapListener）和一个外部类（SimpleOnGestureListener）。这个外部类其实是两个接口中所有函数的集成，它包含了这两个接口里所有必须实现的函数，而且">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-d8ed3d75951e7a32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="返回自定义 View 目录
+
+
+13.1.1 概述GestureDetector，手势检测类，通过这个类可以识别很多手势。在识别出手势之后，具体的事物处理则交由程序员自己来实现。
+此类提供了两个接口（OnGestureListener、OnDoubleTapListener）和一个外部类（SimpleOnGestureListener）。这个外部类其实是两个接口中所有函数的集成，它包含了这">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-fe74915388b1db8c.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -402,6 +413,10 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-fe74915388b1db8c.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><div id="jump1"></div></p>
 <h3 id="13-1-1-概述"><a href="#13-1-1-概述" class="headerlink" title="13.1.1 概述"></a>13.1.1 概述</h3><p>GestureDetector，手势检测类，通过这个类可以识别很多手势。在识别出手势之后，具体的事物处理则交由程序员自己来实现。</p>
 <p>此类提供了两个接口（OnGestureListener、OnDoubleTapListener）和一个外部类（SimpleOnGestureListener）。这个外部类其实是两个接口中所有函数的集成，它包含了这两个接口里所有必须实现的函数，而且都已经被重写，但所有函数体都是空的。该类是一个静态类，程序员可以在外部继承这个类，重写里面的手势处理函数。</p>
@@ -463,6 +478,7 @@
 <li>velocityY：Y 轴上的移动速度，单位为像素/秒。</li>
 </ul>
 <p>实现的功能：当用户向左滑动距离超过 100 像素，且滑动速度超过 100 像素/秒时，即判断为向左滑动；向右同理。核心代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">private class XSimpleGestureListener extends GestureDetector.SimpleOnGestureListener &#123;</div><div class="line"></div><div class="line">    final int FLING_MIN_DISTANCE = 100;</div><div class="line">    final int FLING_MIN_VELOCITY = 100;</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) &#123;</div><div class="line">        // 向左滑</div><div class="line">        if (e1.getX() - e2.getX() &gt; FLING_MIN_DISTANCE</div><div class="line">                &amp;&amp; Math.abs(velocityX) &gt; FLING_MIN_VELOCITY) &#123;</div><div class="line">            Log.i(&quot;MyGesture&quot;, &quot;Fling left&quot;);</div><div class="line">        &#125;</div><div class="line">        // 向右滑</div><div class="line">        else if (e2.getX() - e1.getX() &gt; FLING_MIN_DISTANCE</div><div class="line">                &amp;&amp; Math.abs(velocityX) &gt; FLING_MIN_VELOCITY) &#123;</div><div class="line">            Log.i(&quot;MyGesture&quot;, &quot;Fling right&quot;);</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-a39b0276684018e4.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -742,7 +758,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1241,6 +1257,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

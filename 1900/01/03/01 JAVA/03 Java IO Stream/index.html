@@ -429,7 +429,8 @@
 <p>注意：程序中打开的文件 IO 资源不属于内存里的资源，垃圾回收机制无法回收该资源。如果不关闭该资源，那么磁盘的文件将一直被程序引用着，不能删除也不能更改，所以应该手动调用 close() 方法关闭流资源。</p>
 </blockquote>
 <h3 id="二、整体架构"><a href="#二、整体架构" class="headerlink" title="二、整体架构"></a>二、整体架构</h3><hr>
-<h4 id="JAVA-流操作相关的类和接口"><a href="#JAVA-流操作相关的类和接口" class="headerlink" title="JAVA 流操作相关的类和接口"></a>JAVA 流操作相关的类和接口</h4><table>
+<h4 id="JAVA-流操作相关的类和接口"><a href="#JAVA-流操作相关的类和接口" class="headerlink" title="JAVA 流操作相关的类和接口"></a>JAVA 流操作相关的类和接口</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>类</th>
@@ -463,8 +464,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h4 id="Java-IO-流的整体架构"><a href="#Java-IO-流的整体架构" class="headerlink" title="Java IO 流的整体架构"></a>Java IO 流的整体架构</h4><p><img src="http://www.51gjie.com/Images/image1/lkqixikw.lqs.jpg" alt=""></p>
 <p>从图中可以看出四大基类流，如下表所示。这四大基流都是抽象类，其他流都是继承于这四大基流的。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -486,6 +489,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h4 id="用法分析"><a href="#用法分析" class="headerlink" title="用法分析"></a>用法分析</h4><ul>
 <li>按数据来源（去向）使用<br>是文件： FileInputStream, FileOutputStream, FileReader, FileWriter<br>是 byte[]：ByteArrayInputStream, ByteArrayOutputStream<br>是 char[]：CharArrayReader, CharArrayWriter<br>是 String：StringBufferInputStream, StringReader, StringWriter<br>网络数据流：InputStream, OutputStream, Reader, Writer </li>
 <li>按是否格式化输出使用<br>要格式化输出：PrintStream, PrintWriter</li>
@@ -834,7 +838,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1333,6 +1337,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

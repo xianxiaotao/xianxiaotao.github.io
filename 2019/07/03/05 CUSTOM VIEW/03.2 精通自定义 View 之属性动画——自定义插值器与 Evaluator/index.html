@@ -88,28 +88,36 @@
 
 
 
-<meta name="description" content="视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。
+<meta name="description" content="返回自定义 View 目录
+
+视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。
 
 3.2.1 自定义插值器插值器就是用来控制动画的区间值如何被计算出来的。
-1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator extends BaseInterpol">
+1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator ext">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03.2 精通自定义 View 之属性动画——自定义插值器与 Evaluator">
 <meta property="og:url" content="http://yoursite.com/2019/07/03/05 CUSTOM VIEW/03.2 精通自定义 View 之属性动画——自定义插值器与 Evaluator/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。
+<meta property="og:description" content="返回自定义 View 目录
+
+视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。
 
 3.2.1 自定义插值器插值器就是用来控制动画的区间值如何被计算出来的。
-1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator extends BaseInterpol">
+1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator ext">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-59a2e1bfd00150de.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9125154-ce9829a138c8d3c5.png?imageMogr2/auto-orient/strip|imageView2/2/w/949/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-2e9430c61cdc0015.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2019-10-09T02:09:05.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-6ecca4c57e372129.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:52:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03.2 精通自定义 View 之属性动画——自定义插值器与 Evaluator">
-<meta name="twitter:description" content="视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。
+<meta name="twitter:description" content="返回自定义 View 目录
+
+视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。
 
 3.2.1 自定义插值器插值器就是用来控制动画的区间值如何被计算出来的。
-1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator extends BaseInterpol">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9125154-ce9829a138c8d3c5.png?imageMogr2/auto-orient/strip|imageView2/2/w/949/format/webp">
+1、系统自带插值器12345678910111213141516171819public class AccelerateDecelerateInterpolator ext">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-59a2e1bfd00150de.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -408,6 +416,10 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-59a2e1bfd00150de.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p>视图动画，只能设置插值器；但对于 Animator 而言，不仅可以设置插值器，还可以设置 Evaluator。</p>
 <p><div id="jump1"></div></p>
 <h3 id="3-2-1-自定义插值器"><a href="#3-2-1-自定义插值器" class="headerlink" title="3.2.1 自定义插值器"></a>3.2.1 自定义插值器</h3><p>插值器就是用来控制动画的区间值如何被计算出来的。</p>
@@ -424,13 +436,13 @@
 <p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">animator.setInterpolator(new DecelerateAccelerateInterpolator());</div></pre></td></tr></table></figure></p>
 <p><div id="jump2"></div></p>
 <h3 id="3-2-2-Evaluator"><a href="#3-2-2-Evaluator" class="headerlink" title="3.2.2 Evaluator"></a>3.2.2 Evaluator</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p><img src="https://upload-images.jianshu.io/upload_images/9125154-ce9829a138c8d3c5.png?imageMogr2/auto-orient/strip|imageView2/2/w/949/format/webp" alt=""></p>
-<p>上图所述的 4 个步骤的具体含义是：<br>1）ofInt（0，400）：表示指定动画的数值区间，从0运动到400。<br>2）插值器：在动画开始后通过插值器会返回当前动画进度所对应的数值进度，这个数值进度是以小数表示的，如0.2。<br>3）Evaluator：我们通过监听器拿到的是当前动画所对应的具体数值，而不是用小数表示的数值。那么必须有一个地方会根据当前的数值进度将其转换为对应的数值，这个地方就是Evaluator。Evaluator用于将从插值器返回的数值进度（小数，0 - 1.0）转换成对应的数值。<br>4）监听器返回：在 AnimatorUpdateListener 监听器中使用 animation.getAnimatedValue() 函数拿到 Evaluator 中返回的数值。</p>
+<p>上图所述的 4 个步骤的具体含义是：<br>1）ofInt（0，400）：表示指定动画的数值区间，从 0 运动到 400。<br>2）插值器：在动画开始后通过插值器会返回当前动画进度所对应的数值进度，这个数值进度是以小数表示的，如 0.2。<br>3）Evaluator：我们通过监听器拿到的是当前动画所对应的具体数值，而不是用小数表示的数值。那么必须有一个地方会根据当前的数值进度将其转换为对应的数值，这个地方就是 Evaluator。Evaluator 用于将从插值器返回的数值进度（小数，0 - 1.0）转换成对应的数值。<br>4）监听器返回：在 AnimatorUpdateListener 监听器中使用 animation.getAnimatedValue() 函数拿到 Evaluator 中返回的数值。</p>
 <h4 id="2-各种-Evaluator"><a href="#2-各种-Evaluator" class="headerlink" title="2. 各种 Evaluator"></a>2. 各种 Evaluator</h4><p>插值器返回的小数值表示的是当前动画的数值进度，这对于无论是使用 ofFloat() 函数还是使用 ofInt() 函数定义的动画都是适用的。因为无论是什么动画，它的进度必然在 0～1 之间。0 表示还没开始，1 表示动画结束，这对于任何动画都是适用的。</p>
 <p>而 Evaluator 则不一样，它把插值器返回的小数进度转换成当前数值进度所对应的值。如果使用 ofInt() 函数来定义动画，动画中的值应该都是 Integer 类型的，所对应的 Evaluator 在返回值时，必然返回 Integer 类型的值；如果使用 ofFloat() 函数来定义动画，动画中的值都是 Float 类型的，Evaluator 在返回值时，必然返回 Float 类型的值。</p>
 <p>所以，每种定义方式所对应的 Evaluator 必然是它专用的。Evaluator 专用的原因在于动画数值类型不一样，在通过 Evaluator 返回时会报强转错误，所以只有在动画数值类型一样时，所对应的 Evaluator 才能通用。ofInt() 函数对应的 Evaluator 类名为 IntEvaluator，而 ofFloat() 函数对应的 Evaluator 类名为 FloatEvaluator。</p>
-<p>通过 animator.setEvaluator() 函数来设置 Evaluator，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">private void startAnimationArgbEvaluator() &#123;</div><div class="line">    ValueAnimator animator =  ValueAnimator.ofInt(0xffffff00, 0xff0000ff);</div><div class="line">    // 设置Evaluator</div><div class="line">    animator.setEvaluator(new ArgbEvaluator());</div><div class="line">    animator.setDuration(3000);</div><div class="line"></div><div class="line">    animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">            int curValue = (Integer) animation.getAnimatedValue();</div><div class="line">            tv_text.setBackgroundColor(curValue);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    animator.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>通过 animator.setEvaluator() 函数来设置 Evaluator，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">private void startAnimationArgbEvaluator() &#123;</div><div class="line">    ValueAnimator animator = ValueAnimator.ofInt(0xffffff00, 0xff0000ff);</div><div class="line">    // 设置 Evaluator</div><div class="line">    animator.setEvaluator(new ArgbEvaluator());</div><div class="line">    animator.setDuration(3000);</div><div class="line"></div><div class="line">    animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">            int curValue = (Integer) animation.getAnimatedValue();</div><div class="line">            tv_text.setBackgroundColor(curValue);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    animator.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>ofInt() 函数的默认 Evaluator 是 IntEvaluator，而 ofFloat() 函数的默认 Evaluator 则是 FloatEvaluator。</p>
-<p>可以继续看下 IntEvaluator 的源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class IntEvaluator implements TypeEvaluator&lt;Integer&gt; &#123;</div><div class="line">    public Integer evaluate(float fraction, Integer startValue, </div><div class="line">                Integer endValue) &#123;</div><div class="line">        int startInt = startValue;</div><div class="line">        // 当前的值 = 100 + (400 - 100) * 显示进度</div><div class="line">        return (int)(startInt + fraction * (endValue - startInt));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以继续看下 IntEvaluator 的源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class IntEvaluator implements TypeEvaluator&lt;Integer&gt; &#123;</div><div class="line">    public Integer evaluate(float fraction, Integer startValue, Integer endValue) &#123;</div><div class="line">        int startInt = startValue;</div><div class="line">        // 当前的值 = 100 + (400 - 100) * 显示进度</div><div class="line">        return (int)(startInt + fraction * (endValue - startInt));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>在 IntEvaluator 中只有一个函数 evaluate(float fraction, Integer startValue, Integer endValue)：</p>
 <ul>
 <li>fraction 参数就是插值器中的返回值，表示当前动画的数值进度，以百分制的小数表示。</li>
@@ -444,7 +456,8 @@
 <h4 id="5-ArgbEvaluator"><a href="#5-ArgbEvaluator" class="headerlink" title="5. ArgbEvaluator"></a>5. ArgbEvaluator</h4><p>除 IntEvaluator 和 FloatEvaluator 外，在 android.animation 包下还有另一个 Evaluator，名为 ArgbEvaluator，它是用来实现颜色值过渡转换的。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-2e9430c61cdc0015.gif?imageMogr2/auto-orient/strip" alt=""></p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public void startAnim(View v) &#123;</div><div class="line">    ValueAnimator animator = ValueAnimator.ofInt(0xFFFFFF00, 0xFF0000FF);</div><div class="line">    animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">            int curValue = (Integer) animation.getAnimatedValue();</div><div class="line">            mView.setBackgroundColor(curValue);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    animator.setDuration(3000);</div><div class="line">    animator.setEvaluator(new ArgbEvaluator());</div><div class="line">    animator.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>实现原理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">public class ArgbEvaluator implements TypeEvaluator &#123;</div><div class="line">    public Object evaluate(float fraction, Object startValue, Object endValue) &#123;</div><div class="line">        int startInt = (Integer) startValue;</div><div class="line">        float startA = ((startInt &gt;&gt; 24) &amp; 0xff) / 255.0f;</div><div class="line">        float startR = ((startInt &gt;&gt; 16) &amp; 0xff) / 255.0f;</div><div class="line">        float startG = ((startInt &gt;&gt;  8) &amp; 0xff) / 255.0f;</div><div class="line">        float startB = ( startInt        &amp; 0xff) / 255.0f;</div><div class="line"></div><div class="line">        int endInt = (Integer) endValue;</div><div class="line">        float endA = ((endInt &gt;&gt; 24) &amp; 0xff) / 255.0f;</div><div class="line">        float endR = ((endInt &gt;&gt; 16) &amp; 0xff) / 255.0f;</div><div class="line">        float endG = ((endInt &gt;&gt;  8) &amp; 0xff) / 255.0f;</div><div class="line">        float endB = ( endInt        &amp; 0xff) / 255.0f;</div><div class="line"></div><div class="line">        // convert from sRGB to linear</div><div class="line">        startR = (float) Math.pow(startR, 2.2);</div><div class="line">        startG = (float) Math.pow(startG, 2.2);</div><div class="line">        startB = (float) Math.pow(startB, 2.2);</div><div class="line"></div><div class="line">        endR = (float) Math.pow(endR, 2.2);</div><div class="line">        endG = (float) Math.pow(endG, 2.2);</div><div class="line">        endB = (float) Math.pow(endB, 2.2);</div><div class="line"></div><div class="line">        // compute the interpolated color in linear space</div><div class="line">        float a = startA + fraction * (endA - startA);</div><div class="line">        float r = startR + fraction * (endR - startR);</div><div class="line">        float g = startG + fraction * (endG - startG);</div><div class="line">        float b = startB + fraction * (endB - startB);</div><div class="line"></div><div class="line">        // convert back to sRGB in the [0..255] range</div><div class="line">        a = a * 255.0f;</div><div class="line">        r = (float) Math.pow(r, 1.0 / 2.2) * 255.0f;</div><div class="line">        g = (float) Math.pow(g, 1.0 / 2.2) * 255.0f;</div><div class="line">        b = (float) Math.pow(b, 1.0 / 2.2) * 255.0f;</div><div class="line"></div><div class="line">        return Math.round(a) &lt;&lt; 24 | Math.round(r) &lt;&lt; 16 | Math.round(g) &lt;&lt; 8 | Math.round(b);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>实现原理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">public class ArgbEvaluator implements TypeEvaluator &#123;</div><div class="line">    public Object evaluate(float fraction, Object startValue, Object endValue) &#123;</div><div class="line">        int startInt = (Integer) startValue;</div><div class="line">        float startA = ((startInt &gt;&gt; 24) &amp; 0xff) / 255.0f;</div><div class="line">        float startR = ((startInt &gt;&gt; 16) &amp; 0xff) / 255.0f;</div><div class="line">        float startG = ((startInt &gt;&gt;  8) &amp; 0xff) / 255.0f;</div><div class="line">        float startB = ( startInt        &amp; 0xff) / 255.0f;</div><div class="line"></div><div class="line">        int endInt = (Integer) endValue;</div><div class="line">        float endA = ((endInt &gt;&gt; 24) &amp; 0xff) / 255.0f;</div><div class="line">        float endR = ((endInt &gt;&gt; 16) &amp; 0xff) / 255.0f;</div><div class="line">        float endG = ((endInt &gt;&gt;  8) &amp; 0xff) / 255.0f;</div><div class="line">        float endB = ( endInt        &amp; 0xff) / 255.0f;</div><div class="line"></div><div class="line">        // convert from sRGB to linear</div><div class="line">        startR = (float) Math.pow(startR, 2.2);</div><div class="line">        startG = (float) Math.pow(startG, 2.2);</div><div class="line">        startB = (float) Math.pow(startB, 2.2);</div><div class="line"></div><div class="line">        endR = (float) Math.pow(endR, 2.2);</div><div class="line">        endG = (float) Math.pow(endG, 2.2);</div><div class="line">        endB = (float) Math.pow(endB, 2.2);</div><div class="line"></div><div class="line">        // compute the interpolated color in linear space</div><div class="line">        float a = startA + fraction * (endA - startA);</div><div class="line">        float r = startR + fraction * (endR - startR);</div><div class="line">        float g = startG + fraction * (endG - startG);</div><div class="line">        float b = startB + fraction * (endB - startB);</div><div class="line"></div><div class="line">        // convert back to sRGB in the [0..255] range</div><div class="line">        a = a * 255.0f;</div><div class="line">        r = (float) Math.pow(r, 1.0 / 2.2) * 255.0f;</div><div class="line">        g = (float) Math.pow(g, 1.0 / 2.2) * 255.0f;</div><div class="line">        b = (float) Math.pow(b, 1.0 / 2.2) * 255.0f;</div><div class="line"></div><div class="line">        return Math.round(a) &lt;&lt; 24 | Math.round(r) &lt;&lt; 16 </div><div class="line">             | Math.round(g) &lt;&lt; 8 | Math.round(b);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-6ecca4c57e372129.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -724,7 +737,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1223,6 +1236,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

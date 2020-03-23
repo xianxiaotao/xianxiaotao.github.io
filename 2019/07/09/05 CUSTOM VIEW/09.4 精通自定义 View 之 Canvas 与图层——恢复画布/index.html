@@ -88,27 +88,35 @@
 
 
 
-<meta name="description" content="恢复画布有两个函数：restore() 和 restoreToCount(int count)。其中，restore() 函数的作用就是把回退栈中的最上层画布状态出栈，恢复画布状态。在 1.5.2 节中已经详细地说明了 restore() 函数的用法，这里就不再赘述了。
+<meta name="description" content="返回自定义 View 目录
 
-9.4.1 restoreToCount(int count)在 save()、saveLayer()、saveLayer">
+恢复画布有两个函数：restore() 和 restoreToCount(int count)。其中，restore() 函数的作用就是把回退栈中的最上层画布状态出栈，恢复画布状态。在 1.5.2 节中已经详细地说明了 restore() 函数的用法，这里就不再赘述了。
+
+9.4.1 restoreToCount(int count)在 save()、save">
 <meta property="og:type" content="article">
 <meta property="og:title" content="09.4 精通自定义 View 之 Canvas 与图层——恢复画布">
 <meta property="og:url" content="http://yoursite.com/2019/07/09/05 CUSTOM VIEW/09.4 精通自定义 View 之 Canvas 与图层——恢复画布/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="恢复画布有两个函数：restore() 和 restoreToCount(int count)。其中，restore() 函数的作用就是把回退栈中的最上层画布状态出栈，恢复画布状态。在 1.5.2 节中已经详细地说明了 restore() 函数的用法，这里就不再赘述了。
+<meta property="og:description" content="返回自定义 View 目录
 
-9.4.1 restoreToCount(int count)在 save()、saveLayer()、saveLayer">
+恢复画布有两个函数：restore() 和 restoreToCount(int count)。其中，restore() 函数的作用就是把回退栈中的最上层画布状态出栈，恢复画布状态。在 1.5.2 节中已经详细地说明了 restore() 函数的用法，这里就不再赘述了。
+
+9.4.1 restoreToCount(int count)在 save()、save">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a64222a38cc6aa33.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-f5f4fed3a09cabcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-93bbe705a86d91d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-4d6ecaa4ee57352e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-b94b23b3f3123f89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-11T02:29:54.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-37fa8511d6ce5f76.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:49:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="09.4 精通自定义 View 之 Canvas 与图层——恢复画布">
-<meta name="twitter:description" content="恢复画布有两个函数：restore() 和 restoreToCount(int count)。其中，restore() 函数的作用就是把回退栈中的最上层画布状态出栈，恢复画布状态。在 1.5.2 节中已经详细地说明了 restore() 函数的用法，这里就不再赘述了。
+<meta name="twitter:description" content="返回自定义 View 目录
 
-9.4.1 restoreToCount(int count)在 save()、saveLayer()、saveLayer">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-f5f4fed3a09cabcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+恢复画布有两个函数：restore() 和 restoreToCount(int count)。其中，restore() 函数的作用就是把回退栈中的最上层画布状态出栈，恢复画布状态。在 1.5.2 节中已经详细地说明了 restore() 函数的用法，这里就不再赘述了。
+
+9.4.1 restoreToCount(int count)在 save()、save">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-a64222a38cc6aa33.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -407,6 +415,10 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-a64222a38cc6aa33.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p>恢复画布有两个函数：restore() 和 restoreToCount(int count)。<br>其中，restore() 函数的作用就是把回退栈中的最上层画布状态出栈，恢复画布状态。在 1.5.2 节中已经详细地说明了 restore() 函数的用法，这里就不再赘述了。</p>
 <p><div id="jump1"></div></p>
 <h3 id="9-4-1-restoreToCount-int-count"><a href="#9-4-1-restoreToCount-int-count" class="headerlink" title="9.4.1 restoreToCount(int count)"></a>9.4.1 restoreToCount(int count)</h3><p>在 save()、saveLayer()、saveLayerAlpha() 函数保存画布后，都会返回一个 ID 值，这个 ID 值表示当前保存的画布信息的栈层索引（从 0 开始）。比如，保存在第三层，则返回 2。</p>
@@ -429,6 +441,7 @@
 <li>无论哪种 save 函数、哪个 FLAG，保存画布时使用的都是同一个栈。</li>
 <li>restore() 与 restoreToCount(int count) 针对的都是同一个栈，所以完全可以通用。</li>
 </ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-37fa8511d6ce5f76.gif?imageMogr2/auto-orient/strip" alt="男人喜欢球.gif"></p>
 
       
     </div>
@@ -708,7 +721,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1207,6 +1220,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

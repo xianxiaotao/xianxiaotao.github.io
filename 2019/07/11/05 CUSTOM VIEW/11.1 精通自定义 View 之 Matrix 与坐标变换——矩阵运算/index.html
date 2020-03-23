@@ -88,20 +88,31 @@
 
 
 
-<meta name="description" content="11.1.1 矩阵的加法和减法1. 运算规则$$设矩阵 A=\left[ \begin{matrix} a~11~ &amp;amp; a~12~ &amp;amp; \cdots &amp;amp; a~1n~ \ a~21~ &amp;amp; a~22~ &amp;amp; \cdots &amp;amp; a~2n~ \ \vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \ a~n1~ &amp;amp; a~">
+<meta name="description" content="返回自定义 View 目录
+
+
+11.1.1 矩阵的加法和减法1. 运算规则设矩阵 A=\left[ \begin{matrix} a~11~ &amp; a~12~ &amp; \cdots &amp; a~1n~ \\ a~21~ &amp; a~22~ &amp; \cdots &amp; a~2n~ \\ \vdots &amp; \vdots &amp; &amp; \vdots \\ a~n1~ &amp; a~n2~ &amp; \cdots &amp; a~nn~ \">
 <meta property="og:type" content="article">
 <meta property="og:title" content="11.1 精通自定义 View 之 Matrix 与坐标变换——矩阵运算">
 <meta property="og:url" content="http://yoursite.com/2019/07/11/05 CUSTOM VIEW/11.1 精通自定义 View 之 Matrix 与坐标变换——矩阵运算/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="11.1.1 矩阵的加法和减法1. 运算规则$$设矩阵 A=\left[ \begin{matrix} a~11~ &amp;amp; a~12~ &amp;amp; \cdots &amp;amp; a~1n~ \ a~21~ &amp;amp; a~22~ &amp;amp; \cdots &amp;amp; a~2n~ \ \vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \ a~n1~ &amp;amp; a~">
+<meta property="og:description" content="返回自定义 View 目录
+
+
+11.1.1 矩阵的加法和减法1. 运算规则设矩阵 A=\left[ \begin{matrix} a~11~ &amp; a~12~ &amp; \cdots &amp; a~1n~ \\ a~21~ &amp; a~22~ &amp; \cdots &amp; a~2n~ \\ \vdots &amp; \vdots &amp; &amp; \vdots \\ a~n1~ &amp; a~n2~ &amp; \cdots &amp; a~nn~ \">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-a817395b74e8347a.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-72a55598f7926e58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-9a3e7c8dee62bf16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-01b6708b87550939.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-22T08:19:31.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-6c0e6164e554a249.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:49:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="11.1 精通自定义 View 之 Matrix 与坐标变换——矩阵运算">
-<meta name="twitter:description" content="11.1.1 矩阵的加法和减法1. 运算规则$$设矩阵 A=\left[ \begin{matrix} a~11~ &amp;amp; a~12~ &amp;amp; \cdots &amp;amp; a~1n~ \ a~21~ &amp;amp; a~22~ &amp;amp; \cdots &amp;amp; a~2n~ \ \vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \ a~n1~ &amp;amp; a~">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-72a55598f7926e58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="返回自定义 View 目录
+
+
+11.1.1 矩阵的加法和减法1. 运算规则设矩阵 A=\left[ \begin{matrix} a~11~ &amp; a~12~ &amp; \cdots &amp; a~1n~ \\ a~21~ &amp; a~22~ &amp; \cdots &amp; a~2n~ \\ \vdots &amp; \vdots &amp; &amp; \vdots \\ a~n1~ &amp; a~n2~ &amp; \cdots &amp; a~nn~ \">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-a817395b74e8347a.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -400,11 +411,12 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-a817395b74e8347a.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p><div id="jump1"></div></p>
-<h3 id="11-1-1-矩阵的加法和减法"><a href="#11-1-1-矩阵的加法和减法" class="headerlink" title="11.1.1 矩阵的加法和减法"></a>11.1.1 矩阵的加法和减法</h3><h4 id="1-运算规则"><a href="#1-运算规则" class="headerlink" title="1. 运算规则"></a>1. 运算规则</h4><p>$$设矩阵 A=\left[ \begin{matrix} a~11~ &amp; a~12~ &amp; \cdots &amp; a~1n~ \ a~21~ &amp; a~22~ &amp; \cdots &amp; a~2n~ \ \vdots &amp; \vdots &amp; &amp; \vdots \ a~n1~ &amp; a~n2~ &amp; \cdots &amp; a~nn~ \end{matrix} \right]$$</p>
-<p>$$设矩阵 B=\left[ \begin{matrix} b~11~ &amp; b~12~ &amp; \cdots &amp; b~1n~ \ b~21~ &amp; b~22~ &amp; \cdots &amp; b~2n~ \ \vdots &amp; \vdots &amp; &amp; \vdots \ b~n1~ &amp; b~n2~ &amp; \cdots &amp; b~nn~ \end{matrix} \right]$$</p>
-<p>$$则 A±B=\left[ \begin{matrix} a~11~ ± b~11~ &amp; a~12~ ± b~12~ &amp; \cdots &amp; a~1n ± ~b~1n~ \ a~21~ ± b~21~ &amp; a~22~ ± b~22~ &amp; \cdots &amp; a~2n ± ~b~2n~ \ \vdots &amp; \vdots &amp; &amp; \vdots \ a~n1~ ± b~n1~ &amp; a~n2~ ± b~n2~ &amp; \cdots &amp; a~nn ± ~b~nn~ \end{matrix} \right]$$</p>
-<p>简而言之，两个矩阵相加减，即它们相同位置的元素相加减。</p>
+<h3 id="11-1-1-矩阵的加法和减法"><a href="#11-1-1-矩阵的加法和减法" class="headerlink" title="11.1.1 矩阵的加法和减法"></a>11.1.1 矩阵的加法和减法</h3><h4 id="1-运算规则"><a href="#1-运算规则" class="headerlink" title="1. 运算规则"></a>1. 运算规则</h4><script type="math/tex; mode=display">设矩阵 A=\left[ \begin{matrix} a~11~ & a~12~ & \cdots & a~1n~ \\ a~21~ & a~22~ & \cdots & a~2n~ \\ \vdots & \vdots & & \vdots \\ a~n1~ & a~n2~ & \cdots & a~nn~ \end{matrix} \right]</script><script type="math/tex; mode=display">设矩阵 B=\left[ \begin{matrix} b~11~ & b~12~ & \cdots & b~1n~ \\ b~21~ & b~22~ & \cdots & b~2n~ \\ \vdots & \vdots & & \vdots \\ b~n1~ & b~n2~ & \cdots & b~nn~ \end{matrix} \right]</script><script type="math/tex; mode=display">则 A±B=\left[ \begin{matrix} a~11~ ± b~11~ & a~12~ ± b~12~ & \cdots & a~1n ± ~b~1n~ \\ a~21~ ± b~21~ & a~22~ ± b~22~ & \cdots & a~2n ± ~b~2n~ \\ \vdots & \vdots & & \vdots \\ a~n1~ ± b~n1~ & a~n2~ ± b~n2~ & \cdots & a~nn ± ~b~nn~ \end{matrix} \right]</script><p>简而言之，两个矩阵相加减，即它们相同位置的元素相加减。</p>
 <blockquote>
 <p>注意：只有对于两个行数、列数分别相等的矩阵(同型矩阵)，加减法运算才有意义,即 加减法运算是可行的。</p>
 </blockquote>
@@ -425,6 +437,7 @@
 </ul>
 <p><img src="https://upload-images.jianshu.io/upload_images/14186083-01b6708b87550939.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h4 id="2-运算性质-2"><a href="#2-运算性质-2" class="headerlink" title="2. 运算性质"></a>2. 运算性质</h4><p>1）结合律：(AB)C=A(BC)。<br>2）分配律：A(B±C)=AB±AC(左分配律)；(B±C)A=BA±CA(右分配律)。<br>3）(λA)B=λ(AB)=A(λB)。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-6c0e6164e554a249.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -704,7 +717,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1203,6 +1216,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

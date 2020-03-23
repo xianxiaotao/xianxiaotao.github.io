@@ -88,24 +88,26 @@
 
 
 
-<meta name="description" content="Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁屏上显示一些类似悬浮窗的效果，就需要用到 Window。Android 中所有的视图都是通过 Window 来呈现的，不管是 Activity、Dialog 还是 Toast，它们的视图实际上都是附加在 Window 上的。而 WindowManager 则提供了对这些 Window 的统一管理功能。
+<meta name="description" content="返回自定义 View 目录
 
-13.2.1 Window">
+Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁屏上显示一些类似悬浮窗的效果，就需要用到 Window。Android 中所有的视图都是通过 Window 来呈现的，不管是 Activity、Dialog 还是 Toast，它们的视图实际上都是附加在 Window 上的。而 WindowManager 则提供了对这些 Window 的统一管理功能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="13.2 精通自定义 View 之控件高级属性——Window 与 WindowManager">
 <meta property="og:url" content="http://yoursite.com/2019/07/13/05 CUSTOM VIEW/13.2 精通自定义 View 之控件高级属性——Window 与 WindowManager/index.html">
 <meta property="og:site_name" content="先小涛">
-<meta property="og:description" content="Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁屏上显示一些类似悬浮窗的效果，就需要用到 Window。Android 中所有的视图都是通过 Window 来呈现的，不管是 Activity、Dialog 还是 Toast，它们的视图实际上都是附加在 Window 上的。而 WindowManager 则提供了对这些 Window 的统一管理功能。
+<meta property="og:description" content="返回自定义 View 目录
 
-13.2.1 Window">
+Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁屏上显示一些类似悬浮窗的效果，就需要用到 Window。Android 中所有的视图都是通过 Window 来呈现的，不管是 Activity、Dialog 还是 Toast，它们的视图实际上都是附加在 Window 上的。而 WindowManager 则提供了对这些 Window 的统一管理功能">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-57876f3181a1bfeb.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-4cd1f019e2f0d37f.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2019-10-23T06:33:54.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-1ffdbe1e1ce48122.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-03-23T15:52:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="13.2 精通自定义 View 之控件高级属性——Window 与 WindowManager">
-<meta name="twitter:description" content="Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁屏上显示一些类似悬浮窗的效果，就需要用到 Window。Android 中所有的视图都是通过 Window 来呈现的，不管是 Activity、Dialog 还是 Toast，它们的视图实际上都是附加在 Window 上的。而 WindowManager 则提供了对这些 Window 的统一管理功能。
+<meta name="twitter:description" content="返回自定义 View 目录
 
-13.2.1 Window">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-4cd1f019e2f0d37f.gif?imageMogr2/auto-orient/strip">
+Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁屏上显示一些类似悬浮窗的效果，就需要用到 Window。Android 中所有的视图都是通过 Window 来呈现的，不管是 Activity、Dialog 还是 Toast，它们的视图实际上都是附加在 Window 上的。而 WindowManager 则提供了对这些 Window 的统一管理功能">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14186083-57876f3181a1bfeb.gif?imageMogr2/auto-orient/strip">
 
 
 
@@ -404,6 +406,10 @@
       
         <meta name="referrer" content="no-referrer">
 
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-57876f3181a1bfeb.gif?imageMogr2/auto-orient/strip" width="100%"></p>
+<blockquote>
+<p><a href="https://xianxiaotao.github.io/2200/01/01/05%20CUSTOM%20VIEW/00%20Android%20自定义控件%20目录/" target="_blank" rel="external">返回自定义 View 目录</a></p>
+</blockquote>
 <p>Window 表示窗口，在某些特殊的时候，比如需要在桌面或者锁屏上显示一些类似悬浮窗的效果，就需要用到 Window。Android 中所有的视图都是通过 Window 来呈现的，不管是 Activity、Dialog 还是 Toast，它们的视图实际上都是附加在 Window 上的。而 WindowManager 则提供了对这些 Window 的统一管理功能。</p>
 <p><div id="jump1"></div></p>
 <h3 id="13-2-1-Window-与-WindowManager-的联系"><a href="#13-2-1-Window-与-WindowManager-的联系" class="headerlink" title="13.2.1 Window 与 WindowManager 的联系"></a>13.2.1 Window 与 WindowManager 的联系</h3><p>为了分析 Window 的工作机制，我们需要了解如何使用 WindowManager 来添加一个 Window。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);</div><div class="line">WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(width, height, type, flags, format);</div><div class="line">manager.addView(btn, layoutParams);</div></pre></td></tr></table></figure></p>
@@ -424,6 +430,7 @@
 <p><div id="jump2"></div></p>
 <h3 id="13-2-2-示例：悬浮窗"><a href="#13-2-2-示例：悬浮窗" class="headerlink" title="13.2.2 示例：悬浮窗"></a>13.2.2 示例：悬浮窗</h3><p><img src="https://upload-images.jianshu.io/upload_images/14186083-4cd1f019e2f0d37f.gif?imageMogr2/auto-orient/strip" alt=""></p>
 <p>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener &#123;</div><div class="line"></div><div class="line">    private ImageView mImageView;</div><div class="line">    private WindowManager.LayoutParams mLayoutParams;</div><div class="line">    private WindowManager mWindowManager;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.act_main);</div><div class="line"></div><div class="line">        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) &#123;</div><div class="line">            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);</div><div class="line">            startActivityForResult(intent, 100);</div><div class="line">        &#125;</div><div class="line">        initView();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void initView() &#123;</div><div class="line">        findViewById(R.id.add_btn).setOnClickListener(this);</div><div class="line">        findViewById(R.id.rmv_btn).setOnClickListener(this);</div><div class="line">        mWindowManager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onClick(View v) &#123;</div><div class="line">        if (v.getId() == R.id.add_btn) &#123;</div><div class="line">            mImageView = new ImageView(this);</div><div class="line">            mImageView.setBackgroundResource(R.mipmap.ic_launcher_round);</div><div class="line">            mLayoutParams = new WindowManager.LayoutParams(</div><div class="line">                    WindowManager.LayoutParams.WRAP_CONTENT,</div><div class="line">                    WindowManager.LayoutParams.WRAP_CONTENT,</div><div class="line">                    2099,</div><div class="line">                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL</div><div class="line">                    | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE</div><div class="line">                    | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED,</div><div class="line">                    PixelFormat.TRANSPARENT );</div><div class="line">            mLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;</div><div class="line">            mLayoutParams.gravity = Gravity.TOP | Gravity.LEFT;</div><div class="line">            mLayoutParams.x = 0;</div><div class="line">            mLayoutParams.y = 300;</div><div class="line">            mImageView.setOnTouchListener(this);</div><div class="line">            mWindowManager.addView(mImageView, mLayoutParams);</div><div class="line">        &#125; else if (v.getId() == R.id.rmv_btn) &#123;</div><div class="line">            if (mWindowManager != null &amp;&amp; mImageView != null) &#123;</div><div class="line">                mWindowManager.removeViewImmediate(mImageView);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onTouch(View v, MotionEvent event) &#123;</div><div class="line">        int rawX = (int) event.getRawX();</div><div class="line">        int rawY = (int) event.getRawY();</div><div class="line"></div><div class="line">        if (event.getAction() == MotionEvent.ACTION_MOVE) &#123;</div><div class="line">            mLayoutParams.x = rawX;</div><div class="line">            mLayoutParams.y = rawY;</div><div class="line">            mWindowManager.updateViewLayout(mImageView, mLayoutParams);</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) &#123;</div><div class="line">        super.onActivityResult(requestCode, resultCode, data);</div><div class="line">        if (requestCode == 100) &#123;</div><div class="line">            initView();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-1ffdbe1e1ce48122.gif?imageMogr2/auto-orient/strip" alt=""></p>
 
       
     </div>
@@ -703,7 +710,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共317.4k字</span>
+  <span class="post-count">博客全站共322.6k字</span>
 </div>
 
         
@@ -1202,6 +1209,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
