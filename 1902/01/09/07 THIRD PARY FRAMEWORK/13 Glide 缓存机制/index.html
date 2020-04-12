@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="FRAMEWORK," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="项目地址：https://github.com/bumptech/glide官方文档：http://bumptech.github.io/glide/中文文档：https://muyangmin.github.io/glide-docs-cn/原文链接：https://blog.csdn.net/guolin_blog/article/details/54895665·文章目录：Glide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="13 Glide 缓存机制">
+<meta property="og:url" content="http://yoursite.com/1902/01/09/07 THIRD PARY FRAMEWORK/13 Glide 缓存机制/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="项目地址：https://github.com/bumptech/glide官方文档：http://bumptech.github.io/glide/中文文档：https://muyangmin.github.io/glide-docs-cn/原文链接：https://blog.csdn.net/guolin_blog/article/details/54895665·文章目录：Glide">
+<meta property="og:updated_time" content="2020-04-04T04:23:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="13 Glide 缓存机制">
+<meta name="twitter:description" content="项目地址：https://github.com/bumptech/glide官方文档：http://bumptech.github.io/glide/中文文档：https://muyangmin.github.io/glide-docs-cn/原文链接：https://blog.csdn.net/guolin_blog/article/details/54895665·文章目录：Glide">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/1902/01/09/07 THIRD PARY FRAMEWORK/13 Glide 缓存机制/"/>
+
+
+
+
+
+  <title>13 Glide 缓存机制 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1902/01/09/07 THIRD PARY FRAMEWORK/13 Glide 缓存机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">13 Glide 缓存机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="1902-01-09T00:00:00+08:00">
+                1902-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FRAMEWORK/" itemprop="url" rel="index">
+                    <span itemprop="name">FRAMEWORK</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/1902/01/09/07 THIRD PARY FRAMEWORK/13 Glide 缓存机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/1902/01/09/07 THIRD PARY FRAMEWORK/13 Glide 缓存机制/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<blockquote>
+<p>项目地址：<a href="https://github.com/bumptech/glide" target="_blank" rel="external">https://github.com/bumptech/glide</a><br>官方文档：<a href="http://bumptech.github.io/glide/" target="_blank" rel="external">http://bumptech.github.io/glide/</a><br>中文文档：<a href="https://muyangmin.github.io/glide-docs-cn/" target="_blank" rel="external">https://muyangmin.github.io/glide-docs-cn/</a><br>原文链接：<a href="https://blog.csdn.net/guolin_blog/article/details/54895665" target="_blank" rel="external">https://blog.csdn.net/guolin_blog/article/details/54895665</a><br>·<br>文章目录：<br><a href="">Glide 快速入门</a><br><a href="">Glide 源码分析执行流程</a><br><a href="">Glide 缓存机制</a></p>
+</blockquote>
+<p>在本系列的上一篇文章中，带着大家一起阅读了一遍 Glide 的源码，初步了解了这个强大的图片加载框架的基本执行流程。</p>
+<p>不过，上一篇文章只能说是比较粗略地阅读了 Glide 整个执行流程方面的源码，搞明白了 Glide 的基本工作原理，但并没有去深入分析每一处的细节。那么从本篇文章开始，我们就一篇篇地来针对 Glide 某一块功能进行深入地分析，慢慢将 Glide 中的各项功能进行全面掌握。</p>
+<h3 id="缓存简介"><a href="#缓存简介" class="headerlink" title="缓存简介"></a>缓存简介</h3><p>Glide 的缓存设计可以说是非常先进的，考虑的场景也很周全。在缓存这一功能上，Glide 又将它分成了两个模块，一个是内存缓存，一个是硬盘缓存。</p>
+<p>这两个缓存模块的作用各不相同，内存缓存的主要作用是防止应用重复将图片数据读取到内存当中，而硬盘缓存的主要作用是防止应用重复从网络或其他地方重复下载和读取数据。</p>
+<p>内存缓存和硬盘缓存的相互结合才构成了 Glide 极佳的图片缓存效果，那么接下来我们就分别来分析一下这两种缓存的使用方法以及它们的实现原理。</p>
+<h3 id="缓存-Key"><a href="#缓存-Key" class="headerlink" title="缓存 Key"></a>缓存 Key</h3><p>既然是缓存功能，就必然会有用于进行缓存的 Key。那么 Glide 的缓存 Key 是怎么生成的呢？我不得不说，Glide 的缓存 Key 生成规则非常繁琐，决定缓存 Key 的参数竟然有 10 个之多。不过繁琐归繁琐，至少逻辑还是比较简单的，我们先来看一下 Glide 缓存 Key 的生成逻辑。</p>
+<p>生成缓存 Key 的代码在 Engine 类的 load()方法当中，这部分代码我们在上一篇文章当中已经分析过了，只不过当时忽略了缓存相关的内容，那么我们现在重新来看一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Engine implements EngineJobListener,</div><div class="line">        MemoryCache.ResourceRemovedListener,</div><div class="line">        EngineResource.ResourceListener &#123;</div><div class="line"></div><div class="line">    public &lt;T, Z, R&gt; LoadStatus load(Key signature, int width, int height, DataFetcher&lt;T&gt; fetcher,</div><div class="line">            DataLoadProvider&lt;T, Z&gt; loadProvider, Transformation&lt;Z&gt; transformation, ResourceTranscoder&lt;Z, R&gt; transcoder,</div><div class="line">            Priority priority, boolean isMemoryCacheable, DiskCacheStrategy diskCacheStrategy, ResourceCallback cb) &#123;</div><div class="line">        Util.assertMainThread();</div><div class="line">        long startTime = LogTime.getLogTime();</div><div class="line"></div><div class="line">        final String id = fetcher.getId();</div><div class="line">        EngineKey key = keyFactory.buildKey(id, signature, width, height, loadProvider.getCacheDecoder(),</div><div class="line">                loadProvider.getSourceDecoder(), transformation, loadProvider.getEncoder(),</div><div class="line">                transcoder, loadProvider.getSourceEncoder());</div><div class="line"></div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，这里在第 11 行调用了 fetcher.getId() 方法获得了一个 id 字符串，这个字符串也就是我们要加载的图片的唯一标识，比如说如果是一张网络上的图片的话，那么这个 id 就是这张图片的 url 地址。</p>
+<p>接下来在第 12 行，将这个 id 连同着 signature、width、height 等等 10 个参数一起传入到 EngineKeyFactory 的 buildKey() 方法当中，从而构建出了一个 EngineKey 对象，这个 EngineKey 也就是 Glide 中的缓存 Key 了。</p>
+<p>可见，决定缓存 Key 的条件非常多，即使你用 override() 方法改变了一下图片的 width 或者 height，也会生成一个完全不同的缓存 Key。</p>
+<p>EngineKey 类的源码大家有兴趣可以自己去看一下，其实主要就是重写了 equals() 和 hashCode() 方法，保证只有传入 EngineKey 的所有参数都相同的情况下才认为是同一个 EngineKey 对象，我就不在这里将源码贴出来了。</p>
+<h3 id="内存缓存"><a href="#内存缓存" class="headerlink" title="内存缓存"></a>内存缓存</h3><p>有了缓存 Key，接下来就可以开始进行缓存了，那么我们先从内存缓存看起。</p>
+<p>首先你要知道，默认情况下，Glide 是自动开启内存缓存的。也就是说，当我们使用 Glide 加载了一张图片之后，这张图片就会被缓存到内存当中，只要在它还没从内存中被清除之前，下次使用 Glide 再加载这张图片都会直接从内存当中读取，而不用重新从网络或硬盘上读取了，这样无疑就可以大幅度提升图片的加载效率。比方说你在一个RecyclerView当中反复上下滑动，RecyclerView 中只要是 Glide 加载过的图片都可以直接从内存当中迅速读取并展示出来，从而大大提升了用户体验。</p>
+<p>而 Glide 最为人性化的是，你甚至不需要编写任何额外的代码就能自动享受到这个极为便利的内存缓存功能，因为 Glide 默认就已经将它开启了。</p>
+<p>那么既然已经默认开启了这个功能，还有什么可讲的用法呢？只有一点，如果你有什么特殊的原因需要禁用内存缓存功能，Glide 对此提供了接口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Glide.with(this)</div><div class="line">     .load(url)</div><div class="line">     .skipMemoryCache(true)</div><div class="line">     .into(imageView);</div></pre></td></tr></table></figure></p>
+<p>可以看到，只需要调用 skipMemoryCache() 方法并传入 true，就表示禁用掉 Glide 的内存缓存功能。</p>
+<p>没错，关于 Glide 内存缓存的用法就只有这么多，可以说是相当简单。但是我们不可能只停留在这么简单的层面上，接下来就让我们就通过阅读源码来分析一下 Glide 的内存缓存功能是如何实现的。</p>
+<p>其实说到内存缓存的实现，非常容易就让人想到 LruCache 算法（Least Recently Used），也叫近期最少使用算法。它的主要算法原理就是把最近使用的对象用强引用存储在 LinkedHashMap 中，并且把最近最少使用的对象在缓存值达到预设定值之前从内存中移除。</p>
+<p>那么不必多说，Glide 内存缓存的实现自然也是使用的 LruCache 算法。不过除了 LruCache 算法之外，Glide 还结合了一种弱引用的机制，共同完成了内存缓存功能，下面就让我们来通过源码分析一下。</p>
+<p>首先回忆一下，在上一篇文章的第二步 load() 方法中，我们当时分析到了在 loadGeneric() 方法中会调用 Glide.buildStreamModelLoader() 方法来获取一个 ModelLoader 对象。当时没有再跟进到这个方法的里面再去分析，那么我们现在来看下它的源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class Glide &#123;</div><div class="line"></div><div class="line">    public static &lt;T, Y&gt; ModelLoader&lt;T, Y&gt; buildModelLoader(Class&lt;T&gt; modelClass, Class&lt;Y&gt; resourceClass,</div><div class="line">            Context context) &#123;</div><div class="line">         if (modelClass == null) &#123;</div><div class="line">            if (Log.isLoggable(TAG, Log.DEBUG)) &#123;</div><div class="line">                Log.d(TAG, &quot;Unable to load null model, setting placeholder only&quot;);</div><div class="line">            &#125;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">        return Glide.get(context).getLoaderFactory().buildModelLoader(modelClass, resourceClass);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static Glide get(Context context) &#123;</div><div class="line">        if (glide == null) &#123;</div><div class="line">            synchronized (Glide.class) &#123;</div><div class="line">                if (glide == null) &#123;</div><div class="line">                    Context applicationContext = context.getApplicationContext();</div><div class="line">                    List&lt;GlideModule&gt; modules = new ManifestParser(applicationContext).parse();</div><div class="line">                    GlideBuilder builder = new GlideBuilder(applicationContext);</div><div class="line">                    for (GlideModule module : modules) &#123;</div><div class="line">                        module.applyOptions(applicationContext, builder);</div><div class="line">                    &#125;</div><div class="line">                    glide = builder.createGlide();</div><div class="line">                    for (GlideModule module : modules) &#123;</div><div class="line">                        module.registerComponents(applicationContext, glide);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return glide;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里我们还是只看关键，在第 11 行去构建 ModelLoader 对象的时候，先调用了一个 Glide.get() 方法，而这个方法就是关键。我们可以看到，get() 方法中实现的是一个单例功能，而创建 Glide 对象则是在第 24 行调用 GlideBuilder 的 createGlide() 方法来创建的，那么我们跟到这个方法当中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class GlideBuilder &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    Glide createGlide() &#123;</div><div class="line">        if (sourceService == null) &#123;</div><div class="line">            final int cores = Math.max(1, Runtime.getRuntime().availableProcessors());</div><div class="line">            sourceService = new FifoPriorityThreadPoolExecutor(cores);</div><div class="line">        &#125;</div><div class="line">        if (diskCacheService == null) &#123;</div><div class="line">            diskCacheService = new FifoPriorityThreadPoolExecutor(1);</div><div class="line">        &#125;</div><div class="line">        MemorySizeCalculator calculator = new MemorySizeCalculator(context);</div><div class="line">        if (bitmapPool == null) &#123;</div><div class="line">            if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.HONEYCOMB) &#123;</div><div class="line">                int size = calculator.getBitmapPoolSize();</div><div class="line">                bitmapPool = new LruBitmapPool(size);</div><div class="line">            &#125; else &#123;</div><div class="line">                bitmapPool = new BitmapPoolAdapter();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (memoryCache == null) &#123;</div><div class="line">            memoryCache = new LruResourceCache(calculator.getMemoryCacheSize());</div><div class="line">        &#125;</div><div class="line">        if (diskCacheFactory == null) &#123;</div><div class="line">            diskCacheFactory = new InternalCacheDiskCacheFactory(context);</div><div class="line">        &#125;</div><div class="line">        if (engine == null) &#123;</div><div class="line">            engine = new Engine(memoryCache, diskCacheFactory, diskCacheService, sourceService);</div><div class="line">        &#125;</div><div class="line">        if (decodeFormat == null) &#123;</div><div class="line">            decodeFormat = DecodeFormat.DEFAULT;</div><div class="line">        &#125;</div><div class="line">        return new Glide(engine, memoryCache, bitmapPool, context, decodeFormat);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里也就是构建 Glide 对象的地方了。那么观察第 22 行，你会发现这里 new 出了一个 LruResourceCache，并把它赋值到了 memoryCache 这个对象上面。你没有猜错，这个就是 Glide 实现内存缓存所使用的 LruCache 对象了。不过我这里并不打算展开来讲 LruCache 算法的具体实现，如果你感兴趣的话可以自己研究一下它的源码。</p>
+<p>现在创建好了 LruResourceCache 对象只能说是把准备工作做好了，接下来我们就一步步研究 Glide 中的内存缓存到底是如何实现的。</p>
+<p>刚才在 Engine 的 load() 方法中我们已经看到了生成缓存 Key 的代码，而内存缓存的代码其实也是在这里实现的，那么我们重新来看一下 Engine 类 load() 方法的完整源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">public class Engine implements EngineJobListener,</div><div class="line">        MemoryCache.ResourceRemovedListener,</div><div class="line">        EngineResource.ResourceListener &#123;</div><div class="line">    ...    </div><div class="line"></div><div class="line">    public &lt;T, Z, R&gt; LoadStatus load(Key signature, int width, int height, DataFetcher&lt;T&gt; fetcher,</div><div class="line">            DataLoadProvider&lt;T, Z&gt; loadProvider, Transformation&lt;Z&gt; transformation, ResourceTranscoder&lt;Z, R&gt; transcoder,</div><div class="line">            Priority priority, boolean isMemoryCacheable, DiskCacheStrategy diskCacheStrategy, ResourceCallback cb) &#123;</div><div class="line">        Util.assertMainThread();</div><div class="line">        long startTime = LogTime.getLogTime();</div><div class="line"></div><div class="line">        final String id = fetcher.getId();</div><div class="line">        EngineKey key = keyFactory.buildKey(id, signature, width, height, loadProvider.getCacheDecoder(),</div><div class="line">                loadProvider.getSourceDecoder(), transformation, loadProvider.getEncoder(),</div><div class="line">                transcoder, loadProvider.getSourceEncoder());</div><div class="line"></div><div class="line">        EngineResource&lt;?&gt; cached = loadFromCache(key, isMemoryCacheable);</div><div class="line">        if (cached != null) &#123;</div><div class="line">            cb.onResourceReady(cached);</div><div class="line">            if (Log.isLoggable(TAG, Log.VERBOSE)) &#123;</div><div class="line">                logWithTimeAndKey(&quot;Loaded resource from cache&quot;, startTime, key);</div><div class="line">            &#125;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        EngineResource&lt;?&gt; active = loadFromActiveResources(key, isMemoryCacheable);</div><div class="line">        if (active != null) &#123;</div><div class="line">            cb.onResourceReady(active);</div><div class="line">            if (Log.isLoggable(TAG, Log.VERBOSE)) &#123;</div><div class="line">                logWithTimeAndKey(&quot;Loaded resource from active resources&quot;, startTime, key);</div><div class="line">            &#125;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        EngineJob current = jobs.get(key);</div><div class="line">        if (current != null) &#123;</div><div class="line">            current.addCallback(cb);</div><div class="line">            if (Log.isLoggable(TAG, Log.VERBOSE)) &#123;</div><div class="line">                logWithTimeAndKey(&quot;Added to existing load&quot;, startTime, key);</div><div class="line">            &#125;</div><div class="line">            return new LoadStatus(cb, current);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        EngineJob engineJob = engineJobFactory.build(key, isMemoryCacheable);</div><div class="line">        DecodeJob&lt;T, Z, R&gt; decodeJob = new DecodeJob&lt;T, Z, R&gt;(key, width, height, fetcher, loadProvider, transformation,</div><div class="line">                transcoder, diskCacheProvider, diskCacheStrategy, priority);</div><div class="line">        EngineRunnable runnable = new EngineRunnable(engineJob, decodeJob, priority);</div><div class="line">        jobs.put(key, engineJob);</div><div class="line">        engineJob.addCallback(cb);</div><div class="line">        engineJob.start(runnable);</div><div class="line"></div><div class="line">        if (Log.isLoggable(TAG, Log.VERBOSE)) &#123;</div><div class="line">            logWithTimeAndKey(&quot;Started new load&quot;, startTime, key);</div><div class="line">        &#125;</div><div class="line">        return new LoadStatus(cb, engineJob);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，这里在第 17 行调用了 loadFromCache() 方法来获取缓存图片，如果获取到就直接调用 cb.onResourceReady() 方法进行回调。如果没有获取到，则会在第 26 行调用 loadFromActiveResources() 方法来获取缓存图片，获取到的话也直接进行回调。只有在两个方法都没有获取到缓存的情况下，才会继续向下执行，从而开启线程来加载图片。</p>
+<p>也就是说，Glide 的图片加载过程中会调用两个方法来获取内存缓存，loadFromCache() 和 loadFromActiveResources()。这两个方法中一个使用的就是 LruCache 算法，另一个使用的就是弱引用。我们来看一下它们的源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">public class Engine implements EngineJobListener,</div><div class="line">        MemoryCache.ResourceRemovedListener,</div><div class="line">        EngineResource.ResourceListener &#123;</div><div class="line"></div><div class="line">    private final MemoryCache cache;</div><div class="line">    private final Map&lt;Key, WeakReference&lt;EngineResource&lt;?&gt;&gt;&gt; activeResources;</div><div class="line">    ...</div><div class="line"></div><div class="line">    private EngineResource&lt;?&gt; loadFromCache(Key key, boolean isMemoryCacheable) &#123;</div><div class="line">        if (!isMemoryCacheable) &#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">        EngineResource&lt;?&gt; cached = getEngineResourceFromCache(key);</div><div class="line">        if (cached != null) &#123;</div><div class="line">            cached.acquire();</div><div class="line">            activeResources.put(key, new ResourceWeakReference(key, cached, getReferenceQueue()));</div><div class="line">        &#125;</div><div class="line">        return cached;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private EngineResource&lt;?&gt; getEngineResourceFromCache(Key key) &#123;</div><div class="line">        Resource&lt;?&gt; cached = cache.remove(key);</div><div class="line">        final EngineResource result;</div><div class="line">        if (cached == null) &#123;</div><div class="line">            result = null;</div><div class="line">        &#125; else if (cached instanceof EngineResource) &#123;</div><div class="line">            result = (EngineResource) cached;</div><div class="line">        &#125; else &#123;</div><div class="line">            result = new EngineResource(cached, true /*isCacheable*/);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private EngineResource&lt;?&gt; loadFromActiveResources(Key key, boolean isMemoryCacheable) &#123;</div><div class="line">        if (!isMemoryCacheable) &#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">        EngineResource&lt;?&gt; active = null;</div><div class="line">        WeakReference&lt;EngineResource&lt;?&gt;&gt; activeRef = activeResources.get(key);</div><div class="line">        if (activeRef != null) &#123;</div><div class="line">            active = activeRef.get();</div><div class="line">            if (active != null) &#123;</div><div class="line">                active.acquire();</div><div class="line">            &#125; else &#123;</div><div class="line">                activeResources.remove(key);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return active;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在 loadFromCache() 方法的一开始，首先就判断了 isMemoryCacheable 是不是 false，如果是 false 的话就直接返回 null。这是什么意思呢？其实很简单，我们刚刚不是学了一个 skipMemoryCache()方法吗？如果在这个方法中传入 true，那么这里的 isMemoryCacheable 就会是 false，表示内存缓存已被禁用。</p>
+<p>我们继续住下看，接着调用了 getEngineResourceFromCache() 方法来获取缓存。在这个方法中，会使用缓存 Key 来从 cache 当中取值，而这里的 cache 对象就是在构建 Glide 对象时创建的 LruResourceCache，那么说明这里其实使用的就是 LruCache 算法了。</p>
+<p>但是呢，观察第 22 行，当我们从 LruResourceCache 中获取到缓存图片之后会将它从缓存中移除，然后在第 16 行将这个缓存图片存储到 activeResources 当中。activeResources 就是一个弱引用的 HashMap，用来缓存正在使用中的图片，我们可以看到，loadFromActiveResources() 方法就是从 activeResources 这个 HashMap 当中取值的。使用 activeResources 来缓存正在使用中的图片，可以保护这些图片不会被 LruCache 算法回收掉。</p>
+<p>好的，从内存缓存中读取数据的逻辑大概就是这些了。概括一下来说，就是如果能从内存缓存当中读取到要加载的图片，那么就直接进行回调，如果读取不到的话，才会开启线程执行后面的图片加载逻辑。</p>
+<p>现在我们已经搞明白了内存缓存读取的原理，接下来的问题就是内存缓存是在哪里写入的呢？这里我们又要回顾一下上一篇文章中的内容了。还记不记得我们之前分析过，当图片加载完成之后，会在 EngineJob 当中通过 Handler 发送一条消息将执行逻辑切回到主线程当中，从而执行 handleResultOnMainThread() 方法。那么我们现在重新来看一下这个方法，代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class EngineJob implements EngineRunnable.EngineRunnableManager &#123;</div><div class="line"></div><div class="line">    private final EngineResourceFactory engineResourceFactory;</div><div class="line">    ...</div><div class="line"></div><div class="line">    private void handleResultOnMainThread() &#123;</div><div class="line">        if (isCancelled) &#123;</div><div class="line">            resource.recycle();</div><div class="line">            return;</div><div class="line">        &#125; else if (cbs.isEmpty()) &#123;</div><div class="line">            throw new IllegalStateException(&quot;Received a resource without any callbacks to notify&quot;);</div><div class="line">        &#125;</div><div class="line">        engineResource = engineResourceFactory.build(resource, isCacheable);</div><div class="line">        hasResource = true;</div><div class="line">        engineResource.acquire();</div><div class="line">        listener.onEngineJobComplete(key, engineResource);</div><div class="line">        for (ResourceCallback cb : cbs) &#123;</div><div class="line">            if (!isInIgnoredCallbacks(cb)) &#123;</div><div class="line">                engineResource.acquire();</div><div class="line">                cb.onResourceReady(engineResource);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        engineResource.release();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    static class EngineResourceFactory &#123;</div><div class="line">        public &lt;R&gt; EngineResource&lt;R&gt; build(Resource&lt;R&gt; resource, boolean isMemoryCacheable) &#123;</div><div class="line">            return new EngineResource&lt;R&gt;(resource, isMemoryCacheable);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在第 13 行，这里通过 EngineResourceFactory 构建出了一个包含图片资源的 EngineResource 对象，然后会在第 16 行将这个对象回调到 Engine 的 onEngineJobComplete() 方法当中，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Engine implements EngineJobListener,</div><div class="line">        MemoryCache.ResourceRemovedListener,</div><div class="line">        EngineResource.ResourceListener &#123;</div><div class="line">    ...    </div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onEngineJobComplete(Key key, EngineResource&lt;?&gt; resource) &#123;</div><div class="line">        Util.assertMainThread();</div><div class="line">        // A null resource indicates that the load failed, usually due to an exception.</div><div class="line">        if (resource != null) &#123;</div><div class="line">            resource.setResourceListener(key, this);</div><div class="line">            if (resource.isCacheable()) &#123;</div><div class="line">                activeResources.put(key, new ResourceWeakReference(key, resource, getReferenceQueue()));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        jobs.remove(key);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在就非常明显了，可以看到，在第 13 行，回调过来的 EngineResource 被 put 到了 activeResources 当中，也就是在这里写入的缓存。</p>
+<p>那么这只是弱引用缓存，还有另外一种 LruCache 缓存是在哪里写入的呢？这就要介绍一下 EngineResource 中的一个引用机制了。观察刚才的 handleResultOnMainThread() 方法，在第 15 行和第 19 行有调用 EngineResource的acquire() 方法，在第 23 行有调用它的 release() 方法。其实，EngineResource 是用一个 acquired 变量用来记录图片被引用的次数，调用 acquire() 方法会让变量加 1，调用 release() 方法会让变量减 1，代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class EngineResource&lt;Z&gt; implements Resource&lt;Z&gt; &#123;</div><div class="line"></div><div class="line">    private int acquired;</div><div class="line">    ...</div><div class="line"></div><div class="line">    void acquire() &#123;</div><div class="line">        if (isRecycled) &#123;</div><div class="line">            throw new IllegalStateException(&quot;Cannot acquire a recycled resource&quot;);</div><div class="line">        &#125;</div><div class="line">        if (!Looper.getMainLooper().equals(Looper.myLooper())) &#123;</div><div class="line">            throw new IllegalThreadStateException(&quot;Must call acquire on the main thread&quot;);</div><div class="line">        &#125;</div><div class="line">        ++acquired;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    void release() &#123;</div><div class="line">        if (acquired &lt;= 0) &#123;</div><div class="line">            throw new IllegalStateException(&quot;Cannot release a recycled or not yet acquired resource&quot;);</div><div class="line">        &#125;</div><div class="line">        if (!Looper.getMainLooper().equals(Looper.myLooper())) &#123;</div><div class="line">            throw new IllegalThreadStateException(&quot;Must call release on the main thread&quot;);</div><div class="line">        &#125;</div><div class="line">        if (--acquired == 0) &#123;</div><div class="line">            listener.onResourceReleased(key, this);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也就是说，当 acquired 变量大于 0 的时候，说明图片正在使用中，也就应该放到 activeResources 弱引用缓存当中。而经过 release()之后，如果 acquired 变量等于 0 了，说明图片已经不再被使用了，那么此时会在第 24 行调用 listener的onResourceReleased() 方法来释放资源，这个 listener 就是 Engine 对象，我们来看下它的 onResourceReleased() 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Engine implements EngineJobListener,</div><div class="line">        MemoryCache.ResourceRemovedListener,</div><div class="line">        EngineResource.ResourceListener &#123;</div><div class="line"></div><div class="line">    private final MemoryCache cache;</div><div class="line">    private final Map&lt;Key, WeakReference&lt;EngineResource&lt;?&gt;&gt;&gt; activeResources;</div><div class="line">    ...    </div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onResourceReleased(Key cacheKey, EngineResource resource) &#123;</div><div class="line">        Util.assertMainThread();</div><div class="line">        activeResources.remove(cacheKey);</div><div class="line">        if (resource.isCacheable()) &#123;</div><div class="line">            cache.put(cacheKey, resource);</div><div class="line">        &#125; else &#123;</div><div class="line">            resourceRecycler.recycle(resource);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，这里首先会将缓存图片从 activeResources 中移除，然后再将它 put 到 LruResourceCache 当中。这样也就实现了正在使用中的图片使用弱引用来进行缓存，不在使用中的图片使用 LruCache 来进行缓存的功能。</p>
+<p>这就是 Glide 内存缓存的实现原理。</p>
+<h3 id="硬盘缓存"><a href="#硬盘缓存" class="headerlink" title="硬盘缓存"></a>硬盘缓存</h3><p>接下来我们开始学习硬盘缓存方面的内容。</p>
+<p>不知道你还记不记得，在本系列的第一篇文章中我们就使用过硬盘缓存的功能了。当时为了禁止 Glide 对图片进行硬盘缓存而使用了如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Glide.with(this)</div><div class="line">     .load(url)</div><div class="line">     .diskCacheStrategy(DiskCacheStrategy.NONE)</div><div class="line">     .into(imageView);</div></pre></td></tr></table></figure></p>
+<p>调用 diskCacheStrategy() 方法并传入 DiskCacheStrategy.NONE，就可以禁用掉 Glide 的硬盘缓存功能了。</p>
+<p>这个 diskCacheStrategy() 方法基本上就是 Glide 硬盘缓存功能的一切，它可以接收四种参数：<br>· DiskCacheStrategy.NONE： 表示不缓存任何内容。<br>· DiskCacheStrategy.SOURCE： 表示只缓存原始图片。<br>· DiskCacheStrategy.RESULT： 表示只缓存转换过后的图片（默认选项）。<br>· DiskCacheStrategy.ALL ： 表示既缓存原始图片，也缓存转换过后的图片。</p>
+<p>上面四种参数的解释本身并没有什么难理解的地方，但是有一个概念大家需要了解，就是当我们使用 Glide 去加载一张图片的时候，Glide 默认并不会将原始图片展示出来，而是会对图片进行压缩和转换。总之就是经过种种一系列操作之后得到的图片，就叫转换过后的图片。而 Glide 默认情况下在硬盘缓存的就是转换过后的图片，我们通过调用 diskCacheStrategy() 方法则可以改变这一默认行为。</p>
+<p>好的，关于 Glide 硬盘缓存的用法也就只有这么多，那么接下来还是老套路，我们通过阅读源码来分析一下，Glide 的硬盘缓存功能是如何实现的。</p>
+<p>首先，和内存缓存类似，硬盘缓存的实现也是使用的 LruCache 算法，而且 Google 还提供了一个现成的工具类 DiskLruCache。当然，Glide 是使用的自己编写的 DiskLruCache 工具类，但是基本的实现原理都是差不多的。</p>
+<p>接下来我们看一下 Glide 是在哪里读取硬盘缓存的。这里又需要回忆一下上篇文章中的内容了，Glide 开启线程来加载图片后会执行 EngineRunnable 的 run() 方法，run() 方法中又会调用一个 decode() 方法，那么我们重新再来看一下这个 decode() 方法的源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private Resource&lt;?&gt; decode() throws Exception &#123;</div><div class="line">    if (isDecodingFromCache()) &#123;</div><div class="line">        return decodeFromCache();</div><div class="line">    &#125; else &#123;</div><div class="line">        return decodeFromSource();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，这里会分为两种情况，一种是调用 decodeFromCache() 方法从硬盘缓存当中读取图片，一种是调用 decodeFromSource() 来读取原始图片。默认情况下 Glide 会优先从缓存当中读取，只有缓存中不存在要读取的图片时，才会去读取原始图片。那么我们现在来看一下 decodeFromCache() 方法的源码，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">private Resource&lt;?&gt; decodeFromCache() throws Exception &#123;</div><div class="line">    Resource&lt;?&gt; result = null;</div><div class="line">    try &#123;</div><div class="line">        result = decodeJob.decodeResultFromCache();</div><div class="line">    &#125; catch (Exception e) &#123;</div><div class="line">        if (Log.isLoggable(TAG, Log.DEBUG)) &#123;</div><div class="line">            Log.d(TAG, &quot;Exception decoding result from cache: &quot; + e);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if (result == null) &#123;</div><div class="line">        result = decodeJob.decodeSourceFromCache();</div><div class="line">    &#125;</div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，这里会先去调用 DecodeJob 的 decodeResultFromCache() 方法来获取缓存，如果获取不到，会再调用 decodeSourceFromCache() 方法获取缓存，这两个方法的区别其实就是 DiskCacheStrategy.RESULT 和 DiskCacheStrategy.SOURCE 这两个参数的区别，相信不需要我再做什么解释吧。</p>
+<p>那么我们来看一下这两个方法的源码吧，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public Resource&lt;Z&gt; decodeResultFromCache() throws Exception &#123;</div><div class="line">    if (!diskCacheStrategy.cacheResult()) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">    long startTime = LogTime.getLogTime();</div><div class="line">    Resource&lt;T&gt; transformed = loadFromCache(resultKey);</div><div class="line">    startTime = LogTime.getLogTime();</div><div class="line">    Resource&lt;Z&gt; result = transcode(transformed);</div><div class="line">    return result;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public Resource&lt;Z&gt; decodeSourceFromCache() throws Exception &#123;</div><div class="line">    if (!diskCacheStrategy.cacheSource()) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">    long startTime = LogTime.getLogTime();</div><div class="line">    Resource&lt;T&gt; decoded = loadFromCache(resultKey.getOriginalKey());</div><div class="line">    return transformEncodeAndTranscode(decoded);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，它们都是调用了 loadFromCache() 方法从缓存当中读取数据，如果是 decodeResultFromCache() 方法就直接将数据解码并返回，如果是 decodeSourceFromCache() 方法，还要调用一下 transformEncodeAndTranscode() 方法先将数据转换一下再解码并返回。</p>
+<p>然而我们注意到，这两个方法中在调用 loadFromCache() 方法时传入的参数却不一样，一个传入的是 resultKey，另外一个却又调用了 resultKey 的 getOriginalKey() 方法。这个其实非常好理解，刚才我们已经解释过了，Glide 的缓存 Key 是由 10 个参数共同组成的，包括图片的 width、height 等等。但如果我们是缓存的原始图片，其实并不需要这么多的参数，因为不用对图片做任何的变化。那么我们来看一下 getOriginalKey() 方法的源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public Key getOriginalKey() &#123;</div><div class="line">    if (originalKey == null) &#123;</div><div class="line">        originalKey = new OriginalKey(id, signature);</div><div class="line">    &#125;</div><div class="line">    return originalKey;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，这里其实就是忽略了绝大部分的参数，只使用了 id 和 signature 这两个参数来构成缓存 Key。而 signature 参数绝大多数情况下都是用不到的，因此基本上可以说就是由 id（也就是图片url）来决定的 Original 缓存 Key。</p>
+<p>搞明白了这两种缓存 Key 的区别，那么接下来我们看一下 loadFromCache() 方法的源码吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">private Resource&lt;T&gt; loadFromCache(Key key) throws IOException &#123;</div><div class="line">    File cacheFile = diskCacheProvider.getDiskCache().get(key);</div><div class="line">    if (cacheFile == null) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">    Resource&lt;T&gt; result = null;</div><div class="line">    try &#123;</div><div class="line">        result = loadProvider.getCacheDecoder().decode(cacheFile, width, height);</div><div class="line">    &#125; finally &#123;</div><div class="line">        if (result == null) &#123;</div><div class="line">            diskCacheProvider.getDiskCache().delete(key);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个方法的逻辑非常简单，调用 getDiskCache() 方法获取到的就是 Glide 自己编写的 DiskLruCache 工具类的实例，然后调用它的 get() 方法并把缓存 Key 传入，就能得到硬盘缓存的文件了。如果文件为空就返回 null，如果文件不为空则将它解码成 Resource 对象后返回即可。</p>
+<p>这样我们就将硬盘缓存读取的源码分析完了，那么硬盘缓存又是在哪里写入的呢？趁热打铁我们赶快继续分析下去。</p>
+<p>刚才已经分析过了，在没有缓存的情况下，会调用 decodeFromSource() 方法来读取原始图片。那么我们来看下这个方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public Resource&lt;Z&gt; decodeFromSource() throws Exception &#123;</div><div class="line">    Resource&lt;T&gt; decoded = decodeSource();</div><div class="line">    return transformEncodeAndTranscode(decoded);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个方法中只有两行代码，decodeSource() 顾名思义是用来解析原图片的，而 transformEncodeAndTranscode() 则是用来对图片进行转换和转码的。我们先来看 decodeSource() 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">private Resource&lt;T&gt; decodeSource() throws Exception &#123;</div><div class="line">    Resource&lt;T&gt; decoded = null;</div><div class="line">    try &#123;</div><div class="line">        long startTime = LogTime.getLogTime();</div><div class="line">        final A data = fetcher.loadData(priority);</div><div class="line">        if (isCancelled) &#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">        decoded = decodeFromSourceData(data);</div><div class="line">    &#125; finally &#123;</div><div class="line">        fetcher.cleanup();</div><div class="line">    &#125;</div><div class="line">    return decoded;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private Resource&lt;T&gt; decodeFromSourceData(A data) throws IOException &#123;</div><div class="line">    final Resource&lt;T&gt; decoded;</div><div class="line">    if (diskCacheStrategy.cacheSource()) &#123;</div><div class="line">        decoded = cacheAndDecodeSourceData(data);</div><div class="line">    &#125; else &#123;</div><div class="line">        long startTime = LogTime.getLogTime();</div><div class="line">        decoded = loadProvider.getSourceDecoder().decode(data, width, height);</div><div class="line">    &#125;</div><div class="line">    return decoded;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private Resource&lt;T&gt; cacheAndDecodeSourceData(A data) throws IOException &#123;</div><div class="line">    long startTime = LogTime.getLogTime();</div><div class="line">    SourceWriter&lt;A&gt; writer = new SourceWriter&lt;A&gt;(loadProvider.getSourceEncoder(), data);</div><div class="line">    diskCacheProvider.getDiskCache().put(resultKey.getOriginalKey(), writer);</div><div class="line">    startTime = LogTime.getLogTime();</div><div class="line">    Resource&lt;T&gt; result = loadFromCache(resultKey.getOriginalKey());</div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里会在第 5 行先调用 fetcher 的 loadData() 方法读取图片数据，然后在第 9 行调用 decodeFromSourceData() 方法来对图片进行解码。接下来会在第 18 行先判断是否允许缓存原始图片，如果允许的话又会调用 cacheAndDecodeSourceData() 方法。而在这个方法中同样调用了 getDiskCache() 方法来获取 DiskLruCache 实例，接着调用它的 put() 方法就可以写入硬盘缓存了，注意原始图片的缓存 Key 是用的 resultKey.getOriginalKey()。</p>
+<p>好的，原始图片的缓存写入就是这么简单，接下来我们分析一下 transformEncodeAndTranscode() 方法的源码，来看看转换过后的图片缓存是怎么写入的。代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">private Resource&lt;Z&gt; transformEncodeAndTranscode(Resource&lt;T&gt; decoded) &#123;</div><div class="line">    long startTime = LogTime.getLogTime();</div><div class="line">    Resource&lt;T&gt; transformed = transform(decoded);</div><div class="line">    writeTransformedToCache(transformed);</div><div class="line">    startTime = LogTime.getLogTime();</div><div class="line">    Resource&lt;Z&gt; result = transcode(transformed);</div><div class="line">    return result;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private void writeTransformedToCache(Resource&lt;T&gt; transformed) &#123;</div><div class="line">    if (transformed == null || !diskCacheStrategy.cacheResult()) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    long startTime = LogTime.getLogTime();</div><div class="line">    SourceWriter&lt;Resource&lt;T&gt;&gt; writer = new SourceWriter&lt;Resource&lt;T&gt;&gt;(loadProvider.getEncoder(), transformed);</div><div class="line">    diskCacheProvider.getDiskCache().put(resultKey, writer);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里的逻辑就更加简单明了了。先是在第 3 行调用 transform() 方法来对图片进行转换，然后在 writeTransformedToCache() 方法中将转换过后的图片写入到硬盘缓存中，调用的同样是 DiskLruCache 实例的 put() 方法，不过这里用的缓存 Key 是 resultKey。</p>
+<p>这样我们就将 Glide 硬盘缓存的实现原理也分析完了。虽然这些源码看上去如此的复杂，但是经过 Glide 出色的封装，使得我们只需要通过 skipMemoryCache() 和 diskCacheStrategy() 这两个方法就可以轻松自如地控制 Glide 的缓存功能了。</p>
+<p>了解了 Glide 缓存的实现原理之后，接下来我们再来学习一些 Glide 缓存的高级技巧吧。</p>
+<h3 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h3><p>虽说 Glide 将缓存功能高度封装之后，使得用法变得非常简单，但同时也带来了一些问题。</p>
+<p>比如之前有一位群里的朋友就跟我说过，他们项目的图片资源都是存放在七牛云上面的，而七牛云为了对图片资源进行保护，会在图片 url 地址的基础之上再加上一个 token 参数。也就是说，一张图片的 url 地址可能会是如下格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://url.com/image.jpg?token=d9caa6e02c990b0a</div></pre></td></tr></table></figure></p>
+<p>而使用 Glide 加载这张图片的话，也就会使用这个 url 地址来组成缓存 Key。</p>
+<p>但是接下来问题就来了，token 作为一个验证身份的参数并不是一成不变的，很有可能时时刻刻都在变化。而如果 token 变了，那么图片的 url 也就跟着变了，图片 url 变了，缓存 Key 也就跟着变了。结果就造成了，明明是同一张图片，就因为 token 不断在改变，导致 Glide 的缓存功能完全失效了。</p>
+<p>这其实是个挺棘手的问题，而且我相信绝对不仅仅是七牛云这一个个例，大家在使用 Glide 的时候很有可能都会遇到这个问题。</p>
+<p>那么该如何解决这个问题呢？我们还是从源码的层面进行分析，首先再来看一下 Glide 生成缓存 Key 这部分的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Engine implements EngineJobListener,</div><div class="line">        MemoryCache.ResourceRemovedListener,</div><div class="line">        EngineResource.ResourceListener &#123;</div><div class="line"></div><div class="line">    public &lt;T, Z, R&gt; LoadStatus load(Key signature, int width, int height, DataFetcher&lt;T&gt; fetcher,</div><div class="line">            DataLoadProvider&lt;T, Z&gt; loadProvider, Transformation&lt;Z&gt; transformation, ResourceTranscoder&lt;Z, R&gt; transcoder,</div><div class="line">            Priority priority, boolean isMemoryCacheable, DiskCacheStrategy diskCacheStrategy, ResourceCallback cb) &#123;</div><div class="line">        Util.assertMainThread();</div><div class="line">        long startTime = LogTime.getLogTime();</div><div class="line"></div><div class="line">        final String id = fetcher.getId();</div><div class="line">        EngineKey key = keyFactory.buildKey(id, signature, width, height, loadProvider.getCacheDecoder(),</div><div class="line">                loadProvider.getSourceDecoder(), transformation, loadProvider.getEncoder(),</div><div class="line">                transcoder, loadProvider.getSourceEncoder());</div><div class="line"></div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>来看一下第 11 行，刚才已经说过了，这个 id 其实就是图片的 url 地址。那么，这里是通过调用 fetcher.getId() 方法来获取的图片 url 地址，而我们在上一篇文章中已经知道了，fetcher 就是 HttpUrlFetcher 的实例，我们就来看一下它的 getId() 方法的源码吧，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class HttpUrlFetcher implements DataFetcher&lt;InputStream&gt; &#123;</div><div class="line"></div><div class="line">    private final GlideUrl glideUrl;</div><div class="line">    ...</div><div class="line"></div><div class="line">    public HttpUrlFetcher(GlideUrl glideUrl) &#123;</div><div class="line">        this(glideUrl, DEFAULT_CONNECTION_FACTORY);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    HttpUrlFetcher(GlideUrl glideUrl, HttpUrlConnectionFactory connectionFactory) &#123;</div><div class="line">        this.glideUrl = glideUrl;</div><div class="line">        this.connectionFactory = connectionFactory;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String getId() &#123;</div><div class="line">        return glideUrl.getCacheKey();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，getId() 方法中又调用了 GlideUrl 的 getCacheKey()方法。那么这个 GlideUrl 对象是从哪里来的呢？其实就是我们在 load() 方法中传入的图片 url 地址，然后 Glide 在内部把这个 url 地址包装成了一个 GlideUrl 对象。</p>
+<p>很明显，接下来我们就要看一下 GlideUrl 的 getCacheKey() 方法的源码了，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">public class GlideUrl &#123;</div><div class="line"></div><div class="line">    private final URL url;</div><div class="line">    private final String stringUrl;</div><div class="line">    ...</div><div class="line"></div><div class="line">    public GlideUrl(URL url) &#123;</div><div class="line">        this(url, Headers.DEFAULT);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public GlideUrl(String url) &#123;</div><div class="line">        this(url, Headers.DEFAULT);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public GlideUrl(URL url, Headers headers) &#123;</div><div class="line">        ...</div><div class="line">        this.url = url;</div><div class="line">        stringUrl = null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public GlideUrl(String url, Headers headers) &#123;</div><div class="line">        ...</div><div class="line">        this.stringUrl = url;</div><div class="line">        this.url = null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getCacheKey() &#123;</div><div class="line">        return stringUrl != null ? stringUrl : url.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里我将代码稍微进行了一点简化，这样看上去更加简单明了。GlideUrl 类的构造函数接收两种类型的参数，一种是 url 字符串，一种是 URL 对象。然后 getCacheKey() 方法中的判断逻辑非常简单，如果传入的是 url 字符串，那么就直接返回这个字符串本身，如果传入的是 URL 对象，那么就返回这个对象 toString() 后的结果。</p>
+<p>其实看到这里，我相信大家已经猜到解决方案了，因为 getCacheKey() 方法中的逻辑太直白了，直接就是将图片的 url 地址进行返回来作为缓存 Key 的。那么其实我们只需要重写这个 getCacheKey() 方法，加入一些自己的逻辑判断，就能轻松解决掉刚才的问题了。</p>
+<p>创建一个 MyGlideUrl 继承自 GlideUrl，代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class MyGlideUrl extends GlideUrl &#123;</div><div class="line"></div><div class="line">    private String mUrl;</div><div class="line"></div><div class="line">    public MyGlideUrl(String url) &#123;</div><div class="line">        super(url);</div><div class="line">        mUrl = url;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String getCacheKey() &#123;</div><div class="line">        return mUrl.replace(findTokenParam(), &quot;&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private String findTokenParam() &#123;</div><div class="line">        String tokenParam = &quot;&quot;;</div><div class="line">        int tokenKeyIndex = mUrl.indexOf(&quot;?token=&quot;) &gt;= 0 ? mUrl.indexOf(&quot;?token=&quot;) : mUrl.indexOf(&quot;&amp;token=&quot;);</div><div class="line">        if (tokenKeyIndex != -1) &#123;</div><div class="line">            int nextAndIndex = mUrl.indexOf(&quot;&amp;&quot;, tokenKeyIndex + 1);</div><div class="line">            if (nextAndIndex != -1) &#123;</div><div class="line">                tokenParam = mUrl.substring(tokenKeyIndex + 1, nextAndIndex + 1);</div><div class="line">            &#125; else &#123;</div><div class="line">                tokenParam = mUrl.substring(tokenKeyIndex);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return tokenParam;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，这里我们重写了 getCacheKey() 方法，在里面加入了一段逻辑用于将图片 url 地址中 token 参数的这一部分移除掉。这样 getCacheKey() 方法得到的就是一个没有 token 参数的 url 地址，从而不管 token 怎么变化，最终 Glide 的缓存 Key 都是固定不变的了。</p>
+<p>当然，定义好了 MyGlideUrl，我们还得使用它才行，将加载图片的代码改成如下方式即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Glide.with(this)</div><div class="line">     .load(new MyGlideUrl(url))</div><div class="line">     .into(imageView);</div></pre></td></tr></table></figure></p>
+<p>也就是说，我们需要在 load() 方法中传入这个自定义的 MyGlideUrl 对象，而不能再像之前那样直接传入 url 字符串了。不然的话 Glide 在内部还是会使用原始的 GlideUrl 类，而不是我们自定义的 MyGlideUrl 类。</p>
+<p>这样我们就将这个棘手的缓存问题给解决掉了。</p>
+<p>好了，关于 Glide 缓存方面的内容今天就分析到这里，现在我们不光掌握了 Glide 缓存的基本用法和高级技巧，还了解了它背后的实现原理，又是收获满满的一篇文章啊。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FRAMEWORK/" rel="tag"><i class="fa fa-tag"></i> FRAMEWORK</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/1902/01/08/07 THIRD PARY FRAMEWORK/12 Glide 源码分析执行流程/" rel="next" title="12 Glide 源码分析执行流程">
+                <i class="fa fa-chevron-left"></i> 12 Glide 源码分析执行流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1902/01/10/07 THIRD PARY FRAMEWORK/14 Glide 回调与监听/" rel="prev" title="14 Glide 回调与监听">
+                14 Glide 回调与监听 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">160</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存简介"><span class="nav-text">缓存简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存-Key"><span class="nav-text">缓存 Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存缓存"><span class="nav-text">内存缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬盘缓存"><span class="nav-text">硬盘缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级技巧"><span class="nav-text">高级技巧</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共381.9k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="FRAMEWORK," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="项目地址：https://github.com/bumptech/glide官方文档：http://bumptech.github.io/glide/中文文档：https://muyangmin.github.io/glide-docs-cn/原文链接：https://blog.csdn.net/guolin_blog/article/details/78357251·文章目录：Glide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="17 Glide 带进度加载图片">
+<meta property="og:url" content="http://yoursite.com/1902/01/13/07 THIRD PARY FRAMEWORK/17 Glide 带进度加载图片/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="项目地址：https://github.com/bumptech/glide官方文档：http://bumptech.github.io/glide/中文文档：https://muyangmin.github.io/glide-docs-cn/原文链接：https://blog.csdn.net/guolin_blog/article/details/78357251·文章目录：Glide">
+<meta property="og:image" content="https://img-blog.csdn.net/20171121151820466">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-1fedcbf5fe495959.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://img-blog.csdn.net/20171121152215865">
+<meta property="og:image" content="https://img-blog.csdn.net/20171121152245975">
+<meta property="og:updated_time" content="2020-04-04T10:18:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="17 Glide 带进度加载图片">
+<meta name="twitter:description" content="项目地址：https://github.com/bumptech/glide官方文档：http://bumptech.github.io/glide/中文文档：https://muyangmin.github.io/glide-docs-cn/原文链接：https://blog.csdn.net/guolin_blog/article/details/78357251·文章目录：Glide">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20171121151820466">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/1902/01/13/07 THIRD PARY FRAMEWORK/17 Glide 带进度加载图片/"/>
+
+
+
+
+
+  <title>17 Glide 带进度加载图片 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1902/01/13/07 THIRD PARY FRAMEWORK/17 Glide 带进度加载图片/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">17 Glide 带进度加载图片</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="1902-01-13T00:00:00+08:00">
+                1902-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FRAMEWORK/" itemprop="url" rel="index">
+                    <span itemprop="name">FRAMEWORK</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/1902/01/13/07 THIRD PARY FRAMEWORK/17 Glide 带进度加载图片/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/1902/01/13/07 THIRD PARY FRAMEWORK/17 Glide 带进度加载图片/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<blockquote>
+<p>项目地址：<a href="https://github.com/bumptech/glide" target="_blank" rel="external">https://github.com/bumptech/glide</a><br>官方文档：<a href="http://bumptech.github.io/glide/" target="_blank" rel="external">http://bumptech.github.io/glide/</a><br>中文文档：<a href="https://muyangmin.github.io/glide-docs-cn/" target="_blank" rel="external">https://muyangmin.github.io/glide-docs-cn/</a><br>原文链接：<a href="https://blog.csdn.net/guolin_blog/article/details/78357251" target="_blank" rel="external">https://blog.csdn.net/guolin_blog/article/details/78357251</a><br>·<br>文章目录：<br><a href="">Glide 快速入门</a><br><a href="">Glide 源码分析执行流程</a><br><a href="">Glide 缓存机制</a><br><a href="">Glide 回调与监听</a><br><a href="">Glide 图片变换功能</a><br><a href="">Glide 自定义模块功能</a><br><a href="">Glide 带进度加载图片</a></p>
+</blockquote>
+<p>今天，我们就要综合利用之前所学到的知识，来对 Glide 进行一个比较大的功能扩展，希望大家都已经好好阅读过了前面的六篇文章，并且有了不错的理解。</p>
+<h3 id="扩展目标"><a href="#扩展目标" class="headerlink" title="扩展目标"></a>扩展目标</h3><p>首先来确立一下功能扩展的目标。虽说 Glide 本身就已经十分强大了，但是有一个功能却长期以来都不支持，那就是监听下载进度功能。</p>
+<p>我们都知道，使用 Glide 来加载一张网络上的图片是非常简单的，但是让人头疼的是，我们却无从得知当前图片的下载进度。如果这张图片很小的话，那么问题也不大，反正很快就会被加载出来。但如果这是一张比较大的 GIF 图，用户耐心等了很久结果图片还没显示出来，这个时候你就会觉得下载进度功能是十分有必要的了。</p>
+<p>好的，那么我们今天的目标就是对 Glide 进行功能扩展，使其支持监听图片下载进度的功能。</p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>今天这篇文章我会带着大家从零去创建一个新的项目，一步步地进行实现，最终完成一个带进度的 Glide 图片加载的 Demo。当然，在本篇文章的最后我会提供这个 Demo 的完整源码，但是这里我仍然希望大家能用心跟着我一步步来编写。</p>
+<p>那么我们现在就开始吧，首先创建一个新项目，就叫做 GlideProgressTest 吧。</p>
+<p>项目创建完成后的第一件事就是要将必要的依赖库引入到当前的项目当中，目前我们必须要依赖的两个库就是 Glide 和 OkHttp。在 app/build.gradle 文件当中添加如下配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dependencies &#123; </div><div class="line">    compile &apos;com.github.bumptech.glide:glide:3.7.0&apos; </div><div class="line">    compile &apos;com.squareup.okhttp3:okhttp:3.9.0&apos; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>另外，由于 Glide 和 OkHttp 都需要用到网络功能，因此我们还得在 AndroidManifest.xml 中声明一下网络权限才行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p>好了，这样准备工作就完成了。</p>
+<h3 id="替换通讯组件"><a href="#替换通讯组件" class="headerlink" title="替换通讯组件"></a>替换通讯组件</h3><p>Glide 内部 HTTP 通讯组件的底层实现是基于 HttpUrlConnection 来进行定制的。但是 HttpUrlConnection 的可扩展性比较有限，我们在它的基础之上无法实现监听下载进度的功能，因此今天的第一个大动作就是要将 Glide 中的 HTTP 通讯组件替换成 OkHttp。</p>
+<p>新建一个 OkHttpFetcher 类，并且实现 DataFetcher 接口，代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">public class OkHttpFetcher implements DataFetcher&lt;InputStream&gt; &#123; </div><div class="line"></div><div class="line">    private final OkHttpClient client; </div><div class="line">    private final GlideUrl url; </div><div class="line">    private InputStream stream; </div><div class="line">    private ResponseBody responseBody; </div><div class="line">    private volatile boolean isCancelled; </div><div class="line"></div><div class="line">    public OkHttpFetcher(OkHttpClient client, GlideUrl url) &#123; </div><div class="line">        this.client = client; </div><div class="line">        this.url = url; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    @Override </div><div class="line">    public InputStream loadData(Priority priority) throws Exception &#123; </div><div class="line">        Request.Builder requestBuilder = new Request.Builder() </div><div class="line">                .url(url.toStringUrl()); </div><div class="line">        for (Map.Entry&lt;String, String&gt; headerEntry : url.getHeaders().entrySet()) &#123;</div><div class="line">            String key = headerEntry.getKey(); </div><div class="line">            requestBuilder.addHeader(key, headerEntry.getValue()); </div><div class="line">        &#125; </div><div class="line">        Request request = requestBuilder.build(); </div><div class="line">        if (isCancelled) &#123; </div><div class="line">            return null; </div><div class="line">        &#125; </div><div class="line">        Response response = client.newCall(request).execute(); </div><div class="line">        responseBody = response.body(); </div><div class="line">        if (!response.isSuccessful() || responseBody == null) &#123; </div><div class="line">            throw new IOException(&quot;Request failed with code: &quot; + response.code());</div><div class="line">        &#125; </div><div class="line">        stream = ContentLengthInputStream.obtain(responseBody.byteStream(), </div><div class="line">                responseBody.contentLength()); </div><div class="line">        return stream; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    @Override </div><div class="line">    public void cleanup() &#123; </div><div class="line">        try &#123; </div><div class="line">            if (stream != null) &#123; </div><div class="line">                stream.close(); </div><div class="line">            &#125; </div><div class="line">            if (responseBody != null) &#123; </div><div class="line">                responseBody.close(); </div><div class="line">            &#125; </div><div class="line">        &#125; catch (IOException e) &#123; </div><div class="line">            e.printStackTrace(); </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    @Override </div><div class="line">    public String getId() &#123; </div><div class="line">        return url.getCacheKey(); </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    @Override </div><div class="line">    public void cancel() &#123; </div><div class="line">        isCancelled = true; </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后新建一个 OkHttpGlideUrlLoader 类，并且实现 ModelLoader：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">public class OkHttpGlideUrlLoader implements ModelLoader&lt;GlideUrl, InputStream&gt; &#123; </div><div class="line"></div><div class="line">    private OkHttpClient okHttpClient; </div><div class="line"></div><div class="line">    public static class Factory implements ModelLoaderFactory&lt;GlideUrl, InputStream&gt; &#123; </div><div class="line"></div><div class="line">        private OkHttpClient client; </div><div class="line"></div><div class="line">        public Factory() &#123; </div><div class="line">        &#125; </div><div class="line"></div><div class="line">        public Factory(OkHttpClient client) &#123; </div><div class="line">            this.client = client; </div><div class="line">        &#125; </div><div class="line"></div><div class="line">        private synchronized OkHttpClient getOkHttpClient() &#123; </div><div class="line">            if (client == null) &#123; </div><div class="line">                client = new OkHttpClient(); </div><div class="line">            &#125; </div><div class="line">            return client; </div><div class="line">        &#125; </div><div class="line"></div><div class="line">        @Override </div><div class="line">        public ModelLoader&lt;GlideUrl, InputStream&gt; build(Context context, GenericLoaderFactory factories) &#123;</div><div class="line">            return new OkHttpGlideUrlLoader(getOkHttpClient()); </div><div class="line">        &#125; </div><div class="line"></div><div class="line">        @Override </div><div class="line">        public void teardown() &#123; </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    public OkHttpGlideUrlLoader(OkHttpClient client) &#123; </div><div class="line">        this.okHttpClient = client; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    @Override </div><div class="line">    public DataFetcher&lt;InputStream&gt; getResourceFetcher(GlideUrl model, int width, int height) &#123; </div><div class="line">        return new OkHttpFetcher(okHttpClient, model); </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接下来，新建一个 MyGlideModule 类并实现 GlideModule 接口，然后在 registerComponents() 方法中将我们刚刚创建的 OkHttpGlideUrlLoader 和 OkHttpFetcher 注册到 Glide 当中，将原来的 HTTP 通讯组件给替换掉，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class MyGlideModule implements GlideModule &#123; </div><div class="line">    @Override </div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    @Override </div><div class="line">    public void registerComponents(Context context, Glide glide) &#123; </div><div class="line">        glide.register(GlideUrl.class, InputStream.class, new OkHttpGlideUrlLoader.Factory());</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最后，为了让 Glide 能够识别我们自定义的 MyGlideModule，还得在 AndroidManifest.xml 文件当中加入如下配置才行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;manifest&gt; </div><div class="line">    ... </div><div class="line">    &lt;application&gt; </div><div class="line">        &lt;meta-data </div><div class="line">            android:name=&quot;com.example.glideprogresstest.MyGlideModule&quot; </div><div class="line">            android:value=&quot;GlideModule&quot; /&gt; </div><div class="line">        ... </div><div class="line">    &lt;/application&gt; </div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure></p>
+<p>OK，这样我们就把 Glide 中的 HTTP 通讯组件成功替换成 OkHttp 了。</p>
+<h3 id="实现下载进度监听"><a href="#实现下载进度监听" class="headerlink" title="实现下载进度监听"></a>实现下载进度监听</h3><p>那么，将 HTTP 通讯组件替换成 OkHttp 之后，我们又该如何去实现监听下载进度的功能呢？这就要依靠 OkHttp 强大的拦截器机制了。</p>
+<p>我们只要向 OkHttp 中添加一个自定义的拦截器，就可以在拦截器中捕获到整个 HTTP 的通讯过程，然后加入一些自己的逻辑来计算下载进度，这样就可以实现下载进度监听的功能了。</p>
+<p>拦截器属于 OkHttp 的高级功能，不过即使你之前并没有接触过拦截器，我相信你也能轻松看懂本篇文章的，因为它本身并不难。</p>
+<p>确定了实现思路之后，那我们就开始动手吧。首先创建一个没有任何逻辑的空拦截器，新建 ProgressInterceptor 类并实现 Interceptor 接口，代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class ProgressInterceptor implements Interceptor &#123; </div><div class="line"></div><div class="line">    @Override </div><div class="line">    public Response intercept(Chain chain) throws IOException &#123;</div><div class="line">        Request request = chain.request(); </div><div class="line">        Response response = chain.proceed(request); </div><div class="line">        return response; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个拦截器中我们可以说是什么都没有做。就是拦截到了 OkHttp 的请求，然后调用 proceed() 方法去处理这个请求，最终将服务器响应的 Response 返回。</p>
+<p>接下来我们需要启用这个拦截器，修改 MyGlideModule 中的代码，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class MyGlideModule implements GlideModule &#123; </div><div class="line">    @Override </div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    @Override </div><div class="line">    public void registerComponents(Context context, Glide glide) &#123; </div><div class="line">        OkHttpClient.Builder builder = new OkHttpClient.Builder(); </div><div class="line">        builder.addInterceptor(new ProgressInterceptor()); </div><div class="line">        OkHttpClient okHttpClient = builder.build(); </div><div class="line">        glide.register(GlideUrl.class, InputStream.class, new OkHttpGlideUrlLoader.Factory(okHttpClient));</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里我们创建了一个 OkHttpClient.Builder，然后调用 addInterceptor() 方法将刚才创建的 ProgressInterceptor 添加进去，最后将构建出来的新 OkHttpClient 对象传入到 OkHttpGlideUrlLoader.Factory 中即可。</p>
+<p>好的，现在自定义的拦截器已经启用了，接下来就可以开始去实现下载进度监听的具体逻辑了。首先新建一个ProgressListener接口，用于作为进度监听回调的工具，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface ProgressListener &#123;</div><div class="line">    void onProgress(int progress);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后我们在 ProgressInterceptor 中加入注册下载监听和取消注册下载监听的方法。修改 ProgressInterceptor 中的代码，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class ProgressInterceptor implements Interceptor &#123; </div><div class="line">    static final Map&lt;String, ProgressListener&gt; LISTENER_MAP = new HashMap&lt;&gt;();</div><div class="line"></div><div class="line">    public static void addListener(String url, ProgressListener listener) &#123;</div><div class="line">        LISTENER_MAP.put(url, listener); </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    public static void removeListener(String url) &#123; </div><div class="line">        LISTENER_MAP.remove(url); </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    @Override </div><div class="line">    public Response intercept(Chain chain) throws IOException &#123; </div><div class="line">        Request request = chain.request(); </div><div class="line">        Response response = chain.proceed(request); </div><div class="line">        return response; </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，这里使用了一个 Map 来保存注册的监听器，Map 的键是一个 URL 地址。之所以要这么做，是因为你可能会使用 Glide 同时加载很多张图片，而这种情况下，必须要能区分出来每个下载进度的回调到底是对应哪个图片 URL 地址的。</p>
+<p>接下来就要到今天最复杂的部分了，也就是下载进度的具体计算。我们需要新建一个 ProgressResponseBody 类，并让它继承自 OkHttp 的 ResponseBody，然后在这个类当中去编写具体的监听下载进度的逻辑，代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">public class ProgressResponseBody extends ResponseBody &#123;</div><div class="line">    private static final String TAG = &quot;ProgressResponseBody&quot;;</div><div class="line">    private BufferedSource bufferedSource;</div><div class="line">    private ResponseBody responseBody;</div><div class="line">    private ProgressListener listener;</div><div class="line"></div><div class="line">    public ProgressResponseBody(String url, ResponseBody responseBody) &#123;</div><div class="line">        this.responseBody = responseBody;</div><div class="line">        listener = ProgressInterceptor.LISTENER_MAP.get(url);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public MediaType contentType() &#123;</div><div class="line">        return responseBody.contentType();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public long contentLength() &#123;</div><div class="line">        return responseBody.contentLength();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override </div><div class="line">    public BufferedSource source() &#123;</div><div class="line">        if (bufferedSource == null) &#123;</div><div class="line">            bufferedSource = Okio.buffer(new ProgressSource(responseBody.source()));</div><div class="line">        &#125;</div><div class="line">        return bufferedSource;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private class ProgressSource extends ForwardingSource &#123;</div><div class="line"></div><div class="line">        long totalBytesRead = 0;</div><div class="line"></div><div class="line">        int currentProgress;</div><div class="line"></div><div class="line">        ProgressSource(Source source) &#123;</div><div class="line">            super(source);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override </div><div class="line">        public long read(Buffer sink, long byteCount) throws IOException &#123;</div><div class="line">            long bytesRead = super.read(sink, byteCount);</div><div class="line">            long fullLength = responseBody.contentLength();</div><div class="line">            if (bytesRead == -1) &#123;</div><div class="line">                totalBytesRead = fullLength;</div><div class="line">            &#125; else &#123;</div><div class="line">                totalBytesRead += bytesRead;</div><div class="line">            &#125;</div><div class="line">            int progress = (int) (100f * totalBytesRead / fullLength);</div><div class="line">            Log.d(TAG, &quot;download progress is &quot; + progress);</div><div class="line">            if (listener != null &amp;&amp; progress != currentProgress) &#123;</div><div class="line">                listener.onProgress(progress);</div><div class="line">            &#125;</div><div class="line">            if (listener != null &amp;&amp; totalBytesRead == fullLength) &#123;</div><div class="line">                listener = null;</div><div class="line">            &#125;</div><div class="line">            currentProgress = progress;</div><div class="line">            return bytesRead;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其实这段代码也不是很难，下面我来简单解释一下。首先，我们定义了一个 ProgressResponseBody 的构造方法，该构造方法中要求传入一个 url 参数和一个 ResponseBody 参数。那么很显然，url 参数就是图片的 url 地址了，而 ResponseBody 参数则是 OkHttp 拦截到的原始的 ResponseBody 对象。然后在构造方法中，我们调用了 ProgressInterceptor 中的 LISTENER_MAP 来去获取该 url 对应的监听器回调对象，有了这个对象，待会就可以回调计算出来的下载进度了。</p>
+<p>由于继承了 ResponseBody 类之后一定要重写 contentType()、contentLength() 和 source() 这三个方法，我们在 contentType() 和 contentLength() 方法中直接就调用传入的原始 ResponseBody 的 contentType() 和 contentLength() 方法即可，这相当于一种委托模式。但是在 source() 方法中，我们就必须加入点自己的逻辑了，因为这里要涉及到具体的下载进度计算。</p>
+<p>那么我们具体看一下 source() 方法，这里先是调用了原始 ResponseBody的source() 方法来去获取 Source 对象，接下来将这个 Source 对象封装到了一个 ProgressSource 对象当中，最终再用 Okio 的 buffer() 方法封装成 BufferedSource 对象返回。</p>
+<p>那么这个 ProgressSource 是什么呢？它是一个我们自定义的继承自 ForwardingSource 的实现类。ForwardingSource 也是一个使用委托模式的工具，它不处理任何具体的逻辑，只是负责将传入的原始 Source 对象进行中转。但是，我们使用 ProgressSource 继承自 ForwardingSource，那么就可以在中转的过程中加入自己的逻辑了。</p>
+<p>可以看到，在 ProgressSource 中我们重写了 read() 方法，然后在 read() 方法中获取该次读取到的字节数以及下载文件的总字节数，并进行一些简单的数学计算就能算出当前的下载进度了。这里我先使用 Log 工具将算出的结果打印了一下，再通过前面获取到的回调监听器对象将结果进行回调。</p>
+<p>好的，现在计算下载进度的逻辑已经完成了，那么我们快点在拦截器当中使用它吧。修改 ProgressInterceptor 中的代码，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class ProgressInterceptor implements Interceptor &#123; </div><div class="line"></div><div class="line">    ... </div><div class="line"></div><div class="line">    @Override </div><div class="line">    public Response intercept(Chain chain) throws IOException &#123; </div><div class="line">        Request request = chain.request(); </div><div class="line">        Response response = chain.proceed(request); </div><div class="line">        String url = request.url().toString(); </div><div class="line">        ResponseBody body = response.body(); </div><div class="line">        Response newResponse = response.newBuilder().body(new ProgressResponseBody(url, body)).build();</div><div class="line">        return newResponse; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里也都是一些 OkHttp 的简单用法。我们通过 Response 的 newBuilder() 方法来创建一个新的 Response 对象，并把它的 body 替换成刚才实现的 ProgressResponseBody，最终将新的 Response 对象进行返回，这样计算下载进度的逻辑就能生效了。</p>
+<p>代码写到这里，我们就可以来运行一下程序了。现在无论是加载任何网络上的图片，都应该是可以监听到它的下载进度的。</p>
+<p>修改 activity_main.xml 中的代码，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; </div><div class="line">    android:layout_width=&quot;match_parent&quot; </div><div class="line">    android:layout_height=&quot;match_parent&quot; </div><div class="line">    android:orientation=&quot;vertical&quot;&gt; </div><div class="line">    &lt;Button </div><div class="line">        android:layout_width=&quot;wrap_content&quot; </div><div class="line">        android:layout_height=&quot;wrap_content&quot; </div><div class="line">        android:text=&quot;Load Image&quot; </div><div class="line">        android:onClick=&quot;loadImage&quot;  /&gt; </div><div class="line">    &lt;ImageView </div><div class="line">        android:id=&quot;@+id/image&quot; </div><div class="line">        android:layout_width=&quot;wrap_content&quot; </div><div class="line">        android:layout_height=&quot;wrap_content&quot; /&gt; </div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<p>很简单，这里使用了一个 Button 按钮来加载图片，使用了一个 ImageView 来展示图片。</p>
+<p>然后修改 MainActivity 中的代码，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123; </div><div class="line"></div><div class="line">    String url = &quot;http://guolin.tech/book.png&quot;; </div><div class="line"></div><div class="line">    ImageView image; </div><div class="line"></div><div class="line">    @Override </div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123; </div><div class="line">        super.onCreate(savedInstanceState); </div><div class="line">        setContentView(R.layout.activity_main); </div><div class="line">        image = (ImageView) findViewById(R.id.image); </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    public void loadImage(View view) &#123; </div><div class="line">        Glide.with(this) </div><div class="line">             .load(url) </div><div class="line">             .diskCacheStrategy(DiskCacheStrategy.NONE)</div><div class="line">             .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)</div><div class="line">             .into(image); </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在就可以运行一下程序了，效果如下图所示。</p>
+<p><img src="https://img-blog.csdn.net/20171121151820466" alt=""></p>
+<p>OK，图片已经加载出来了。那么怎么验证有没有成功监听到图片的下载进度呢？还记得我们刚才在 ProgressResponseBody 中加的打印日志吗？现在只要去 logcat 中观察一下就知道了，如下图所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-1fedcbf5fe495959.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>由此可见，下载进度监听功能已经成功实现了。</p>
+<h3 id="进度显示"><a href="#进度显示" class="headerlink" title="进度显示"></a>进度显示</h3><p>虽然现在我们已经能够监听到图片的下载进度了，但是这个进度目前还只能显示在控制台打印当中，这对于用户来说是没有任何意义的，因此我们下一步就是要想办法将下载进度显示到界面上。</p>
+<p>现在修改 MainActivity 中的代码，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line">    String url = &quot;http://guolin.tech/book.png&quot;;</div><div class="line">    ImageView image;</div><div class="line">    ProgressDialog progressDialog;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        image = (ImageView) findViewById(R.id.image);</div><div class="line">        progressDialog = new ProgressDialog(this);</div><div class="line">        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);</div><div class="line">        progressDialog.setMessage(&quot;加载中&quot;); </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void loadImage(View view) &#123;</div><div class="line">        ProgressInterceptor.addListener(url, new ProgressListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onProgress(int progress) &#123;</div><div class="line">                progressDialog.setProgress(progress);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        Glide.with(this)</div><div class="line">             .load(url)</div><div class="line">             .diskCacheStrategy(DiskCacheStrategy.NONE)</div><div class="line">             .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)</div><div class="line">             .into(new GlideDrawableImageViewTarget(image) &#123;</div><div class="line">                 @Override</div><div class="line">                 public void onLoadStarted(Drawable placeholder) &#123;</div><div class="line">                     super.onLoadStarted(placeholder);</div><div class="line">                     progressDialog.show();</div><div class="line">                 &#125;</div><div class="line"></div><div class="line">                 @Override </div><div class="line">                 public void onResourceReady(GlideDrawable resource, GlideAnimation&lt;? super GlideDrawable&gt; animation) &#123;</div><div class="line">                     super.onResourceReady(resource, animation);</div><div class="line">                     progressDialog.dismiss();</div><div class="line">                     ProgressInterceptor.removeListener(url);</div><div class="line">                 &#125;</div><div class="line">             &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>代码并不复杂。这里我们新增了一个 ProgressDialog 用来显示下载进度，然后在 loadImage() 方法中，调用了 ProgressInterceptor.addListener() 方法来去注册一个下载监听器，并在 onProgress() 回调方法中更新当前的下载进度。</p>
+<p>最后，Glide的into() 方法也做了修改，这次是 into 到了一个 GlideDrawableImageViewTarget 当中。我们重写了它的 onLoadStarted() 方法和 onResourceReady() 方法，从而实现当图片开始加载的时候显示进度对话框，当图片加载完成时关闭进度对话框的功能。</p>
+<p>现在重新运行一下程序，效果如下图所示。</p>
+<p><img src="https://img-blog.csdn.net/20171121152215865" alt=""></p>
+<p>当然，不仅仅是静态图片，体积比较大的 GIF 图也是可以成功监听到下载进度的。比如我们把图片的 url 地址换成 <a href="http://guolin.tech/test.gif" target="_blank" rel="external">http://guolin.tech/test.gif</a>，重新运行程序，效果如下图所示。</p>
+<p><img src="https://img-blog.csdn.net/20171121152245975" alt=""></p>
+<p>好了，这样我们就把带进度的 Glide 图片加载功能完整地实现了一遍。虽然这个例子当中的界面都比较粗糙，下载进度框也是使用的最简陋的，不过只要将功能学会了，界面那都不是事，大家后期可以自己进行各种界面优化。</p>
+<p>最后，如果你想要下载完整的 Demo，请<a href="https://download.csdn.net/download/sinyu890807/10104928" target="_blank" rel="external">点击这里</a>。</p>
+<p>写了大半年的一个系列就这么要结束了，突然还有一点点小不舍。如果大家能将整个系列的七篇文章都很好地掌握了，那么现在自称为Glide高手应该不算过分。</p>
+<p>其实在刚打算写这个系列的时候，我是准备写八篇文章，结果最后满打满算就只写出了七篇。那么为了兑现自己当初八篇的承诺，我准备最后一篇写一下关于Glide 4.0版本的用法，顺便让我自己也找个契机去研究一下新版本。当然，这并不是说Glide 3.7版本就已经淘汰了，事实上，Glide 3.7版本十分稳定，而且还能几乎完全满足我平时开发的所有需求，是可以长期使用下去的一个版本。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FRAMEWORK/" rel="tag"><i class="fa fa-tag"></i> FRAMEWORK</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/1902/01/12/07 THIRD PARY FRAMEWORK/16 Glide 自定义模块功能/" rel="next" title="16 Glide 自定义模块功能">
+                <i class="fa fa-chevron-left"></i> 16 Glide 自定义模块功能
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1902/01/14/07 THIRD PARY FRAMEWORK/18 Glide 4.0 用法/" rel="prev" title="18 Glide 4.0 用法">
+                18 Glide 4.0 用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">160</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展目标"><span class="nav-text">扩展目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始"><span class="nav-text">开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换通讯组件"><span class="nav-text">替换通讯组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现下载进度监听"><span class="nav-text">实现下载进度监听</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进度显示"><span class="nav-text">进度显示</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共381.9k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

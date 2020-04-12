@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="FRAMEWORK," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="先小涛" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="项目地址：https://github.com/bumptech/glide官方文档：http://bumptech.github.io/glide/中文文档：https://muyangmin.github.io/glide-docs-cn/参考链接：https://blog.csdn.net/yulyu/article/details/55053099·文章目录：Glide 快速入门Gl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11 Glide 快速入门">
+<meta property="og:url" content="http://yoursite.com/1902/01/07/07 THIRD PARY FRAMEWORK/11 Glide 快速入门/index.html">
+<meta property="og:site_name" content="先小涛">
+<meta property="og:description" content="项目地址：https://github.com/bumptech/glide官方文档：http://bumptech.github.io/glide/中文文档：https://muyangmin.github.io/glide-docs-cn/参考链接：https://blog.csdn.net/yulyu/article/details/55053099·文章目录：Glide 快速入门Gl">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4123959-40ba60a14194c4c9.png?imageMogr2/auto-orient/strip|imageView2/2/w/1028/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14186083-d86562d04ef3e67b?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2020-04-04T01:07:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="11 Glide 快速入门">
+<meta name="twitter:description" content="项目地址：https://github.com/bumptech/glide官方文档：http://bumptech.github.io/glide/中文文档：https://muyangmin.github.io/glide-docs-cn/参考链接：https://blog.csdn.net/yulyu/article/details/55053099·文章目录：Glide 快速入门Gl">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4123959-40ba60a14194c4c9.png?imageMogr2/auto-orient/strip|imageView2/2/w/1028/format/webp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/1902/01/07/07 THIRD PARY FRAMEWORK/11 Glide 快速入门/"/>
+
+
+
+
+
+  <title>11 Glide 快速入门 | 先小涛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xianxiaotao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">先小涛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我至诚我道</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/1902/01/07/07 THIRD PARY FRAMEWORK/11 Glide 快速入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="先小涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="先小涛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">11 Glide 快速入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="1902-01-07T00:00:00+08:00">
+                1902-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FRAMEWORK/" itemprop="url" rel="index">
+                    <span itemprop="name">FRAMEWORK</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/1902/01/07/07 THIRD PARY FRAMEWORK/11 Glide 快速入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/1902/01/07/07 THIRD PARY FRAMEWORK/11 Glide 快速入门/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <meta name="referrer" content="no-referrer">
+
+<blockquote>
+<p>项目地址：<a href="https://github.com/bumptech/glide" target="_blank" rel="external">https://github.com/bumptech/glide</a><br>官方文档：<a href="http://bumptech.github.io/glide/" target="_blank" rel="external">http://bumptech.github.io/glide/</a><br>中文文档：<a href="https://muyangmin.github.io/glide-docs-cn/" target="_blank" rel="external">https://muyangmin.github.io/glide-docs-cn/</a><br>参考链接：<a href="https://blog.csdn.net/yulyu/article/details/55053099" target="_blank" rel="external">https://blog.csdn.net/yulyu/article/details/55053099</a><br>·<br>文章目录：<br><a href="">Glide 快速入门</a><br><a href="">Glide 源码分析执行流程</a><br><a href="">Glide 缓存机制</a></p>
+</blockquote>
+<p>Glide 作为 Google 推荐的图片加载框架，它不仅性能高，功能强大,而且调用起来非常简单。</p>
+<h3 id="一、入门"><a href="#一、入门" class="headerlink" title="一、入门"></a>一、入门</h3><p>添加依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">implementation &apos;com.github.bumptech.glide:glide:4.9.0&apos;</div><div class="line">annotationProcessor &apos;com.github.bumptech.glide:compiler:4.9.0&apos;</div></pre></td></tr></table></figure></p>
+<p>添加网络权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p>加载网络图片：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        ImageView iv = findViewById(R.id.iv);</div><div class="line">        String url = &quot;https://upload-images.jianshu.io/upload_images/&quot;</div><div class="line">                   + &quot;14186083-93b9521d34b934cc.jpg?imageMogr2/auto-orient/&quot; </div><div class="line">                   + &quot;strip%7CimageView2/2/w/1240&quot;;</div><div class="line">        // 加载图片</div><div class="line">        Glide.with(this).load(url).into(iv);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>加载本地图片：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 本地文件</div><div class="line">File file = new File(Environment.getExternalStorageDirectory(), &quot;xxx.png&quot;);</div><div class="line">// 加载图片</div><div class="line">Glide.with(this).load(file).into(iv);</div></pre></td></tr></table></figure></p>
+<p>需要在清单文件中增加权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="二、占位图和加载动画"><a href="#二、占位图和加载动画" class="headerlink" title="二、占位图和加载动画"></a>二、占位图和加载动画</h3><p>1、设置占位图「placeholder」<br>有时候加载的图片过大时，或者网络不好时，我们经常希望控件在加载过程中有一张默认的占位图。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(url).placeholder(R.mipmap.place).into(iv);</div></pre></td></tr></table></figure></p>
+<p><strong>问题一</strong>：当占位图比例如果跟加载出来的图比例不一致的话会导致图片拉伸变形。解决办法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 1、取消使用 place holde：</div><div class="line">Glide.with(context).load(resId).into(imageView);</div><div class="line">// 2、使用 place holde 加上 dontAnimate()：</div><div class="line">Glide.with(context).load(resId).placeholder(defaultId).dontAnimate().into(imageView);</div><div class="line">// 3、使用 asBitmap 加载：</div><div class="line">Glide.with(context).load(imageUrl).asBitmap().placeholder(defaultId).into(imageView);</div></pre></td></tr></table></figure></p>
+<p><strong>问题二</strong>：如果占位图「placeHolder」比请求加载的 url 图要大，或者实际加载图是有透明部分未把占位图遮挡，就会看到占位图，占位图被当作加载成功后的图的背景展示，遇到此问题在 glide 官网查到了此问题，github 上也有这个 issiue，官网给出的对应的解决方案如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4123959-40ba60a14194c4c9.png?imageMogr2/auto-orient/strip|imageView2/2/w/1028/format/webp" alt=""></p>
+<p>官网并没有明确指出具体改如何使用，本人在网上搜了各种资料也未找到具体实现。在看了 DrawableCrossFadeFactory 的源码后本人找到了答案，示例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">DrawableCrossFadeFactory drawableCrossFadeFactory = </div><div class="line">    new DrawableCrossFadeFactory.Builder(300).setCrossFadeEnabled(true).build();</div><div class="line"></div><div class="line">Glide.with(this).load(URL_JPG)</div><div class="line">    .apply(new RequestOptions().placeholder(R.drawable.ic_launcher))</div><div class="line">    .transition(DrawableTransitionOptions.with(drawableCrossFadeFactory))</div><div class="line">    .into(imageView);</div></pre></td></tr></table></figure></p>
+<p><strong>问题三</strong>：尽量避免 ImageView 控件的宽高设置 wrap_content，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ImageView</div><div class="line">    android:id=&quot;@+id/iv_gif&quot;</div><div class="line">    android:layout_width=&quot;wrap_content&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:layout_centerInParent=&quot;true&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<p>2、设置错误图片「error」<br>当图片链接地址有误或者网络不行的时候,我们需要显示一个错误图片：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(url).error(R.mipmap.icon_photo_error).into(iv);</div></pre></td></tr></table></figure></p>
+<p>3、设置动画「crossFade」<br>Glide 默认是包含淡入淡出动画的时间为 300ms，我们可以修改这个动画的时间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(url).placeholder(R.mipmap.place).crossFade(5000).into(iv);</div></pre></td></tr></table></figure></p>
+<p>4、取消动画「dontAnimate」<br>当我们不希望有淡入淡出动画时：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(url).placeholder(R.mipmap.place).dontAnimate().into(iv);</div></pre></td></tr></table></figure></p>
+<h3 id="三、加载-GIF"><a href="#三、加载-GIF" class="headerlink" title="三、加载 GIF"></a>三、加载 GIF</h3><p>1、如果只是简单加载 gif，其实跟加载普通图片一样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(mGifUrl).placeholder(R.mipmap.place).error(R.mipmap.icon_error).into(mIv);</div></pre></td></tr></table></figure></p>
+<p>2、把 gif 当作普通图片加载「asBitmap」<br>如果希望加载 gif 时只加载 gif 的第一帧，把 gif 当作普通图片一样加载，那么只需要加上 asBitmap 方法即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(mGifUrl).asBitmap().placeholder(R.mipmap.place).error(R.mipmap.icon_error).into(mIv);</div></pre></td></tr></table></figure></p>
+<p>3、检查是否 gif「asGif」<br>如果你希望加载的只是 gif，如果不是 gif 就显示错误图片，那么只用加上 asGif 方法即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(mGifUrl).asGif().placeholder(R.mipmap.place).error(R.mipmap.icon_error).into(mIv);</div></pre></td></tr></table></figure></p>
+<p>4、加载本地视频缩略图<br>网络上很多文章上都是从一篇译文里面拷贝过来的，里面说 Glide 可以加载本地视频，但是那篇译文漏翻译一句了，Glide 只会加载本地视频的第一帧，也就是缩略图，而且其实加载缩略图的时候也无需转化为 Uri，直接把 File 丢进去就行了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">File mVideoFile = new File(Environment.getExternalStorageDirectory(), &quot;xxx.mp4&quot;);</div><div class="line">Glide.with(this).load(mVideoFile).placeholder(R.mipmap.place).error(R.mipmap.icon_error).into(mIv);</div></pre></td></tr></table></figure></p>
+<p>5、其他<br>在大多数情况下，当你使用 diskCacheStrategy（DiskCacheStrategy.SOURCE）时，Gif 的加载速度会显着提高（其实就是把 gif 资源缓存到磁盘）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(mGifUrl).diskCacheStrategy(DiskCacheStrategy.SOURCE)</div><div class="line">    .placeholder(R.mipmap.place).error(R.mipmap.icon_error).into(mIv);</div></pre></td></tr></table></figure></p>
+<h3 id="四、绑定声明周期"><a href="#四、绑定声明周期" class="headerlink" title="四、绑定声明周期"></a>四、绑定声明周期</h3><p>其实 Glide 与 Activity 和 Fragment 绑定生命周期很简单，只用在 with 的时候传入想绑定生命周期的 Context 就行。在 Glide 内部会根据你 Context 的实际类型做不同的处理，具体的分析会在以后的源码分析中展示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(mUrl).into(mIv);</div></pre></td></tr></table></figure></p>
+<h3 id="五、内存缓存和磁盘缓存"><a href="#五、内存缓存和磁盘缓存" class="headerlink" title="五、内存缓存和磁盘缓存"></a>五、内存缓存和磁盘缓存</h3><p>1、缓存的资源<br>Glide 的缓存资源分为两种：<br>· 原图（SOURCE）：原始图片。<br>· 处理图（RESULT）：经过压缩和变形等处理后的图片。</p>
+<p>2、内存缓存策略「skipMemoryCache」<br>Glide 默认是会在内存中缓存处理图（RESULT）的。可以通过调用 skipMemoryCache(true) 来设置跳过内存缓存。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 跳过内存缓存</div><div class="line">Glide.with(this).load(mUrl).skipMemoryCache(true).into(mIv);</div></pre></td></tr></table></figure></p>
+<p>调用 skipMemoryCache(false) 没有代码上的意义，因为 Glide 默认就是不跳过内存缓存的，但是显示调用这个方法，可以让别人一目了然的知道你这次请求是会在内存中缓存的，所以还是建议显示调用一下这个方法来表明你的内存缓存策略。</p>
+<p>3、磁盘缓存策略「diskCacheStrategy」<br>Glide 磁盘缓存策略分为四种，默认的是 RESULT：<br>· ALL：缓存原图（SOURCE）和处理图（RESULT）。<br>· NONE：什么都不缓存。<br>· SOURCE：只缓存原图（SOURCE）。<br>· RESULT：只缓存处理图（RESULT），默认值。</p>
+<p>4、组合策略<br>和其他三级缓存一样，Glide 的缓存读取顺序是：内存 &gt;&gt; 磁盘 &gt;&gt; 网络。需要注意的是 Glide 的内存缓存和磁盘缓存的配置相互没有直接影响，所以可以同时进行配置。例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 内存不缓存，磁盘缓存缓存所有图片</div><div class="line">Glide.with(this).load(mUrl).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.ALL).into(mIv);</div><div class="line">// 内存缓存处理图，磁盘缓存原图</div><div class="line">Glide.with(this).load(mUrl).skipMemoryCache(false).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(mIv);</div></pre></td></tr></table></figure></p>
+<p>5、缓存大小及路径<br>Glide 的内存缓存其实涉及到比较多的计算，这里就介绍最重要的一个参数，就是内存缓存最大空间：每个进程可用的最大内存 <em> 0.4，低配手机的话是: 每个进程可用的最大内存 </em> 0.33。</p>
+<p>磁盘缓存大小：250 <em> 1024 </em> 1024（250MB）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/** 250 MB of cache. */</div><div class="line">int DEFAULT_DISK_CACHE_SIZE = 250 * 1024 * 1024;</div></pre></td></tr></table></figure></p>
+<p>磁盘缓存目录：项目/cache/image_manager_disk_cache<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String DEFAULT_DISK_CACHE_DIR = &quot;image_manager_disk_cache&quot;;</div></pre></td></tr></table></figure></p>
+<p>6、清除缓存<br>清除所有内存缓存（需要在 UI 线程操作）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.get(this).clearMemory();</div></pre></td></tr></table></figure></p>
+<p>清除所有磁盘缓存（需要在子线程操作）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.get(MainActivity.this).clearDiskCache();</div></pre></td></tr></table></figure></p>
+<p>注：在使用中的资源不会被清除。</p>
+<h3 id="六、通过-Modules-定制-Glide"><a href="#六、通过-Modules-定制-Glide" class="headerlink" title="六、通过 Modules 定制 Glide"></a>六、通过 Modules 定制 Glide</h3><p>我们一般情况下使用 Glide 都很简单，只用简单的调用几个方法就能够很好的显示图片了，但其实 Glide 在初始化的时候进行了一系列的默认配置，比如缓存的配置，图片质量的配置等等。接下来我们就介绍一下一个比较高级的功能，通过 Modules 定制自己的个性 Glide。</p>
+<p>1、创建一个类实现 GlideModule<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class XGlideModule implements GlideModule &#123;</div><div class="line">    @Override</div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">       // TODO</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">       // TODO</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2、配置清单文件<br>在 AndroidManifest 中配置刚刚创建的 GlideModule，需要在 Application 节点下添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;application&gt;</div><div class="line">    ...</div><div class="line"></div><div class="line">    &lt;meta-data</div><div class="line">        android:name=&quot;xian.xiao.tao.glide.XGlideModule&quot;</div><div class="line">        android:value=&quot;GlideModule&quot; /&gt;</div><div class="line">&lt;/application&gt;</div></pre></td></tr></table></figure></p>
+<p>其中 android:name 就是刚才创建的 GlideModule 的实现类。</p>
+<p>3、进行自定义配置<br>创建的 GlideModule 的实现类时，需要要实现两个方法，这里要用到的是其中的 applyOptions 方法，applyOptions 方法里面提供了一个 GlideBuilder，通过 GlideBuilder 实现自定义配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class XGlideModule implements GlideModule &#123;</div><div class="line">    @Override</div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        builder.setDiskCache();        // 自定义磁盘缓存</div><div class="line">        builder.setMemoryCache();      // 自定义内存缓存</div><div class="line">        builder.setBitmapPool();       // 自定义图片池</div><div class="line">        builder.setDiskCacheService(); // 自定义本地缓存的线程池</div><div class="line">        builder.setResizeService();    // 自定义核心处理的线程池</div><div class="line">        builder.setDecodeFormat();     // 自定义图片质量</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">        // TODO</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4、示例「配置默认图片质量」<br>由于 Glide 的配置涉及到的东西比较多，在以后的文章里面会对每一种配置做说明具体介绍，这里就先示范一个比较简单的配置，那就是图片质量配置。</p>
+<p>用过 Picasso 的朋友应该知道，Picasso 默认的图片质量是 ARGB_8888，而 Glide 默认的图片质量是 RGB_565。这里我们就来修改默认配置，让 Glide 的默认质量为 ARGB_8888。（ARGB_8888 是指 32 位图，即每个像素占 4byte；RGB_565 是 16 位图，即每个像素占 2byte。）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class XGlideModule implements GlideModule &#123;</div><div class="line">    @Override</div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        // 自定义图片质量</div><div class="line">        builder.setDecodeFormat(DecodeFormat.PREFER_ARGB_8888);</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">        // TODO</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>5、其他<br>在清单文件中可以配置多个 GlideModule，Glide 会依次遍历并读取。</p>
+<h3 id="七、自定义缓存"><a href="#七、自定义缓存" class="headerlink" title="七、自定义缓存"></a>七、自定义缓存</h3><h4 id="1、自定义内存缓存"><a href="#1、自定义内存缓存" class="headerlink" title="1、自定义内存缓存"></a>1、自定义内存缓存</h4><p>通过调用 builder 的 setXXX 方法就可以自定义内存缓存的大小，MemoryCache 以及 BitmapPool 都与内存缓存有关。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class XGlideModule implements GlideModule &#123;</div><div class="line">    @Override</div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        // 配置内存缓存大小 10MB</div><div class="line">        builder.setMemoryCache(new LruResourceCache(10*1024*1024));</div><div class="line">        // 配置图片池大小   20MB</div><div class="line">        builder.setBitmapPool(new LruBitmapPool(20*1024*1024));</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是内存缓存的大小数值其实不应该是随便配置的，Glide 的内部的默认值是通过一系列的计算获取的，比如说判断手机是否高配置手机等。有个取巧的办法，就是获取 Glide 默认的设置，然后在这个设置的基础上进行修改。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class XGlideModule implements GlideModule &#123;</div><div class="line">    @Override</div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        // 获取内存计算器</div><div class="line">        MemorySizeCalculator calculator = new MemorySizeCalculator(context);</div><div class="line">        // 获取Glide默认内存缓存大小</div><div class="line">        int defaultMemoryCacheSize = calculator.getMemoryCacheSize();</div><div class="line">        // 获取Glide默认图片池大小</div><div class="line">        int defaultBitmapPoolSize  = calculator.getBitmapPoolSize();</div><div class="line">        // 将数值修改为之前的1.1倍</div><div class="line">        int myMemoryCacheSize  = (int) (1.1 * defaultMemoryCacheSize);</div><div class="line">        int myBitmapPoolSize   = (int) (1.1 * defaultBitmapPoolSize);</div><div class="line">        // 修改默认值</div><div class="line">        builder.setMemoryCache(new LruResourceCache(myMemoryCacheSize));</div><div class="line">        builder.setBitmapPool(new LruBitmapPool(myBitmapPoolSize));</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="2、自定义磁盘缓存"><a href="#2、自定义磁盘缓存" class="headerlink" title="2、自定义磁盘缓存"></a>2、自定义磁盘缓存</h4><p>磁盘缓存按照访问权限及路径可以分为两种：<br>· 私有缓存（只有 App 本身可以访问，目录在 “data/data/应用包名” 下)<br>· 外部缓存（所有 App 都可以访问，目录在扩展空间内，如 SD 卡)</p>
+<h4 id="2-1、私有缓存"><a href="#2-1、私有缓存" class="headerlink" title="2.1、私有缓存"></a>2.1、私有缓存</h4><p>下面这样配置的话，主要是修改缓存大小，缓存路径仍为默认路径（data/data/应用包名/cache/image_manager_disk_cache）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class XGlideModule implements GlideModule &#123;</div><div class="line">    @Override</div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        // 设置磁盘缓存大小</div><div class="line">        int size = 100 * 1024 * 1024;</div><div class="line">        // 设置磁盘缓存</div><div class="line">        builder.setDiskCache(new InternalCacheDiskCacheFactory(context, size));</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果需求修改缓存路径的话，需要增加一下参数即可（变为data/data/应用包名/cache/xian）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 设置磁盘缓存大小</div><div class="line">int size = 100 * 1024 * 1024;</div><div class="line">String dir = &quot;xian&quot;;</div><div class="line">// 设置磁盘缓存</div><div class="line">builder.setDiskCache(new InternalCacheDiskCacheFactory(context,dir, size));</div></pre></td></tr></table></figure></p>
+<h4 id="2-2、外部缓存"><a href="#2-2、外部缓存" class="headerlink" title="2.2、外部缓存"></a>2.2、外部缓存</h4><p>下面这样配置的话，缓存会在 SDCard/Android/data/应用包名/cache/image_manager_disk_cache 目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class XGlideModule implements GlideModule &#123;</div><div class="line">    @Override</div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        // 设置磁盘缓存大小</div><div class="line">        int size = 100 * 1024 * 1024;</div><div class="line">        // 设置磁盘缓存</div><div class="line">        builder.setDiskCache(new ExternalCacheDiskCacheFactory(context, size));</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果需求修改缓存路径的话，需要增加一下参数即可（变为 SDCard/Android/data/应用包名/cache/xian）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 设置磁盘缓存大小</div><div class="line">int size = 100 * 1024 * 1024;</div><div class="line">String dir = &quot;xian&quot;;</div><div class="line">// 设置磁盘缓存</div><div class="line">builder.setDiskCache(new ExternalCacheDiskCacheFactory(context,dir, size));</div></pre></td></tr></table></figure></p>
+<h4 id="2-3、完全自定义路径"><a href="#2-3、完全自定义路径" class="headerlink" title="2.3、完全自定义路径"></a>2.3、完全自定义路径</h4><p>上面两种缓存都是把缓存的父目录定死的，能够改变的只是子目录。Glide 还提供了一种方式可以完全自定义缓存目录。需要注意的是这里的路径是配置的绝对路径，所以如果没有指定在 sd 卡目录下的话是无法直接看到的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class XiayuGlideModule implements GlideModule &#123;</div><div class="line">    @Override</div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">        // 设置磁盘缓存大小</div><div class="line">        int size = 100 * 1024 * 1024;</div><div class="line">        String dirFolder = &quot;xian&quot;;</div><div class="line">        String dirName = &quot;xiao&quot;;</div><div class="line">        // 设置磁盘缓存</div><div class="line">        builder.setDiskCache(new DiskLruCacheFactory(dirFolder, size));</div><div class="line">        // builder.setDiskCache(new DiskLruCacheFactory(dirFolder, dirName,size));</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="八、图片压缩"><a href="#八、图片压缩" class="headerlink" title="八、图片压缩"></a>八、图片压缩</h3><p>1、图片质量的压缩或者提高<br>见上面 6.2 节，通过 Modules 定制 Glide。</p>
+<p>2、图片尺寸的压缩或者拉伸「override」<br>通过调用 override，就可以把图片压缩到相应的尺寸来显示。类似这些被处理过的图片，就是前文提到的 RESULT（处理图）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(mUrl).override(300,300).into(mIv);</div></pre></td></tr></table></figure></p>
+<h3 id="九、图片预处理（圆角高斯模糊等）"><a href="#九、图片预处理（圆角高斯模糊等）" class="headerlink" title="九、图片预处理（圆角高斯模糊等）"></a>九、图片预处理（圆角高斯模糊等）</h3><p>1、创建一个类继承 BitmapTransformation<br>需要实现两个方法，其中 transform 方法里面能拿到 bitmap 对象，这里就是对图片做处理的地方。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public  class CornersTransform extends BitmapTransformation &#123;</div><div class="line">    @Override</div><div class="line">    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) &#123;</div><div class="line">        // TODO</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public String getId() &#123;</div><div class="line">        // TODO</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2、使用<br>通过调用 transform 方法就能展示处理后的图片<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(url).transform(new CornersTransform()).into(iv1);</div></pre></td></tr></table></figure></p>
+<p>3、示例「圆角处理」<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">public  class CornersTransform extends BitmapTransformation &#123;</div><div class="line">    private float radius;</div><div class="line"></div><div class="line">    public CornersTransform(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">        radius = 10;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public CornersTransform(Context context, float radius) &#123;</div><div class="line">        super(context);</div><div class="line">        this.radius = radius;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) &#123;</div><div class="line">        return cornersCrop(pool, toTransform);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private Bitmap cornersCrop(BitmapPool pool, Bitmap source) &#123;</div><div class="line">        if (source == null) return null;</div><div class="line"></div><div class="line">        Bitmap result = pool.get(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">        if (result == null) &#123;</div><div class="line">            result = Bitmap.createBitmap(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Canvas canvas = new Canvas(result);</div><div class="line">        Paint paint  = new Paint();</div><div class="line">        paint.setShader(new BitmapShader(source, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP));</div><div class="line">        paint.setAntiAlias(true);</div><div class="line">        RectF rectF = new RectF(0f, 0f, source.getWidth(), source.getHeight());</div><div class="line">        canvas.drawRoundRect(rectF, radius, radius, paint);</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String getId() &#123;</div><div class="line">        return getClass().getName();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(url).transform(new CornersTransform(this,50)).into(iv1);</div></pre></td></tr></table></figure></p>
+<p>4、使用多个 transform<br>transform 方法是不支持多次调用，如果被调用两次，那么第二次的会覆盖了第一次的效果。但是他有一个重载的方法可以传入多个对象，这样传入的变形器都能够生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(this).load(url).transform(new CircleTransform(this), new CornersTransform(this,50)).into(iv1);</div></pre></td></tr></table></figure></p>
+<p>5、第三方库<br>如果你觉得自己自定义 transform 比较困难，或者你想学习别人的图片处理方法，可以在试一试 Github 上的这个库：<a href="https://github.com/wasabeef/glide-transformations" target="_blank" rel="external">Glide Transformations</a>。</p>
+<p>其效果如下，支持圆角、高斯模糊等。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14186083-d86562d04ef3e67b?imageMogr2/auto-orient/strip" alt=""></p>
+<h3 id="十、图片裁剪"><a href="#十、图片裁剪" class="headerlink" title="十、图片裁剪"></a>十、图片裁剪</h3><h4 id="ImageView-的-ScaleType"><a href="#ImageView-的-ScaleType" class="headerlink" title="ImageView 的 ScaleType"></a>ImageView 的 ScaleType</h4><p>ImageView 的 ScaleType 一共有 8 种属性：</p>
+<ul>
+<li>matrix：不缩放，图片与控件左上角对齐，当图片大小超过控件时将被裁剪。</li>
+<li>center：不缩放，图片与控件中心点对齐，当图片大小超过控件时将被裁剪。</li>
+<li>centerInside：以完整显示图片为目标，不剪裁，当显示不下的时候将缩放，能够显示的情况下不缩放。</li>
+<li>centerCrop：以填满整个控件为目标，等比缩放，超过控件时将被 裁剪（宽高都要填满，所以只要图片宽高比与控件宽高比不同时，一定会被剪裁）。</li>
+<li>fitCenter：默认，自适应控件，不剪裁，在不超过控件的前提下，等比缩放到最大，居中显示。</li>
+<li>fitStart：自适应控件，不剪裁，在不超过控件的前提下，等比缩放到最大，靠左（上）显示。</li>
+<li>fitEnd：自适应控件，不剪裁，在不超过控件的前提下，等比缩放到最大，靠右（下）显示。</li>
+<li>fitXY：以填满整个控件为目标，不按比例拉伸或缩放（可能会变形），不剪裁。</li>
+</ul>
+<p>Glide 有两个方法可以设置图片剪裁的策略：<br>· fitCenter()<br>· centerCrop()</p>
+<p>这两个方法其实都是通过调用 transform 方法来对图片进行处理。当你没有调用上述两个方法，并且也没有调用 transform 方法的时候，在 Glide 调用 into 方法时，会根据你设置的 ScaleType 来做处理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">if (!isTransformationSet &amp;&amp; view.getScaleType() != null) &#123;</div><div class="line">    switch (view.getScaleType()) &#123;</div><div class="line">        case CENTER_CROP:</div><div class="line">            applyCenterCrop();</div><div class="line">            break;</div><div class="line">        case FIT_CENTER:</div><div class="line">        case FIT_START:</div><div class="line">        case FIT_END:</div><div class="line">            applyFitCenter();</div><div class="line">            break;</div><div class="line">        default:</div><div class="line">            // Do nothing.</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FRAMEWORK/" rel="tag"><i class="fa fa-tag"></i> FRAMEWORK</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/1902/01/06/07 THIRD PARY FRAMEWORK/06 ImageLoader 项目源码/" rel="next" title="06 ImageLoader 项目源码">
+                <i class="fa fa-chevron-left"></i> 06 ImageLoader 项目源码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1902/01/08/07 THIRD PARY FRAMEWORK/12 Glide 源码分析执行流程/" rel="prev" title="12 Glide 源码分析执行流程">
+                12 Glide 源码分析执行流程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="先小涛" />
+            
+              <p class="site-author-name" itemprop="name">先小涛</p>
+              <p class="site-description motion-element" itemprop="description">我至诚我道</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">160</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xianxiaotao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9fe7b66d2982" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xianxiaotao@icloud.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.android.google.cn/reference?hl=en" title="ANDROID API" target="_blank">ANDROID API</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.iconfont.cn/" title="ICON" target="_blank">ICON</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、入门"><span class="nav-text">一、入门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、占位图和加载动画"><span class="nav-text">二、占位图和加载动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、加载-GIF"><span class="nav-text">三、加载 GIF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、绑定声明周期"><span class="nav-text">四、绑定声明周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、内存缓存和磁盘缓存"><span class="nav-text">五、内存缓存和磁盘缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、通过-Modules-定制-Glide"><span class="nav-text">六、通过 Modules 定制 Glide</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、自定义缓存"><span class="nav-text">七、自定义缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、自定义内存缓存"><span class="nav-text">1、自定义内存缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、自定义磁盘缓存"><span class="nav-text">2、自定义磁盘缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、私有缓存"><span class="nav-text">2.1、私有缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、外部缓存"><span class="nav-text">2.2、外部缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、完全自定义路径"><span class="nav-text">2.3、完全自定义路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、图片压缩"><span class="nav-text">八、图片压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、图片预处理（圆角高斯模糊等）"><span class="nav-text">九、图片预处理（圆角高斯模糊等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十、图片裁剪"><span class="nav-text">十、图片裁剪</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ImageView-的-ScaleType"><span class="nav-text">ImageView 的 ScaleType</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">先小涛</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共381.9k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rbnnUjJovf4WCIErS35Hwons-gzGzoHsz',
+        appKey: 'ywF5FLP3tubCiWyrJoxH7gJq',
+        placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
